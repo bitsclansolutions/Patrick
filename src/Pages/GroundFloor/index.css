@@ -1,0 +1,490 @@
+.navbar-background {
+  background: #CC664A;
+  background: linear-gradient(360deg, #CC664A 0%, #cf7359 35%, #FCC184 100%);
+  height: 100vh;
+  overflow-y: scroll !important;
+}
+.navbar-background::-webkit-scrollbar {
+  width: 0px;
+}
+
+.group-one{
+    height: 49vh;
+}
+.group-two{
+  height: 50vh;
+}
+.position-heading-bottom{
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.heading-bottom{
+  color: #000;
+  font-weight: 900;
+  font-family: 'Nunito', sans-serif;
+  font-size: 38px;
+  background-color: rgba(255,255,255,0.6);
+  padding: 2px 12px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-bottom: 0px;
+  /* text-shadow:0 2px 3px #747474, 1px 3px 4px #fff, 0 8px 3px #e7e7e7, 0 11px 4px #ffffff, 0 14px 4px #ffffff, 0 17px 4px #d7d7d7, 0 20px 4px #d7cfcf; */
+}
+
+/* @media (min-width: 1920px){
+  .group-one {
+    height: 427px;
+  }
+  .group-two{
+    height: 449px;
+  }
+}
+.group-one {
+  height: 579px;
+}
+@media (min-width: 2500px){
+  .group-one {
+    height: 579px;
+  }
+  .group-two{
+    height: 651px;
+  }
+} */
+/* .btn-font {
+  font-size: 10px !important;
+} */
+
+@media (max-width: 1024px){
+    .main-groundFloor-div{
+      display: none;
+    }
+}
+@media (min-width:1024px) and ( max-width:1366px) {
+  .set-btn-toilet-ground {
+    left: 6.7vw;
+  }
+  .set-btn-kitchen-ground {
+    right: 16vw !important;
+    top: 72vh !important;
+  }
+  .set-btn-firt-ground {
+    left: 29.5vw !important;
+  }
+  .div-oven {
+    left: 16.4% !important;
+    top: 74.6vh !important;
+  }
+  .div-kitchenLight02 {
+    top: 34.2vh !important;
+    left: 26.5vh !important;
+  }
+  .div-kitchenLight02 img {
+      height: 20vh !important;
+      opacity: 0.2;
+  }
+  .div-kitchenLight02-On{
+      top: 35vh !important;
+  }
+  .div-kitchenLight02-On img {
+      height: 20vh !important;
+  }
+  /* FIRST FLOOR */
+  .set-btn-hall-first-living2 {
+    left: 16.5vw !important;
+  }
+  .set-btn-hall-first-toilet {
+    right: 24vw !important;
+  }
+  .set-btn-hall-first-bedroom {
+    right: 13.5vw !important;
+  }
+  .set-btns-hall-first-ground {
+    right: 34.5vw !important;
+  }
+  .set-btn-hall-first-living2 {
+    left: 16.5vw !important;
+  }
+  .set-btns-hall-first-attic {
+    left: 29vw !important;
+  }
+  .set-btn-hall-first-living1 {
+    left: 6.5vw !important;
+  }
+  /* FIRST FLOOR LIVING ROOM */
+  .set-btns-fist-living1 {
+    left: 9vw !important;
+  }
+  /* ATTIC FLOOR */
+  .set-attic-hall-first {
+    position: absolute !important;
+    left: 31vw !important;
+  }
+  .set-attic-hall-guest {
+    left: 6.5vw !important;
+  }
+  .set-attic-hall-study {
+    left: 16.5vw !important;
+  }
+  .set-attic-hall-store {
+    right: 32.2vw !important;
+  }
+  .set-attic-hall-lundary {
+    right: 16.3vw !important;
+  }
+  .div-lamp-guest {
+    top: 64.5vh !important;
+  }
+  .div-lamp-guest-on {
+      top: 64.5vh !important;
+  }
+  .div-radio-guest {
+    top: 25vh !important;
+  }
+  .div-lamp-study{
+    top: 75vh !important;
+  }
+  .div-lamp-study-on{
+      top: 75vh !important;
+  } 
+}
+@media (min-width:1367px) and ( max-width:1440px) {
+  .set-btn-toilet-ground {
+    left: 5.3vw !important;
+  } 
+  .set-btn-living-ground {
+    left: 16.6vw !important;
+  }
+  .set-btn-firt-ground {
+    top: 29vh !important;
+    left: 29vw !important;
+  }
+  .set-btn-kitchen-ground {
+    top: 69vh !important;
+    right: 15vw !important;
+  }
+  .set-btns-kitchen-ground {
+    top: 39vh !important;
+    right: 9vh !important;
+  }
+  .div-kitchenLight03 {
+    right: 20vh !important;
+  }
+  .div-kitchenLight02 {
+    top: 36.6vh !important;
+    left: 17.8vh !important;
+  }
+  .div-kitchenLight02 img {
+    height: 18vh !important;
+    opacity: 0.2;
+  }
+  .div-kitchenLight02-On{
+    top: 35.9vh !important;
+    left: 24.8vh !important;
+  }
+  .div-kitchenLight02-On img {
+    height: 18vh !important;
+  }
+  .set-btns-toilet-back {
+    right: 6vw !important;
+  }
+  .div-fan-On {
+    top: 3vh !important;
+    left: 13% !important;
+  }
+  .div-lamp {
+    top: 56vh !important;
+    left: 0vh !important;
+  }
+  .div-oven {
+    left: 14.8% !important;
+    top: 71vh !important;
+  }
+  .div-oven img {
+    height: 13vh !important;
+  }
+  .div-AC {
+    left: 39% !important;
+  }
+  /* FIRST FLOOR */
+  .set-btn-hall-first-living1 {
+    left: 5vw !important;
+  }
+  .set-btn-hall-first-living2 {
+    left: 15.6vw !important;
+  }
+  .set-btns-hall-first-ground {
+    right: 34vw !important;
+  }
+  .set-btns-hall-first-attic {
+    left: 29vw !important;
+  }
+  .set-btn-hall-first-toilet {
+    right: 23.5vw !important;
+  }
+  .set-btn-hall-first-bedroom {
+    right: 12.3vw !important;
+  }
+  .div-LED-hall2 {
+    right: 1vh !important;
+  }
+  .set-btns-fist-living1 {
+    left: 7.5vw !important;
+  }
+  .div-living01-light03 {
+    left: 37vh !important;
+    top: 65vh !important;
+  }
+  .div-living01-light03-on {
+    left: 37vh !important;
+    top: 65vh !important;
+  }
+  .div-living01-light01 {
+    right: 8vh !important;
+    top: 66vh !important;
+  }
+  .div-living01-light01-on {
+    right: 8vh !important;
+    top: 66vh !important;
+  }
+  /* FIRST FLOOR LIVING ROOM 2 */
+  .div-living02-lamp {
+    top: 65vh !important;
+    right: 24vh !important;
+  }
+  .div-living02-lamp-on {
+    top: 65vh !important;
+    right: 24vh !important;
+  }
+  .set-btns-first-living2 {
+    left: 5.2vw !important;
+  }
+  /* FIRST FLOOR TOILET */
+  .set-btns-first-toilet {
+    right: 8vw !important;
+  }
+  .div-fan-bed {
+    right: 47.6vh !important;
+  }
+  .div-fan-bed-on {
+    right: 47.6vh !important;
+  }
+  /* ATTIC FLOOR */
+  .div-Lamp-attic img {
+    height: 20vh !important;
+  }
+  .div-Lamp-attic {
+    top: 58vh !important;
+  }
+  .div-Lamp-attic-on img {
+    height: 20vh !important;
+  }
+  .div-Lamp-attic-on {
+    top: 58vh !important;
+  }
+  .set-attic-hall-guest {
+    left: 5vw !important;
+  }
+  .set-attic-hall-study {
+    left: 15.8vw !important;
+  }
+  .set-attic-hall-first {
+    left: 31vw !important;
+  }
+  .set-attic-hall-store {
+    right: 32vw !important;
+  }
+  .set-attic-hall-lundary {
+    right: 15.5vw !important;
+  }
+  .div-light02-atticHall {
+    right: 5vh !important;
+    top: 68vh !important;
+  }
+  .div-light02-atticHall-on {
+    right: 5vh !important;
+    top: 68vh !important;
+  }
+  /* ATTIC FLOOR */
+  .div-lamp-guest {
+    top: 61vh !important;
+    left: 2vw !important;
+  }
+  .div-lamp-guest-on {
+    top: 61vh !important;
+    left: 2vw !important;
+  }
+  .div-radio-guest {
+    top: 27vh !important;
+  }
+  .set-attic-guest-back {
+    right: 23.5vw !important;
+  }
+  /* ATTIC STORE ROOM */
+  .set-attic-store-back {
+    left: 21.5vw !important;
+  }
+  /* ATTIC LUNDARY */
+  .set-attic-lundary-back {
+    left: 3.5vw !important;
+  }
+}
+@media (min-width:1441px) and ( max-width:1536px) {
+  .set-btn-kitchen-ground {
+    right: 16.5vw !important;
+  }
+  .set-btns-living-back {
+    right: 4vw !important;
+  }
+  .div-kitchenLight02 {
+    top: 34.6vh !important;
+    left: 11.3vw !important;
+  }
+  .div-kitchenLight02-On {
+    top: 34.6vh !important;
+    left: 11.3vw !important;
+  }
+  .div-kitchenLight02 img {
+    height: 21vh !important;
+    opacity: 0.2;
+  }
+  .div-kitchenLight02-On img {
+    height: 21vh !important;
+  }
+  .div-oven {
+    top: 74.5vh !important;
+  }
+  /* FIRST FLOOR */
+  .set-btn-hall-first-living1 {
+    left: 6.7vw !important;
+  }
+  .set-btn-hall-first-living2 {
+    left: 17vw !important;
+  }
+  .set-btns-hall-first-ground {
+    right: 35vw !important;
+  }
+  .set-btn-hall-first-toilet {
+    right: 24.4vw !important;
+  }
+  .set-btn-hall-first-bedroom {
+    right: 13.8vw !important;
+  }
+  .set-btns-hall-first-attic {
+    left: 29.5vw !important;
+  }
+  .div-LED-hall2 {
+    right: 5vh !important;
+  }
+  .set-btns-fist-living1 {
+    left: 9.2vw !important;
+  }
+  /* FIRST FLOOR LIVING ROOM 2 */
+  .div-living02-lamp-on {
+    top: 68vh !important;
+    right: 32vh !important;
+  }
+  .div-living02-lamp {
+    top: 68vh !important;
+    right: 32vh !important;
+  }
+  /* FIRST FLOOR TOILET */
+  .div-fan-bed-on {
+    right: 61vh !important;
+  }
+  .div-fan-bed {
+    right: 61vh !important;
+  }
+  .set-btn-first-bed-back {
+    left: 3vw !important;
+  }
+  /* ATTIC FLOOR */
+  .div-lamp-guest {
+    top: 64vh !important;
+    left: 4vw !important;
+  }
+  .div-lamp-guest-on {
+    top: 64vh !important;
+    left: 4vw !important;
+  }
+  .div-radio-guest {
+    top: 25vh !important;
+  }
+  .set-attic-guest-back {
+    right: 24vw !important;
+  }
+}
+@media (min-width:1537px) and ( max-width:1920px) {
+  .set-btn-kitchen-ground {
+    top: 71vh !important;
+    right: 16.5vw !important;
+  }
+  .set-btn-toilet-ground {
+    left: 7vw !important;
+  }
+  .set-btn-living-ground {
+    left: 18vw !important;
+  }
+  .div-oven img {
+    height: 14vh !important;
+  }
+  .div-oven-On img {
+    height: 14vh !important;
+  }
+  /* FIRST FLOOR */
+  .set-btn-hall-first-living1 {
+    left: 6.7vw !important;
+  }
+  .set-btn-hall-first-living2 {
+    left: 17vw !important;
+  }
+  .set-btns-hall-first-ground {
+    right: 35vw !important;
+  }
+  .set-btn-hall-first-toilet {
+    right: 24.5vw !important;
+  }
+  .set-btns-hall-first-attic {
+    left: 29.5vw !important;
+  }
+  .div-living01-light03 {
+    top: 69vh !important;
+  }
+  .div-living01-light03-on {
+    top: 69vh !important;
+  }
+  .div-living01-light01 {
+    top: 69vh !important;
+  }
+  .div-living01-light01-on {
+    top: 69vh !important;
+  }
+  .set-btns-fist-living1 {
+    left: 9.2vw !important;
+  }
+  /* LIVING ROOM 2 FIRST FLOOR  */
+  .set-btns-first-living2 {
+    left: 7vw !important;
+  }
+  /* FIRST FLOOR TOILET */
+  .set-btns-first-toilet {
+    right: 9.2vw !important;
+  }
+  .div-fan-bed-on {
+    right: 59vh !important;
+  }
+  .div-fan-bed {
+    right: 59vh !important;
+  }
+  .set-btn-first-bed-back {
+    left: 3.5vw !important;
+  }
+  /* ATTIC FLOOR */
+  .set-attic-guest-back {
+    right: 24.5vw !important;
+  }
+}
+@media (min-width:1921px) {
+  
+}

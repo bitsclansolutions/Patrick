@@ -1,0 +1,229 @@
+import React from "react";
+import Meter from "../images/Meter.png";
+import meterGroup from "../images/meterGroup.png";
+import breakerOffIMG from "../images/breakerOffIMG.png";
+import breakerOnIMG from "../images/breakerOnIMG.png";
+import Swal from "sweetalert2";
+
+import "./RightNavBar.css";
+
+const RightNavBar = (props) => {
+
+  // toilet section breaker .......................................................................................
+  const toiletBreakerHandlerOff = () => {
+    if (props.toiletCorruptDevice === props.rndToilet) {
+      Swal.fire({
+        // timer: 3000,
+        icon: "warning",
+        title: "User Info",
+        // showConfirmButton: false,
+        text: "One device is not working propperly you have to first disconnect all the devices",
+      });
+      props.setIsToiletBreaker(false);
+    } else {
+      props.setToiletBreakerType("red");
+      props.setIsToiletBreaker(true);
+      if (props.toiletFan === "disconnect" && props.toiletLight === "disconnect") {
+        Swal.fire({
+          // timer: 3000,
+          icon: "info",
+          title: "User Info",
+          // showConfirmButton: false,
+          text: "Now connect all the devices one by one to check which device is defected",
+        });
+      }
+    }
+  };
+
+  const toiletBreakerHandlerOn = () => {
+    props.setToiletBreakerType("black");
+    props.setIsToiletBreaker(false);
+    
+  };
+
+  // Hall section Breaker........................................................................................... 
+
+
+  const hallBreakerHandlerOff = () => {
+    if (props.hallCorruptDevice === props.rndHall) {
+      Swal.fire({
+        // timer: 3000,
+        icon: "warning",
+        title: "User Info",
+        // showConfirmButton: false,
+        text: "One device is not working propperly you have to first disconnect all the devices",
+      });
+      props.setIsHallBreaker(false);
+    } else {
+      props.setHallBreakerType("red");
+      props.setIsHallBreaker(true);
+      if (props.hallPadestal === "disconnect" && props.hallLight01 === "disconnect" && props.hallLight02 === 'disconnect' && props.hallLedTv === 'disconnect' && props.hallLamp === 'disconnect') {
+        Swal.fire({
+          // timer: 3000,
+          icon: "info",
+          title: "User Info",
+          // showConfirmButton: false,
+          text: "Now connect all the devices one by one to check which device is defected",
+        });
+      }
+    }
+  };
+
+  const hallBreakerHandlerOn = () => {
+    props.setHallBreakerType("black");
+    props.setIsHallBreaker(false);
+    
+  };
+
+  return (
+    <div>
+      <div className="mt-5 text-center">
+        {props.meterType === "meterBoardClose" ? (
+          <img
+            className="meter-img"
+            onClick={() => props.setMeterType("meterBoardOpen")}
+            src={Meter}
+            alt="meter"
+          />
+        ) : props.meterType === "meterBoardOpen" ? (
+          <>
+            <img
+              className="meter-img"
+              onClick={() => props.setMeterType("meterBoardOpen")}
+              src={meterGroup}
+              alt="meter"
+            />
+            <>
+              {props.buttonType === "GroupOne" ? (
+                <>
+                  {props.breaker === "toilet" ? (
+                    <>
+                      {props.toiletBreakerType === "black" ||
+                      props.rndToilet === props.toiletCorruptDevice ? (
+                        <button
+                          className="group-btn position-Bath"
+                          onClick={toiletBreakerHandlerOff}
+                        >
+                          <img
+                            src={breakerOffIMG}
+                            alt=""
+                            className="breakerImg"
+                          />
+                        </button>
+                      ) : (
+                        <button
+                          className="group-btn position-Bath"
+                          onClick={toiletBreakerHandlerOn}
+                        >
+                          <img
+                            src={breakerOnIMG}
+                            alt=""
+                            className="breakerImg"
+                          />
+                        </button>
+                      )}
+                    </>
+                  ) : (
+
+                    <button
+                      className="group-btn position-Bath"
+                      onClick={() => {
+                        props.setBreaker("toilet");
+                        props.setGamePhase('toilet')
+                      }}
+                    >
+                      TOILET
+                    </button>
+
+                  )}
+                  <>
+                    {props.breaker === "livingRoom" ? (
+                      <>
+                     {props.hallBreakerType === "black" ||
+                      props.rndHall === props.hallCorruptDevice ? (
+                        <button
+                          className="group-btn position-Bath"
+                          onClick={hallBreakerHandlerOff}
+                        >
+                          <img
+                            src={breakerOffIMG}
+                            alt=""
+                            className="breakerImg"
+                          />
+                        </button>
+                      ) : (
+                        <button
+                          className="group-btn position-Bath"
+                          onClick={hallBreakerHandlerOn}
+                        >
+                          <img
+                            src={breakerOnIMG}
+                            alt=""
+                            className="breakerImg"
+                          />
+                        </button>
+                      )}
+                      </>
+                    ) : (
+                      
+                      
+                      <button
+                        className="group-btn position-living"
+                        onClick={() => {
+                          props.setBreaker("livingRoom");
+                          props.setGamePhase('livingRoom')
+                        }}
+                      >
+                        LIVING ROOM
+                      </button>
+
+
+
+                    )}
+                  </>
+                </>
+              ) : (
+                <button
+                  className="group-btn position-set1"
+                  onClick={() => props.setButtonType("GroupOne")}
+                >
+                  Group 1
+                </button>
+              )}
+            </>
+            {props.buttonType === "GroupTwo" ? (
+              <>
+                {props.breaker === "hall" ? (
+                  <button className="group-btn position-Hall">
+                    <img src={breakerOffIMG} alt="" className="breakerImg" />
+                  </button>
+                ) : (
+                  <button
+                    className="group-btn position-Hall"
+                    onClick={() => {
+                    props.setBreaker("hall");
+                    props.setGamePhase('hall');
+                  }}
+                  >
+                    Hall
+                  </button>
+                )}
+              </>
+            ) : (
+              <button
+                className="group-btn position-set2"
+                onClick={() => props.setButtonType("GroupTwo")}
+              >
+                Group 2
+              </button>
+            )}
+          </>
+        ) : (
+          ""
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default RightNavBar;

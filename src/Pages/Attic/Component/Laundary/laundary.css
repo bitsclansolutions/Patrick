@@ -1,0 +1,34 @@
+.div-washing {
+    position: absolute;
+    top: 50vh;
+    left: 18vw;
+}
+
+.div-light02-laundary {
+    position: absolute;
+    right: 23vw;
+    top: 42vh;
+}
+.div-light02-laundary-on {
+    position: absolute;
+    right: 23vw;
+    top: 42vh;
+}
+
+.div-light01-laundary {
+    position: absolute;
+    left: 39vw;
+}
+.div-light01-laundary-on {
+    position: absolute;
+    left: 39vw;
+}
+.disconnected-brightness {
+    filter: brightness(0.5);
+}
+
+.set-attic-lundary-back {
+    position: absolute;
+    top: 28vh;
+    left: 6.5vw;
+}

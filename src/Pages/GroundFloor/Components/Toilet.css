@@ -1,0 +1,55 @@
+.bath-main-div{
+    background-repeat: no-repeat;
+    position: relative;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; 
+}
+.img-div{
+    position: relative;
+}
+
+
+.div-fan{
+    position: absolute;
+    top: -10px;
+    left: -1px;
+
+}
+.div-fan-On {
+    position: absolute;
+    top: 1vh;
+    left: 15.5%;
+}
+
+
+.div-light {
+    position: absolute;
+    right: 18%;
+}
+.div-light-On {
+    position: absolute;
+    right: 18%;
+}
+
+.disconnected{
+    -webkit-filter: blur(4px);
+}
+
+
+.set-btns-toilet-back {
+    top: 34vh;
+    right: 6.8vw;
+    position: absolute !important;
+}
+
+@media (max-width: 1200px){
+    .div-light{     
+        right: 15%;
+    }
+    .div-light-On{
+       
+        right: 14%;
+    }
+}
+

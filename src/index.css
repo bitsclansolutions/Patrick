@@ -1,0 +1,55 @@
+@font-face {
+  font-family: "sunny-spell";   /*Can be any text*/
+  src: local("AirbnbCerealLight"),
+    url("./Fonts/sunny-spells/SunnyspellsRegular.otf") format("truetype");
+}
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+body {
+  margin: 0;
+  font-family: Poppins;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: beige;
+  font-family: 'Nunito', sans-serif !important;
+}
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.set-font-20 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.set-font-16 {
+  font-size: 16px;
+  color: #6c0d0d;
+  text-shadow: none;
+  font-weight: 900;
+}
+.ant-modal-body {
+  min-height: 172px !important;
+}
+.set-bg-centent-explain {
+  /* background-color: rgb(204, 102, 74); */
+  background: linear-gradient(180deg, #CC664A 0%, #cf7359 35%, #FCC184 100%);
+    width: 32em;
+    padding: 32px;
+    border-radius: 32px;
+    color: #fff;
+}
+.set-opacity-btn {
+  opacity: 0.9;
+  transition: .3s;
+}
+.set-opacity-btn:hover {
+  transition: .3s;
+  opacity: 1;
+}
+@media (max-width: 1024px){
+  .main-home-div{
+    display: none;
+  }
+  
+}

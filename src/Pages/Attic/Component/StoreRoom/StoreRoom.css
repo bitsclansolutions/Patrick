@@ -1,0 +1,38 @@
+.div-store-light01-on{
+    position: absolute;
+    top: 65vh;
+    left: 1vw;
+}
+.div-store-light01{
+    position: absolute;
+    top: 65vh;
+    left: 1vw;
+}
+
+.div-store-light02 {
+    position: absolute;
+    left: 35%;
+}
+.div-store-light02-on {
+    position: absolute;
+    left: 35%;
+}
+
+.div-store-light03-on{
+    position: absolute;
+    right: 38vw;
+    top: 42vh;
+}
+.div-store-light03{
+    position: absolute;
+    right: 38vw;
+    top: 42vh;
+}
+.disconnected-brightness {
+    filter: brightness(0.5);
+}
+.set-attic-store-back {
+    position: absolute !important;
+    left: 23vw;
+    top: 42vh;
+}

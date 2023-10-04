@@ -1,0 +1,91 @@
+.div-LED-hall2 {
+    position: absolute;
+    top: 63vh;
+    right: 5vh;
+}
+.div-LED-hall2-On {
+    position: absolute;
+    top: 63vh;
+    right: 5vh;
+}
+.set-ab-btn-top {
+    position: absolute;
+    left: 0;
+    top: -32px;
+}
+.div-light01-hall2 {
+    position: absolute;
+    left: 35vh;
+}
+
+.div-light02-hall2 {
+    position: absolute;
+    right: 35vh;
+}
+
+.div-light01-hall2-on {
+    position: absolute;
+    left: 35vh;
+}
+.div-light01-hall2 button {
+    width: 50px;
+}
+
+.div-light02-hall2-on {
+    position: absolute;
+    right: 35vh;
+}
+.div-light02-hall2 button {
+    width: 50px;
+}
+.pop{
+    filter:blur(0px)
+
+}
+.disconnected-brightness {
+    filter: brightness(0.5);
+}
+
+
+
+.set-btns-hall-first-attic {
+    position: absolute !important;
+    top: 28vh;
+    left: 30vw;
+}
+.set-btn-hall-first-living1 {
+    position: absolute !important;
+    top: 52vh;
+    left: 7vw;
+}
+.set-btn-hall-first-living2 {
+    position: absolute !important;
+    top: 52vh;
+    left: 16.5vw;
+}
+.set-btn-hall-first-toilet {
+    position: absolute !important;
+    top: 52vh;
+    right: 25vw;
+}
+.set-btn-hall-first-bedroom {
+    position: absolute !important;
+    top: 52vh;
+    right: 14vw;
+}
+.set-btns-hall-first-ground {
+    position: absolute !important;
+    top: 45vh;
+    right: 36vw;
+}
+@media (min-width:1024px) and (max-width:1920px) {
+    .div-light02-hall2 button {
+        width: 75px;
+    }
+    .div-light01-hall2 button {
+        width: 75px;
+    }
+    #set-width-btn button {
+        width: 75px;
+    }
+  }

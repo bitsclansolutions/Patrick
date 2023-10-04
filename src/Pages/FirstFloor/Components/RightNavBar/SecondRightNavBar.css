@@ -1,0 +1,73 @@
+.font-height-width-groupC {
+  width: 60px;
+  font-size: 75%;
+  font-weight: 800;
+  font-family: 'Nunito', sans-serif;
+  border: 1px solid white;
+  height: 53px;
+  margin-right: 0.5%;
+}
+.set-legend-text {
+  display: flex;
+  justify-content: left;
+  color: #000;
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+      /* text-shadow: 0 0px 3px #f7f7f7, 1px -2px 4px #ababab, 0 2px 3px #6c6c6c, 0 0px 0px #6a6767, 0 0px 0px #565656, 0 0px 4px #707070, 0 7px 4px #585858; */
+      /* text-shadow: 0 2px 3px #f7f7f7, 1px 3px 4px #ababab, 0 8px 3px #6c6c6c, 0 0px 4px #6a6767, 0 0px 0px #565656, 0 0px 4px #707070, 0 7px 4px #585858; */
+  }
+  
+  .legend{
+    margin-bottom: -15px;
+    background-color: white;
+    padding: 6px 10px;
+  }
+  .grp-detail{
+    display: flex;
+    font-size: 18px;
+    margin-left: 8px;
+    margin-bottom: 6px;
+  }
+.font-height-width-groupD {
+  width: 40px;
+  font-size: 60%;
+  font-weight: 800;
+  font-family: 'Nunito', sans-serif;
+  border: 1px solid white;
+  height: 51px;
+  margin-right: 0.5%;
+}
+@media (min-width: 1800px){
+  .meter-img-2 {
+    height: 352px;
+    width: 100%;
+    cursor: pointer;
+  }
+  .font-height-width-groupC {
+    width: 74px;
+    font-size: 85%;
+    height: 65px;
+}
+.font-height-width-groupD {
+  width: 50px;
+  font-size: 70%;
+  height: 64px;
+}
+.breakerImg {
+  height: 72px;
+  /* width: 22px; */
+}
+
+}
+@media (max-width: 1200px){
+  .font-height-width-groupC {
+    width: 54px;
+    font-size: 89%;
+    height: 46px;
+}
+.font-height-width-groupD {
+  width: 36px;
+  font-size: 77%;
+  height: 47px;
+}
+}

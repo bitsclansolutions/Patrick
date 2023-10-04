@@ -1,0 +1,75 @@
+.LivingRoomTwo-main-div{
+    background-repeat: no-repeat;
+    position: relative;
+     background-position: center; /* Center the image */
+     background-repeat: no-repeat; /* Do not repeat the image */
+     background-size: cover; 
+}
+
+.div-living01-light01 {
+    position: absolute;
+    right: 15vh;
+    top: 71vh;
+}
+.div-living01-light01-on {
+    position: absolute;
+    right: 15vh;
+    top: 71vh;
+}
+
+
+.div-living01-light02 {
+    position: absolute;
+    left: 40vh;
+}
+.div-living01-light02-on {
+    position: absolute;
+    left: 40vh;
+}
+
+.div-living01-fan  {
+    position: absolute;
+    right: 40vh;
+    top: -1vh;
+
+}
+.div-living01-fan-on{
+    position: absolute;
+    right: 40vh;
+    top: -1vh;
+}
+
+.div-living01-AC {
+    position: absolute;
+    top: 10vh;
+    right: 21.5%;
+}
+.div-living01-AC-on {
+    position: absolute;
+    top: 10vh;
+    right: 21.5%;
+}
+.div-living01-light03 {
+    position: absolute;
+    left: 48vh;
+    top: 71vh;
+}
+.div-living01-light03-on {
+    position: absolute;
+    left: 48vh;
+    top: 71vh;
+}
+.div-living01-TV {
+    position: absolute;
+    right: 2%;
+    top: 34vh;
+}
+.disconnected-brightness {
+    filter: brightness(0.5);
+}
+
+.set-btns-fist-living1 {
+    position: absolute;
+    top: 50vh;
+    left: 10vw;
+}

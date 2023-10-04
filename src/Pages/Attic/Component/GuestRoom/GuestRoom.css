@@ -1,0 +1,51 @@
+.div-lamp-guest {
+    position: absolute;
+    top: 63vh;
+    left: 4vw;
+
+}
+.div-lamp-guest-on {
+    position: absolute;
+    top: 63vh;
+    left: 4vw;
+}
+
+.div-radio-guest {
+    position: absolute;
+    left: 13vw;
+    top: 26vh;
+}
+
+.div-fan-guest {
+    position: absolute;
+    left: 24vw;
+    top: -1vh;
+
+}
+.div-fan-guest button {
+    width: 50px;
+}
+.div-fan-guest-on {
+    position: absolute;
+    left: 24vw;
+    top: -1vh;
+}
+
+.div-LED-guest {
+    position: absolute;
+    right: 0vw;
+    top: 32vh;
+}
+.div-LED-guest button {
+    width: 50px;
+}
+
+.disconnected-brightness {
+    filter: brightness(0.2);
+}
+
+.set-attic-guest-back {
+    position: absolute;
+    right: 25vw;
+    top: 32vh;
+}

@@ -1,0 +1,36 @@
+.div-lamp-study{
+    position: absolute;
+    top: 74vh;
+    left: 10vw;
+}
+.div-lamp-study-on{
+    position: absolute;
+    top: 74vh;
+    left: 10vw;
+}
+
+.div-lamp02-study{
+    position: absolute;
+    top: 50vh;
+    right: 24vw;
+}
+.div-lamp02-study-on{
+    position: absolute;
+    top: 50vh;
+    right: 24vw;
+}
+.disconnected-brightness {
+    filter: brightness(0.5);
+}
+
+.set-attic-study-back {
+    position: absolute !important;
+    left: 31vw;
+    top: 25vh;
+}
+
+@media (max-width: 1440px) {
+    .set-attic-study-back {
+        left: 30vw !important;
+    }
+}

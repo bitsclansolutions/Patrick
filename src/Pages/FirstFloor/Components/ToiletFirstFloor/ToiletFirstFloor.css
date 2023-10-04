@@ -1,0 +1,66 @@
+.div-light01-firstFloor {
+    position: absolute;
+    left: 12%;
+}
+
+.div-light03-firstFloor {
+    position: absolute;
+    right: 33vw;
+    top: 0;
+}
+.div-light03-firstFloor button {
+    width: 50px;
+}
+.div-fan-On-firstFloor {
+    position: absolute;
+    top: 3vh;
+    right: 7vw;
+}
+.div-fan-On-firstFloor button {
+    width: 50px;
+}
+
+
+.div-light01-firstFloor-on {
+    position: absolute;
+    left: 12%;
+}
+.div-light02-firstFloor {
+    position: absolute;
+    right: 20vw;
+    top: 36vh;
+}
+.div-light02-firstFloor-on {
+    position: absolute;
+    right: 20vw;
+    top: 36vh;
+}
+.set-btn-top {
+    position: absolute;
+    right: 0px;
+    top: -28px;
+    z-index: 1000;
+}
+.div-light03-firstFloor-on {
+    position: absolute;
+    right: 33vw;
+    top: 0;
+}
+
+.set-btns-first-toilet {
+    position: absolute !important;
+    right: 10vw;
+    top: 31vh;
+}
+
+@media (max-width: 1440px) {
+    .set-btns-first-toilet {
+        right: 9vw !important;
+    }
+}
+
+@media (max-width: 1200px){
+    .div-fan-On-firstFloor {
+        right: 12%;
+    }
+}

@@ -1,0 +1,130 @@
+.meter-img-2 {
+    height: 226px;
+    width: 180px;
+    cursor: pointer;
+  }
+.meter-inner-img-attic {
+    height: 226px;
+    width: 180px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-position: center center; */
+    margin: auto;
+}
+.position-set2-attic {
+    height: 51px;
+    width: 70%;
+    font-size: 22px;
+    font-family: 'Nunito', sans-serif;
+}
+.position-set1-attic {
+    height: 91px;
+    width: 70%;
+    font-size: 22px;
+    font-family: 'Nunito', sans-serif;
+}
+.groupE{
+    padding-top: 35px;
+}
+.groupF{
+    padding-top: 40px;
+}
+.position-Laundary {
+    width: 125px;
+    font-size: 151%;
+    font-family: 'Nunito', sans-serif;
+    border: 1px solid white;
+    height: 53px;
+}
+.breakerImg-2 {
+    height: 39px;
+    width: 19px;
+}
+.height-width-meterItems{
+    
+       width: 62px;
+       font-size: 85%;
+       height: 45px;
+       font-family: 'Nunito', sans-serif;
+       border: 1px solid white;
+       margin-right: 0.5%;
+       margin-bottom: 0.5%;
+}
+.set-legend-text {
+    display: flex;
+    justify-content: left;
+    color: #000;
+    padding-top: 6px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 22px;
+        /* text-shadow: 0 0px 3px #f7f7f7, 1px -2px 4px #ababab, 0 2px 3px #6c6c6c, 0 0px 0px #6a6767, 0 0px 0px #565656, 0 0px 4px #707070, 0 7px 4px #585858; */
+    }
+    .legend{
+        margin-bottom: -15px;
+        background-color: white;
+        padding: 6px 10px;
+      }
+      .grp-detail{
+        display: flex;
+        font-size: 12px;
+        font-weight: 700;
+        margin-left: 8px;
+        margin-bottom: 6px;
+        text-transform: capitalize;
+    }
+
+@media( min-width: 1800px){
+    /* .meter-img-2, .meter-inner-img-attic{
+        height: 261px;
+        width: 214px;
+    } */
+    .meter-img-2 {
+        height: 352px;
+        width: 100%;
+        cursor: pointer;
+      }
+      .meter-inner-img-attic {
+        height: 352px;
+        width: 92%;
+      }
+    .groupE {
+        padding-top: 68px
+    }
+    .position-set1-attic {
+        height: 107px;
+        font-size: 27px;
+    }
+    .position-set2-attic {
+        height: 62px;
+        font-size: 27px;
+    }
+    .groupF {
+        padding-top: 85px;
+    }
+    .height-width-meterItems {
+        width: 73px;
+        font-size: 90%;
+        height: 53px;
+        font-family: 'Nunito', sans-serif;
+        border: 2px solid white;
+        margin-right: 1%;
+        margin-bottom: 0.5%;
+    }
+    .position-Laundary {
+        width: 149px;
+        border: 1px solid white;
+        height: 62px;
+    }
+    .breakerImg-2 {
+        height: 47px;
+        width: 22px;
+    }
+}
+
+
+
+
+/* .breakerImg-Laundary {
+    height: 5vh;
+    width: 13%;
+} */

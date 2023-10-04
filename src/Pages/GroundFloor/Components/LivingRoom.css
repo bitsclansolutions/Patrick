@@ -1,0 +1,76 @@
+.LivingRoom-main-div{
+    position: relative;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: 100% 100%;
+    object-fit: cover; 
+}
+.disconnected{
+    -webkit-filter: blur(4px);
+}
+/* Radio ................... */
+.div-radio{
+    position: absolute;
+    top: 21.5vh;
+    left: 4%;
+    display: flex;
+    flex-direction: column;
+    
+}
+.div-radio-On{
+    position: absolute;
+    top: 21.5vh;
+    left: 4%;
+    display: flex;
+    flex-direction: column;
+}
+/* first light ............ */
+.div-livinglight01 {
+    position: absolute;
+    left: 30vh;
+    top: 0vh;
+}
+.div-livinglight01-On {
+    position: absolute;
+    left: 30vh;
+    top: 0vh;
+}
+/* second light ................. */
+.div-livingLight03{
+    position: absolute;
+    right: 20vh;
+    top: 0vh;
+}
+.div-livingLight03-On{
+    position: absolute;
+    right: 20vh;
+    top: 0vh;
+}
+/* padestal ................... */
+.div-AC {
+    position: absolute;
+    top: 40vh;
+    left: 38%;
+}
+.div-AC-On {
+    position: absolute;
+    top: 40vh;
+    left: 38%;
+}
+
+
+.set-btns-living-back {
+    position: absolute !important;
+    right: 3.7vw;
+    top: 50vh;
+}
+
+
+@media (max-width: 1200px){
+    .div-livingLight03 {
+        right: 7%;
+    }
+}
+.div-livingLight03 button {
+    width: 75px;
+}

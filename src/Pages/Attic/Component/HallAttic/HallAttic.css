@@ -1,0 +1,59 @@
+.div-Lamp-attic {
+    position: absolute;
+    top: 54vh;
+    left: 0%;
+}
+.div-Lamp-attic-on {
+    position: absolute;
+    top: 54vh;
+    left: 0%;
+}
+
+.div-light01-atticHall {
+    position: absolute;
+    left: 22%;
+}
+.div-light01-atticHall-on {
+    position: absolute;
+    left: 22%;
+}
+
+.div-light02-atticHall {
+    position: absolute;
+    right: 12vh;
+    top: 70vh;
+}
+.div-light02-atticHall-on {
+    position: absolute;
+    right: 12vh;
+    top: 70vh;
+}
+.disconnected-brightness {
+    filter: brightness(0.5);
+}
+
+.set-attic-hall-store {
+    position: absolute !important;
+    right: 32.6vw;
+    top: 51vh;
+}
+.set-attic-hall-study {
+    position: absolute !important;
+    left: 17vw;
+    top: 51vh;
+}
+.set-attic-hall-guest {
+    position: absolute !important;
+    left: 7vw;
+    top: 51vh;
+}
+.set-attic-hall-lundary {
+    position: absolute !important;
+    right: 16.8vw;
+    top: 51vh;
+}
+.set-attic-hall-first {
+    position: absolute !important;
+    left: 32vw;
+    top: 45vh;
+}

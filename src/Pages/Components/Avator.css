@@ -1,0 +1,14 @@
+.avatar-name{
+    font-family: 'Nunito', sans-serif;
+    padding: 7px 7px 5px 9px;
+    font-size: 130%;
+    font-weight: 800;
+    text-align: left;
+}
+@media (max-width:1200px){
+    .avatar-name {
+        font-family: 'Nunito', sans-serif;
+        padding: 2px 7px 5px 5px;
+        font-size: 146%;
+    }
+}

@@ -1,0 +1,57 @@
+.div-lamp-bed {
+    position: absolute;
+    left: 14.8vw;
+    top: 53vh;
+}
+
+.div-lamp2-bed {
+    position: absolute;
+    right: 13.3vw;
+    top: 53vh;
+}
+.div-lamp2-bed button {
+    width: 50px;
+}
+
+.div-AC-bed {
+    position: absolute;
+    top: 14.5vh;
+    right: 33.8%;
+}
+.div-AC-bed-on {
+    position: absolute;
+    top: 14.5vh;
+    right: 33.8%;
+}
+
+.div-fan-bed {
+    position: absolute;
+    right: 62vh;
+    top: 1vh;
+}
+.div-fan-bed-on {
+    position: absolute;
+    right: 62vh;
+    top: 1vh;
+}
+.div-fan-bed button {
+    width: 50px;
+}
+.disconnected-brightness {
+    filter: brightness(0.5);
+}
+.set-btn-first-bed-back {
+    position: absolute !important;
+    top: 42vh;
+    left: 4vw;
+    transform: rotate(-8deg);
+}
+
+@media (max-width:1440px) {
+    .set-btn-first-bed-back {
+        left: 3vw !important;
+    }
+    .div-lamp2-bed {
+        right: 12.3vw !important;
+    }
+}

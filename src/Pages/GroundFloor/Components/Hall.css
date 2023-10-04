@@ -1,0 +1,110 @@
+.hall-main-div{
+    background-repeat: no-repeat;
+    position: relative;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; 
+}
+.img-div{
+    position: relative;
+}
+/* lamp ................... */
+.div-lamp {
+    position: absolute;
+    top: 58vh;
+    left: 2vh;
+}
+.div-lamp-On {
+    position: absolute;
+    top: 58vh;
+    left: 2vh;
+}
+
+/* first light ............ */
+.div-light01{
+    position: absolute;
+    left: 17vh;
+}
+.div-light01-On{
+    position: absolute;
+    left: 17vh;
+}
+
+/* second light ................. */
+.div-light02{
+    position: absolute;
+    right: 33vh;
+}
+.div-light02-On{
+    position: absolute;
+    right: 33vh;
+}
+
+/* padestal ................... */
+.div-padestal {
+    position: absolute;
+    top: 21vh;
+    right: 20%;
+}
+.div-padestal-On {
+    position: absolute;
+    top: 20.5vh;
+    right: 19.5%;
+}
+
+/* padestal ................... */
+.div-LED{
+        position: absolute;
+        top: 9vh;
+        right: 1%;    
+}
+.div-LED-On {
+    position: absolute;
+    top: 9vh;
+    right: 1%;
+}
+
+.disconnected{
+    -webkit-filter: blur(4px);
+}
+
+/* FULL SCREEN PAGE CSS */
+
+.set-btn-living-ground {
+    top: 51vh;
+    left: 17.6vw;
+    position: absolute !important;
+}
+.set-btn-toilet-ground {
+    top: 51vh;
+    left: 7.3vw;
+    position: absolute !important;
+}
+.set-btn-kitchen-ground {
+    top: 72vh;
+    right: 17vw;
+    position: absolute !important;
+}
+.set-btn-firt-ground {
+    top: 29vh;
+    left: 30vw;
+    position: absolute !important;
+}
+
+/* MEDIA QUERIES */
+
+
+
+
+
+
+/* @media only screen and (max-width: 1440px) {
+    .btn-maskGroup {
+        font-size: 16px !important;
+        line-height: 30px !important;
+        height: 27px !important;
+    }
+} */
+
+
+

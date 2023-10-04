@@ -1,0 +1,42 @@
+.resultFormat{
+    font-size: 25px;
+    font-family: 'Nunito', sans-serif;
+    text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+}
+.ant-modal-footer{
+    background: linear-gradient(360deg, #CC664A 0%, #cf7359 35%, #FCC184 100%);
+   
+ 
+}
+.ant-modal-header{
+    background: linear-gradient(180deg, #CC664A 0%, #cf7359 35%, #FCC184 100%);
+}
+.ant-modal-title, .ant-modal-close-x{
+    color: white !important;
+    text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF !important;
+    font-weight: 900;
+}
+.ant-btn-primary{
+    background-color: #B41C1C !important;
+    color: white;
+    border-radius: 21px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 19px !important;
+    padding: 1px 12px;
+    border: none;
+}
+.ant-btn-default{
+    background-color: white !important;
+    color: #B41C1C;
+    border-radius: 21px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 19px !important;
+    padding: 1px 12px;
+}
+.CircularProgressbar-text{
+    font-family: 'Nunito', sans-serif;
+    fill: white !important;
+}
+.CircularProgressbar-path {
+    stroke: #B41C1C !important;
+}

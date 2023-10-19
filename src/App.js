@@ -1,14 +1,14 @@
 import GroundFloor from "./Pages/GroundFloor/index";
 import Home from "./Pages/HomePage/Home";
 import MaskGroup from "./Pages/MaskGroup/MaskGroup";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 import FirstFloor from "./Pages/FirstFloor";
 import "./index.css";
 import Attic from "./Pages/Attic";
 import "antd/dist/antd.css";
 import { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import LivingIndex from "./Pages/GroundFloor/Components/LivingIndex";
 import ToiletIndex from "./Pages/GroundFloor/Components/ToiletIndex";
 import KitchenIndex from "./Pages/GroundFloor/Components/KitchenIndex";
@@ -27,9 +27,19 @@ import {
   SwalDisconnectedCorrupt,
 } from "./Pages/Components/SwalModules";
 import Sorry from "./Pages/Congratulation/Sorry";
-
+import SelectOption from "./Pages/SelectOption/SelectOption";
+import { changeLanguage, corruptDevice, corruptGroup } from "./Redux/Action";
+import {
+  disconnectedCorruptDutch,
+  disconnectedCorruptEnglish,
+} from "./utils/translation";
 function App() {
   const userName = useSelector((state) => state.UserReducer.userName);
+  const isFinished = useSelector((state) => state.ResultReducer.isFinished);
+
+  const dispatch = useDispatch();
+
+  console.log(isFinished);
 
   const breakerAvailable = useSelector(
     (state) => state.BreakerReducer.groupOneIsBreaker
@@ -43,7 +53,17 @@ function App() {
   const laundarybreakerColor = useSelector(
     (state) => state.BreakerReducer.laundaryIsBreaker
   );
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
 
+  const localLanguage = JSON.parse(localStorage.getItem("isDutch"));
+
+  useEffect(() => {
+    localLanguage === null && localStorage.setItem("isDutch", true);
+  }, []);
+
+  useEffect(() => {
+    dispatch(changeLanguage(localLanguage));
+  }, [isDutch]);
   // ***********************************
   // GROUP 1
   // ***********************************
@@ -68,15 +88,41 @@ function App() {
   const [isFirstGroupBreaker, setIsFirstGroupBreaker] = useState(true);
 
   useEffect(() => {
+    // setRndAll(49);
     setRndAll(Math.floor(Math.random() * 49) + 1);
     // 49
   }, []);
+
+  useEffect(() => {
+    dispatch(corruptDevice(rndAll));
+  }, [rndAll]);
+
+  console.log(rndAll);
   useEffect(() => {
     setAllCorruptDevice(rndAll);
   }, [rndAll]);
 
+  useEffect(() => {
+    if (rndAll >= 1 && rndAll <= 9) {
+      dispatch(corruptGroup(1));
+    } else if (rndAll >= 10 && rndAll <= 15) {
+      dispatch(corruptGroup(2));
+    } else if (rndAll >= 16 && rndAll <= 24) {
+      dispatch(corruptGroup(3));
+    } else if (rndAll >= 25 && rndAll <= 34) {
+      dispatch(corruptGroup(4));
+    } else if (rndAll >= 35 && rndAll <= 46) {
+      dispatch(corruptGroup(5));
+    } else if (rndAll >= 46 && rndAll <= 49) {
+      dispatch(corruptGroup(6));
+    }
+  }, [rndAll]);
+
   console.log(rndAll);
 
+  const popupText = isDutch
+    ? disconnectedCorruptDutch
+    : disconnectedCorruptEnglish;
   useEffect(() => {
     if (
       toiletFan === "disconnect" &&
@@ -90,7 +136,7 @@ function App() {
       livingLight03 === "disconnect"
     ) {
       if (rndAll >= 1 && rndAll <= 9) {
-        SwalDisconnectedCorrupt();
+        SwalDisconnectedCorrupt(popupText);
       } else {
         // SwalDisconnected();
       }
@@ -140,7 +186,7 @@ function App() {
       kitchenToster === "disconnect"
     ) {
       if (rndAll >= 10 && rndAll <= 15) {
-        SwalDisconnectedCorrupt();
+        SwalDisconnectedCorrupt(popupText);
       } else {
         // SwalDisconnected();
       }
@@ -195,7 +241,7 @@ function App() {
       livingTwoFan === "disconnect"
     ) {
       if (rndAll >= 16 && rndAll <= 24) {
-        SwalDisconnectedCorrupt();
+        SwalDisconnectedCorrupt(popupText);
       } else {
         // SwalDisconnected();
       }
@@ -256,7 +302,7 @@ function App() {
       toiletLight03 === "disconnect"
     ) {
       if (rndAll >= 25 && rndAll <= 34) {
-        SwalDisconnectedCorrupt();
+        SwalDisconnectedCorrupt(popupText);
       } else {
         // SwalDisconnected();
       }
@@ -326,7 +372,7 @@ function App() {
       livingOneLignt02Five === "disconnect"
     ) {
       if (rndAll >= 35 && rndAll <= 46) {
-        SwalDisconnectedCorrupt();
+        SwalDisconnectedCorrupt(popupText);
       } else {
         // SwalDisconnected();
       }
@@ -376,7 +422,7 @@ function App() {
       laundaryLight02 === "disconnect"
     ) {
       if (rndAll >= 47 && rndAll <= 49) {
-        SwalDisconnectedCorrupt();
+        SwalDisconnectedCorrupt(popupText);
       } else {
         // SwalDisconnected();
       }
@@ -517,6 +563,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/select-option" element={<SelectOption />} />
           <Route
             path="/ground-floor"
             element={

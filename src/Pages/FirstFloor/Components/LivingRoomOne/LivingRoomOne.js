@@ -31,13 +31,37 @@ import {
   connectDevice,
   disconnectDevice,
   showFinishBtn,
+  hideFinishBtn,
+  connectCorrupGroupDevice,
+  connectCorrectGroupDevice,
+  disconnectCorrupGroupDevice,
+  disconnectCorrectGroupDevice,
+  corrupGroupDeviceError,
+  corruptAttempted,
+  correctGroupDeviceError,
 } from "../../../../Redux/Action";
+import {
+  breakerOffDutch,
+  breakerOffEnglish,
+} from "../../../../utils/translation";
 
 const LivingRoomOne = (props) => {
   const navigate = useNavigate();
 
   const disconnectedDevices = useSelector(
     (state) => state.CounterRemainingDevicesReducer.count
+  );
+
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
+
+  const corruptGroup = useSelector(
+    (state) => state.corruptGroupReducer.corruptGroup
+  );
+  const corruptAttemptedDevices = useSelector(
+    (state) => state.GroupDevicesCounterReducer.corruptAttempted
+  );
+  const corruptDevice = useSelector(
+    (state) => state.CorruptDeviceReducer.corrupt
   );
   const redirectSorry = () => {
     navigate("/result");
@@ -50,6 +74,22 @@ const LivingRoomOne = (props) => {
   const [errorSound] = useSound(error);
 
   const disconnectHandler = (val) => {
+    if (corruptGroup === 3) {
+      if (
+        (val === corruptDevice &&
+          corruptAttemptedDevices.filter((item) => item === val).length ===
+            2) ||
+        (val !== corruptDevice && corruptAttemptedDevices.includes(val))
+      ) {
+        dispatch(corrupGroupDeviceError());
+      } else {
+        dispatch(corruptAttempted(val));
+      }
+      dispatch(disconnectCorrupGroupDevice());
+    } else {
+      dispatch(disconnectCorrectGroupDevice());
+      dispatch(correctGroupDeviceError());
+    }
     if (val === 16) {
       props.setLivingOneLignt01("disconnect");
       dispatchdisconnect(disconnectDevice());
@@ -77,14 +117,21 @@ const LivingRoomOne = (props) => {
     }
   };
 
+  const popupText = isDutch ? breakerOffDutch : breakerOffEnglish;
+
   const connectHandler = (val) => {
+    if (corruptGroup === 3) {
+      dispatch(connectCorrupGroupDevice());
+    } else {
+      dispatch(connectCorrectGroupDevice());
+    }
     console.log(props.rndGroupThree, "rndGroupThree");
     console.log(props.groupThreeCorruptDevice, "groupThreeCorruptDevice");
 
     if (props.rndGroupThree === val && props.groupThreeBreakerType === "red") {
       props.setGroupThreeBreakerType("black");
       props.setIsGroupThreeBreaker(false);
-      SwalBreakerOff(disconnectedDevices, redirectSorry);
+      SwalBreakerOff(popupText, redirectSorry);
       dispatch(increaseDeviceCounter());
       errorSound();
       props.setFirstFloorTrial(props.firstFloorTrial + 1);
@@ -114,6 +161,9 @@ const LivingRoomOne = (props) => {
       props.setLivingOneTV("connected");
       dispatchconnect(connectDevice());
     }
+    if (props.rndGroupThree === val) {
+      dispatch(hideFinishBtn());
+    }
   };
 
   return (
@@ -123,7 +173,11 @@ const LivingRoomOne = (props) => {
           <div
             style={{
               backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%),url(${
-                process.env.PUBLIC_URL + "/images/FullLiving-room1.png"
+                process.env.PUBLIC_URL
+              }${
+                isDutch
+                  ? "/dutch-images/room1-first-6.png"
+                  : "/images/FullLiving-room1.png"
               })`,
               height: "100%",
               width: "100%",
@@ -171,14 +225,14 @@ const LivingRoomOne = (props) => {
                       className="btn btn-danger btn-sm active btn-font"
                       onClick={() => connectHandler(16)}
                     >
-                      Connect
+                      {isDutch ? "Aansluiten" : "Connect"}
                     </button>
                   ) : (
                     <button
                       className="btn btn-success btn-sm active btn-font"
                       onClick={() => disconnectHandler(16)}
                     >
-                      Disconnect
+                      {isDutch ? "Loskoppelen" : "Disconnect"}
                     </button>
                   )}
                 </>
@@ -198,7 +252,7 @@ const LivingRoomOne = (props) => {
                   navigate("/first-floor");
                 }}
               >
-                Go Back
+                {isDutch ? "Ga Terug" : "Go Back"}
               </button>
               {/* end my code 12/29...................... */}
 
@@ -241,14 +295,14 @@ const LivingRoomOne = (props) => {
                       className="btn btn-danger btn-sm active btn-font"
                       onClick={() => connectHandler(17)}
                     >
-                      Connect
+                      {isDutch ? "Aansluiten" : "Connect"}
                     </button>
                   ) : (
                     <button
                       className="btn btn-success btn-sm active btn-font"
                       onClick={() => disconnectHandler(17)}
                     >
-                      Disconnect
+                      {isDutch ? "Loskoppelen" : "Disconnect"}
                     </button>
                   )}
                 </>
@@ -298,14 +352,14 @@ const LivingRoomOne = (props) => {
                       className="btn btn-danger btn-sm active btn-font"
                       onClick={() => connectHandler(19)}
                     >
-                      Connect
+                      {isDutch ? "Aansluiten" : "Connect"}
                     </button>
                   ) : (
                     <button
                       className="btn btn-success btn-sm active btn-font"
                       onClick={() => disconnectHandler(19)}
                     >
-                      Disconnect
+                      {isDutch ? "Loskoppelen" : "Disconnect"}
                     </button>
                   )}
                 </>
@@ -326,14 +380,14 @@ const LivingRoomOne = (props) => {
                       className="btn btn-danger btn-sm active btn-font"
                       onClick={() => connectHandler(18)}
                     >
-                      Connect
+                      {isDutch ? "Aansluiten" : "Connect"}
                     </button>
                   ) : (
                     <button
                       className="btn btn-success btn-sm active btn-font"
                       onClick={() => disconnectHandler(18)}
                     >
-                      Disconnect
+                      {isDutch ? "Loskoppelen" : "Disconnect"}
                     </button>
                   )}
                 </>
@@ -378,14 +432,14 @@ const LivingRoomOne = (props) => {
                       className="btn btn-danger btn-sm active btn-font"
                       onClick={() => connectHandler(20)}
                     >
-                      Connect
+                      {isDutch ? "Aansluiten" : "Connect"}
                     </button>
                   ) : (
                     <button
                       className="btn btn-success btn-sm active btn-font"
                       onClick={() => disconnectHandler(20)}
                     >
-                      Disconnect
+                      {isDutch ? "Loskoppelen" : "Disconnect"}
                     </button>
                   )}
                 </>
@@ -416,7 +470,9 @@ const LivingRoomOne = (props) => {
               </div>
             </div>
             <div className="position-heading-bottom">
-              <h1 className="heading-bottom">Bedroom 01</h1>
+              <h1 className="heading-bottom">
+                {isDutch ? "Slaapkamer 01" : "Bedroom 01"}
+              </h1>
             </div>
           </div>
         ) : (

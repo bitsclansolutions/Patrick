@@ -25,7 +25,19 @@ import {
   connectDevice,
   disconnectDevice,
   showFinishBtn,
+  hideFinishBtn,
+  disconnectCorrupGroupDevice,
+  disconnectCorrectGroupDevice,
+  connectCorrupGroupDevice,
+  connectCorrectGroupDevice,
+  corrupGroupDeviceError,
+  corruptAttempted,
+  correctGroupDeviceError,
 } from "../../../../Redux/Action";
+import {
+  breakerOffDutch,
+  breakerOffEnglish,
+} from "../../../../utils/translation";
 
 const LivingRoomTwo = (props) => {
   // console.log("Hello Random " + props.rndGroupThree)
@@ -33,6 +45,17 @@ const LivingRoomTwo = (props) => {
   const disconnectedDevices = useSelector(
     (state) => state.CounterRemainingDevicesReducer.count
   );
+
+  const corruptGroup = useSelector(
+    (state) => state.corruptGroupReducer.corruptGroup
+  );
+  const corruptAttemptedDevices = useSelector(
+    (state) => state.GroupDevicesCounterReducer.corruptAttempted
+  );
+  const corruptDevice = useSelector(
+    (state) => state.CorruptDeviceReducer.corrupt
+  );
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
   const redirectSorry = () => {
     navigate("/result");
   };
@@ -43,6 +66,22 @@ const LivingRoomTwo = (props) => {
   const [errorSound] = useSound(error);
 
   const disconnectHandler = (val) => {
+    if (corruptGroup === 3) {
+      if (
+        (val === corruptDevice &&
+          corruptAttemptedDevices.filter((item) => item === val).length ===
+            2) ||
+        (val !== corruptDevice && corruptAttemptedDevices.includes(val))
+      ) {
+        dispatch(corrupGroupDeviceError());
+      } else {
+        dispatch(corruptAttempted(val));
+      }
+      dispatch(disconnectCorrupGroupDevice());
+    } else {
+      dispatch(disconnectCorrectGroupDevice());
+      dispatch(correctGroupDeviceError());
+    }
     if (val === 21) {
       props.setLivingTwoLignt01("disconnect");
       dispatchdisconnect(disconnectDevice());
@@ -58,21 +97,28 @@ const LivingRoomTwo = (props) => {
     if (val === 24) {
       props.setLivingTwoSmallLamp("disconnect");
       dispatchdisconnect(disconnectDevice());
-      dispatch(showFinishBtn());
     }
 
     if (props.rndGroupThree === val) {
       props.setGroupThreeCorruptDevice(0);
       props.setGroupThreeBreakerType("black");
+      dispatch(showFinishBtn());
     }
   };
 
+  const popupText = isDutch ? breakerOffDutch : breakerOffEnglish;
+
   const connectHandler = (val) => {
+    if (corruptGroup === 3) {
+      dispatch(connectCorrupGroupDevice());
+    } else {
+      dispatch(connectCorrectGroupDevice());
+    }
     if (props.rndGroupThree === val && props.groupThreeBreakerType === "red") {
       props.setGroupThreeBreakerType("black");
 
       props.setIsGroupThreeBreaker(false);
-      SwalBreakerOff(disconnectedDevices, redirectSorry);
+      SwalBreakerOff(popupText, redirectSorry);
       dispatch(increaseDeviceCounter());
       errorSound();
       props.setFirstFloorTrial(props.firstFloorTrial + 1);
@@ -99,6 +145,9 @@ const LivingRoomTwo = (props) => {
       props.setLivingTwoSmallLamp("connected");
       dispatchconnect(connectDevice());
     }
+    if (props.rndGroupThree === val) {
+      dispatch(hideFinishBtn());
+    }
   };
 
   return (
@@ -108,7 +157,11 @@ const LivingRoomTwo = (props) => {
           <div
             style={{
               backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%),url(${
-                process.env.PUBLIC_URL + "/images/FullLivingRoom2.png"
+                process.env.PUBLIC_URL
+              }${
+                isDutch
+                  ? "/dutch-images/room2-first-7.png"
+                  : "/images/FullLivingRoom2.png"
               })`,
               height: "100%",
               width: "100%",
@@ -156,14 +209,14 @@ const LivingRoomTwo = (props) => {
                       className="btn btn-danger btn-sm active btn-font"
                       onClick={() => connectHandler(21)}
                     >
-                      Connect
+                      {isDutch ? "Aansluiten" : "Connect"}
                     </button>
                   ) : (
                     <button
                       className="btn btn-success btn-sm active btn-font"
                       onClick={() => disconnectHandler(21)}
                     >
-                      Disconnect
+                      {isDutch ? "Loskoppelen" : "Disconnect"}
                     </button>
                   )}
                 </>
@@ -183,7 +236,7 @@ const LivingRoomTwo = (props) => {
                   navigate("/first-floor");
                 }}
               >
-                Go Back
+                {isDutch ? "Ga Terug" : "Go Back"}
               </button>
 
               {/* fan div div ................. */}
@@ -227,14 +280,14 @@ const LivingRoomTwo = (props) => {
                       className="btn btn-danger btn-sm active btn-font"
                       onClick={() => connectHandler(22)}
                     >
-                      Connect
+                      {isDutch ? "Aansluiten" : "Connect"}
                     </button>
                   ) : (
                     <button
                       className="btn btn-success btn-sm active btn-font"
                       onClick={() => disconnectHandler(22)}
                     >
-                      Disconnect
+                      {isDutch ? "Loskoppelen" : "Disconnect"}
                     </button>
                   )}
                 </>
@@ -280,14 +333,14 @@ const LivingRoomTwo = (props) => {
                       className="btn btn-danger btn-sm active btn-font"
                       onClick={() => connectHandler(23)}
                     >
-                      Connect
+                      {isDutch ? "Aansluiten" : "Connect"}
                     </button>
                   ) : (
                     <button
                       className="btn btn-success btn-sm active btn-font"
                       onClick={() => disconnectHandler(23)}
                     >
-                      Disconnect
+                      {isDutch ? "Loskoppelen" : "Disconnect"}
                     </button>
                   )}
                 </>
@@ -308,14 +361,14 @@ const LivingRoomTwo = (props) => {
                       className="btn btn-danger btn-sm active btn-font"
                       onClick={() => connectHandler(24)}
                     >
-                      Connect
+                      {isDutch ? "Aansluiten" : "Connect"}
                     </button>
                   ) : (
                     <button
                       className="btn btn-success btn-sm active btn-font"
                       onClick={() => disconnectHandler(24)}
                     >
-                      Disconnect
+                      {isDutch ? "Loskoppelen" : "Disconnect"}
                     </button>
                   )}
                 </>
@@ -354,7 +407,9 @@ const LivingRoomTwo = (props) => {
               </div>
             </div>
             <div className="position-heading-bottom">
-              <h1 className="heading-bottom">Bedroom 02</h1>
+              <h1 className="heading-bottom">
+                {isDutch ? "Slaapkamer 02" : "Bedroom 02"}
+              </h1>
             </div>
           </div>
         ) : (

@@ -3,8 +3,9 @@ import "./Home.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ErrorPage from "../404/ErrorPage";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userinfo } from "../../Redux/Action";
+import ChangeLanguageToggle from "../../utils/ChangeLanguageToggle";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,8 @@ const Home = () => {
   const [phase, setPhase] = useState("first");
   const [smallBtn, setSmallBtn] = useState("next");
   const [largeBtn, setLargeBtn] = useState("IQ test");
+
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
 
   useEffect(() => {
     setErrUserName("");
@@ -30,11 +33,12 @@ const Home = () => {
     if (userName !== "") {
       if (regName.test(userName)) {
         setPhase("second");
+        navigate("/select-option");
       } else {
         setErrUserName("* Name must contain First, Middle, and Last name");
       }
     } else {
-      setErrUserName("* Name is Required");
+      setErrUserName(isDutch ? "* Naam is vereist" : "* Name is Required");
     }
   };
 
@@ -63,6 +67,9 @@ const Home = () => {
           <div class="cloud x8"></div>
         </div>
         <div style={{ textAlign: "center", position: "fixed" }}>
+          <div class="home-language-toggle">
+            <ChangeLanguageToggle />
+          </div>
           {phase === "first" ? (
             <>
               <form onSubmit={userHandler}>
@@ -72,7 +79,7 @@ const Home = () => {
                     className="home-heading"
                     htmlFor="name"
                   >
-                    Enter Your Name
+                    {isDutch ? "Vul uw naam in" : "Enter Your Name"}
                   </label>
                 </div>
                 <div className="d-flex">
@@ -83,10 +90,13 @@ const Home = () => {
                       setUserName(e.target.value);
                     }}
                     type="text"
-                    placeholder="Enter Your Name?"
+                    placeholder={
+                      isDutch ? "Vul uw naam in" : "Enter Your Name?"
+                    }
                   />
                   <button
                     className="btn-blue set-opacity-btn"
+                    type="button"
                     style={{
                       paddingRight: "10px",
                       padding: "4px 12px 1px 12px",
@@ -118,7 +128,7 @@ const Home = () => {
                     }}
                     type="submit"
                   >
-                    Next
+                    {isDutch ? "Volgende" : "Next"}
                   </button>
                 </div>
               </form>

@@ -18,8 +18,17 @@ import {
   connectDevice,
   disconnectDevice,
   showFinishBtn,
+  hideFinishBtn,
+  disconnectCorrupGroupDevice,
+  disconnectCorrectGroupDevice,
+  connectCorrupGroupDevice,
+  connectCorrectGroupDevice,
+  corrupGroupDeviceError,
+  corruptAttempted,
+  correctGroupDeviceError,
 } from "../../../Redux/Action";
 import { useNavigate } from "react-router-dom";
+import { breakerOffDutch, breakerOffEnglish } from "../../../utils/translation";
 
 const Toilet = (props) => {
   const navigate = useNavigate();
@@ -28,9 +37,20 @@ const Toilet = (props) => {
   const dispatchdisconnect = useDispatch();
   const dispatchconnect = useDispatch();
 
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
+
   const disconnectedDevices = useSelector(
     (state) => state.CounterRemainingDevicesReducer.count
   );
+
+  const corruptGroup = useSelector(
+    (state) => state.corruptGroupReducer.corruptGroup
+  );
+
+  const corruptAttemptedDevices = useSelector(
+    (state) => state.GroupDevicesCounterReducer.corruptAttempted
+  );
+
   const redirectSorry = () => {
     navigate("/result");
   };
@@ -39,7 +59,27 @@ const Toilet = (props) => {
 
   const [hover, setHover] = useState("");
 
+  const corruptDevice = useSelector(
+    (state) => state.CorruptDeviceReducer.corrupt
+  );
+
   const disconnectHandler = (val) => {
+    if (corruptGroup === 1) {
+      if (
+        (val === corruptDevice &&
+          corruptAttemptedDevices.filter((item) => item === val).length ===
+            2) ||
+        (val !== corruptDevice && corruptAttemptedDevices.includes(val))
+      ) {
+        dispatch(corrupGroupDeviceError());
+      } else {
+        dispatch(corruptAttempted(val));
+      }
+      dispatch(disconnectCorrupGroupDevice());
+    } else {
+      dispatch(disconnectCorrectGroupDevice());
+      dispatch(correctGroupDeviceError());
+    }
     if (val === 1) {
       props.setToiletFan("disconnect");
       dispatchdisconnect(disconnectDevice());
@@ -55,13 +95,20 @@ const Toilet = (props) => {
     }
   };
 
+  const popupText = isDutch ? breakerOffDutch : breakerOffEnglish;
+
   const connectHandler = (val) => {
+    if (corruptGroup === 1) {
+      dispatch(connectCorrupGroupDevice());
+    } else {
+      dispatch(connectCorrectGroupDevice());
+    }
     if (props.completeRnd === val && props.firstGroupBreakerType === "red") {
       props.setFirstGroupBreakerType("black");
 
       errorSound();
       props.setIsFirstGroupBreaker(false);
-      SwalBreakerOff(disconnectedDevices, redirectSorry);
+      SwalBreakerOff(popupText, redirectSorry);
       dispatch(increaseDeviceCounter());
       props.setGroundFloorTrial(props.groundFloorTrial + 1);
       localStorage.setItem("state", JSON.stringify(props.groundFloorTrial + 1));
@@ -75,6 +122,9 @@ const Toilet = (props) => {
       props.setToiletLight("connected");
       dispatchconnect(connectDevice());
     }
+    if (props.completeRnd === val) {
+      dispatch(hideFinishBtn());
+    }
   };
   return (
     <>
@@ -82,7 +132,11 @@ const Toilet = (props) => {
       <div
         style={{
           backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%),url(${
-            process.env.PUBLIC_URL + "/images/wash-room-ground.png"
+            process.env.PUBLIC_URL
+          }${
+            isDutch
+              ? "/dutch-images/ground-toilet-2.png"
+              : "/images/wash-room-ground.png"
           })`,
           height: "100%",
           width: "100%",
@@ -124,7 +178,7 @@ const Toilet = (props) => {
                   className="btn btn-danger btn-sm active mt-4 ms-1 btn-font"
                   onClick={() => connectHandler(1)}
                 >
-                  Connect
+                  {isDutch ? "Aansluiten" : "Connect"}
                 </button>
               ) : (
                 <button
@@ -133,7 +187,7 @@ const Toilet = (props) => {
                   className="btn btn-success btn-sm active mt-4 ms-1 btn-font"
                   onClick={() => disconnectHandler(1)}
                 >
-                  Disconnect
+                  {isDutch ? "Loskoppelen" : "Disconnect"}
                 </button>
               )}
             </>
@@ -154,7 +208,7 @@ const Toilet = (props) => {
               navigate("/ground-floor");
             }}
           >
-            Go Back
+            {isDutch ? "Ga Terug" : "Go Back"}
           </button>
           {/* end my code 12/29...................... */}
 
@@ -176,7 +230,7 @@ const Toilet = (props) => {
                   className="btn btn-danger btn-sm active btn-font "
                   onClick={() => connectHandler(2)}
                 >
-                  Connect
+                  {isDutch ? "Aansluiten" : "Connect"}
                 </button>
               ) : (
                 <button
@@ -185,7 +239,7 @@ const Toilet = (props) => {
                   className="btn btn-success btn-sm active btn-font"
                   onClick={() => disconnectHandler(2)}
                 >
-                  Disconnect
+                  {isDutch ? "Loskoppelen" : "Disconnect"}
                 </button>
               )}
             </>
@@ -214,7 +268,7 @@ const Toilet = (props) => {
           </div>
         </div>
         <div className="position-heading-bottom">
-          <h1 className="heading-bottom">Toilet</h1>
+          <h1 className="heading-bottom">{isDutch ? "Toilet" : "Toilet"}</h1>
         </div>
       </div>
       {/* ) : ( */}

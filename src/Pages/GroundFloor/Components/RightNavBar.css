@@ -113,7 +113,6 @@
 }
 .check-exercise-div {
   text-align: center;
-  margin-top: 8%;
 }
 .btn-Check-Exercise {
   background-color: #b41c1c;
@@ -309,7 +308,6 @@
     padding-top: 2px !important;
   }
   .check-exercise-div {
-    margin-top: 8% !important;
   }
 }
 @media (min-width: 1441px) and (max-width: 1536px) {

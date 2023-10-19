@@ -14,6 +14,8 @@ import persistStore from "redux-persist/es/persistStore";
 import { PersistGate } from "redux-persist/integration/react";
 import storage from "redux-persist/lib/storage";
 import CounterReducer from "./Redux/Reducers/CounterReducer";
+// import { Admin, Resource, polyglotI18nProvider } from "react-admin";
+// import translateService from "./utils/translationService";
 
 // Making store persist ................................................
 const persistConfig = {
@@ -25,15 +27,19 @@ const persist_r = persistReducer(persistConfig, rootReducer);
 const store = createStore(persist_r, composeWithDevTools());
 const persist_s = persistStore(store);
 
+// const i18nProvider = polyglotI18nProvider(() => translateService);
+
 // Main Root Component ..................................................
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    {/* <Admin i18nProvider={i18nProvider}> */}
     <Provider store={store}>
       <PersistGate loading={null} persistor={persist_s}>
         <App />
       </PersistGate>
     </Provider>
+    {/* </Admin> */}
   </React.StrictMode>
 );
 

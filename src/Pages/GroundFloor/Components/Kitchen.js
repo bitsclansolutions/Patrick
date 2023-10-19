@@ -26,18 +26,44 @@ import {
   connectDevice,
   disconnectDevice,
   showFinishBtn,
+  hideFinishBtn,
+  disconnectCorrupGroupDevice,
+  connectCorrupGroupDevice,
+  connectCorrectGroupDevice,
+  disconnectCorrectGroupDevice,
+  corrupGroupDeviceError,
+  corruptAttempted,
+  correctGroupDeviceError,
 } from "../../../Redux/Action";
 
 import "antd/dist/antd.css";
 import { SwalBreakerOff, SwalDisconnected } from "../../Components/SwalModules";
 import CounterRemainingDevicesReducer from "./../../../Redux/Reducers/CounterRemainingDevices";
+import { breakerOffDutch, breakerOffEnglish } from "../../../utils/translation";
 
 const Kitchen = (props) => {
   const navigate = useNavigate();
 
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
+
   const disconnectedDevices = useSelector(
     (state) => state.CounterRemainingDevicesReducer.count
   );
+
+  const corruptGroup = useSelector(
+    (state) => state.corruptGroupReducer.corruptGroup
+  );
+
+  const corruptAttemptedDevices = useSelector(
+    (state) => state.GroupDevicesCounterReducer.corruptAttempted
+  );
+
+  const corruptDevice = useSelector(
+    (state) => state.CorruptDeviceReducer.corrupt
+  );
+
+  console.log(corruptGroup);
+
   const redirectSorry = () => {
     navigate("/result");
   };
@@ -49,6 +75,22 @@ const Kitchen = (props) => {
   const [errorSound] = useSound(error);
 
   const disconnectHandler = (val) => {
+    if (corruptGroup === 2) {
+      if (
+        (val === corruptDevice &&
+          corruptAttemptedDevices.filter((item) => item === val).length ===
+            2) ||
+        (val !== corruptDevice && corruptAttemptedDevices.includes(val))
+      ) {
+        dispatch(corrupGroupDeviceError());
+      } else {
+        dispatch(corruptAttempted(val));
+      }
+      dispatch(disconnectCorrupGroupDevice());
+    } else {
+      dispatch(disconnectCorrectGroupDevice());
+      dispatch(correctGroupDeviceError());
+    }
     if (val === 10) {
       props.setKitchenMixture("disconnect");
       dispatchdisconnect(disconnectDevice());
@@ -80,13 +122,20 @@ const Kitchen = (props) => {
     }
   };
 
+  const popupText = isDutch ? breakerOffDutch : breakerOffEnglish;
+
   const connectHandler = (val) => {
+    if (corruptGroup === 2) {
+      dispatch(connectCorrupGroupDevice());
+    } else {
+      dispatch(connectCorrectGroupDevice());
+    }
     if (props.rndKitchen === val && props.kitchenBreakerType === "red") {
       props.setKitchenBreakerType("black");
       props.setIsKitchenBreaker(false);
       dispatch(increaseDeviceCounter());
       errorSound();
-      SwalBreakerOff(disconnectedDevices, redirectSorry);
+      SwalBreakerOff(popupText, redirectSorry);
       // props.setGroundFloorTrial(props.groundFloorTrial + 1);
       // localStorage.setItem("state", JSON.stringify(props.groundFloorTrial + 1));
     }
@@ -115,13 +164,20 @@ const Kitchen = (props) => {
       props.setKitchenToster("connected");
       dispatchconnect(connectDevice());
     }
+    if (props.rndKitchen === val) {
+      dispatch(hideFinishBtn());
+    }
   };
 
   return (
     <div
       style={{
         backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%),url(${
-          process.env.PUBLIC_URL + "/images/kitchen-ground.png"
+          process.env.PUBLIC_URL
+        }${
+          isDutch
+            ? "/dutch-images/kitchen-ground-4.png"
+            : "/images/kitchen-ground.png"
         })`,
 
         height: "100%",
@@ -170,14 +226,14 @@ const Kitchen = (props) => {
                 className="btn btn-danger btn-sm active btn-font"
                 onClick={() => connectHandler(10)}
               >
-                Connect
+                {isDutch ? "Aansluiten" : "connect"}
               </button>
             ) : (
               <button
                 className="btn btn-success btn-sm active btn-font"
                 onClick={() => disconnectHandler(10)}
               >
-                Disconnect
+                {isDutch ? "Loskoppelen" : "Disconnect"}
               </button>
             )}
           </>
@@ -197,7 +253,7 @@ const Kitchen = (props) => {
             navigate("/ground-floor");
           }}
         >
-          Go Back
+          {isDutch ? "Ga Terug" : "Go Back"}
         </button>
         {/* end my code 12/29...................... */}
 
@@ -237,14 +293,14 @@ const Kitchen = (props) => {
                 className="btn btn-danger btn-sm active btn-font"
                 onClick={() => connectHandler(11)}
               >
-                Connect
+                {isDutch ? "Aansluiten" : "connect"}
               </button>
             ) : (
               <button
                 className="btn btn-success btn-sm active btn-font"
                 onClick={() => disconnectHandler(11)}
               >
-                Disconnect
+                {isDutch ? "Loskoppelen" : "Disconnect"}
               </button>
             )}
           </>
@@ -271,6 +327,7 @@ const Kitchen = (props) => {
             // className={
             //   props.kitchenLight01 === "disconnect" ? "disconnected" : ""
             // }
+            alt="bulb"
             style={{
               height:
                 props.isKitchenBreaker === true &&
@@ -286,14 +343,14 @@ const Kitchen = (props) => {
                 className="btn btn-danger btn-sm active btn-font"
                 onClick={() => connectHandler(12)}
               >
-                Connect
+                {isDutch ? "Aansluiten" : "connect"}
               </button>
             ) : (
               <button
                 className="btn btn-success btn-sm active btn-font"
                 onClick={() => disconnectHandler(12)}
               >
-                Disconnect
+                {isDutch ? "Loskoppelen" : "Disconnect"}
               </button>
             )}
           </>
@@ -314,14 +371,14 @@ const Kitchen = (props) => {
                 className="btn btn-danger btn-sm active btn-font set-top-btn-ab"
                 onClick={() => connectHandler(13)}
               >
-                Connect
+                {isDutch ? "Aansluiten" : "connect"}
               </button>
             ) : (
               <button
                 className="btn btn-success btn-sm active btn-font set-top-btn-ab"
                 onClick={() => disconnectHandler(13)}
               >
-                Disconnect
+                {isDutch ? "Loskoppelen" : "Disconnect"}
               </button>
             )}
           </>
@@ -356,14 +413,14 @@ const Kitchen = (props) => {
                 className="btn btn-danger btn-sm active btn-font"
                 onClick={() => connectHandler(14)}
               >
-                Connect
+                {isDutch ? "Aansluiten" : "connect"}
               </button>
             ) : (
               <button
                 className="btn btn-success btn-sm active btn-font"
                 onClick={() => disconnectHandler(14)}
               >
-                Disconnect
+                {isDutch ? "Loskoppelen" : "Disconnect"}
               </button>
             )}
           </>
@@ -408,14 +465,14 @@ const Kitchen = (props) => {
                 className="btn btn-danger btn-sm active btn-font"
                 onClick={() => connectHandler(15)}
               >
-                Connect
+                {isDutch ? "Aansluiten" : "connect"}
               </button>
             ) : (
               <button
                 className="btn btn-success btn-sm active btn-font"
                 onClick={() => disconnectHandler(15)}
               >
-                Disconnect
+                {isDutch ? "Loskoppelen" : "Disconnect"}
               </button>
             )}
           </>
@@ -447,7 +504,7 @@ const Kitchen = (props) => {
         </div>
       </div>
       <div className="position-heading-bottom">
-        <h1 className="heading-bottom">Kitchen</h1>
+        <h1 className="heading-bottom">{isDutch ? "Keuken" : "Kitchen"}</h1>
       </div>
     </div>
   );

@@ -3,10 +3,10 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./ResultModel.css";
 import { FinishSwal } from "./SwalModules";
-import { isHurray } from "../../Redux/Action";
+import { isHurray, resultTotal } from "../../Redux/Action";
 import useSound from "use-sound";
 
 import hurray from "../Attic/Component/SoundEffects/hurray.wav";
@@ -14,7 +14,18 @@ const ResultModel = (props) => {
   const ground = useSelector((state) => state.ResultReducer.resultGroundFloor);
   const first = useSelector((state) => state.ResultReducer.resultFirstFloor);
   const attic = useSelector((state) => state.ResultReducer.resultAtticFloor);
+  const showFinishBtn = useSelector((state) => state.ShowFinishReducer.show);
+  console.log(showFinishBtn);
   const total = ground + first + attic;
+
+  const totalLocal = localStorage.getItem("totalResult");
+  const counterLocal = localStorage.getItem("counter");
+  const counterDeviceLocal = localStorage.getItem("counterDevice");
+  const disconnectedDevicesLocal = localStorage.getItem("disconnectedDevices");
+
+  console.log(totalLocal);
+
+  const [isMounted, setIsMounted] = useState(false);
 
   const dispatch = useDispatch();
   const [hurraySound] = useSound(hurray);
@@ -52,6 +63,10 @@ const ResultModel = (props) => {
   const totalAvgProgress = 100 - avgOfWrongProgress;
 
   const newtotalAvgProgress = Math.floor(totalAvgProgress);
+
+  useEffect(() => {
+    dispatch(resultTotal(newtotalAvgProgress));
+  }, [newtotalAvgProgress]);
 
   console.log("Total Avarage Progress of Game ", totalAvgProgress, "%");
 
@@ -92,6 +107,8 @@ const ResultModel = (props) => {
     window.location.href = "/";
   };
   const percentage = 100;
+
+  console.log(showFinishBtn);
   return (
     <>
       <Button type="primary" onClick={showModal}>
@@ -134,56 +151,73 @@ const ResultModel = (props) => {
           </>,
         ]}
       >
-        {counter > 10 || counterDevice > 10 ? (
+        {!showFinishBtn && (
           <>
             <p className="set-font-20">
               <strong>
-                Sorry, You have tried more than 10 attempts. So, please try
-                again!!!
+                Sorry, You have not disconnected the corrupt device
               </strong>
             </p>
           </>
-        ) : (
-          <>
-            <div style={{ height: "200px", width: "200px", margin: "auto" }}>
-              {counter == 1 &&
-              counterDevice == 1 &&
-              disconnectedDevices == 1 ? (
-                <CircularProgressbar value={100} text={"100%"} />
-              ) : (
-                <CircularProgressbar
-                  value={newtotalAvgProgress}
-                  text={`${newtotalAvgProgress}%`}
-                />
-              )}
-            </div>
-            <div className="mt-4 resultFormat">
-              <p className="mb-0 set-font-16">
-                Maximum of 10 Breaker attempts:
-              </p>
-              <p className="set-font-20">
-                You did experiment with{" "}
-                <strong style={{ borderBottom: "1px solid #fff" }}>
-                  {counter} breakers.{" "}
-                </strong>
-              </p>
-              <p className="mb-0 set-font-16">Maximum of 10 Device attempts:</p>
-              <p className="set-font-20">
-                You did experiment with{" "}
-                <strong style={{ borderBottom: "1px solid #fff" }}>
-                  {counterDevice} Devices.
-                </strong>
-              </p>
-              <p className="mb-0 set-font-16">Maximum of 49 Devices:</p>
-              <p className="set-font-20">
-                You did disconnect{" "}
-                <strong style={{ borderBottom: "1px solid #fff" }}>
-                  {disconnectedDevices} Devices.
-                </strong>
-              </p>
-            </div>
-          </>
         )}
+        {counter > 10 ||
+          (counterDevice > 10 && (
+            <>
+              <p className="set-font-20">
+                <strong>
+                  Sorry, You have tried more than 10 attempts. So, please try
+                  again!!!
+                </strong>
+              </p>
+            </>
+          ))}
+        {counter > 10 ||
+          (counterDevice > 10 && showFinishBtn && (
+            <>
+              <div style={{ height: "200px", width: "200px", margin: "auto" }}>
+                {counterLocal == 1 &&
+                counterDeviceLocal == 1 &&
+                disconnectedDevicesLocal == 1 ? (
+                  <CircularProgressbar
+                    value={totalLocal}
+                    text={totalLocal + "%"}
+                  />
+                ) : (
+                  <CircularProgressbar
+                    value={totalLocal}
+                    text={`${totalLocal}%`}
+                  />
+                )}
+              </div>
+              <div className="mt-4 resultFormat">
+                <p className="mb-0 set-font-16">
+                  Maximum of 10 Breaker attempts:
+                </p>
+                <p className="set-font-20">
+                  You did experiment with{" "}
+                  <strong style={{ borderBottom: "1px solid #fff" }}>
+                    {counterLocal} breakers.{" "}
+                  </strong>
+                </p>
+                <p className="mb-0 set-font-16">
+                  Maximum of 10 Device attempts:
+                </p>
+                <p className="set-font-20">
+                  You did experiment with{" "}
+                  <strong style={{ borderBottom: "1px solid #fff" }}>
+                    {counterDeviceLocal} Devices.
+                  </strong>
+                </p>
+                <p className="mb-0 set-font-16">Maximum of 49 Devices:</p>
+                <p className="set-font-20">
+                  You did disconnect{" "}
+                  <strong style={{ borderBottom: "1px solid #fff" }}>
+                    {disconnectedDevicesLocal} Devices.
+                  </strong>
+                </p>
+              </div>
+            </>
+          ))}
 
         {/* { props.trial} */}
       </Modal>

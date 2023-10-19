@@ -22,7 +22,19 @@ import {
   connectDevice,
   disconnectDevice,
   showFinishBtn,
+  hideFinishBtn,
+  disconnectCorrupGroupDevice,
+  disconnectCorrectGroupDevice,
+  connectCorrupGroupDevice,
+  connectCorrectGroupDevice,
+  corrupGroupDeviceError,
+  corruptAttempted,
+  correctGroupDeviceError,
 } from "../../../../Redux/Action";
+import {
+  breakerOffDutch,
+  breakerOffEnglish,
+} from "../../../../utils/translation";
 
 const Laundary = (props) => {
   const navigate = useNavigate();
@@ -30,6 +42,16 @@ const Laundary = (props) => {
   const disconnectedDevices = useSelector(
     (state) => state.CounterRemainingDevicesReducer.count
   );
+  const corruptGroup = useSelector(
+    (state) => state.corruptGroupReducer.corruptGroup
+  );
+  const corruptAttemptedDevices = useSelector(
+    (state) => state.GroupDevicesCounterReducer.corruptAttempted
+  );
+  const corruptDevice = useSelector(
+    (state) => state.CorruptDeviceReducer.corrupt
+  );
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
   const redirectSorry = () => {
     navigate("/result");
   };
@@ -43,6 +65,22 @@ const Laundary = (props) => {
   const [hover, setHover] = useState("");
 
   const disconnectHandler = (val) => {
+    if (corruptGroup === 6) {
+      if (
+        (val === corruptDevice &&
+          corruptAttemptedDevices.filter((item) => item === val).length ===
+            2) ||
+        (val !== corruptDevice && corruptAttemptedDevices.includes(val))
+      ) {
+        dispatch(corrupGroupDeviceError());
+      } else {
+        dispatch(corruptAttempted(val));
+      }
+      dispatch(disconnectCorrupGroupDevice());
+    } else {
+      dispatch(disconnectCorrectGroupDevice());
+      dispatch(correctGroupDeviceError());
+    }
     if (val === 47) {
       props.setLaundaryWashing("disconnect");
       dispatchdisconnect(disconnectDevice());
@@ -62,7 +100,14 @@ const Laundary = (props) => {
     }
   };
 
+  const popupText = isDutch ? breakerOffDutch : breakerOffEnglish;
+
   const connectHandler = (val) => {
+    if (corruptGroup === 6) {
+      dispatch(connectCorrupGroupDevice());
+    } else {
+      dispatch(connectCorrectGroupDevice());
+    }
     if (props.rndLaundary === val && props.laundaryBreakerType === "red") {
       props.setLaundaryBreakerType("black");
       errorSound();
@@ -70,7 +115,7 @@ const Laundary = (props) => {
       props.setAtticTrial(props.atticTrial + 1);
       localStorage.setItem("state-attic", JSON.stringify(props.atticTrial + 1));
 
-      SwalBreakerOff(disconnectedDevices, redirectSorry);
+      SwalBreakerOff(popupText, redirectSorry);
       dispatch(increaseDeviceCounter());
     }
     props.setLaundaryCorruptDevice(val);
@@ -86,13 +131,20 @@ const Laundary = (props) => {
       props.setLaundaryLight02("connected");
       dispatchconnect(connectDevice());
     }
+    if (props.rndLaundary === val) {
+      dispatch(hideFinishBtn());
+    }
   };
   return (
     <>
       <div
         style={{
           backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%),url(${
-            process.env.PUBLIC_URL + "/images/FullLaundary.png"
+            process.env.PUBLIC_URL
+          }${
+            isDutch
+              ? "/dutch-images/laundary-attic-14.png"
+              : "/images/FullLaundary.png"
           })`,
           height: "100%",
           width: "100%",
@@ -146,7 +198,7 @@ const Laundary = (props) => {
                   className="btn btn-danger ms-1 btn-sm active btn-font"
                   onClick={() => connectHandler(47)}
                 >
-                  Connect
+                  {isDutch ? "Aansluiten" : "Connect"}
                 </button>
               ) : (
                 <button
@@ -155,7 +207,7 @@ const Laundary = (props) => {
                   className="btn btn-success ms-1 btn-sm active btn-font"
                   onClick={() => disconnectHandler(47)}
                 >
-                  Disconnect
+                  {isDutch ? "Loskoppelen" : "Disconnect"}
                 </button>
               )}
             </>
@@ -173,7 +225,7 @@ const Laundary = (props) => {
               navigate("/attic");
             }}
           >
-            Go Back
+            {isDutch ? "Ga Terug" : "Go Back"}
           </button>
           {/* first light div ................. */}
           <div
@@ -222,7 +274,7 @@ const Laundary = (props) => {
                   className="btn btn-danger btn-sm active btn-font"
                   onClick={() => connectHandler(48)}
                 >
-                  Connect
+                  {isDutch ? "Aansluiten" : "Connect"}
                 </button>
               ) : (
                 <button
@@ -231,7 +283,7 @@ const Laundary = (props) => {
                   className="btn btn-success btn-sm active btn-font"
                   onClick={() => disconnectHandler(48)}
                 >
-                  Disconnect
+                  {isDutch ? "Loskoppelen" : "Disconnect"}
                 </button>
               )}
             </>
@@ -254,7 +306,7 @@ const Laundary = (props) => {
                   className="btn btn-danger btn-sm active btn-font"
                   onClick={() => connectHandler(49)}
                 >
-                  Connect
+                  {isDutch ? "Aansluiten" : "Connect"}
                 </button>
               ) : (
                 <button
@@ -263,7 +315,7 @@ const Laundary = (props) => {
                   className="btn btn-success btn-sm active btn-font"
                   onClick={() => disconnectHandler(49)}
                 >
-                  Disconnect
+                  {isDutch ? "Loskoppelen" : "Disconnect"}
                 </button>
               )}
             </>
@@ -305,7 +357,7 @@ const Laundary = (props) => {
             transform: "translateX(-50%)",
           }}
         >
-          <h1 className="heading-bottom">Laundary</h1>
+          <h1 className="heading-bottom">{isDutch ? "De Was" : "Laundary"}</h1>
         </div>
       </div>
     </>

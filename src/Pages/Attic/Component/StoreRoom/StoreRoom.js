@@ -22,7 +22,19 @@ import {
   connectDevice,
   disconnectDevice,
   showFinishBtn,
+  hideFinishBtn,
+  connectCorrupGroupDevice,
+  connectCorrectGroupDevice,
+  disconnectCorrupGroupDevice,
+  disconnectCorrectGroupDevice,
+  corrupGroupDeviceError,
+  corruptAttempted,
+  correctGroupDeviceError,
 } from "../../../../Redux/Action";
+import {
+  breakerOffDutch,
+  breakerOffEnglish,
+} from "../../../../utils/translation";
 
 const StoreRoom = (props) => {
   const navigate = useNavigate();
@@ -30,6 +42,16 @@ const StoreRoom = (props) => {
   const disconnectedDevices = useSelector(
     (state) => state.CounterRemainingDevicesReducer.count
   );
+  const corruptGroup = useSelector(
+    (state) => state.corruptGroupReducer.corruptGroup
+  );
+  const corruptAttemptedDevices = useSelector(
+    (state) => state.GroupDevicesCounterReducer.corruptAttempted
+  );
+  const corruptDevice = useSelector(
+    (state) => state.CorruptDeviceReducer.corrupt
+  );
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
   const redirectSorry = () => {
     navigate("/result");
   };
@@ -40,6 +62,22 @@ const StoreRoom = (props) => {
 
   const [errorSound] = useSound(error);
   const disconnectHandler = (val) => {
+    if (corruptGroup === 5) {
+      if (
+        (val === corruptDevice &&
+          corruptAttemptedDevices.filter((item) => item === val).length ===
+            2) ||
+        (val !== corruptDevice && corruptAttemptedDevices.includes(val))
+      ) {
+        dispatch(corrupGroupDeviceError());
+      } else {
+        dispatch(corruptAttempted(val));
+      }
+      dispatch(disconnectCorrupGroupDevice());
+    } else {
+      dispatch(disconnectCorrectGroupDevice());
+      dispatch(correctGroupDeviceError());
+    }
     if (val === 44) {
       props.setLivingOneLignt01("disconnect");
       dispatchdisconnect(disconnectDevice());
@@ -59,12 +97,19 @@ const StoreRoom = (props) => {
     }
   };
 
+  const popupText = isDutch ? breakerOffDutch : breakerOffEnglish;
+
   const connectHandler = (val) => {
+    if (corruptGroup === 5) {
+      dispatch(connectCorrupGroupDevice());
+    } else {
+      dispatch(connectCorrectGroupDevice());
+    }
     if (props.rndGroupFive === val && props.groupFiveBreakerType === "red") {
       props.setgroupFiveBreakerType("black");
       errorSound();
       props.setIsGroupFiveBreaker(false);
-      SwalBreakerOff(disconnectedDevices, redirectSorry);
+      SwalBreakerOff(popupText, redirectSorry);
       dispatch(increaseDeviceCounter());
       props.setAtticTrial(props.atticTrial + 1);
       localStorage.setItem("state-attic", JSON.stringify(props.atticTrial + 1));
@@ -82,6 +127,9 @@ const StoreRoom = (props) => {
       props.setLivingOneLignt03("connected");
       dispatchconnect(connectDevice());
     }
+    if (props.rndGroupFive === val) {
+      dispatch(hideFinishBtn());
+    }
   };
 
   return (
@@ -91,7 +139,11 @@ const StoreRoom = (props) => {
           <div
             style={{
               backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%),url(${
-                process.env.PUBLIC_URL + "/images/FullStore.png"
+                process.env.PUBLIC_URL
+              }${
+                isDutch
+                  ? "/dutch-images/store-attic-13.png"
+                  : "/images/FullStore.png"
               })`,
               height: "100%",
               width: "100%",
@@ -143,14 +195,14 @@ const StoreRoom = (props) => {
                       className="btn btn-danger btn-sm active btn-font"
                       onClick={() => connectHandler(44)}
                     >
-                      Connect
+                      {isDutch ? "Aansluiten" : "Connect"}
                     </button>
                   ) : (
                     <button
                       className="btn btn-success btn-sm active btn-font"
                       onClick={() => disconnectHandler(44)}
                     >
-                      Disconnect
+                      {isDutch ? "Loskoppelen" : "Disconnect"}
                     </button>
                   )}
                 </>
@@ -196,14 +248,14 @@ const StoreRoom = (props) => {
                       className="btn btn-danger btn-sm active btn-font"
                       onClick={() => connectHandler(45)}
                     >
-                      Connect
+                      {isDutch ? "Aansluiten" : "Connect"}
                     </button>
                   ) : (
                     <button
                       className="btn btn-success btn-sm active btn-font"
                       onClick={() => disconnectHandler(45)}
                     >
-                      Disconnect
+                      {isDutch ? "Loskoppelen" : "Disconnect"}
                     </button>
                   )}
                 </>
@@ -224,7 +276,7 @@ const StoreRoom = (props) => {
                   navigate("/attic");
                 }}
               >
-                Go Back
+                {isDutch ? "Ga Terug" : "Go Back"}
               </button>
               {/* end my code 12/29...................... */}
 
@@ -243,14 +295,14 @@ const StoreRoom = (props) => {
                       className="btn btn-danger btn-sm active btn-font"
                       onClick={() => connectHandler(46)}
                     >
-                      Connect
+                      {isDutch ? "Aansluiten" : "Connect"}
                     </button>
                   ) : (
                     <button
                       className="btn btn-success btn-sm active btn-font"
                       onClick={() => disconnectHandler(46)}
                     >
-                      Disconnect
+                      {isDutch ? "Loskoppelen" : "Disconnect"}
                     </button>
                   )}
                 </>
@@ -286,7 +338,9 @@ const StoreRoom = (props) => {
               </div>
             </div>
             <div className="position-heading-bottom">
-              <h1 className="heading-bottom">Storage Room</h1>
+              <h1 className="heading-bottom">
+                {isDutch ? "Berging" : "Storage Room"}
+              </h1>
             </div>
           </div>
         ) : (

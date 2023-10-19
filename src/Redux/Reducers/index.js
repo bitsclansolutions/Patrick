@@ -7,6 +7,10 @@ import CounterReducer from "./CounterReducer";
 import CounterDeviceReducer from "./CounterDeviceReducer";
 import CounterRemainingDevicesReducer from "./CounterRemainingDevices";
 import ShowFinishReducer from "./ShowFinishReducer";
+import CorruptDeviceReducer from "./CorruptDevice";
+import corruptGroupReducer from "./CorruptGroup";
+import GroupDevicesCounterReducer from "./GroupDevicesCounter";
+import ChangeLanguageReducer from "./ChangeLanguage";
 
 export const rootReducer = combineReducers({
   UserReducer: UserReducer,
@@ -17,4 +21,8 @@ export const rootReducer = combineReducers({
   CounterDeviceReducer: CounterDeviceReducer,
   CounterRemainingDevicesReducer: CounterRemainingDevicesReducer,
   ShowFinishReducer: ShowFinishReducer,
+  CorruptDeviceReducer,
+  corruptGroupReducer,
+  GroupDevicesCounterReducer,
+  ChangeLanguageReducer,
 });

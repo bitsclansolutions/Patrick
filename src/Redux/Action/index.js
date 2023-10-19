@@ -41,6 +41,19 @@ export const resultAtticFloor = (val) => {
   };
 };
 
+export const resultTotal = (val) => {
+  return {
+    type: "resultTotal",
+    payload: val,
+  };
+};
+
+export const isFinished = () => {
+  return {
+    type: "isFinished",
+  };
+};
+
 // hurray reducer ...............................
 
 export const isHurray = (val) => {
@@ -94,6 +107,11 @@ export const increaseCouter = () => {
     type: "counter",
   };
 };
+export const corruptBreakerAttemptedHandler = () => {
+  return {
+    type: "corruptBreakerAttempted",
+  };
+};
 
 export const increaseDeviceCounter = () => {
   return {
@@ -116,5 +134,77 @@ export const connectDevice = () => {
 export const showFinishBtn = () => {
   return {
     type: "showFinishBtn",
+  };
+};
+
+export const hideFinishBtn = () => {
+  return {
+    type: "hideFinishBtn",
+  };
+};
+
+// corrupt device
+
+export const corruptDevice = (val) => {
+  return {
+    type: "corruptDevice",
+    payload: val,
+  };
+};
+
+// corrupt groupt
+
+export const corruptGroup = (val) => {
+  return {
+    type: "corruptGroup",
+    payload: val,
+  };
+};
+
+// group devices counter
+
+export const connectCorrupGroupDevice = () => {
+  return {
+    type: "connectCorrupGroupDevice",
+  };
+};
+export const disconnectCorrupGroupDevice = () => {
+  return {
+    type: "disconnectCorrupGroupDevice",
+  };
+};
+export const connectCorrectGroupDevice = () => {
+  return {
+    type: "connectCorrectGroupDevice",
+  };
+};
+export const disconnectCorrectGroupDevice = () => {
+  return {
+    type: "disconnectCorrectGroupDevice",
+  };
+};
+export const corrupGroupDeviceError = () => {
+  return {
+    type: "corrupGroupDeviceError",
+  };
+};
+export const correctGroupDeviceError = () => {
+  return {
+    type: "correctGroupDeviceError",
+  };
+};
+export const corruptAttempted = (val) => {
+  return {
+    type: "corruptAttempted",
+    payload: val,
+  };
+};
+
+// change language
+
+export const changeLanguage = (val) => {
+  return {
+    type: "changeLanguage",
+    payload: val,
   };
 };

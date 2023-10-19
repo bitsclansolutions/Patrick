@@ -23,13 +23,36 @@ import {
   connectDevice,
   disconnectDevice,
   showFinishBtn,
+  hideFinishBtn,
+  disconnectCorrupGroupDevice,
+  disconnectCorrectGroupDevice,
+  connectCorrupGroupDevice,
+  connectCorrectGroupDevice,
+  corrupGroupDeviceError,
+  corruptAttempted,
+  correctGroupDeviceError,
 } from "../../../../Redux/Action";
+import {
+  breakerOffDutch,
+  breakerOffEnglish,
+} from "../../../../utils/translation";
 
 const HallFirstFloor = (props) => {
   const navigate = useNavigate();
 
   const disconnectedDevices = useSelector(
     (state) => state.CounterRemainingDevicesReducer.count
+  );
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
+
+  const corruptGroup = useSelector(
+    (state) => state.corruptGroupReducer.corruptGroup
+  );
+  const corruptAttemptedDevices = useSelector(
+    (state) => state.GroupDevicesCounterReducer.corruptAttempted
+  );
+  const corruptDevice = useSelector(
+    (state) => state.CorruptDeviceReducer.corrupt
   );
   const redirectSorry = () => {
     navigate("/result");
@@ -43,6 +66,22 @@ const HallFirstFloor = (props) => {
   const [hover, setHover] = useState("");
 
   const disconnectHandler = (val) => {
+    if (corruptGroup === 4) {
+      if (
+        (val === corruptDevice &&
+          corruptAttemptedDevices.filter((item) => item === val).length ===
+            2) ||
+        (val !== corruptDevice && corruptAttemptedDevices.includes(val))
+      ) {
+        dispatch(corrupGroupDeviceError());
+      } else {
+        dispatch(corruptAttempted(val));
+      }
+      dispatch(disconnectCorrupGroupDevice());
+    } else {
+      dispatch(disconnectCorrectGroupDevice());
+      dispatch(correctGroupDeviceError());
+    }
     if (val === 25) {
       props.setHallLedTv("disconnect");
       dispatchdisconnect(disconnectDevice());
@@ -62,11 +101,18 @@ const HallFirstFloor = (props) => {
     }
   };
 
+  const popupText = isDutch ? breakerOffDutch : breakerOffEnglish;
+
   const connectHandler = (val) => {
+    if (corruptGroup === 4) {
+      dispatch(connectCorrupGroupDevice());
+    } else {
+      dispatch(connectCorrectGroupDevice());
+    }
     if (props.rndGroupFour === val && props.groupFourBreakerType === "red") {
       props.setGroupFourBreakerType("black");
       props.setIsGroupFourBreaker(false);
-      SwalBreakerOff(disconnectedDevices, redirectSorry);
+      SwalBreakerOff(popupText, redirectSorry);
       dispatch(increaseDeviceCounter());
       errorSound();
       // props.setFirstFloorTrial(props.firstFloorTrial + 1);
@@ -88,6 +134,9 @@ const HallFirstFloor = (props) => {
       props.setHallLight02("connected");
       dispatchconnect(connectDevice());
     }
+    if (props.rndGroupFour === val) {
+      dispatch(hideFinishBtn());
+    }
   };
 
   return (
@@ -96,7 +145,11 @@ const HallFirstFloor = (props) => {
         <div
           style={{
             backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%),url(${
-              process.env.PUBLIC_URL + "/images/full-first-floor-hall.png"
+              process.env.PUBLIC_URL
+            }${
+              isDutch
+                ? "/dutch-images/first-hall-5.png"
+                : "/images/full-first-floor-hall.png"
             })`,
             height: "100%",
             width: "100%",
@@ -148,7 +201,7 @@ const HallFirstFloor = (props) => {
                     className="btn btn-danger btn-sm active btn-font set-ab-btn-top"
                     onClick={() => connectHandler(25)}
                   >
-                    Connect
+                    {isDutch ? "Aansluiten" : "Connect"}
                   </button>
                 ) : (
                   <button
@@ -157,7 +210,7 @@ const HallFirstFloor = (props) => {
                     className="btn btn-success btn-sm active btn-font set-ab-btn-top"
                     onClick={() => disconnectHandler(25)}
                   >
-                    Disconnect
+                    {isDutch ? "Loskoppelen" : "Disconnect"}
                   </button>
                 )}
               </>
@@ -177,7 +230,7 @@ const HallFirstFloor = (props) => {
                 localStorage.setItem("state-attic", JSON.stringify(-5));
               }}
             >
-              Attic Floor
+              {isDutch ? "Zolderverdieping" : "Attic Floor"}
             </button>
             <button
               // className={firstBtn === "attic" ? 'btn-01-maskGroup' : "btn-maskGroup mb-4 "}
@@ -192,7 +245,7 @@ const HallFirstFloor = (props) => {
                 navigate("/ground-floor");
               }}
             >
-              Ground Floor
+              {isDutch ? "Begane Grond" : "Ground Floor"}
             </button>
             <button
               // className={firstBtn === "attic" ? 'btn-01-maskGroup' : "btn-maskGroup mb-4 "}
@@ -207,7 +260,7 @@ const HallFirstFloor = (props) => {
                 navigate("/first-floor/bed-room");
               }}
             >
-              Bed Room 03
+              {isDutch ? "Slaapkamer 03" : "Bed Room 03"}
             </button>{" "}
             <button
               // className={firstBtn === "attic" ? 'btn-01-maskGroup' : "btn-maskGroup mb-4 "}
@@ -222,7 +275,7 @@ const HallFirstFloor = (props) => {
                 navigate("/first-floor/toilet");
               }}
             >
-              Toilet
+              {isDutch ? "Toilet" : "Toilet"}
             </button>{" "}
             <button
               // className={firstBtn === "attic" ? 'btn-01-maskGroup' : "btn-maskGroup mb-4 "}
@@ -237,7 +290,7 @@ const HallFirstFloor = (props) => {
                 navigate("/first-floor/living-room01");
               }}
             >
-              Bedroom 01
+              {isDutch ? "Slaapkamer 01" : "Bedroom 01"}
             </button>{" "}
             <button
               // className={firstBtn === "attic" ? 'btn-01-maskGroup' : "btn-maskGroup mb-4 "}
@@ -252,7 +305,7 @@ const HallFirstFloor = (props) => {
                 navigate("/first-floor/living-room02");
               }}
             >
-              Bedroom 02
+              {isDutch ? "Slaapkamer 02" : "Bedroom 02"}
             </button>
             {/* end my code 12/29...................... */}
             {/* first light div ................. */}
@@ -299,7 +352,7 @@ const HallFirstFloor = (props) => {
                     className="btn btn-danger btn-sm active btn-font"
                     onClick={() => connectHandler(26)}
                   >
-                    Connect
+                    {isDutch ? "Aansluiten" : "Connect"}
                   </button>
                 ) : (
                   <button
@@ -308,7 +361,7 @@ const HallFirstFloor = (props) => {
                     className="btn btn-success btn-sm active btn-font"
                     onClick={() => disconnectHandler(26)}
                   >
-                    Disconnect
+                    {isDutch ? "Loskoppelen" : "Disconnect"}
                   </button>
                 )}
               </>
@@ -357,7 +410,7 @@ const HallFirstFloor = (props) => {
                     className="btn btn-danger btn-sm active btn-font"
                     onClick={() => connectHandler(27)}
                   >
-                    Connect
+                    {isDutch ? "Aansluiten" : "Connect"}
                   </button>
                 ) : (
                   <button
@@ -366,7 +419,7 @@ const HallFirstFloor = (props) => {
                     className="btn btn-success btn-sm active btn-font"
                     onClick={() => disconnectHandler(27)}
                   >
-                    Disconnect
+                    {isDutch ? "Loskoppelen" : "Disconnect"}
                   </button>
                 )}
               </>
@@ -380,7 +433,7 @@ const HallFirstFloor = (props) => {
               transform: "translateX(-50%)",
             }}
           >
-            <h1 className="heading-bottom">Hall</h1>
+            <h1 className="heading-bottom">{isDutch ? "Hal" : "Hall"}</h1>
           </div>
         </div>
       ) : (

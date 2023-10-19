@@ -23,7 +23,16 @@ import {
   connectDevice,
   disconnectDevice,
   showFinishBtn,
+  hideFinishBtn,
+  connectCorrupGroupDevice,
+  connectCorrectGroupDevice,
+  disconnectCorrectGroupDevice,
+  disconnectCorrupGroupDevice,
+  corrupGroupDeviceError,
+  corruptAttempted,
+  correctGroupDeviceError,
 } from "../../../Redux/Action";
+import { breakerOffDutch, breakerOffEnglish } from "../../../utils/translation";
 
 const LivingRoom = (props) => {
   const navigate = useNavigate();
@@ -35,6 +44,17 @@ const LivingRoom = (props) => {
   const disconnectedDevices = useSelector(
     (state) => state.CounterRemainingDevicesReducer.count
   );
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
+
+  const corruptGroup = useSelector(
+    (state) => state.corruptGroupReducer.corruptGroup
+  );
+  const corruptAttemptedDevices = useSelector(
+    (state) => state.GroupDevicesCounterReducer.corruptAttempted
+  );
+  const corruptDevice = useSelector(
+    (state) => state.CorruptDeviceReducer.corrupt
+  );
   const redirectSorry = () => {
     navigate("/result");
   };
@@ -45,6 +65,22 @@ const LivingRoom = (props) => {
   const [hover, setHover] = useState("");
 
   const disconnectHandler = (val) => {
+    if (corruptGroup === 1) {
+      if (
+        (val === corruptDevice &&
+          corruptAttemptedDevices.filter((item) => item === val).length ===
+            2) ||
+        (val !== corruptDevice && corruptAttemptedDevices.includes(val))
+      ) {
+        dispatch(corrupGroupDeviceError());
+      } else {
+        dispatch(corruptAttempted(val));
+      }
+      dispatch(disconnectCorrupGroupDevice());
+    } else {
+      dispatch(disconnectCorrectGroupDevice());
+      dispatch(correctGroupDeviceError());
+    }
     if (val === 6) {
       props.setLivingRadio("disconnect");
       dispatchdisconnect(disconnectDevice());
@@ -68,11 +104,18 @@ const LivingRoom = (props) => {
     }
   };
 
+  const popupText = isDutch ? breakerOffDutch : breakerOffEnglish;
+
   const connectHandler = (val) => {
+    if (corruptGroup === 1) {
+      dispatch(connectCorrupGroupDevice());
+    } else {
+      dispatch(connectCorrectGroupDevice());
+    }
     if (props.completeRnd === val && props.firstGroupBreakerType === "red") {
       props.setFirstGroupBreakerType("black");
       props.setIsFirstGroupBreaker(false);
-      SwalBreakerOff(disconnectedDevices, redirectSorry);
+      SwalBreakerOff(popupText, redirectSorry);
       dispatch(increaseDeviceCounter());
       props.setGroundFloorTrial(props.groundFloorTrial + 1);
       localStorage.setItem("state", JSON.stringify(props.groundFloorTrial + 1));
@@ -95,6 +138,9 @@ const LivingRoom = (props) => {
     if (val === 9) {
       props.setLivingLight03("connected");
       dispatchconnect(connectDevice());
+    }
+    if (props.completeRnd === val) {
+      dispatch(hideFinishBtn());
     }
   };
   // useEffect(() => {
@@ -120,7 +166,11 @@ const LivingRoom = (props) => {
       <div
         style={{
           backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%),url(${
-            process.env.PUBLIC_URL + "/images/living-room-ground.png"
+            process.env.PUBLIC_URL
+          }${
+            isDutch
+              ? "/dutch-images/living-ground-3.png"
+              : "/images/living-room-ground.png"
           })`,
           height: "100%",
           width: "100%",
@@ -167,7 +217,7 @@ const LivingRoom = (props) => {
                   className="btn btn-danger btn-sm active btn-font"
                   onClick={() => connectHandler(6)}
                 >
-                  Connect
+                  {isDutch ? "Aansluiten" : "Connect"}
                 </button>
               ) : (
                 <button
@@ -176,7 +226,7 @@ const LivingRoom = (props) => {
                   className="btn btn-success btn-sm active btn-font"
                   onClick={() => disconnectHandler(6)}
                 >
-                  Disconnect
+                  {isDutch ? "Loskoppelen" : "Disconnect"}
                 </button>
               )}
             </>
@@ -196,7 +246,7 @@ const LivingRoom = (props) => {
               navigate("/ground-floor");
             }}
           >
-            Go Back
+            {isDutch ? "Ga Terug" : "Go Back"}
           </button>
           {/* end my code 12/29...................... */}
 
@@ -237,7 +287,7 @@ const LivingRoom = (props) => {
                   className="btn btn-danger btn-sm active btn-font"
                   onClick={() => connectHandler(7)}
                 >
-                  Connect
+                  {isDutch ? "Aansluiten" : "Connect"}
                 </button>
               ) : (
                 <button
@@ -246,7 +296,7 @@ const LivingRoom = (props) => {
                   className="btn btn-success btn-sm btn-font active"
                   onClick={() => disconnectHandler(7)}
                 >
-                  Disconnect
+                  {isDutch ? "Loskoppelen" : "Disconnect"}
                 </button>
               )}
             </>
@@ -289,7 +339,7 @@ const LivingRoom = (props) => {
                   className="btn btn-danger btn-sm active btn-font ms-2"
                   onClick={() => connectHandler(8)}
                 >
-                  Connect
+                  {isDutch ? "Aansluiten" : "Connect"}
                 </button>
               ) : (
                 <button
@@ -298,7 +348,7 @@ const LivingRoom = (props) => {
                   className="btn btn-success btn-sm active btn-font ms-2"
                   onClick={() => disconnectHandler(8)}
                 >
-                  Disconnect
+                  {isDutch ? "Loskoppelen" : "Disconnect"}
                 </button>
               )}
             </>
@@ -341,7 +391,7 @@ const LivingRoom = (props) => {
                   className="btn btn-danger btn-sm active btn-font"
                   onClick={() => connectHandler(9)}
                 >
-                  Connect
+                  {isDutch ? "Aansluiten" : "Connect"}
                 </button>
               ) : (
                 <button
@@ -350,14 +400,16 @@ const LivingRoom = (props) => {
                   className="btn btn-success btn-sm active btn-font"
                   onClick={() => disconnectHandler(9)}
                 >
-                  Disconnect
+                  {isDutch ? "Loskoppelen" : "Disconnect"}
                 </button>
               )}
             </>
           </div>
         </div>
         <div className="position-heading-bottom">
-          <h1 className="heading-bottom">Living Room</h1>
+          <h1 className="heading-bottom">
+            {isDutch ? "Woonkamer" : "Living Room"}
+          </h1>
         </div>
       </div>
       {/* ) : ( */}

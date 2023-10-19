@@ -24,7 +24,19 @@ import {
   connectDevice,
   disconnectDevice,
   showFinishBtn,
+  hideFinishBtn,
+  disconnectCorrupGroupDevice,
+  disconnectCorrectGroupDevice,
+  connectCorrupGroupDevice,
+  connectCorrectGroupDevice,
+  corrupGroupDeviceError,
+  corruptAttempted,
+  correctGroupDeviceError,
 } from "../../../../Redux/Action";
+import {
+  breakerOffDutch,
+  breakerOffEnglish,
+} from "../../../../utils/translation";
 
 const HallAttic = (props) => {
   const navigate = useNavigate();
@@ -32,6 +44,17 @@ const HallAttic = (props) => {
   const disconnectedDevices = useSelector(
     (state) => state.CounterRemainingDevicesReducer.count
   );
+
+  const corruptGroup = useSelector(
+    (state) => state.corruptGroupReducer.corruptGroup
+  );
+  const corruptAttemptedDevices = useSelector(
+    (state) => state.GroupDevicesCounterReducer.corruptAttempted
+  );
+  const corruptDevice = useSelector(
+    (state) => state.CorruptDeviceReducer.corrupt
+  );
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
   const redirectSorry = () => {
     navigate("/result");
   };
@@ -45,6 +68,22 @@ const HallAttic = (props) => {
   const [hover, setHover] = useState("");
 
   const disconnectHandler = (val) => {
+    if (corruptGroup === 5) {
+      if (
+        (val === corruptDevice &&
+          corruptAttemptedDevices.filter((item) => item === val).length ===
+            2) ||
+        (val !== corruptDevice && corruptAttemptedDevices.includes(val))
+      ) {
+        dispatch(corrupGroupDeviceError());
+      } else {
+        dispatch(corruptAttempted(val));
+      }
+      dispatch(disconnectCorrupGroupDevice());
+    } else {
+      dispatch(disconnectCorrectGroupDevice());
+      dispatch(correctGroupDeviceError());
+    }
     if (val === 35) {
       props.setHallLampFive("disconnect");
       dispatchdisconnect(disconnectDevice());
@@ -64,13 +103,20 @@ const HallAttic = (props) => {
     }
   };
 
+  const popupText = isDutch ? breakerOffDutch : breakerOffEnglish;
+
   const connectHandler = (val) => {
+    if (corruptGroup === 5) {
+      dispatch(connectCorrupGroupDevice());
+    } else {
+      dispatch(connectCorrectGroupDevice());
+    }
     console.log("rondom ", props.rndGroupFive);
     console.log();
     if (props.rndGroupFive === val && props.groupFiveBreakerType === "red") {
       props.setgroupFiveBreakerType("black");
       props.setIsGroupFiveBreaker(false);
-      SwalBreakerOff(disconnectedDevices, redirectSorry);
+      SwalBreakerOff(popupText, redirectSorry);
       dispatch(increaseDeviceCounter());
       errorSound();
       props.setAtticTrial(props.atticTrial + 1);
@@ -89,6 +135,9 @@ const HallAttic = (props) => {
       props.setHallLight02Five("connected");
       dispatchconnect(connectDevice());
     }
+    if (props.rndGroupFive === val) {
+      dispatch(hideFinishBtn());
+    }
   };
 
   return (
@@ -97,7 +146,11 @@ const HallAttic = (props) => {
         <div
           style={{
             backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%),url(${
-              process.env.PUBLIC_URL + "/images/FullAtticHall.png"
+              process.env.PUBLIC_URL
+            }${
+              isDutch
+                ? "/dutch-images/hall-attic-10.png"
+                : "/images/FullAtticHall.png"
             })`,
             height: "100%",
             width: "100%",
@@ -151,7 +204,7 @@ const HallAttic = (props) => {
                     className="btn btn-danger btn-sm active btn-font"
                     onClick={() => connectHandler(35)}
                   >
-                    Connect
+                    {isDutch ? "Aansluiten" : "Connect"}
                   </button>
                 ) : (
                   <button
@@ -160,7 +213,7 @@ const HallAttic = (props) => {
                     className="btn btn-success btn-sm active btn-font"
                     onClick={() => disconnectHandler(35)}
                   >
-                    Disconnect
+                    {isDutch ? "Loskoppelen" : "Disconnect"}
                   </button>
                 )}
               </>
@@ -181,7 +234,7 @@ const HallAttic = (props) => {
                 navigate("/attic/storage-room");
               }}
             >
-              Storage Room
+              {isDutch ? "Berging" : "Storage Room"}
             </button>
             <button
               // className={firstBtn === "attic" ? 'btn-01-maskGroup' : "btn-maskGroup mb-4 "}
@@ -196,7 +249,7 @@ const HallAttic = (props) => {
                 navigate("/attic/study-room");
               }}
             >
-              Study Room
+              {isDutch ? "Studeerkamer" : "Study Room"}
             </button>
             <button
               // className={firstBtn === "attic" ? 'btn-01-maskGroup' : "btn-maskGroup mb-4 "}
@@ -211,7 +264,7 @@ const HallAttic = (props) => {
                 navigate("/first-floor");
               }}
             >
-              First Floor
+              {isDutch ? "Eerste Verdieping" : "First Floor"}
             </button>
             <button
               // className={firstBtn === "attic" ? 'btn-01-maskGroup' : "btn-maskGroup mb-4 "}
@@ -226,7 +279,7 @@ const HallAttic = (props) => {
                 navigate("/attic/guest-room");
               }}
             >
-              Guest Room
+              {isDutch ? "Logeerkamer" : "Guest Room"}
             </button>
             <button
               // className={firstBtn === "attic" ? 'btn-01-maskGroup' : "btn-maskGroup mb-4 "}
@@ -241,7 +294,7 @@ const HallAttic = (props) => {
                 navigate("/attic/laundary");
               }}
             >
-              Laundary
+              {isDutch ? "De Was" : "Laundary"}
             </button>
             {/* end my code 12/29...................... */}
 
@@ -292,7 +345,7 @@ const HallAttic = (props) => {
                     className="btn btn-danger btn-sm active btn-font"
                     onClick={() => connectHandler(36)}
                   >
-                    Connect
+                    {isDutch ? "Aansluiten" : "Connect"}
                   </button>
                 ) : (
                   <button
@@ -301,7 +354,7 @@ const HallAttic = (props) => {
                     className="btn btn-success btn-sm active btn-font"
                     onClick={() => disconnectHandler(36)}
                   >
-                    Disconnect
+                    {isDutch ? "Loskoppelen" : "Disconnect"}
                   </button>
                 )}
               </>
@@ -324,7 +377,7 @@ const HallAttic = (props) => {
                     className="btn btn-danger btn-sm active btn-font"
                     onClick={() => connectHandler(37)}
                   >
-                    Connect
+                    {isDutch ? "Aansluiten" : "Connect"}
                   </button>
                 ) : (
                   <button
@@ -333,7 +386,7 @@ const HallAttic = (props) => {
                     className="btn btn-success btn-sm active btn-font"
                     onClick={() => disconnectHandler(37)}
                   >
-                    Disconnect
+                    {isDutch ? "Loskoppelen" : "Disconnect"}
                   </button>
                 )}
               </>
@@ -370,7 +423,7 @@ const HallAttic = (props) => {
             </div>
           </div>
           <div className="position-heading-bottom">
-            <h1 className="heading-bottom">Hall</h1>
+            <h1 className="heading-bottom">{isDutch ? "" : "Hall"}</h1>
           </div>
         </div>
       ) : (

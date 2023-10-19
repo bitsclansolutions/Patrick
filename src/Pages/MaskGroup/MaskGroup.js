@@ -6,6 +6,8 @@ import ErrorPage from "../404/ErrorPage";
 import Avator from "../Components/Avator";
 import FrontScreenModel from "../Components/FrontScreenModel";
 import { SwalStarter } from "../Components/SwalModules";
+import { useSelector } from "react-redux";
+import ChangeLanguageToggle from "../../utils/ChangeLanguageToggle";
 // import AtticModel from "../../PopUpModels/AtticModel";
 // import FirstFloorModel from "../../PopUpModels/FirstFloorModel";
 // import GroundFloorModel from "../../PopUpModels/GroundFloorModel"
@@ -20,6 +22,111 @@ const MaskGroup = () => {
   // const showModal = () => {
   //   props.setIsModalOpen2(true);
   // };
+
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
+
+  const popupHtml = `
+    <p style="font-size: 20px;margin-bottom: 6px;">${
+      isDutch
+        ? "Ergens in huis is een zekering uitgeschakeld. Los dit probleem op zoals je geleerd hebt."
+        : "Somewhere in the house a fuse has been switched off. Solve this problem as you have been taught."
+    } </p>
+    <div className="legend">
+    <table border="1" width="100%">
+      <tr>
+        <td colspan="2" style="text-align: left;padding-left: 14px;"><p style="margin-bottom: 0px; font-size: 18px;color:#B41D1D;"><strong style="border-bottom: 2px solid #B41D1D;">${
+          isDutch ? "Begane Grond" : "Ground Floor"
+        }  </strong></p></td>
+      </tr>
+      <tr class="d-flex">
+        <td style="width: 50%;text-align: left;padding-left: 14px;margin-top: 18px;">
+          <div className="set-legend-text" style="margin-bottom: 1px solid red;">
+            <p style="margin-bottom: 0px;font-size: 18px;color:#B41D1D;line-height: 6px;"><sup><strong>
+            ${isDutch ? "Groep&nbsp;1" : "Group&nbsp;1"} </strong></sup></p>
+            <p style="margin-bottom: 0px; font-size: 16px;"><small>${
+              isDutch ? "Hal, Toilet, Woonkamer" : "Hall, Toilet, Living room"
+            } </small></p>
+            </div>
+        </td>
+        <td style="width: 50%;text-align: left;padding-left: 14px;margin-top: 18px;">
+        <div className="set-legend-text">
+        <p style="margin-bottom: 0px;font-size: 18px;color:#B41D1D;line-height: 6px;"><strong><sup>${
+          isDutch ? "Groep&nbsp;2" : "Group&nbsp;2"
+        }</sup></strong></p>
+        <p style="margin-bottom: 0px; font-size: 16px;"><small>${
+          isDutch ? "Keuken" : "Kitchen"
+        }</small></p>
+          </div>
+          </td>
+          </tr>
+      <tr>
+        <td colspan="2" style="text-align: left;padding-left: 14px;"><p style="margin-bottom: 0px; font-size: 18px;color:#B41D1D;"><strong style="border-bottom: 2px solid #B41D1D;">${
+          isDutch ? "Eerste verdieping" : "First Floor"
+        } </strong></p></td>
+        </tr>
+        <tr class="d-flex">
+        <td style="width: 50%;text-align: left;padding-left: 14px;margin-top: 18px;">
+        <div className="set-legend-text">
+        <p style="margin-bottom: 0px;font-size: 18px;color:#B41D1D;line-height: 6px;"><sup><strong>${
+          isDutch ? "Groep&nbsp;3" : "Group&nbsp;3"
+        }</strong></sup></p>
+        <p style="margin-bottom: 0px; font-size: 16px;"><small>${
+          isDutch ? "Slaapkamer 01, Slaapkamer 02" : "Bedroom 01, Bedroom 02"
+        }</small></p>
+          </div>
+        </td>
+        <td style="width: 50%;text-align: left;padding-left: 14px;margin-top: 18px;">
+        <div className="set-legend-text">
+        <p style="margin-bottom: 0px;font-size: 18px;color:#B41D1D;line-height: 6px;"><strong><sup>${
+          isDutch ? "Groep&nbsp;4" : "Group&nbsp;4"
+        }</sup></strong></p>
+        <p style="margin-bottom: 0px; font-size: 16px;"><small>${
+          isDutch ? "Hal, Toilet, Slaapkamer 03" : "Hall, Toilet, Bedroom 03"
+        }</small></p>
+          </div>
+          </td>
+      </tr>
+
+      <tr>
+        <td colspan="2" style="text-align: left;padding-left: 14px;"><p style="margin-bottom: 0px; font-size: 18px;color:#B41D1D;"><strong style="border-bottom: 2px solid #B41D1D;">${
+          isDutch ? "Zolderverdieping" : "Attic Floor"
+        }</strong></p></td>
+      </tr>
+      <tr class="d-flex">
+      <td style="width: 50%;text-align: left;padding-left: 14px;margin-top: 18px;">
+          <div className="set-legend-text">
+          <p style="margin-bottom: 0px;font-size: 18px;color:#B41D1D;line-height: 6px;"><sup><strong>${
+            isDutch ? "Groep&nbsp;5" : "Group&nbsp;5"
+          }</strong></sup></p>
+            <p style="margin-bottom: 0px; font-size: 16px;"><small>${
+              isDutch ? "Hal, Toilet, Woonkamer" : "Hall, Toilet, Living room"
+            }</small></p>
+            </div>
+            </td>
+            <td style="width: 50%;text-align: left;padding-left: 14px;margin-top: 18px;">
+            <div className="set-legend-text">
+            <p style="margin-bottom: 0px;font-size: 18px;color:#B41D1D;line-height: 6px;"><strong><sup>${
+              isDutch ? "Groep&nbsp;6" : "Group&nbsp;6"
+            }</sup></strong></p>
+            <p style="margin-bottom: 0px; font-size: 16px;"><small>${
+              isDutch ? "De was" : "Laundry"
+            }</small></p>
+            </div>
+            </td>
+            </tr>
+            </table>
+            </div>
+            <p style="font-size: 20px;margin-bottom: 0px; margin-top: 6px;">${
+              isDutch
+                ? "U moet alle apparaten van de groep loskoppelen, vervolgens kunt u de onderbreker inschakelen en alle apparaten één voor één aansluiten om te controleren welk apparaat defect is."
+                : "You have to disconnect all devices of the group then you can on the breaker and connect all the devices one by one to check which device is defected.</p>"
+            }`;
+
+  const popupText = {
+    title: isDutch ? "Gebruikerstaak" : "User Task",
+    html: popupHtml,
+    okay: isDutch ? "Oké" : "Okay",
+  };
 
   return (
     <>
@@ -44,8 +151,19 @@ const MaskGroup = () => {
         }}
         className="main-mask-div"
       >
-        <div style={{ position: "absolute", right: "2%", top: "2%" }}>
+        <div
+          style={{
+            position: "absolute",
+            top: "2%",
+            width: "100%",
+            display: "flex",
+            flexDirection: "row-reverse",
+            justifyContent: "space-between",
+            padding: "2px 30px",
+          }}
+        >
           <Avator phase={"home"} />
+          <ChangeLanguageToggle />
         </div>
 
         <div id="clouds">
@@ -69,11 +187,11 @@ const MaskGroup = () => {
             onClick={() => {
               // setShowAttic(true)
               navigate("/ground-floor");
-              SwalStarter();
+              SwalStarter(popupText);
               localStorage.setItem("state", JSON.stringify(-4));
             }}
           >
-            Open !
+            Open!
           </button>
           <div className="d-flex">
             {/* start my changes from 21/12/2022..................................... */}

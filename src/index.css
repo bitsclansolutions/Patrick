@@ -1,21 +1,24 @@
 @font-face {
-  font-family: "sunny-spell";   /*Can be any text*/
+  font-family: "sunny-spell"; /*Can be any text*/
   src: local("AirbnbCerealLight"),
     url("./Fonts/sunny-spells/SunnyspellsRegular.otf") format("truetype");
 }
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&display=swap");
 body {
   margin: 0;
   font-family: Poppins;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: beige;
-  font-family: 'Nunito', sans-serif !important;
+  font-family: "Nunito", sans-serif !important;
 }
 
+button {
+  word-break: break-all;
+}
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 .set-font-20 {
@@ -33,23 +36,26 @@ code {
 }
 .set-bg-centent-explain {
   /* background-color: rgb(204, 102, 74); */
-  background: linear-gradient(180deg, #CC664A 0%, #cf7359 35%, #FCC184 100%);
-    width: 32em;
-    padding: 32px;
-    border-radius: 32px;
-    color: #fff;
+  background: linear-gradient(180deg, #cc664a 0%, #cf7359 35%, #fcc184 100%);
+  width: 32em;
+  padding: 32px;
+  border-radius: 32px;
+  color: #fff;
 }
 .set-opacity-btn {
   opacity: 0.9;
-  transition: .3s;
+  transition: 0.3s;
 }
 .set-opacity-btn:hover {
-  transition: .3s;
+  transition: 0.3s;
   opacity: 1;
 }
-@media (max-width: 1024px){
-  .main-home-div{
+
+.btn.btn-success.btn-sm.active.btn-font {
+  width: fit-content !important;
+}
+@media (max-width: 1024px) {
+  .main-home-div {
     display: none;
   }
-  
 }

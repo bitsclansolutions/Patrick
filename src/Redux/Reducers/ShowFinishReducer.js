@@ -8,6 +8,11 @@ const ShowFinishReducer = (state = data, action) => {
         show: true,
       };
 
+    case "hideFinishBtn":
+      return {
+        show: false,
+      };
+
     default:
       return state;
   }

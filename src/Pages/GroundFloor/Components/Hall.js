@@ -144,6 +144,8 @@ const Hall = (props) => {
 
   console.log(isDutch);
 
+  console.log(process.env.PUBLIC_URL);
+
   return (
     <>
       {/* {props.gamePhase === "hall" ? ( */}

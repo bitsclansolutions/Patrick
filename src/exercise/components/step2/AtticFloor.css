@@ -1,0 +1,17 @@
+.atticFloor-main-div-exercise-eng {
+  background-repeat: no-repeat;
+  position: relative;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  background-image: url("../../../../public/exercise-images/atticfloor-eng.png");
+}
+
+.atticFloor-main-div-exercise-dutch {
+  background-repeat: no-repeat;
+  position: relative;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  background-image: url("../../../../public/exercise-images/atticfloor-dutch.png");
+}

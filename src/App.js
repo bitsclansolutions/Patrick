@@ -33,6 +33,16 @@ import {
   disconnectedCorruptDutch,
   disconnectedCorruptEnglish,
 } from "./utils/translation";
+import StartPage from "./exercise/pages/step1/StartPage";
+import GroundFloorPage from "./exercise/pages/step2/GroundFloorPage";
+import FirstFloorPage from "./exercise/pages/step2/FirstFloorPage";
+import AtticFloorPage from "./exercise/pages/step2/AtticFloorPage";
+import Step3Page from "./exercise/pages/step3/Step3Page";
+import BoardPage from "./exercise/pages/step3/BoardPage";
+import DevicesPage from "./exercise/pages/step3/DevicesPage";
+import FinishPage from "./exercise/pages/step3/FinishPage";
+import Step4 from "./exercise/components/step4/Step4";
+import Step4Page from "./exercise/pages/step4/Step4Page";
 function App() {
   const userName = useSelector((state) => state.UserReducer.userName);
   const isFinished = useSelector((state) => state.ResultReducer.isFinished);
@@ -1522,6 +1532,18 @@ function App() {
               />
             }
           />
+
+          {/* exercise links */}
+
+          <Route path="/exercise-start" element={<StartPage />} />
+          <Route path="/exercise-groundFloor" element={<GroundFloorPage />} />
+          <Route path="/exercise-firstFloor" element={<FirstFloorPage />} />
+          <Route path="/exercise-atticFloor" element={<AtticFloorPage />} />
+          <Route path="/exercise-step3" element={<Step3Page />} />
+          <Route path="/exercise-meter" element={<BoardPage />} />
+          <Route path="/exercise-devices" element={<DevicesPage />} />
+          <Route path="/exercise-step3-finish" element={<FinishPage />} />
+          <Route path="/exercise-step4" element={<Step4Page />} />
         </Routes>
       </BrowserRouter>
     </>

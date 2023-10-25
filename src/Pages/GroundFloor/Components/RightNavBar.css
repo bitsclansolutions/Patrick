@@ -113,6 +113,7 @@
 }
 .check-exercise-div {
   text-align: center;
+  margin-top: 10px;
 }
 .btn-Check-Exercise {
   background-color: #b41c1c;
@@ -389,6 +390,12 @@
 .set-position-bottom-finish {
   position: absolute;
   bottom: 12px;
+  right: 24px;
+  z-index: 1000;
+}
+.set-position-translator {
+  position: absolute;
+  top: 12px;
   right: 24px;
   z-index: 1000;
 }

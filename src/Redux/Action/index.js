@@ -208,3 +208,29 @@ export const changeLanguage = (val) => {
     payload: val,
   };
 };
+
+// exercise
+
+export const increaseExerciseCounter = () => {
+  return {
+    type: "increaseExerciseCounter",
+  };
+};
+
+export const decreaseExerciseCounter = () => {
+  return {
+    type: "decreaseExerciseCounter",
+  };
+};
+export const resetExerciseCounter = () => {
+  return {
+    type: "resetExerciseCounter",
+  };
+};
+
+export const setExerciseCounter = (val) => {
+  return {
+    type: "setExerciseCounter",
+    payload: val,
+  };
+};

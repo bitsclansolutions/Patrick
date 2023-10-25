@@ -1,0 +1,16 @@
+.kitchen-main-div-exercise-eng {
+  background-repeat: no-repeat;
+  position: relative;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  background-image: url("../../../../public/exercise-images/kitchen-eng.png");
+}
+.kitchen-main-div-exercise-dutch {
+  background-repeat: no-repeat;
+  position: relative;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  background-image: url("../../../../public/exercise-images/kitchen-dutch.png");
+}

@@ -122,7 +122,7 @@ const SelectOption = () => {
                   if (largeBtn === "IQ test") {
                     navigate("/mask-group");
                   } else {
-                    alert("Select exercise");
+                    navigate("/exercise-start");
                   }
                 }}
               >

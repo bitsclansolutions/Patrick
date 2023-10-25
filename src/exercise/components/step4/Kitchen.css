@@ -1,0 +1,109 @@
+.kitchen-func-exercise-dutch {
+  background-repeat: no-repeat;
+  position: relative;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  background-image: url("../../../../public/exercise-images/kitchen-ground-dutch-4.png");
+}
+.kitchen-func-exercise-eng {
+  background-repeat: no-repeat;
+  position: relative;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  background-image: url("../../../../public/exercise-images/kitchen-ground-4.png");
+}
+
+.smoke {
+  position: absolute;
+  top: 35.2%;
+  left: 12.8%;
+  width: 175px;
+}
+
+.smoke img {
+  width: 100%;
+}
+
+.smoke-button {
+  position: absolute;
+  left: 18%;
+  top: 29%;
+}
+
+.mixer {
+  position: absolute;
+  top: 50%;
+  left: 3%;
+}
+
+.mixer img {
+  height: 15vh;
+}
+
+.mixer-button {
+  position: absolute;
+  top: 55%;
+  left: 10%;
+}
+.toaster {
+  position: absolute;
+  top: 36%;
+  right: 47%;
+}
+
+.toaster img {
+  height: 28vh;
+}
+
+.toaster-button {
+  position: absolute;
+  top: 54%;
+  right: 59%;
+}
+
+.oven {
+  position: absolute;
+  bottom: 12%;
+  left: 16.5%;
+}
+
+.oven img {
+  height: 14vh;
+}
+
+.oven-button {
+  position: absolute;
+  bottom: 18%;
+  left: 30%;
+}
+
+.bulb1 {
+  position: absolute;
+  right: 53%;
+}
+
+.bulb1 img {
+  height: 30vh;
+}
+
+.bulb1-button {
+  position: absolute;
+  top: 10%;
+  right: 45%;
+}
+.bulb2 {
+  position: absolute;
+  right: 27%;
+}
+
+.bulb2 img {
+  height: 30vh;
+}
+
+.bulb2-button {
+  position: absolute;
+  top: 10%;
+  right: 19%;
+}

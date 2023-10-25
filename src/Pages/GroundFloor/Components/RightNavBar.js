@@ -1927,7 +1927,9 @@ const RightNavBar = (props) => {
           />
           <p>Dutch</p>
         </div> */}
-        {<ChangeLanguageToggle />}
+        <div className="set-position-translator">
+          {<ChangeLanguageToggle />}
+        </div>
         <div
           className="check-exercise-div"
           style={{ cursor: "pointer" }}

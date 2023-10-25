@@ -1,0 +1,16 @@
+.highlight-main {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.highlight {
+  position: absolute;
+  background: transparent;
+  width: 200px;
+  aspect-ratio: 1;
+  border-radius: 99999px;
+}

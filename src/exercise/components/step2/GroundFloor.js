@@ -28,18 +28,20 @@ const GroundFloor = () => {
         }
       >
         <Popup opacity="20" top={0} right={0} position={true} width={45}>
-          <p className="popup-text">
+          <p className="welcome">Ground Floor</p>
+          <p className="popup-text-base">
             You will see several doors with the name of the room on them.
           </p>
-          <p className="popup-text">
+          <p className="popup-text-base">
             To the left of the screen you see the meter cupboard with an
             overview above it where you can see which power group is in which
             room. You can also see which power group the electricity is
             connected to.
           </p>
-          <p className="popup-text">
-            Here you can see that the kitchen is on power group 2 and the
-            toilet, living room and hall on power group 1.
+          <p className="popup-text-base">
+            Here you can see that the <b>kitchen</b> is on power <b>group 2</b>{" "}
+            and the <b>toilet, living room</b> and <b>hall</b> on power{" "}
+            <b>group 1</b>.
           </p>
           <div className="popup-button">
             <Link to="/exercise-firstFloor">Click here to continue</Link>

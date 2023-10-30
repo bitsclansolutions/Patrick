@@ -190,7 +190,10 @@ const Congratulation = () => {
               <CircularProgressbar value={100} text={"100%"} />
             </>
           ) : (
-            <CircularProgressbar value={totalLocal} text={`${totalLocal}%`} />
+            <CircularProgressbar
+              value={totalLocal < 1 ? 0 : totalLocal}
+              text={`${totalLocal < 1 ? 0 : totalLocal}%`}
+            />
           )}
         </div>
         <div className="mt-4 resultFormat">

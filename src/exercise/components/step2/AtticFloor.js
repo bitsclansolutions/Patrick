@@ -29,16 +29,21 @@ const AtticFloor = () => {
     >
       {!endStep && (
         <Popup right={0} top={0} opacity={10}>
-          {" "}
-          <p className="popup-text">
+          <p className="welcome">Attic Floor</p>
+          <p className="popup-text-base">
             This is the first floor of the house. You are on the landing.
           </p>
-          <p className="popup-text">
+          <p className="popup-text-base">
             At the stairwell you can go from one floor to the other floor.
           </p>
-          <p className="popup-text">
-            Here you can see that bedrooms 1 and 2 are on power group 3. The
-            landing, the bathroom and bedroom 3 are on power group 4.
+          <p className="popup-text-base">
+            Here you can see that <b>bedrooms 1 and 2</b> are on power{" "}
+            <b>group 3</b>.
+          </p>
+          <p>
+            {" "}
+            The <b>hall</b>, the <b>bathroom</b> and <b>bedroom 3</b> are on
+            power <b>group 4</b>.
           </p>
           <div className="popup-button">
             <button onClick={() => setEndStep(true)}>

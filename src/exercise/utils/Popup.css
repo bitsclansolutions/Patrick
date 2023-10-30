@@ -24,6 +24,14 @@
   box-shadow: 0 0 20px #3f3f3f;
 }
 
+.welcome {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: #085ca8;
+  margin-bottom: 5px;
+}
+
 .popup-text {
   color: #474747;
   font-size: 18px;
@@ -31,6 +39,12 @@
   text-align: center;
 }
 
+.popup-text-base {
+  color: #474747;
+  font-size: 16px;
+  margin-bottom: 12px;
+  text-align: center;
+}
 .popup-button {
   margin: 25px 0 10px !important;
   text-align: center;

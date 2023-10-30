@@ -31,19 +31,13 @@ const AtticFloor = () => {
         <Popup right={0} top={0} opacity={10}>
           <p className="welcome">Attic Floor</p>
           <p className="popup-text-base">
-            This is the first floor of the house. You are on the landing.
+            This is the attic, which is located on the second floor of the
+            house. You are on the landing of the attic.
           </p>
           <p className="popup-text-base">
-            At the stairwell you can go from one floor to the other floor.
-          </p>
-          <p className="popup-text-base">
-            Here you can see that <b>bedrooms 1 and 2</b> are on power{" "}
-            <b>group 3</b>.
-          </p>
-          <p>
-            {" "}
-            The <b>hall</b>, the <b>bathroom</b> and <b>bedroom 3</b> are on
-            power <b>group 4</b>.
+            Here you can see that the landing, <b>guest room</b>, <b>study</b>{" "}
+            and <b>storage room</b> are on stream <b>group 5</b> and the{" "}
+            <b>laundry room</b> on stream <b>group 6</b>.
           </p>
           <div className="popup-button">
             <button onClick={() => setEndStep(true)}>

@@ -35,7 +35,7 @@ const SelectOption = () => {
           <div class="cloud x8"></div>
         </div>
         <div style={{ textAlign: "center", position: "fixed" }}>
-          <ChangeLanguageToggle />
+          <ChangeLanguageToggle color="black" />
           <>
             <div>
               <label

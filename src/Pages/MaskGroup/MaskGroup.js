@@ -163,7 +163,7 @@ const MaskGroup = () => {
           }}
         >
           <Avator phase={"home"} />
-          <ChangeLanguageToggle />
+          <ChangeLanguageToggle color="black" />
         </div>
 
         <div id="clouds">

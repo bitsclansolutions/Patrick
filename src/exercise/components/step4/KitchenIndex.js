@@ -102,7 +102,7 @@ const KitchenIndex = () => {
   };
 
   console.log(warning);
-  const toasterOn = () => {
+  const bulb2On = () => {
     if (breakerOn && !warning) {
       console.log("hello");
       setShowCorruptError(true);
@@ -112,7 +112,7 @@ const KitchenIndex = () => {
       console.log("hello");
       setShowStepBack(true);
     } else if (!breakerOn) {
-      setToaster(!toaster);
+      setBulb2(!bulb2);
     }
   };
 
@@ -173,6 +173,10 @@ const KitchenIndex = () => {
   };
   const stepBackHandler = () => {
     setShowStepBack(false);
+  };
+  const connectCorrectHandler = () => {
+    setConnectCorrect(false);
+    setBreaker2(false);
   };
 
   return (
@@ -438,13 +442,12 @@ const KitchenIndex = () => {
                         toaster ? "success" : "danger"
                       } btn-sm active btn-font`}
                       onClick={() => {
-                        !breakerOn &&
-                          dispatch(
-                            !toaster
-                              ? decreaseExerciseCounter()
-                              : increaseExerciseCounter()
-                          );
-                        toasterOn();
+                        dispatch(
+                          !toaster
+                            ? decreaseExerciseCounter()
+                            : increaseExerciseCounter()
+                        );
+                        setToaster(!toaster);
                       }}
                     >
                       {toaster ? "Disconnect" : "Connect"}
@@ -499,12 +502,13 @@ const KitchenIndex = () => {
                         bulb2 ? "success" : "danger"
                       } btn-sm active btn-font`}
                       onClick={() => {
-                        dispatch(
-                          !bulb2
-                            ? decreaseExerciseCounter()
-                            : increaseExerciseCounter()
-                        );
-                        setBulb2(!bulb2);
+                        !breakerOn &&
+                          dispatch(
+                            !bulb2
+                              ? decreaseExerciseCounter()
+                              : increaseExerciseCounter()
+                          );
+                        bulb2On();
                       }}
                     >
                       {bulb2 ? "Disconnect" : "Connect"}
@@ -636,7 +640,7 @@ const KitchenIndex = () => {
           <p className="popup-text">Do you understand this?</p>
           <p></p>
           <div className="popup-button">
-            <Link to="/exercise-step4">No</Link>
+            <button onClick={() => window.location.reload(false)}>No</button>
             <button onClick={repairHandler}>Yes</button>
           </div>
         </Popup>
@@ -684,7 +688,7 @@ const KitchenIndex = () => {
             <button onClick={() => window.location.reload(false)}>
               Step Back
             </button>
-            <button onClick={() => setConnectCorrect(false)}>Continue</button>
+            <button onClick={connectCorrectHandler}>Continue</button>
           </div>
         </Popup>
       )}

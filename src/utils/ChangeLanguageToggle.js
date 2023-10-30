@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { changeLanguage } from "../Redux/Action";
 import "./ChangeLanguageToggle.css";
 
-const ChangeLanguageToggle = () => {
+const ChangeLanguageToggle = ({ color }) => {
   const dispatch = useDispatch();
   const [isDutch, setIsDutch] = useState(true);
   const translateHandler = (e) => {
@@ -21,7 +21,7 @@ const ChangeLanguageToggle = () => {
   }, [isDutch]);
   return (
     <div>
-      <div className="translate">
+      <div className="translate" style={{ color: color }}>
         <p>English</p>
         <input type="checkbox" checked={isDutch} onChange={translateHandler} />
         <p>Dutch</p>

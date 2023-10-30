@@ -68,7 +68,7 @@ const Home = () => {
         </div>
         <div style={{ textAlign: "center", position: "fixed" }}>
           <div class="home-language-toggle">
-            <ChangeLanguageToggle />
+            <ChangeLanguageToggle color="black" />
           </div>
           {phase === "first" ? (
             <>

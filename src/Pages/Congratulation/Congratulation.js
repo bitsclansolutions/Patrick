@@ -171,12 +171,18 @@ const Congratulation = () => {
     console.log(totalLocal);
     result = (
       <>
-        {totalLocal > 0 && (
-          <p className="congo-msg">
-            Well done {userName} ! You have chosen the right device. Get your
-            supervisor in and show him your score
-          </p>
-        )}
+        {totalLocal > 0 &&
+          (isDutch ? (
+            <p className="congo-msg">
+              Goed zo {userName.toUpperCase()} ! Je hebt het juiste apparaat
+              uitgekozen. Haal je begeleider erbij en laat hem jouw score zien
+            </p>
+          ) : (
+            <p className="congo-msg">
+              Well done {userName.toUpperCase()} ! You have chosen the right
+              device. Get your supervisor in and show him your score
+            </p>
+          ))}
         <div style={{ height: "200px", width: "200px", margin: "auto" }}>
           {(counterLocal == 0 &&
             counterDeviceLocal == 1 &&
@@ -262,7 +268,8 @@ const Congratulation = () => {
           height: "100vh",
           display: "flex",
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "start",
+          paddingTop: "20px",
           width: "auto",
           position: "relative",
           flexDirection: "column",
@@ -272,19 +279,21 @@ const Congratulation = () => {
       >
         <ChangeLanguageToggle />
         <div className="set-bg-centent-explain">{result}</div>
-        <button
-          // className={firstBtn === "attic" ? 'btn-01-maskGroup' : "btn-maskGroup mb-4 "}
-          //   boom-bum
-          className={"set-position-btn boom-bum set-btn-tell-teacher"}
-          onClick={() => {
-            // setShowAttic(true)
-            // navigate("/mask-group");
-            window.location.href = "/";
-          }}
-        >
-          {/* <img src={RestartIcon} /> */}
-          {isDutch ? "Vertel het uw supervisor" : "Tell Your Supervisor"}
-        </button>
+        <div className="congo-button">
+          <button
+            // className={firstBtn === "attic" ? 'btn-01-maskGroup' : "btn-maskGroup mb-4 "}
+            //   boom-bum
+            className={"set-position-btn boom-bum set-btn-tell-teacher"}
+            onClick={() => {
+              // setShowAttic(true)
+              // navigate("/mask-group");
+              window.location.href = "/";
+            }}
+          >
+            {/* <img src={RestartIcon} /> */}
+            {isDutch ? "Vertel het uw supervisor" : "Tell Your Supervisor"}
+          </button>
+        </div>
       </div>
     </>
   );

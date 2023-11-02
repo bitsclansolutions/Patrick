@@ -82,8 +82,8 @@ const MaskGroup = () => {
         }</sup></strong></p>
         <p style="margin-bottom: 0px; font-size: 16px;"><small>${
           isDutch
-            ? "Hal, Bathroom, Slaapkamer 03"
-            : "Hall, Badkamer, Bedroom 03"
+            ? "Hal, Badkamer, Slaapkamer 03"
+            : "Hall, Bathroom, Bedroom 03"
         }</small></p>
           </div>
           </td>

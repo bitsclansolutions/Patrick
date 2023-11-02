@@ -54,6 +54,14 @@ code {
 .btn.btn-success.btn-sm.active.btn-font {
   width: fit-content !important;
 }
+
+.btn.btn-success.btn-sm:hover {
+  background: #105f3a;
+}
+.btn.btn-danger.btn-sm:hover {
+  background: #99202c;
+}
+
 @media (max-width: 1024px) {
   .main-home-div {
     display: none;

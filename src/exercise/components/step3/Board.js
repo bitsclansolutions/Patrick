@@ -4,6 +4,7 @@ import Highlight from "../../utils/Highlight";
 import Popup from "../../utils/Popup";
 import "./Board.css";
 import { Link } from "react-router-dom";
+import ChangeLanguageToggle from "../../../utils/ChangeLanguageToggle";
 
 const Board = () => {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
@@ -27,15 +28,33 @@ const Board = () => {
           : "kitchen-main-div-exercise-eng"
       }
     >
-      <Highlight bottom={-5} width="20%" left={-1} opacity={70} />
+      <div className="translator-exercise">
+        <ChangeLanguageToggle />
+      </div>
+      <Highlight bottom={0} width="20%" left={-1} opacity={70} />
       <Popup bottom={15} left={20}>
-        <p className="popup-text">
-          In this board you can see that power group2 is switched off and
-          changed color.
-        </p>
-        <div className="popup-button">
-          <Link to="/exercise-devices">Click here to continue</Link>
-        </div>
+        {isDutch ? (
+          <>
+            <p className="popup-text">
+              Op deze afbeelding zie je dat <b>stroomgroep 2</b> is
+              uitgeschakeld. De schakelaar staat naar onder en is zwart van
+              kleur geworden.
+            </p>
+            <div className="popup-button">
+              <Link to="/exercise-devices">Klik hier om verder te gaan</Link>
+            </div>
+          </>
+        ) : (
+          <>
+            <p className="popup-text">
+              In this board you can see that power <b>group 2</b> is switched
+              off and changed color.
+            </p>
+            <div className="popup-button">
+              <Link to="/exercise-devices">Click here to continue</Link>
+            </div>
+          </>
+        )}
       </Popup>
     </div>
   );

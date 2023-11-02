@@ -81,7 +81,9 @@ const MaskGroup = () => {
           isDutch ? "Groep&nbsp;4" : "Group&nbsp;4"
         }</sup></strong></p>
         <p style="margin-bottom: 0px; font-size: 16px;"><small>${
-          isDutch ? "Hal, Toilet, Slaapkamer 03" : "Hall, Toilet, Bedroom 03"
+          isDutch
+            ? "Hal, Bathroom, Slaapkamer 03"
+            : "Hall, Badkamer, Bedroom 03"
         }</small></p>
           </div>
           </td>
@@ -99,7 +101,9 @@ const MaskGroup = () => {
             isDutch ? "Groep&nbsp;5" : "Group&nbsp;5"
           }</strong></sup></p>
             <p style="margin-bottom: 0px; font-size: 16px;"><small>${
-              isDutch ? "Hal, Toilet, Woonkamer" : "Hall, Toilet, Living room"
+              isDutch
+                ? "Hal, Logeerkamer, Studeerkamer, Berging"
+                : "Hall, Guest room, Study room, Storage room"
             }</small></p>
             </div>
             </td>

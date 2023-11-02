@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Popup from "../../utils/Popup";
 import { Link } from "react-router-dom";
+import ChangeLanguageToggle from "../../../utils/ChangeLanguageToggle";
 
 const Finish = () => {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
@@ -25,12 +26,19 @@ const Finish = () => {
           : "kitchen-main-div-exercise-eng"
       }
     >
+      <div className="translator-exercise">
+        <ChangeLanguageToggle />
+      </div>
       <Popup opacity={60}>
-        <p className="welcome">Did you understand this explanation?</p>
+        <p className="welcome">
+          {isDutch
+            ? "Heb je deze uitleg begrepen?"
+            : "Did you understand this explanation?"}
+        </p>
         <div className="popup-button">
           <div className="popup-button">
-            <Link to="/exercise-step3">No</Link>
-            <Link to="/exercise-step4">Yes</Link>
+            <Link to="/exercise-step3">{isDutch ? "Nee" : "No"}</Link>
+            <Link to="/exercise-step4">{isDutch ? "Ja" : "Yes"}</Link>
           </div>
         </div>
       </Popup>

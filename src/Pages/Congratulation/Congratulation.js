@@ -13,6 +13,8 @@ const Congratulation = () => {
   const isHurray = useSelector((state) => state.HurrayReducer.hurry);
   const finished = useSelector((state) => state.ShowFinishReducer.show);
 
+  const userName = localStorage.getItem("userName");
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -169,6 +171,12 @@ const Congratulation = () => {
     console.log(totalLocal);
     result = (
       <>
+        {totalLocal > 0 && (
+          <p className="congo-msg">
+            Well done {userName} ! You have chosen the right device. Get your
+            supervisor in and show him your score
+          </p>
+        )}
         <div style={{ height: "200px", width: "200px", margin: "auto" }}>
           {(counterLocal == 0 &&
             counterDeviceLocal == 1 &&

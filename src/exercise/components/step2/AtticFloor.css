@@ -4,7 +4,7 @@
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
-  background-image: url("../../../../public/exercise-images/atticfloor-eng.png");
+  background-image: url("../../patrick-exercise-new/attic-floor-eng.png");
 }
 
 .atticFloor-main-div-exercise-dutch {
@@ -13,5 +13,5 @@
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
-  background-image: url("../../../../public/exercise-images/atticfloor-dutch.png");
+  background-image: url("../../patrick-exercise-new/attic-floor-dutch.png");
 }

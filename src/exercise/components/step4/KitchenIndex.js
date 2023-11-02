@@ -188,11 +188,12 @@ const KitchenIndex = () => {
         >
           <>
             <div>
-              {<ChangeLanguageToggle />}
+              <div className="translator-exercise">
+                {<ChangeLanguageToggle />}
+              </div>
               <div className="check-exercise-div">
                 <Avator phase={"game"} />
               </div>
-
               <hr style={{ marginTop: "2%" }} />
               <div className="legend">
                 {/* GROUP 1 */}
@@ -410,7 +411,13 @@ const KitchenIndex = () => {
                         setSmoke(!smoke);
                       }}
                     >
-                      {smoke ? "Disconnect" : "Connect"}
+                      {smoke
+                        ? isDutch
+                          ? "Loskoppelen"
+                          : "Disconnect"
+                        : isDutch
+                        ? "Aansluiten"
+                        : "Connect"}
                     </button>
                   </div>
                   <div className="mixer">
@@ -430,7 +437,13 @@ const KitchenIndex = () => {
                         setMixer(!mixer);
                       }}
                     >
-                      {mixer ? "Disconnect" : "Connect"}
+                      {mixer
+                        ? isDutch
+                          ? "Loskoppelen"
+                          : "Disconnect"
+                        : isDutch
+                        ? "Aansluiten"
+                        : "Connect"}
                     </button>
                   </div>
                   <div className="toaster">
@@ -450,7 +463,13 @@ const KitchenIndex = () => {
                         setToaster(!toaster);
                       }}
                     >
-                      {toaster ? "Disconnect" : "Connect"}
+                      {toaster
+                        ? isDutch
+                          ? "Loskoppelen"
+                          : "Disconnect"
+                        : isDutch
+                        ? "Aansluiten"
+                        : "Connect"}
                     </button>
                   </div>
                   <div className="oven">
@@ -470,7 +489,13 @@ const KitchenIndex = () => {
                         setOven(!oven);
                       }}
                     >
-                      {oven ? "Disconnect" : "Connect"}
+                      {oven
+                        ? isDutch
+                          ? "Loskoppelen"
+                          : "Disconnect"
+                        : isDutch
+                        ? "Aansluiten"
+                        : "Connect"}
                     </button>
                   </div>
                   <div className="bulb1">
@@ -490,7 +515,13 @@ const KitchenIndex = () => {
                         setBulb1(!bulb1);
                       }}
                     >
-                      {bulb1 ? "Disconnect" : "Connect"}
+                      {bulb1
+                        ? isDutch
+                          ? "Loskoppelen"
+                          : "Disconnect"
+                        : isDutch
+                        ? "Aansluiten"
+                        : "Connect"}
                     </button>
                   </div>
                   <div className="bulb2">
@@ -511,7 +542,13 @@ const KitchenIndex = () => {
                         bulb2On();
                       }}
                     >
-                      {bulb2 ? "Disconnect" : "Connect"}
+                      {bulb2
+                        ? isDutch
+                          ? "Loskoppelen"
+                          : "Disconnect"
+                        : isDutch
+                        ? "Aansluiten"
+                        : "Connect"}
                     </button>
                   </div>
                 </div>
@@ -523,185 +560,436 @@ const KitchenIndex = () => {
 
       {showDisconnectDevices && (
         <Popup opacity={2} bottom={5} right={2}>
-          <p className="popup-text">
-            You can see that in the kitchen there are You can see that in the
-            kitchen there are various electrical appliances. Each device or lamp
-            has a green 'Disconnect' button.
-          </p>
-          <p className="popup-text">
-            By pressing this button you unplug the plug. The button changes
-            color so you can see that it's scaled out.
-          </p>
-          <div className="popup-button">
-            <button onClick={disconnectDevices}>Click here to continue</button>
-          </div>
+          {isDutch ? (
+            <>
+              <p className="popup-text">
+                Je ziet dat in de keuken verschillende elektrische apparaten
+                staan. Bij elk apparaat of lamp staat een groene knop
+                <b>'Loskoppelen'</b>.
+              </p>
+              <p className="popup-text">
+                Door op deze knop te drukken haal je de stekker uit het
+                stopcontact. De knop veranderd van kleur zodat je kunt zien dat
+                deze is uitgeschald.
+              </p>
+              <div className="popup-button">
+                <button onClick={disconnectDevices}>
+                  Klik hier om verder te gaan
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <p className="popup-text">
+                You can see that in the kitchen there are You can see that in
+                the kitchen there are various electrical appliances. Each device
+                or lamp has a green <b>'Disconnect'</b> button.
+              </p>
+              <p className="popup-text">
+                By pressing this button you unplug the plug. The button changes
+                color so you can see that it's scaled out.
+              </p>
+              <div className="popup-button">
+                <button onClick={disconnectDevices}>
+                  Click here to continue
+                </button>
+              </div>
+            </>
+          )}
         </Popup>
       )}
       {showDisconnectAll && (
         <Popup opacity={7}>
-          <p className="welcome">Disconnect All</p>
-          <p className="popup-text">
-            Click on all electrical device in the kitchen to turn them off.
-          </p>
-          <div className="popup-button">
-            <button onClick={disconnectAll}>Click here to continue</button>
-          </div>
+          {isDutch ? (
+            <>
+              <p className="welcome">Alles Loskoppelen</p>
+              <p className="popup-text">
+                klik op alle elektrische apparaten in de keuken om deze uit te
+                schakelen.
+              </p>
+              <div className="popup-button">
+                <button onClick={disconnectAll}>
+                  Klik hier om verder te gaan
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <p className="welcome">Disconnect All</p>
+              <p className="popup-text">
+                Click on all electrical device in the kitchen to turn them off.
+              </p>
+              <div className="popup-button">
+                <button onClick={disconnectAll}>Click here to continue</button>
+              </div>
+            </>
+          )}
         </Popup>
       )}
       {showMeterFuse && (
         <>
           <Popup opacity={2}>
-            <p className="welcome">Turn fuse on</p>
-            <p className="popup-text">
-              After disconnecting all devices look to the meterbox Click on the
-              group 2 fuse to turn power back on.
-            </p>
-            <div className="popup-button">
-              <button onClick={() => setShowMeterFuse(false)}>
-                Click here to continue
-              </button>
-            </div>
+            {isDutch ? (
+              <>
+                <p className="welcome">Zet de zekering aan</p>
+                <p className="popup-text">
+                  Nadat u alle apparaten hebt losgekoppeld, kijkt u naar de
+                  meterkast. Klik op de zekering van groep 2 om de stroom weer
+                  in te schakelen.
+                </p>
+                <div className="popup-button">
+                  <button onClick={() => setShowMeterFuse(false)}>
+                    Klik hier om verder te gaan
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <p className="welcome">Turn fuse on</p>
+                <p className="popup-text">
+                  After disconnecting all devices look to the meterbox Click on
+                  the group 2 fuse to turn power back on.
+                </p>
+                <div className="popup-button">
+                  <button onClick={() => setShowMeterFuse(false)}>
+                    Click here to continue
+                  </button>
+                </div>
+              </>
+            )}
           </Popup>
         </>
       )}
       {showWrongBreaker && (
         <Popup opacity={7}>
-          <p className="welcome">
-            Unfortunately, this is the wrong fuse. choose again.
-          </p>
-          <div className="popup-button">
-            <button onClick={wrongBreakerHandler}>Try again</button>
-          </div>
+          {isDutch ? (
+            <>
+              <p className="welcome">
+                Helaas, dit is de verkeerde zekering. kies opnieuw.
+              </p>
+              <div className="popup-button">
+                <button onClick={wrongBreakerHandler}>
+                  probeer het nog eens
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <p className="welcome">
+                Unfortunately, this is the wrong fuse. choose again.
+              </p>
+              <div className="popup-button">
+                <button onClick={wrongBreakerHandler}>Try again</button>
+              </div>
+            </>
+          )}
         </Popup>
       )}
       {showDeviceError && (
         <Popup opacity={7}>
-          <p className="welcome">
-            Look after! You haven't turned off all the devices in the kitchen
-            yet.
-          </p>
-          <div className="popup-button">
-            <button onClick={deviceErrorHandler}>Try again</button>
-          </div>
+          {isDutch ? (
+            <>
+              <p className="welcome">
+                Pas op! Je hebt nog niet alle apparaten in de keuken
+                uitgeschakel.
+              </p>
+              <div className="popup-button">
+                <button onClick={deviceErrorHandler}>
+                  probeer het nog eens
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <p className="welcome">
+                Look after! You haven't turned off all the devices in the
+                kitchen yet.
+              </p>
+              <div className="popup-button">
+                <button onClick={deviceErrorHandler}>Try again</button>
+              </div>
+            </>
+          )}
         </Popup>
       )}
       {showRightBreaker && (
         <Popup opacity={7}>
-          <p className="welcome">Well done! You turned the power back on.</p>
-          <div className="popup-button">
-            <button onClick={rightBreakerHandler}>
-              Click here to continue
-            </button>
-          </div>
+          {isDutch ? (
+            <>
+              <p className="welcome">
+                Goed gedaan! Je hebt de stroom weer ingeschakeld.
+              </p>
+              <div className="popup-button">
+                <button onClick={rightBreakerHandler}>
+                  Klik hier om verder te gaan
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <p className="welcome">
+                Well done! You turned the power back on.
+              </p>
+              <div className="popup-button">
+                <button onClick={rightBreakerHandler}>
+                  Click here to continue
+                </button>
+              </div>
+            </>
+          )}
         </Popup>
       )}
       {showConnectAll && (
         <Popup opacity={7}>
-          <p className="welcome">Connect all devices</p>
-          <div className="popup-button">
-            <button onClick={connectAll}>Click here to continue</button>
-          </div>
+          {isDutch ? (
+            <>
+              <p className="welcome">Sluit alle apparaten aan</p>
+              <div className="popup-button">
+                <button onClick={connectAll}>
+                  Klik hier om verder te gaan
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <p className="welcome">Connect all devices</p>
+              <div className="popup-button">
+                <button onClick={connectAll}>Click here to continue</button>
+              </div>
+            </>
+          )}
         </Popup>
       )}
       {showCorruptError && (
         <Popup opacity={1}>
-          <div className="welcome">Corrupt device</div>
-          <p className="popup-text">
-            You tried to turn on the device, but you couldn't. Now look in the
-            meter cupboard.
-          </p>
-          <div className="popup-button">
-            <button onClick={corruptErrorHandler}>
-              Click here to continue
-            </button>
-          </div>
+          {isDutch ? (
+            <>
+              <div className="welcome">Corrupt apparaat</div>
+              <p className="popup-text">
+                Je hebt het apparaat proberen in te schakelen, maar dat lukt
+                niet. Kijk nu in de meterkast.
+              </p>
+              <div className="popup-button">
+                <button onClick={corruptErrorHandler}>
+                  Klik hier om verder te gaan
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="welcome">Corrupt device</div>
+              <p className="popup-text">
+                You tried to turn on the device, but you couldn't. Now look in
+                the meter cupboard.
+              </p>
+              <div className="popup-button">
+                <button onClick={corruptErrorHandler}>
+                  Click here to continue
+                </button>
+              </div>
+            </>
+          )}
         </Popup>
       )}
       {showFuseError && (
         <Popup opacity={1}>
-          <p className="welcome">Fuse turned off</p>
-          <p className="popup-text">
-            Fuse is now switched off. This means that the last device you
-            switched on had a short circuit.
-          </p>
-          <div className="popup-button">
-            <button onClick={fuseErrorHandler}>Click here to continue</button>
-          </div>
+          {isDutch ? (
+            <>
+              <p className="welcome">Zekering uitgeschakeld</p>
+              <p className="popup-text">
+                De zekering is nu uitgeschakeld. De schakelaar staat naar onder
+                en is nu zwart. Dit betekent dat in het laatste apparaat dat je
+                had ingeschakeld een kortsluiting zit.
+              </p>
+              <div className="popup-button">
+                <button onClick={fuseErrorHandler}>
+                  Klik hier om verder te gaan
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <p className="welcome">Fuse turned off</p>
+              <p className="popup-text">
+                Fuse is now switched off. This means that the last device you
+                switched on had a short circuit.
+              </p>
+              <div className="popup-button">
+                <button onClick={fuseErrorHandler}>
+                  Click here to continue
+                </button>
+              </div>
+            </>
+          )}
         </Popup>
       )}
       {showRepair && (
         <Popup opacity={1}>
-          <p className="welcome">Fuse turned off</p>
-          <p className="popup-text">
-            You can see that {exerciseDisconnected} devices are switched off in
-            the kitchen (group 2). The last device has a short circuit. So you
-            have to replace it or have it repaired.
-          </p>
-          <p className="popup-text">Do you understand this?</p>
-          <p></p>
-          <div className="popup-button">
-            <button onClick={() => window.location.reload(false)}>No</button>
-            <button onClick={repairHandler}>Yes</button>
-          </div>
+          {isDutch ? (
+            <>
+              <p className="welcome">Zekering uitgeschakeld</p>
+              <p className="popup-text">
+                Je ziet dat in de keuken (groep 2) vier apparaten zijn
+                uitgeschakeld. In het laatste apparaat zit dus kortsluiting. Die
+                moet je normaal gesproken vervangen of laten repareren.
+              </p>
+              <p className="popup-text">Begrijp je dit?</p>
+              <p></p>
+              <div className="popup-button">
+                <button onClick={() => window.location.reload(false)}>
+                  Nee
+                </button>
+                <button onClick={repairHandler}>Ja</button>
+              </div>
+            </>
+          ) : (
+            <>
+              <p className="welcome">Fuse turned off</p>
+              <p className="popup-text">
+                You can see that {exerciseDisconnected} devices are switched off
+                in the kitchen (group 2). The last device has a short circuit.
+                So you have to replace it or have it repaired.
+              </p>
+              <p className="popup-text">Do you understand this?</p>
+              <p></p>
+              <div className="popup-button">
+                <button onClick={() => window.location.reload(false)}>
+                  No
+                </button>
+                <button onClick={repairHandler}>Yes</button>
+              </div>
+            </>
+          )}
         </Popup>
       )}
       {showConnectRemaining && (
         <Popup opacity={1}>
-          <p className="welcome">Connect Other</p>
-          <p className="popup-text">
-            Now turn the {exerciseDisconnected - 1} good devices back on and
-            leave the defective device turned off.
-          </p>
-          <p></p>
-          <div className="popup-button">
-            <button onClick={() => setShowConnectRemaining(false)}>
-              Click here to continue
-            </button>
-          </div>
+          {isDutch ? (
+            <>
+              <p className="welcome">Andere Verbinden</p>
+              <p className="popup-text">
+                Schakel nu de {exerciseDisconnected - 1} goede apparaten weer in
+                en laat het defecte apparaat uitgeschakeld.
+              </p>
+              <p></p>
+              <div className="popup-button">
+                <button onClick={() => setShowConnectRemaining(false)}>
+                  Klik hier om verder te gaan
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <p className="welcome">Connect Other</p>
+              <p className="popup-text">
+                Now turn the {exerciseDisconnected - 1} good devices back on and
+                leave the defective device turned off.
+              </p>
+              <p></p>
+              <div className="popup-button">
+                <button onClick={() => setShowConnectRemaining(false)}>
+                  Click here to continue
+                </button>
+              </div>
+            </>
+          )}
         </Popup>
       )}
       {showStepBack && (
         <Popup opacity={7}>
-          <p className="welcome">Wrong device</p>
-          <p className="popup-text">
-            This is not right. Choose again. Do you want to step back? Then
-            click on step back.
-          </p>
-          <p></p>
-          <div className="popup-button">
-            <button onClick={() => window.location.reload(false)}>
-              Step Back
-            </button>
-            <button onClick={stepBackHandler}>Continue</button>
-          </div>
+          {isDutch ? (
+            <>
+              <p className="welcome">Verkeerd apparaat</p>
+              <p className="popup-text">
+                Dit is niet juist. Kies opnieuw Wil je een stap terug, klik dan
+                op stap terug
+              </p>
+              <p></p>
+              <div className="popup-button">
+                <button onClick={() => window.location.reload(false)}>
+                  Stap terug
+                </button>
+                <button onClick={stepBackHandler}>Doorgaan</button>
+              </div>
+            </>
+          ) : (
+            <>
+              <p className="welcome">Wrong device</p>
+              <p className="popup-text">
+                This is not right. Choose again. Do you want to step back? Then
+                click on step back.
+              </p>
+              <p></p>
+              <div className="popup-button">
+                <button onClick={() => window.location.reload(false)}>
+                  Step Back
+                </button>
+                <button onClick={stepBackHandler}>Continue</button>
+              </div>
+            </>
+          )}
         </Popup>
       )}
       {connectCorrect && (
         <Popup opacity={7}>
-          <p className="welcome">Connect all correct</p>
-          <p className="popup-text">
-            You have not turned on all correct devices, please connect all. Do
-            you want to step back?
-          </p>
-          <p></p>
-          <div className="popup-button">
-            <button onClick={() => window.location.reload(false)}>
-              Step Back
-            </button>
-            <button onClick={connectCorrectHandler}>Continue</button>
-          </div>
+          {isDutch ? (
+            <>
+              <p className="welcome">Sluit alles correct aan</p>
+              <p className="popup-text">
+                U heeft niet alle juiste apparaten ingeschakeld. Sluit ze
+                allemaal aan. Wil je een stap terug doen?
+              </p>
+              <p></p>
+              <div className="popup-button">
+                <button onClick={() => window.location.reload(false)}>
+                  Stap terug
+                </button>
+                <button onClick={connectCorrectHandler}>Doorgaan</button>
+              </div>
+            </>
+          ) : (
+            <>
+              <p className="welcome">Connect all correct</p>
+              <p className="popup-text">
+                You have not turned on all correct devices, please connect all.
+                Do you want to step back?
+              </p>
+              <p></p>
+              <div className="popup-button">
+                <button onClick={() => window.location.reload(false)}>
+                  Step Back
+                </button>
+                <button onClick={connectCorrectHandler}>Continue</button>
+              </div>
+            </>
+          )}
         </Popup>
       )}
       {showFinish && (
         <Popup opacity={7}>
-          <p className="welcome">Hurray</p>
-          <p className="popup-text">
-            Well done! You are now ready to take the test.
-          </p>
-          <p></p>
-          <div className="popup-button">
-            <Link to="/mask-group">Let's go</Link>
-          </div>
+          {isDutch ? (
+            <>
+              <p className="welcome">Hoera</p>
+              <p className="popup-text">
+                Goed zo! Je bent nu zover om de toets te maken.
+              </p>
+              <p></p>
+              <div className="popup-button">
+                <Link to="/mask-group">laten we gaan</Link>
+              </div>
+            </>
+          ) : (
+            <>
+              <p className="welcome">Hurray</p>
+              <p className="popup-text">
+                Well done! You are now ready to take the test.
+              </p>
+              <p></p>
+              <div className="popup-button">
+                <Link to="/mask-group">Let's go</Link>
+              </div>
+            </>
+          )}
         </Popup>
       )}
     </>

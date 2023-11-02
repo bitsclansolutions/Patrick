@@ -1980,8 +1980,8 @@ const RightNavBar = (props) => {
             {isDutchLocal ? <p>Groep&nbsp;4:</p> : <p>Group&nbsp;4:</p>}
             <p className="grp-detail">
               {isDutchLocal
-                ? "Hal, Toilet, Slaapkamer 03"
-                : "Hall, Toilet, Bedroom 03"}
+                ? "Hal, Badkamer, Slaapkamer 03"
+                : "Hall, Bathroom, Bedroom 03"}
             </p>
           </div>
           <div className="text-start">

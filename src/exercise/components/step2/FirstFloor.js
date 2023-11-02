@@ -27,21 +27,50 @@ const FirstFloor = () => {
           : "firstFloor-main-div-exercise-eng"
       }
     >
-      <Popup opacity="20" top={0} right={0} position={true} width={42}>
-        <p className="welcome">First Floor</p>
-        <p className="popup-text-base">
-          This is the first floor of the house. You are on the landing.
-        </p>
-        <p className="popup-text-base">
-          At the stairwell you can go from one floor to the other floor.
-        </p>
-        <p className="popup-text-base">
-          Here you can see that bedrooms 1 and 2 are on power group 3. The
-          landing, the bathroom and bedroom 3 are on power group 4.
-        </p>
-        <div className="popup-button">
-          <Link to="/exercise-atticFloor">Click here to continue</Link>
-        </div>
+      <Popup opacity="20" top={0} right={0} position={true} width={47}>
+        {isDutch ? (
+          <>
+            {" "}
+            <p className="welcome">Eerste Verdieping</p>
+            <p className="popup-text-base">
+              Dit is de eerste verdieping van het huis. Je bevind je op de
+              overloop.
+            </p>
+            <p className="popup-text-base">
+              Bij het trapgat kun je van de ene verdieping naar de andere
+              verdieping gaan.
+            </p>
+            <p className="popup-text-base">
+              Hier zie je dat <b>slaapkamers 1</b> en <b>2</b> op{" "}
+              <b>stroomgroep 3</b>. De <b>hal</b>, de <b>badkamer</b> en{" "}
+              <b>slaapkamer 3</b> zitten op <b>stroomgroep 4</b>.
+            </p>
+            <div className="popup-button">
+              <Link to="/exercise-atticFloor">
+                klik op de deze knop om verder te gaan
+              </Link>
+            </div>
+          </>
+        ) : (
+          <>
+            {" "}
+            <p className="welcome">First Floor</p>
+            <p className="popup-text-base">
+              This is the first floor of the house. You are on the landing.
+            </p>
+            <p className="popup-text-base">
+              At the stairwell you can go from one floor to the other floor.
+            </p>
+            <p className="popup-text-base">
+              Here you can see that <b>bedrooms 1</b> and <b>2</b> are on{" "}
+              <b>power group 3</b>. The <b>hall</b>, the <b>bathroom</b> and{" "}
+              <b>bedroom 3</b> are on <b>power group 4</b>.
+            </p>
+            <div className="popup-button">
+              <Link to="/exercise-atticFloor">Click here to continue</Link>
+            </div>
+          </>
+        )}
       </Popup>
     </div>
   );

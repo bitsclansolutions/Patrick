@@ -4,7 +4,7 @@
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
-  background-image: url("../../../../public/exercise-images/firstfloor-eng.png");
+  background-image: url("../../patrick-exercise-new/first-floor-eng.png");
 }
 
 .firstFloor-main-div-exercise-dutch {
@@ -13,5 +13,5 @@
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
-  background-image: url("../../../../public/exercise-images/firstfloor-dutch.png");
+  background-image: url("../../patrick-exercise-new/first-floor-dutch.png");
 }

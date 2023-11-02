@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import "./Step3.css";
 import Popup from "../../utils/Popup";
 import { Link } from "react-router-dom";
+import ChangeLanguageToggle from "../../../utils/ChangeLanguageToggle";
 
 const Step3 = () => {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
@@ -26,6 +27,9 @@ const Step3 = () => {
           : "kitchen-main-div-exercise-eng"
       }
     >
+      <div className="translator-exercise">
+        <ChangeLanguageToggle />
+      </div>
       <Popup opacity={6}>
         <iframe
           width="100%"
@@ -37,7 +41,11 @@ const Step3 = () => {
           allowfullscreen
         ></iframe>
         <div className="popup-button">
-          <Link to="/exercise-meter">Click here to continue</Link>
+          <Link to="/exercise-meter">
+            {isDutch
+              ? "klik op de deze knop om verder te gaan"
+              : "Click here to continue"}
+          </Link>
         </div>
       </Popup>
     </div>

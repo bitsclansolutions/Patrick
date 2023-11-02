@@ -275,7 +275,7 @@ const HallFirstFloor = (props) => {
                 navigate("/first-floor/toilet");
               }}
             >
-              {isDutch ? "Toilet" : "Toilet"}
+              {isDutch ? "Badkamer" : "Bathroom"}
             </button>{" "}
             <button
               // className={firstBtn === "attic" ? 'btn-01-maskGroup' : "btn-maskGroup mb-4 "}

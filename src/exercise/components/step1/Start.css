@@ -11,7 +11,7 @@
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
-  background-image: url("../../../../public/exercise-images/hall.png");
+  background-image: url("../../patrick-exercise-new/ground-floor-eng.png");
 }
 .hall-main-div-exercise-dutch {
   background-repeat: no-repeat;
@@ -19,7 +19,7 @@
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
-  background-image: url("../../../../public/exercise-images/hall-dutch.png");
+  background-image: url("../../patrick-exercise-new/ground-floor-dutch.png");
 }
 .img-div {
   position: relative;
@@ -122,4 +122,11 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+}
+
+.translator-exercise {
+  position: absolute;
+  right: 40px;
+  top: 5px;
+  z-index: 99;
 }

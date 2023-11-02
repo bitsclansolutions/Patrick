@@ -28,24 +28,53 @@ const GroundFloor = () => {
         }
       >
         <Popup opacity="20" top={0} right={0} position={true} width={45}>
-          <p className="welcome">Ground Floor</p>
-          <p className="popup-text-base">
-            You will see several doors with the name of the room on them.
-          </p>
-          <p className="popup-text-base">
-            To the left of the screen you see the meter cupboard with an
-            overview above it where you can see which power group is in which
-            room. You can also see which power group the electricity is
-            connected to.
-          </p>
-          <p className="popup-text-base">
-            Here you can see that the <b>kitchen</b> is on power <b>group 2</b>{" "}
-            and the <b>toilet, living room</b> and <b>hall</b> on power{" "}
-            <b>group 1</b>.
-          </p>
-          <div className="popup-button">
-            <Link to="/exercise-firstFloor">Click here to continue</Link>
-          </div>
+          {isDutch ? (
+            <>
+              <p className="welcome">Begane Grond</p>
+              <p className="popup-text-base">
+                Dit is de begane grond, dat is de onderste verdieping van het
+                huis. Je bevind je op de gang.
+              </p>
+              <p className="popup-text-base">
+                e ziet verschillende deuren met de naam van de ruimte erop.
+                Links van het scherm zie je de meterkast met daarboven een
+                overzicht waar je kunt zien welke stroomgroep op welke ruimte
+                zit. Je ziet ook op welke stroomgroep de elektriciteit is
+                aangesloten.
+              </p>
+              <p className="popup-text-base">
+                Hier zie je dat de <b>keuken</b> op <b>stroomgroep 2</b> zit en
+                het <b>toilet, de woonkamer</b> en de <b>hal</b> op{" "}
+                <b>stroomgroep 1</b>.
+              </p>
+              <div className="popup-button">
+                <Link to="/exercise-firstFloor">
+                  klik op de deze knop om verder te gaan
+                </Link>
+              </div>
+            </>
+          ) : (
+            <>
+              <p className="welcome">Ground Floor</p>
+              <p className="popup-text-base">
+                You will see several doors with the name of the room on them .
+              </p>
+              <p className="popup-text-base">
+                To the left of the screen you see the meter cupboard with an
+                overview above it where you can see which power group is in
+                which room. You can also see which power group the electricity
+                is connected to.
+              </p>
+              <p className="popup-text-base">
+                Here you can see that the <b>kitchen</b> is on power{" "}
+                <b>group 2</b> and the <b>toilet, living room</b> and{" "}
+                <b>hall</b> on power <b>group 1</b>.
+              </p>
+              <div className="popup-button">
+                <Link to="/exercise-firstFloor">Click here to continue</Link>
+              </div>
+            </>
+          )}
         </Popup>
       </div>
     </>

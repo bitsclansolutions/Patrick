@@ -55,7 +55,7 @@ const RightNavbar = () => {
   return (
     <>
       <div>
-        {<ChangeLanguageToggle />}
+        <div className="translator-exercise">{<ChangeLanguageToggle />}</div>
         <div className="check-exercise-div">
           <Avator phase={"game"} />
         </div>

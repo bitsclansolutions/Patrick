@@ -79,3 +79,6 @@
   border: none;
   min-width: 70px;
 }
+.popup-button button:hover {
+  background: #115697;
+}

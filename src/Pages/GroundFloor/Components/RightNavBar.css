@@ -595,17 +595,14 @@
   }
 
   .groupA > div {
-    gap: 15px;
   }
   .groupB {
     padding-top: 59px !important;
     display: flex;
-    gap: 15px;
     justify-content: center;
     align-items: center;
   }
   .font-height-width {
     height: 65px !important;
-    width: auto !important;
   }
 }

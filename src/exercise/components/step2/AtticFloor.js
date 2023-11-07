@@ -37,9 +37,9 @@ const AtticFloor = () => {
                 het huis. Je bevind je op de overloop van de zolder.
               </p>
               <p className="popup-text-base">
-                Hier zie je dat de <b>hal</b>, <b>logeerkamer</b>,{" "}
+                Hier zie je dat de <b>overloop</b>, <b>logeerkamer</b>,{" "}
                 <b>studeerkamer</b> en <b>berging</b> op <b>stroomgroep 5</b>{" "}
-                zitten en de <b>de was</b> op <b>stroomgroep 6</b>.
+                zitten en de <b>washok</b> op <b>stroomgroep 6</b>.
               </p>
               <div className="popup-button">
                 <button onClick={() => setEndStep(true)}>

@@ -366,7 +366,7 @@ const KitchenIndex = () => {
               </div>
               <h3 className="set-floor-title">
                 {" "}
-                {isDutchLocal ? "Huisbrekers" : "House Breakers"}
+                {isDutchLocal ? "Meterkast" : "House Breakers"}
               </h3>
               <hr />
             </div>

@@ -42,7 +42,7 @@ const FirstFloor = () => {
             </p>
             <p className="popup-text-base">
               Hier zie je dat <b>slaapkamers 1</b> en <b>2</b> op{" "}
-              <b>stroomgroep 3</b>. De <b>hal</b>, de <b>badkamer</b> en{" "}
+              <b>stroomgroep 3</b>. De <b>overloop</b>, de <b>badkamer</b> en{" "}
               <b>slaapkamer 3</b> zitten op <b>stroomgroep 4</b>.
             </p>
             <div className="popup-button">

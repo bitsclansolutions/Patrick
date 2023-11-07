@@ -61,6 +61,19 @@ code {
 .btn.btn-danger.btn-sm:hover {
   background: #99202c;
 }
+.btn.btn-success.btn-sm {
+  width: fit-content !important;
+}
+.btn.btn-danger.btn-sm {
+  width: fit-content !important;
+}
+
+.swal2-confirm.swal2-styled.swal2-default-outline {
+  min-width: 100px !important;
+}
+.swal2-deny.swal2-styled.swal2-default-outline {
+  min-width: 100px !important;
+}
 
 @media (max-width: 1024px) {
   .main-home-div {

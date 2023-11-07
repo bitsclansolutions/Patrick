@@ -118,7 +118,7 @@ const LivingRoomTwo = (props) => {
       props.setGroupThreeBreakerType("black");
 
       props.setIsGroupThreeBreaker(false);
-      SwalBreakerOff(popupText, redirectSorry);
+      // SwalBreakerOff(popupText, redirectSorry);
       dispatch(increaseDeviceCounter());
       errorSound();
       props.setFirstFloorTrial(props.firstFloorTrial + 1);

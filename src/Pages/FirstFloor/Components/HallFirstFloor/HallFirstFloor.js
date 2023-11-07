@@ -112,7 +112,7 @@ const HallFirstFloor = (props) => {
     if (props.rndGroupFour === val && props.groupFourBreakerType === "red") {
       props.setGroupFourBreakerType("black");
       props.setIsGroupFourBreaker(false);
-      SwalBreakerOff(popupText, redirectSorry);
+      // SwalBreakerOff(popupText, redirectSorry);
       dispatch(increaseDeviceCounter());
       errorSound();
       // props.setFirstFloorTrial(props.firstFloorTrial + 1);
@@ -230,7 +230,7 @@ const HallFirstFloor = (props) => {
                 localStorage.setItem("state-attic", JSON.stringify(-5));
               }}
             >
-              {isDutch ? "Zolderverdieping" : "Attic Floor"}
+              {isDutch ? "Zolder" : "Attic Floor"}
             </button>
             <button
               // className={firstBtn === "attic" ? 'btn-01-maskGroup' : "btn-maskGroup mb-4 "}
@@ -433,7 +433,7 @@ const HallFirstFloor = (props) => {
               transform: "translateX(-50%)",
             }}
           >
-            <h1 className="heading-bottom">{isDutch ? "Hal" : "Hall"}</h1>
+            <h1 className="heading-bottom">{isDutch ? "Overloop" : "Hall"}</h1>
           </div>
         </div>
       ) : (

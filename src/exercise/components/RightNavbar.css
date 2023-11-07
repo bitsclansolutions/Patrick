@@ -20,6 +20,10 @@
   justify-content: space-between;
 }
 
+.groupA > div {
+  gap: 0;
+}
+
 .buttons button {
   width: 28%;
   height: 65px;

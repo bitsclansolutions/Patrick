@@ -115,7 +115,7 @@ const BedRoomFirstFloor = (props) => {
       props.setGroupFourBreakerType("black");
 
       props.setIsGroupFourBreaker(false);
-      SwalBreakerOff(popupText, redirectSorry);
+      // SwalBreakerOff(popupText, redirectSorry);
       dispatch(increaseDeviceCounter());
       props.setFirstFloorTrial(props.firstFloorTrial + 1);
       localStorage.setItem(

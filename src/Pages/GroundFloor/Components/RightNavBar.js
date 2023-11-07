@@ -499,7 +499,7 @@ const RightNavBar = (props) => {
             props.livingAC === "disconnect" &&
             props.livingLight03 === "disconnect"
           ) {
-            SwalBreakerOn(onPopupText);
+            // SwalBreakerOn(onPopupText);
           }
 
           //start my code for breaker pop up
@@ -707,7 +707,7 @@ const RightNavBar = (props) => {
             props.kitchenOven === "disconnect" &&
             props.kitchenToster === "disconnect"
           ) {
-            SwalBreakerOn(onPopupText);
+            // SwalBreakerOn(onPopupText);
           }
 
           //start my code for breaker pop up
@@ -943,7 +943,7 @@ const RightNavBar = (props) => {
             props.livingTwoLignt02 === "disconnect" &&
             props.livingTwoSmallLamp === "disconnect"
           ) {
-            SwalBreakerOn(onPopupText);
+            // SwalBreakerOn(onPopupText);
           }
           //start my code for breaker pop up
           if (
@@ -1226,7 +1226,7 @@ const RightNavBar = (props) => {
             props.toiletFan === "disconnect" &&
             props.toiletLight03 === "disconnect"
           ) {
-            SwalBreakerOn(onPopupText);
+            // SwalBreakerOn(onPopupText);
           }
 
           //start my code for breaker pop up
@@ -1558,7 +1558,7 @@ const RightNavBar = (props) => {
             props.livingOneLignt03 === "disconnect" &&
             props.livingOneLignt02 === "disconnect"
           ) {
-            SwalBreakerOn(onPopupText);
+            // SwalBreakerOn(onPopupText);
           }
           if (
             (props.rndGroupFive === 35 && props.hallLampFive === "connected") ||
@@ -1706,7 +1706,7 @@ const RightNavBar = (props) => {
             props.laundaryLight02 === "disconnect" &&
             props.laundaryWashing === "disconnect"
           ) {
-            SwalBreakerOn(onPopupText);
+            // SwalBreakerOn(onPopupText);
           }
           //start my code for breaker pop up
           if (
@@ -1775,8 +1775,8 @@ const RightNavBar = (props) => {
   const modalTexts = {
     text: popupText,
     head: sureText,
-    continue: isDutchLocal ? "Doorgaan" : "Continue",
-    finish: isDutchLocal ? "Finish" : "Finish",
+    continue: isDutchLocal ? "Nee" : "No",
+    finish: isDutchLocal ? "Ja" : "Yes",
   };
   const finishBreakerHandler = () => {
     // FinishSwal();
@@ -1980,13 +1980,13 @@ const RightNavBar = (props) => {
             {isDutchLocal ? <p>Groep&nbsp;4:</p> : <p>Group&nbsp;4:</p>}
             <p className="grp-detail">
               {isDutchLocal
-                ? "Hal, Badkamer, Slaapkamer 03"
+                ? "Badkamer, Overloop, Slaapkamer 03"
                 : "Hall, Bathroom, Bedroom 03"}
             </p>
           </div>
           <div className="text-start">
             <Link to="/attic" className="set-link-color">
-              {isDutchLocal ? "Zolderverdieping" : "Attic Floor"}
+              {isDutchLocal ? "Zolder" : "Attic Floor"}
             </Link>
           </div>
           {/* GROUP 5 */}
@@ -1994,14 +1994,14 @@ const RightNavBar = (props) => {
             {isDutchLocal ? <p>Groep&nbsp;5:</p> : <p>Group&nbsp;5:</p>}
             <p className="grp-detail">
               {isDutchLocal
-                ? "hal, logeerkamer, studeerkamer, berging"
+                ? "Logeerkamer, Overloop, Studeerkamer, Berging"
                 : "hall, guest room, study room, storage room"}
             </p>
           </div>
           {/* GROUP 6 */}
           <div className="set-legend-text">
             {isDutchLocal ? <p>Groep&nbsp;6:</p> : <p>Group&nbsp;6:</p>}
-            <p className="grp-detail">{isDutchLocal ? "de was" : "laundry"}</p>
+            <p className="grp-detail">{isDutchLocal ? "Washok" : "laundry"}</p>
           </div>
           {/* END GROUP */}
         </div>
@@ -2160,7 +2160,7 @@ const RightNavBar = (props) => {
         </div>
         <h3 className="set-floor-title">
           {" "}
-          {isDutchLocal ? "Huisbrekers" : "House Breakers"}
+          {isDutchLocal ? "Meterkast" : "House Breakers"}
         </h3>
         <hr />
       </div>
@@ -2246,7 +2246,7 @@ const RightNavBar = (props) => {
       {
         <div className="set-position-bottom-finish">
           <button className="set-btn-finish" onClick={finishBreakerHandler}>
-            {isDutchLocal ? "Ik Ben Klaar" : "I AM READY"}
+            {isDutchLocal ? "Ik ben klaar" : "I AM READY"}
           </button>
         </div>
       }

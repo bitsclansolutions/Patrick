@@ -114,7 +114,7 @@ const Hall = (props) => {
       props.setFirstGroupBreakerType("black");
 
       props.setIsFirstGroupBreaker(false);
-      SwalBreakerOff(popupText, redirectSorry);
+      // SwalBreakerOff(popupText, redirectSorry);
       // DISPATCH COUNTER REDUX
       dispatch(increaseDeviceCounter());
       errorSound();

@@ -107,3 +107,11 @@
   top: 10%;
   right: 19%;
 }
+
+.groupB-ex {
+  display: block;
+}
+
+.legend {
+  padding: 6px 0 6px 5px;
+}

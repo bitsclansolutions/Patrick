@@ -108,7 +108,7 @@ const Toilet = (props) => {
 
       errorSound();
       props.setIsFirstGroupBreaker(false);
-      SwalBreakerOff(popupText, redirectSorry);
+      // SwalBreakerOff(popupText, redirectSorry);
       dispatch(increaseDeviceCounter());
       props.setGroundFloorTrial(props.groundFloorTrial + 1);
       localStorage.setItem("state", JSON.stringify(props.groundFloorTrial + 1));

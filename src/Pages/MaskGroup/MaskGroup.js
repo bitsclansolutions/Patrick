@@ -82,7 +82,7 @@ const MaskGroup = () => {
         }</sup></strong></p>
         <p style="margin-bottom: 0px; font-size: 16px;"><small>${
           isDutch
-            ? "Hal, Badkamer, Slaapkamer 03"
+            ? "Badkamer, Overloop, Slaapkamer 03"
             : "Hall, Bathroom, Bedroom 03"
         }</small></p>
           </div>
@@ -91,7 +91,7 @@ const MaskGroup = () => {
 
       <tr>
         <td colspan="2" style="text-align: left;padding-left: 14px;"><p style="margin-bottom: 0px; font-size: 18px;color:#B41D1D;"><strong style="border-bottom: 2px solid #B41D1D;">${
-          isDutch ? "Zolderverdieping" : "Attic Floor"
+          isDutch ? "Zolder" : "Attic Floor"
         }</strong></p></td>
       </tr>
       <tr class="d-flex">
@@ -102,7 +102,7 @@ const MaskGroup = () => {
           }</strong></sup></p>
             <p style="margin-bottom: 0px; font-size: 16px;"><small>${
               isDutch
-                ? "Hal, Logeerkamer, Studeerkamer, Berging"
+                ? "Logeerkamer, Overloop, Studeerkamer, Berging"
                 : "Hall, Guest room, Study room, Storage room"
             }</small></p>
             </div>
@@ -113,7 +113,7 @@ const MaskGroup = () => {
               isDutch ? "Groep&nbsp;6" : "Group&nbsp;6"
             }</sup></strong></p>
             <p style="margin-bottom: 0px; font-size: 16px;"><small>${
-              isDutch ? "De was" : "Laundry"
+              isDutch ? "Washok" : "Laundry"
             }</small></p>
             </div>
             </td>
@@ -122,12 +122,12 @@ const MaskGroup = () => {
             </div>
             <p style="font-size: 20px;margin-bottom: 0px; margin-top: 6px;">${
               isDutch
-                ? "U moet alle apparaten van de groep loskoppelen, vervolgens kunt u de onderbreker inschakelen en alle apparaten één voor één aansluiten om te controleren welk apparaat defect is."
+                ? "Als je klaar bent druk je op deknop “Ik ben klaar”"
                 : "You have to disconnect all devices of the group then you can on the breaker and connect all the devices one by one to check which device is defected.</p>"
             }`;
 
   const popupText = {
-    title: isDutch ? "Gebruikerstaak" : "User Task",
+    title: isDutch ? "Opdracht" : "User Task",
     html: popupHtml,
     okay: isDutch ? "Oké" : "Okay",
   };

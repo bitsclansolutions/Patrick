@@ -294,7 +294,7 @@ const HallAttic = (props) => {
                 navigate("/attic/laundary");
               }}
             >
-              {isDutch ? "De Was" : "Laundary"}
+              {isDutch ? "Washok" : "Laundary"}
             </button>
             {/* end my code 12/29...................... */}
 
@@ -423,7 +423,7 @@ const HallAttic = (props) => {
             </div>
           </div>
           <div className="position-heading-bottom">
-            <h1 className="heading-bottom">{isDutch ? "" : "Hall"}</h1>
+            <h1 className="heading-bottom">{isDutch ? "Overloop" : "Hall"}</h1>
           </div>
         </div>
       ) : (

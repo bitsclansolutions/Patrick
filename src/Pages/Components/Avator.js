@@ -14,7 +14,7 @@ const Avator = (props) => {
           <img
             src={process.env.PUBLIC_URL + "/images/Avatar.png"}
             alt="dasdas"
-            style={{ height: "50px", width: "50px", borderRadius: "100%" }}
+            style={{ height: "40px", width: "40px", borderRadius: "100%" }}
           />
         </div>
         <div className="avatar-name">{userName}</div>

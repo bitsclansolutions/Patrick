@@ -79,7 +79,7 @@ const Home = () => {
                     className="home-heading"
                     htmlFor="name"
                   >
-                    {isDutch ? "Vul uw naam in" : "Enter Your Name"}
+                    {isDutch ? "Vul je naam in" : "Enter Your Name"}
                   </label>
                 </div>
                 <div className="d-flex">
@@ -91,7 +91,7 @@ const Home = () => {
                     }}
                     type="text"
                     placeholder={
-                      isDutch ? "Vul uw naam in" : "Enter Your Name?"
+                      isDutch ? "Vul je naam in" : "Enter Your Name?"
                     }
                   />
                   <button

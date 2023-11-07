@@ -109,7 +109,7 @@ const StoreRoom = (props) => {
       props.setgroupFiveBreakerType("black");
       errorSound();
       props.setIsGroupFiveBreaker(false);
-      SwalBreakerOff(popupText, redirectSorry);
+      // SwalBreakerOff(popupText, redirectSorry);
       dispatch(increaseDeviceCounter());
       props.setAtticTrial(props.atticTrial + 1);
       localStorage.setItem("state-attic", JSON.stringify(props.atticTrial + 1));

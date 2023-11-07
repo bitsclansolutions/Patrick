@@ -118,7 +118,7 @@ const GuestRoom = (props) => {
     if (props.rndGroupFive === val && props.groupFiveBreakerType === "red") {
       props.setgroupFiveBreakerType("black");
       props.setIsGroupFiveBreaker(false);
-      SwalBreakerOff(popupText, redirectSorry);
+      // SwalBreakerOff(popupText, redirectSorry);
       dispatch(increaseDeviceCounter());
       errorSound();
       props.setAtticTrial(props.atticTrial + 1);

@@ -98,9 +98,9 @@ function App() {
   const [isFirstGroupBreaker, setIsFirstGroupBreaker] = useState(true);
 
   useEffect(() => {
+    // iron in laundary
     // setRndAll(49);
     setRndAll(Math.floor(Math.random() * 49) + 1);
-    // 49
   }, []);
 
   useEffect(() => {
@@ -146,7 +146,7 @@ function App() {
       livingLight03 === "disconnect"
     ) {
       if (rndAll >= 1 && rndAll <= 9) {
-        SwalDisconnectedCorrupt(popupText);
+        // SwalDisconnectedCorrupt(popupText);
       } else {
         // SwalDisconnected();
       }
@@ -196,7 +196,7 @@ function App() {
       kitchenToster === "disconnect"
     ) {
       if (rndAll >= 10 && rndAll <= 15) {
-        SwalDisconnectedCorrupt(popupText);
+        // SwalDisconnectedCorrupt(popupText);
       } else {
         // SwalDisconnected();
       }
@@ -251,7 +251,7 @@ function App() {
       livingTwoFan === "disconnect"
     ) {
       if (rndAll >= 16 && rndAll <= 24) {
-        SwalDisconnectedCorrupt(popupText);
+        // SwalDisconnectedCorrupt(popupText);
       } else {
         // SwalDisconnected();
       }
@@ -312,7 +312,7 @@ function App() {
       toiletLight03 === "disconnect"
     ) {
       if (rndAll >= 25 && rndAll <= 34) {
-        SwalDisconnectedCorrupt(popupText);
+        // SwalDisconnectedCorrupt(popupText);
       } else {
         // SwalDisconnected();
       }
@@ -382,7 +382,7 @@ function App() {
       livingOneLignt02Five === "disconnect"
     ) {
       if (rndAll >= 35 && rndAll <= 46) {
-        SwalDisconnectedCorrupt(popupText);
+        // SwalDisconnectedCorrupt(popupText);
       } else {
         // SwalDisconnected();
       }
@@ -432,7 +432,7 @@ function App() {
       laundaryLight02 === "disconnect"
     ) {
       if (rndAll >= 47 && rndAll <= 49) {
-        SwalDisconnectedCorrupt(popupText);
+        // SwalDisconnectedCorrupt(popupText);
       } else {
         // SwalDisconnected();
       }

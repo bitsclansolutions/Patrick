@@ -115,7 +115,7 @@ const LivingRoom = (props) => {
     if (props.completeRnd === val && props.firstGroupBreakerType === "red") {
       props.setFirstGroupBreakerType("black");
       props.setIsFirstGroupBreaker(false);
-      SwalBreakerOff(popupText, redirectSorry);
+      // SwalBreakerOff(popupText, redirectSorry);
       dispatch(increaseDeviceCounter());
       props.setGroundFloorTrial(props.groundFloorTrial + 1);
       localStorage.setItem("state", JSON.stringify(props.groundFloorTrial + 1));

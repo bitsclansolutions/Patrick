@@ -236,13 +236,13 @@ const KitchenIndex = () => {
                   {isDutchLocal ? <p>Groep&nbsp;4:</p> : <p>Group&nbsp;4:</p>}
                   <p className="grp-detail">
                     {isDutchLocal
-                      ? "Hal, Toilet, Slaapkamer 03"
-                      : "Hall, Toilet, Bedroom 03"}
+                      ? "Badkamer, Overloop, Slaapkamer 03"
+                      : "Hall, Bathroom, Bedroom 03"}
                   </p>
                 </div>
                 <div className="text-start">
                   <p className="set-link-color">
-                    {isDutchLocal ? "Zolderverdieping" : "Attic Floor"}
+                    {isDutchLocal ? "Zolder" : "Attic Floor"}
                   </p>
                 </div>
                 {/* GROUP 5 */}
@@ -250,7 +250,7 @@ const KitchenIndex = () => {
                   {isDutchLocal ? <p>Groep&nbsp;5:</p> : <p>Group&nbsp;5:</p>}
                   <p className="grp-detail">
                     {isDutchLocal
-                      ? "hal, logeerkamer, studeerkamer, berging"
+                      ? "Logeerkamer, Overloop, Studeerkamer, Berging"
                       : "hall, guest room, study room, storage room"}
                   </p>
                 </div>
@@ -258,7 +258,7 @@ const KitchenIndex = () => {
                 <div className="set-legend-text">
                   {isDutchLocal ? <p>Groep&nbsp;6:</p> : <p>Group&nbsp;6:</p>}
                   <p className="grp-detail">
-                    {isDutchLocal ? "de was" : "laundry"}
+                    {isDutchLocal ? "Washok" : "laundry"}
                   </p>
                 </div>
                 {/* END GROUP */}
@@ -321,7 +321,7 @@ const KitchenIndex = () => {
                     </div>
 
                     {/* Groups row 2 .................................................................. */}
-                    <div className="groupB">
+                    <div className="groupB groupB-ex">
                       <div className="d-flex justify-content-center">
                         <>
                           <button

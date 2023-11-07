@@ -31,7 +31,7 @@ const AtticFloor = () => {
         <Popup right={0} top={0} opacity={10}>
           {isDutch ? (
             <>
-              <p className="welcome">Zolderverdieping</p>
+              <p className="welcome">Zolder</p>
               <p className="popup-text-base">
                 Dit is de zolder, die bevind zich op de tweede verdieping van
                 het huis. Je bevind je op de overloop van de zolder.

@@ -219,7 +219,7 @@ const Congratulation = () => {
               ? "Je hebt geëxperimenteerd met"
               : "You did experiment with"}{" "}
             <strong style={{ borderBottom: "1px solid #fff" }}>
-              {counterLocal} {isDutch ? "brekers" : "breakers."}{" "}
+              {counterLocal} {isDutch ? "Zekeringen" : "Breakers."}{" "}
             </strong>
           </p>
           {/* <p className="mb-0 set-font-16">
@@ -230,14 +230,14 @@ const Congratulation = () => {
               ? "Je hebt geëxperimenteerd met"
               : "You did experiment with"}{" "}
             <strong style={{ borderBottom: "1px solid #fff" }}>
-              {counterDeviceLocal} {isDutch ? "apparaten " : "Devices"} .
+              {counterDeviceLocal} {isDutch ? "Apparaten " : "Devices"} .
             </strong>
           </p>
           {/* <p className="mb-0 set-font-16">Maximum of 49 Devices:</p> */}
           <p className="set-font-20">
             {isDutch ? "Je hebt losgekoppeld" : "You did disconnect"}{" "}
             <strong style={{ borderBottom: "1px solid #fff" }}>
-              {disconnectedDevicesLocal} {isDutch ? "apparaten " : "Devices"}.
+              {disconnectedDevicesLocal} {isDutch ? "Apparaten " : "Devices"}.
             </strong>
           </p>
         </div>

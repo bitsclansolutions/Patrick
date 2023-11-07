@@ -192,7 +192,7 @@
   font-weight: 800;
   font-family: "Nunito", sans-serif;
   font-size: 25px;
-  margin-top: 18px;
+  margin-top: 0px;
   text-shadow: 0 2px 3px #f7f7f7, 1px 3px 4px #ababab, 0 8px 3px #6c6c6c,
     0 0px 4px #6a6767, 0 0px 0px #565656, 0 0px 4px #707070, 0 7px 4px #585858;
 }
@@ -209,7 +209,7 @@
 .legend {
   margin-bottom: -15px;
   background-color: white;
-  padding: 6px 10px;
+  padding: 6px 0 6px 5px;
   border-radius: 10px;
 }
 .set-legend-text p:nth-child(1) {
@@ -319,7 +319,6 @@
   .font-height-width {
     width: 55px !important;
     height: 72px !important;
-    margin-top: 12px !important;
   }
 }
 @media (min-width: 1368px) and (max-width: 1440px) {
@@ -330,14 +329,12 @@
   .font-height-width {
     width: 51px !important;
     height: 64px !important;
-    margin-top: 10px !important;
   }
 }
 @media (max-width: 1367px) {
   .font-height-width {
     width: 48px !important;
     height: 61px !important;
-    margin-top: 8px !important;
   }
   .set-floor-title {
     font-size: 22px;
@@ -557,3 +554,58 @@
     }
   
 } */
+
+.meter-inner-img {
+  height: 250px !important;
+  aspect-ratio: 4/5 !important;
+  width: auto !important;
+}
+
+.groupA {
+  padding-top: 43px !important;
+}
+
+.groupA > div {
+}
+.groupB {
+  padding-top: 54px !important;
+  display: flex;
+  gap: 0px;
+  justify-content: center;
+  align-items: center;
+}
+.font-height-width {
+  height: 55px !important;
+  width: 23% !important;
+}
+
+.font-height-width img {
+  height: 100% !important;
+}
+
+@media screen and (min-width: 1800px) {
+  .meter-inner-img {
+    height: 280px !important;
+    aspect-ratio: 4/5 !important;
+    width: auto !important;
+  }
+
+  .groupA {
+    padding-top: 44px !important;
+  }
+
+  .groupA > div {
+    gap: 15px;
+  }
+  .groupB {
+    padding-top: 59px !important;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+  }
+  .font-height-width {
+    height: 65px !important;
+    width: auto !important;
+  }
+}

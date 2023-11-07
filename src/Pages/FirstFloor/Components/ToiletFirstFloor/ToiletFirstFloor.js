@@ -118,7 +118,7 @@ const ToiletFirstFloor = (props) => {
       props.setGroupFourBreakerType("black");
       errorSound();
       props.setIsGroupFourBreaker(false);
-      SwalBreakerOff(popupText, redirectSorry);
+      // SwalBreakerOff(popupText, redirectSorry);
       dispatch(increaseDeviceCounter());
       props.setFirstFloorTrial(props.firstFloorTrial + 1);
       localStorage.setItem(

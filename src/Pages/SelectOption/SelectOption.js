@@ -43,9 +43,7 @@ const SelectOption = () => {
                 className="home-heading"
                 htmlFor="name"
               >
-                {isDutch
-                  ? "Selecteer tussen twee opties"
-                  : "Select Between Two Option"}
+                {isDutch ? "Maak een keuze" : "Select Between Two Option"}
               </label>
             </div>
             <div className="d-flex select-text">
@@ -55,12 +53,10 @@ const SelectOption = () => {
                     ? "btn-blue set-opacity-btn mx-3"
                     : "btn-white mx-3"
                 }
-                style={{ padding: "14px 30px" }}
+                style={{ padding: "14px 30px", minWidth: "200px" }}
                 onClick={() => setLargeBtn("exercise")}
               >
-                {isDutch
-                  ? "Wil je bewegen voor een oefening?"
-                  : "Do you want to move for an exercise?"}
+                {isDutch ? "Oefening" : "Do you want to move for an exercise?"}
               </button>
               <button
                 className={
@@ -68,12 +64,10 @@ const SelectOption = () => {
                     ? "btn-blue set-opacity-btn mx-3"
                     : "btn-white mx-3"
                 }
-                style={{ padding: "14px 30px" }}
+                style={{ padding: "14px 30px", minWidth: "200px" }}
                 onClick={() => setLargeBtn("IQ test")}
               >
-                {isDutch
-                  ? "Wil je een IQ-test doen?"
-                  : "Do you want to perform a IQ test?"}
+                {isDutch ? "Toets" : "Do you want to perform a IQ test?"}
               </button>
               <button
                 className="btn-blue set-opacity-btn"
@@ -107,7 +101,7 @@ const SelectOption = () => {
                 }}
                 onClick={() => navigate("/")}
               >
-                {isDutch ? "Rug" : "Back"}
+                {isDutch ? "Terug" : "Back"}
               </button>
               <button
                 className={

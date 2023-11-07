@@ -115,7 +115,7 @@ const Laundary = (props) => {
       props.setAtticTrial(props.atticTrial + 1);
       localStorage.setItem("state-attic", JSON.stringify(props.atticTrial + 1));
 
-      SwalBreakerOff(popupText, redirectSorry);
+      // SwalBreakerOff(popupText, redirectSorry);
       dispatch(increaseDeviceCounter());
     }
     props.setLaundaryCorruptDevice(val);
@@ -357,7 +357,7 @@ const Laundary = (props) => {
             transform: "translateX(-50%)",
           }}
         >
-          <h1 className="heading-bottom">{isDutch ? "De Was" : "Laundary"}</h1>
+          <h1 className="heading-bottom">{isDutch ? "Washok" : "Laundary"}</h1>
         </div>
       </div>
     </>

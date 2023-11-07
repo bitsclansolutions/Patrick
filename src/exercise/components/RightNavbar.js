@@ -100,13 +100,13 @@ const RightNavbar = () => {
             {isDutchLocal ? <p>Groep&nbsp;4:</p> : <p>Group&nbsp;4:</p>}
             <p className="grp-detail">
               {isDutchLocal
-                ? "Hal, Toilet, Slaapkamer 03"
+                ? "Badkamer, Overloop, Slaapkamer 03"
                 : "Hall, Toilet, Bedroom 03"}
             </p>
           </div>
           <div className="text-start">
             <p className="set-link-color">
-              {isDutchLocal ? "Zolderverdieping" : "Attic Floor"}
+              {isDutchLocal ? "Zolder" : "Attic Floor"}
             </p>
           </div>
           {/* GROUP 5 */}
@@ -114,7 +114,7 @@ const RightNavbar = () => {
             {isDutchLocal ? <p>Groep&nbsp;5:</p> : <p>Group&nbsp;5:</p>}
             <p className="grp-detail">
               {isDutchLocal
-                ? "hal, logeerkamer, studeerkamer, berging"
+                ? "Logeerkamer, Overloop, Studeerkamer, Berging"
                 : "hall, guest room, study room, storage room"}
             </p>
           </div>
@@ -180,7 +180,7 @@ const RightNavbar = () => {
               </div>
 
               {/* Groups row 2 .................................................................. */}
-              <div className="groupB">
+              <div className="groupB-ex">
                 <div className="d-flex justify-content-center">
                   <>
                     <button

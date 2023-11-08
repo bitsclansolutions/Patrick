@@ -146,13 +146,15 @@ const Congratulation = () => {
   if (!finishGame) {
     result = (
       <>
-        <p className="set-font-20">
-          <strong>
-            {isDutch
-              ? "Sorry, u heeft het corrupte apparaat niet losgekoppeld!"
-              : "Sorry, You have not disconnected the corrupt device!"}{" "}
-          </strong>
-        </p>
+        <div>
+          <p className="set-font-20">
+            <strong>
+              {isDutch
+                ? "Sorry, u heeft het corrupte apparaat niet losgekoppeld!"
+                : "Sorry, You have not disconnected the corrupt device!"}{" "}
+            </strong>
+          </p>
+        </div>
       </>
     );
   } else if (counter > 10 || counterDevice > 10) {
@@ -171,8 +173,8 @@ const Congratulation = () => {
     console.log(totalLocal);
     result = (
       <>
-        {totalLocal > 0 &&
-          (isDutch ? (
+        {totalLocal > 0 ? (
+          isDutch ? (
             <p className="congo-msg">
               Goed zo {userName.toUpperCase()} ! Je hebt het juiste apparaat
               uitgekozen. Haal je begeleider erbij en laat hem jouw score zien
@@ -182,7 +184,18 @@ const Congratulation = () => {
               Well done {userName.toUpperCase()} ! You have chosen the right
               device. Get your supervisor in and show him your score
             </p>
-          ))}
+          )
+        ) : isDutch ? (
+          <p className="congo-msg">
+            {userName.toUpperCase()} ! Je hebt het juiste apparaat uitgekozen.
+            Haal je begeleider erbij en laat hem jouw score zien
+          </p>
+        ) : (
+          <p className="congo-msg">
+            {userName.toUpperCase()} ! You have chosen the right device. Get
+            your supervisor in and show him your score
+          </p>
+        )}
         <div style={{ height: "200px", width: "200px", margin: "auto" }}>
           {(counterLocal == 0 &&
             counterDeviceLocal == 1 &&
@@ -268,7 +281,7 @@ const Congratulation = () => {
           height: "100vh",
           display: "flex",
           alignItems: "center",
-          justifyContent: "start",
+          justifyContent: "center",
           paddingTop: "20px",
           width: "auto",
           position: "relative",
@@ -277,7 +290,9 @@ const Congratulation = () => {
         }}
         className="main-mask-div"
       >
-        <ChangeLanguageToggle />
+        <div style={{ position: "absolute", top: "0" }}>
+          <ChangeLanguageToggle />
+        </div>
         <div className="set-bg-centent-explain">{result}</div>
         <div className="congo-button">
           <button

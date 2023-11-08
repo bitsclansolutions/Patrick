@@ -135,7 +135,7 @@ const Kitchen = (props) => {
       props.setIsKitchenBreaker(false);
       dispatch(increaseDeviceCounter());
       errorSound();
-      SwalBreakerOff(popupText, redirectSorry);
+      // SwalBreakerOff(popupText, redirectSorry);
       // props.setGroundFloorTrial(props.groundFloorTrial + 1);
       // localStorage.setItem("state", JSON.stringify(props.groundFloorTrial + 1));
     }

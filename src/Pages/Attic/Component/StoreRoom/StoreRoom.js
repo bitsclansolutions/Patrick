@@ -30,6 +30,8 @@ import {
   corrupGroupDeviceError,
   corruptAttempted,
   correctGroupDeviceError,
+  addDisconnectDevice,
+  removeDisconnectDevice,
 } from "../../../../Redux/Action";
 import {
   breakerOffDutch,
@@ -81,14 +83,17 @@ const StoreRoom = (props) => {
     if (val === 44) {
       props.setLivingOneLignt01("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("livingOneLignt01"));
     }
     if (val === 45) {
       props.setLivingOneLignt02("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("livingOneLignt02"));
     }
     if (val === 46) {
       props.setLivingOneLignt03("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("livingOneLignt03"));
     }
     if (props.rndGroupFive === val) {
       props.setGroupFiveCorruptDevice(0);
@@ -118,14 +123,17 @@ const StoreRoom = (props) => {
     if (val === 44) {
       props.setLivingOneLignt01("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("livingOneLignt01"));
     }
     if (val === 45) {
       props.setLivingOneLignt02("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("livingOneLignt02"));
     }
     if (val === 46) {
       props.setLivingOneLignt03("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("livingOneLignt03"));
     }
     if (props.rndGroupFive === val) {
       dispatch(hideFinishBtn());

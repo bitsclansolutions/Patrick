@@ -235,4 +235,7 @@ body {
   .error-page {
     display: block;
   }
+  .main-page {
+    display: none;
+  }
 }

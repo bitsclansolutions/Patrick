@@ -31,6 +31,8 @@ import {
   corrupGroupDeviceError,
   corruptAttempted,
   correctGroupDeviceError,
+  removeDisconnectDevice,
+  addDisconnectDevice,
 } from "../../../Redux/Action";
 import { breakerOffDutch, breakerOffEnglish } from "../../../utils/translation";
 
@@ -84,18 +86,22 @@ const LivingRoom = (props) => {
     if (val === 6) {
       props.setLivingRadio("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("livingRadio"));
     }
     if (val === 7) {
       props.setLivingLight01("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("livingLight01"));
     }
     if (val === 8) {
       props.setLivingAC("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("livingAC"));
     }
     if (val === 9) {
       props.setLivingLight03("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("livingLight03"));
     }
     if (props.completeRnd === val) {
       props.setCompleteCorruptDevice(0);
@@ -126,18 +132,22 @@ const LivingRoom = (props) => {
     if (val === 6) {
       props.setLivingRadio("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("livingRadio"));
     }
     if (val === 7) {
       props.setLivingLight01("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("livingLight01"));
     }
     if (val === 8) {
       props.setLivingAC("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("livingAC"));
     }
     if (val === 9) {
       props.setLivingLight03("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("livingLight03"));
     }
     if (props.completeRnd === val) {
       dispatch(hideFinishBtn());

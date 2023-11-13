@@ -31,6 +31,8 @@ import {
   corrupGroupDeviceError,
   corruptAttempted,
   correctGroupDeviceError,
+  removeDisconnectDevice,
+  addDisconnectDevice,
 } from "../../../../Redux/Action";
 import {
   breakerOffDutch,
@@ -87,14 +89,17 @@ const BedRoomFirstFloor = (props) => {
     if (val === 28) {
       props.setLivingLight01("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("livingLight01"));
     }
     if (val === 29) {
       props.setLivingLight02("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("livingLight02"));
     }
     if (val === 30) {
       props.setLivingSilingFan("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("livingSilingFan"));
     }
     if (props.rndGroupFour === val) {
       props.setGroupFourCorruptDevice(0);
@@ -129,14 +134,17 @@ const BedRoomFirstFloor = (props) => {
     if (val === 28) {
       props.setLivingLight01("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("livingLight01"));
     }
     if (val === 29) {
       props.setLivingLight02("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("livingLight02"));
     }
     if (val === 30) {
       props.setLivingSilingFan("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("livingSilingFan"));
     }
     if (props.rndGroupFour === val) {
       dispatch(hideFinishBtn());

@@ -26,6 +26,8 @@ import {
   corrupGroupDeviceError,
   corruptAttempted,
   correctGroupDeviceError,
+  removeDisconnectDevice,
+  addDisconnectDevice,
 } from "../../../Redux/Action";
 import { useNavigate } from "react-router-dom";
 import { breakerOffDutch, breakerOffEnglish } from "../../../utils/translation";
@@ -83,10 +85,12 @@ const Toilet = (props) => {
     if (val === 1) {
       props.setToiletFan("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("toiletFan"));
     }
     if (val === 2) {
       props.setToiletLight("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("toiletLight"));
     }
     if (props.completeRnd === val) {
       props.setCompleteCorruptDevice(0);
@@ -117,10 +121,12 @@ const Toilet = (props) => {
     if (val === 1) {
       props.setToiletFan("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("toiletFan"));
     }
     if (val === 2) {
       props.setToiletLight("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("toiletLight"));
     }
     if (props.completeRnd === val) {
       dispatch(hideFinishBtn());

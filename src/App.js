@@ -43,6 +43,7 @@ import DevicesPage from "./exercise/pages/step3/DevicesPage";
 import FinishPage from "./exercise/pages/step3/FinishPage";
 import Step4 from "./exercise/components/step4/Step4";
 import Step4Page from "./exercise/pages/step4/Step4Page";
+import ErrorPage from "./Pages/404/ErrorPage";
 function App() {
   const userName = useSelector((state) => state.UserReducer.userName);
   const isFinished = useSelector((state) => state.ResultReducer.isFinished);
@@ -570,982 +571,987 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/select-option" element={<SelectOption />} />
-          <Route
-            path="/ground-floor"
-            element={
-              <GroundFloor
-                toiletFan={toiletFan}
-                toiletLight={toiletLight}
-                setToiletFan={setToiletFan}
-                setToiletLight={setToiletLight}
-                hallLamp={hallLamp}
-                setHallLamp={setHallLamp}
-                hallLight01={hallLight01}
-                setHallLight01={setHallLight01}
-                hallLight02={hallLight02}
-                setHallLight02={setHallLight02}
-                livingLight01={livingLight01}
-                setLivingLight01={setLivingLight01}
-                livingLight03={livingLight03}
-                setLivingLight03={setLivingLight03}
-                livingAC={livingAC}
-                setLivingAC={setLivingAC}
-                livingRadio={livingRadio}
-                setLivingRadio={setLivingRadio}
-                // kitchen states ..........
-                kitchenLight01={kitchenLight01}
-                setKitchenLight01={setKitchenLight01}
-                kitchenLight02={kitchenLight02}
-                setKitchenLight02={setKitchenLight02}
-                kitchenLight03={kitchenLight03}
-                setKitchenLight03={setKitchenLight03}
-                kitchenMixture={kitchenMixture}
-                setKitchenMixture={setKitchenMixture}
-                kitchenOven={kitchenOven}
-                setKitchenOven={setKitchenOven}
-                kitchenToster={kitchenToster}
-                setKitchenToster={setKitchenToster}
-                rndAll={rndAll}
-                allCorruptDevice={allCorruptDevice}
-                setAllCorruptDevice={setAllCorruptDevice}
-                // kitchenCorruptDevice={allCorruptDevice}
-                // setKitchenCorruptDevice={setAllCorruptDevice}
-                // rndKitchen={rndAll}
+      <div className="error-page">
+        <ErrorPage />
+      </div>
+      <div className="main-page">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/select-option" element={<SelectOption />} />
+            <Route
+              path="/ground-floor"
+              element={
+                <GroundFloor
+                  toiletFan={toiletFan}
+                  toiletLight={toiletLight}
+                  setToiletFan={setToiletFan}
+                  setToiletLight={setToiletLight}
+                  hallLamp={hallLamp}
+                  setHallLamp={setHallLamp}
+                  hallLight01={hallLight01}
+                  setHallLight01={setHallLight01}
+                  hallLight02={hallLight02}
+                  setHallLight02={setHallLight02}
+                  livingLight01={livingLight01}
+                  setLivingLight01={setLivingLight01}
+                  livingLight03={livingLight03}
+                  setLivingLight03={setLivingLight03}
+                  livingAC={livingAC}
+                  setLivingAC={setLivingAC}
+                  livingRadio={livingRadio}
+                  setLivingRadio={setLivingRadio}
+                  // kitchen states ..........
+                  kitchenLight01={kitchenLight01}
+                  setKitchenLight01={setKitchenLight01}
+                  kitchenLight02={kitchenLight02}
+                  setKitchenLight02={setKitchenLight02}
+                  kitchenLight03={kitchenLight03}
+                  setKitchenLight03={setKitchenLight03}
+                  kitchenMixture={kitchenMixture}
+                  setKitchenMixture={setKitchenMixture}
+                  kitchenOven={kitchenOven}
+                  setKitchenOven={setKitchenOven}
+                  kitchenToster={kitchenToster}
+                  setKitchenToster={setKitchenToster}
+                  rndAll={rndAll}
+                  allCorruptDevice={allCorruptDevice}
+                  setAllCorruptDevice={setAllCorruptDevice}
+                  // kitchenCorruptDevice={allCorruptDevice}
+                  // setKitchenCorruptDevice={setAllCorruptDevice}
+                  // rndKitchen={rndAll}
 
-                firstGroupBreakerType={firstGroupBreakerType}
-                setFirstGroupBreakerType={setFirstGroupBreakerType}
-                isFirstGroupBreaker={isFirstGroupBreaker}
-                setIsFirstGroupBreaker={setIsFirstGroupBreaker}
-                //kitchen
-                kitchenBreakerType={kitchenBreakerType}
-                setKitchenBreakerType={setKitchenBreakerType}
-                isKitchenBreaker={isKitchenBreaker}
-                setIsKitchenBreaker={setIsKitchenBreaker}
-                //group three
-                groupThreeBreakerType={groupThreeBreakerType}
-                setGroupThreeBreakerType={setGroupThreeBreakerType}
-                isGroupThreeBreaker={isGroupThreeBreaker}
-                setIsGroupThreeBreaker={setIsGroupThreeBreaker}
-                //group four
-                setGroupFourBreakerType={setGroupFourBreakerType}
-                groupFourBreakerType={groupFourBreakerType}
-                setIsGroupFourBreaker={setIsGroupFourBreaker}
-                isGroupFourBreaker={isGroupFourBreaker}
-                //group five
-                groupFiveBreakerType={groupFiveBreakerType}
-                setgroupFiveBreakerType={setgroupFiveBreakerType}
-                isGroupFiveBreaker={isGroupFiveBreaker}
-                setIsGroupFiveBreaker={setIsGroupFiveBreaker}
-                //laundry
-                laundaryBreakerType={laundaryBreakerType}
-                setLaundaryBreakerType={setLaundaryBreakerType}
-                isLaundaryBreaker={isLaundaryBreaker}
-                setIsLaundaryBreaker={setIsLaundaryBreaker}
-                wholeCorruptDevice={allCorruptDevice}
-              />
-            }
-          />
-          <Route path="/mask-group" element={<MaskGroup />} />
-          <Route path="/result" element={<Congratulation />} />
-          <Route path="/sorry" element={<Sorry />} />
-          <Route
-            path="/first-floor"
-            element={
-              <FirstFloor
-                // Toilet
-                setToiletFan={setToiletFanFirst}
-                toiletFan={toiletFanFirst}
-                setToiletLight={setToiletLightFirst}
-                toiletLight={toiletLightFirst}
-                setToiletLight02={setToiletLight02}
-                toiletLight02={toiletLight02}
-                setToiletLight03={setToiletLight03}
-                toiletLight03={toiletLight03}
-                //bedroom ...................
-                livingLight01={bedRoomLight01}
-                setLivingLight01={setBedRoomLight01}
-                livingLight02={bedRoomLight02}
-                setLivingLight02={setBedRoomLight02}
-                livingSilingFan={livingSilingFan}
-                setLivingSilingFan={setLivingSilingFan}
-                // hall
-                hallLedTv={hallLedTv}
-                setHallLedTv={setHallLedTv}
-                hallLight01={hallLight01First}
-                setHallLight01={setHallLight01First}
-                hallLight02={hallLight02First}
-                setHallLight02={setHallLight02First}
-                rndGroupFour={rndAll}
-                setGroupFourCorruptDevice={setAllCorruptDevice}
-                groupFourCorruptDevice={allCorruptDevice}
-                // setGroupFourBreakerType={setGroupFourBreakerType}
-                // groupFourBreakerType={groupFourBreakerType}
-                // setIsGroupFourBreaker={setIsGroupFourBreaker}
-                // isGroupFourBreaker={isGroupFourBreaker}
-                // group one
-                firstGroupBreakerType={firstGroupBreakerType}
-                setFirstGroupBreakerType={setFirstGroupBreakerType}
-                isFirstGroupBreaker={isFirstGroupBreaker}
-                setIsFirstGroupBreaker={setIsFirstGroupBreaker}
-                //kitchen
-                kitchenBreakerType={kitchenBreakerType}
-                setKitchenBreakerType={setKitchenBreakerType}
-                isKitchenBreaker={isKitchenBreaker}
-                setIsKitchenBreaker={setIsKitchenBreaker}
-                //group three
-                groupThreeBreakerType={groupThreeBreakerType}
-                setGroupThreeBreakerType={setGroupThreeBreakerType}
-                isGroupThreeBreaker={isGroupThreeBreaker}
-                setIsGroupThreeBreaker={setIsGroupThreeBreaker}
-                //group four
-                setGroupFourBreakerType={setGroupFourBreakerType}
-                groupFourBreakerType={groupFourBreakerType}
-                setIsGroupFourBreaker={setIsGroupFourBreaker}
-                isGroupFourBreaker={isGroupFourBreaker}
-                //group five
-                groupFiveBreakerType={groupFiveBreakerType}
-                setgroupFiveBreakerType={setgroupFiveBreakerType}
-                isGroupFiveBreaker={isGroupFiveBreaker}
-                setIsGroupFiveBreaker={setIsGroupFiveBreaker}
-                //laundry
-                laundaryBreakerType={laundaryBreakerType}
-                setLaundaryBreakerType={setLaundaryBreakerType}
-                isLaundaryBreaker={isLaundaryBreaker}
-                setIsLaundaryBreaker={setIsLaundaryBreaker}
-                wholeCorruptDevice={allCorruptDevice}
-              />
-            }
-          />
-          <Route
-            path="/attic"
-            element={
-              <Attic
-                // hall
-                hallLampFive={hallLampFive}
-                setHallLampFive={setHallLampFive}
-                hallLight01Five={hallLight01Five}
-                setHallLight01Five={setHallLight01Five}
-                hallLight02Five={hallLight02Five}
-                setHallLight02Five={setHallLight02Five}
-                // guest room
-                setGuestLamp={setGuestLamp}
-                guestLamp={guestLamp}
-                setGuestRadio={setGuestRadio}
-                guestRadio={guestRadio}
-                setGuestFan={setGuestFan}
-                guestFan={guestFan}
-                setGuestLED={setGuestLED}
-                guestLED={guestLED}
-                // study room
-                studyLamp={studyLamp}
-                setStudyLamp={setStudyLamp}
-                studyLamp02={studyLamp02}
-                setStudyLamp02={setStudyLamp02}
-                // store
-                livingOneLignt01={livingOneLignt01Five}
-                setLivingOneLignt01={setLivingOneLignt01Five}
-                livingOneLignt02={livingOneLignt02Five}
-                setLivingOneLignt02={setLivingOneLignt02Five}
-                livingOneLignt03={livingOneLignt03Five}
-                setLivingOneLignt03={setLivingOneLignt03Five}
-                groupFiveCorruptDevice={allCorruptDevice}
-                setGroupFiveCorruptDevice={setAllCorruptDevice}
-                rndGroupFive={rndAll}
-                // groupFiveBreakerType={groupFiveBreakerType}
-                // setgroupFiveBreakerType={setgroupFiveBreakerType}
-                // isGroupFiveBreaker={isGroupFiveBreaker}
-                // setIsGroupFiveBreaker={setIsGroupFiveBreaker}
+                  firstGroupBreakerType={firstGroupBreakerType}
+                  setFirstGroupBreakerType={setFirstGroupBreakerType}
+                  isFirstGroupBreaker={isFirstGroupBreaker}
+                  setIsFirstGroupBreaker={setIsFirstGroupBreaker}
+                  //kitchen
+                  kitchenBreakerType={kitchenBreakerType}
+                  setKitchenBreakerType={setKitchenBreakerType}
+                  isKitchenBreaker={isKitchenBreaker}
+                  setIsKitchenBreaker={setIsKitchenBreaker}
+                  //group three
+                  groupThreeBreakerType={groupThreeBreakerType}
+                  setGroupThreeBreakerType={setGroupThreeBreakerType}
+                  isGroupThreeBreaker={isGroupThreeBreaker}
+                  setIsGroupThreeBreaker={setIsGroupThreeBreaker}
+                  //group four
+                  setGroupFourBreakerType={setGroupFourBreakerType}
+                  groupFourBreakerType={groupFourBreakerType}
+                  setIsGroupFourBreaker={setIsGroupFourBreaker}
+                  isGroupFourBreaker={isGroupFourBreaker}
+                  //group five
+                  groupFiveBreakerType={groupFiveBreakerType}
+                  setgroupFiveBreakerType={setgroupFiveBreakerType}
+                  isGroupFiveBreaker={isGroupFiveBreaker}
+                  setIsGroupFiveBreaker={setIsGroupFiveBreaker}
+                  //laundry
+                  laundaryBreakerType={laundaryBreakerType}
+                  setLaundaryBreakerType={setLaundaryBreakerType}
+                  isLaundaryBreaker={isLaundaryBreaker}
+                  setIsLaundaryBreaker={setIsLaundaryBreaker}
+                  wholeCorruptDevice={allCorruptDevice}
+                />
+              }
+            />
+            <Route path="/mask-group" element={<MaskGroup />} />
+            <Route path="/result" element={<Congratulation />} />
+            <Route path="/sorry" element={<Sorry />} />
+            <Route
+              path="/first-floor"
+              element={
+                <FirstFloor
+                  // Toilet
+                  setToiletFan={setToiletFanFirst}
+                  toiletFan={toiletFanFirst}
+                  setToiletLight={setToiletLightFirst}
+                  toiletLight={toiletLightFirst}
+                  setToiletLight02={setToiletLight02}
+                  toiletLight02={toiletLight02}
+                  setToiletLight03={setToiletLight03}
+                  toiletLight03={toiletLight03}
+                  //bedroom ...................
+                  livingLight01={bedRoomLight01}
+                  setLivingLight01={setBedRoomLight01}
+                  livingLight02={bedRoomLight02}
+                  setLivingLight02={setBedRoomLight02}
+                  livingSilingFan={livingSilingFan}
+                  setLivingSilingFan={setLivingSilingFan}
+                  // hall
+                  hallLedTv={hallLedTv}
+                  setHallLedTv={setHallLedTv}
+                  hallLight01={hallLight01First}
+                  setHallLight01={setHallLight01First}
+                  hallLight02={hallLight02First}
+                  setHallLight02={setHallLight02First}
+                  rndGroupFour={rndAll}
+                  setGroupFourCorruptDevice={setAllCorruptDevice}
+                  groupFourCorruptDevice={allCorruptDevice}
+                  // setGroupFourBreakerType={setGroupFourBreakerType}
+                  // groupFourBreakerType={groupFourBreakerType}
+                  // setIsGroupFourBreaker={setIsGroupFourBreaker}
+                  // isGroupFourBreaker={isGroupFourBreaker}
+                  // group one
+                  firstGroupBreakerType={firstGroupBreakerType}
+                  setFirstGroupBreakerType={setFirstGroupBreakerType}
+                  isFirstGroupBreaker={isFirstGroupBreaker}
+                  setIsFirstGroupBreaker={setIsFirstGroupBreaker}
+                  //kitchen
+                  kitchenBreakerType={kitchenBreakerType}
+                  setKitchenBreakerType={setKitchenBreakerType}
+                  isKitchenBreaker={isKitchenBreaker}
+                  setIsKitchenBreaker={setIsKitchenBreaker}
+                  //group three
+                  groupThreeBreakerType={groupThreeBreakerType}
+                  setGroupThreeBreakerType={setGroupThreeBreakerType}
+                  isGroupThreeBreaker={isGroupThreeBreaker}
+                  setIsGroupThreeBreaker={setIsGroupThreeBreaker}
+                  //group four
+                  setGroupFourBreakerType={setGroupFourBreakerType}
+                  groupFourBreakerType={groupFourBreakerType}
+                  setIsGroupFourBreaker={setIsGroupFourBreaker}
+                  isGroupFourBreaker={isGroupFourBreaker}
+                  //group five
+                  groupFiveBreakerType={groupFiveBreakerType}
+                  setgroupFiveBreakerType={setgroupFiveBreakerType}
+                  isGroupFiveBreaker={isGroupFiveBreaker}
+                  setIsGroupFiveBreaker={setIsGroupFiveBreaker}
+                  //laundry
+                  laundaryBreakerType={laundaryBreakerType}
+                  setLaundaryBreakerType={setLaundaryBreakerType}
+                  isLaundaryBreaker={isLaundaryBreaker}
+                  setIsLaundaryBreaker={setIsLaundaryBreaker}
+                  wholeCorruptDevice={allCorruptDevice}
+                />
+              }
+            />
+            <Route
+              path="/attic"
+              element={
+                <Attic
+                  // hall
+                  hallLampFive={hallLampFive}
+                  setHallLampFive={setHallLampFive}
+                  hallLight01Five={hallLight01Five}
+                  setHallLight01Five={setHallLight01Five}
+                  hallLight02Five={hallLight02Five}
+                  setHallLight02Five={setHallLight02Five}
+                  // guest room
+                  setGuestLamp={setGuestLamp}
+                  guestLamp={guestLamp}
+                  setGuestRadio={setGuestRadio}
+                  guestRadio={guestRadio}
+                  setGuestFan={setGuestFan}
+                  guestFan={guestFan}
+                  setGuestLED={setGuestLED}
+                  guestLED={guestLED}
+                  // study room
+                  studyLamp={studyLamp}
+                  setStudyLamp={setStudyLamp}
+                  studyLamp02={studyLamp02}
+                  setStudyLamp02={setStudyLamp02}
+                  // store
+                  livingOneLignt01={livingOneLignt01Five}
+                  setLivingOneLignt01={setLivingOneLignt01Five}
+                  livingOneLignt02={livingOneLignt02Five}
+                  setLivingOneLignt02={setLivingOneLignt02Five}
+                  livingOneLignt03={livingOneLignt03Five}
+                  setLivingOneLignt03={setLivingOneLignt03Five}
+                  groupFiveCorruptDevice={allCorruptDevice}
+                  setGroupFiveCorruptDevice={setAllCorruptDevice}
+                  rndGroupFive={rndAll}
+                  // groupFiveBreakerType={groupFiveBreakerType}
+                  // setgroupFiveBreakerType={setgroupFiveBreakerType}
+                  // isGroupFiveBreaker={isGroupFiveBreaker}
+                  // setIsGroupFiveBreaker={setIsGroupFiveBreaker}
 
-                // group one
-                firstGroupBreakerType={firstGroupBreakerType}
-                setFirstGroupBreakerType={setFirstGroupBreakerType}
-                isFirstGroupBreaker={isFirstGroupBreaker}
-                setIsFirstGroupBreaker={setIsFirstGroupBreaker}
-                //kitchen
-                kitchenBreakerType={kitchenBreakerType}
-                setKitchenBreakerType={setKitchenBreakerType}
-                isKitchenBreaker={isKitchenBreaker}
-                setIsKitchenBreaker={setIsKitchenBreaker}
-                //group three
-                groupThreeBreakerType={groupThreeBreakerType}
-                setGroupThreeBreakerType={setGroupThreeBreakerType}
-                isGroupThreeBreaker={isGroupThreeBreaker}
-                setIsGroupThreeBreaker={setIsGroupThreeBreaker}
-                //group four
-                setGroupFourBreakerType={setGroupFourBreakerType}
-                groupFourBreakerType={groupFourBreakerType}
-                setIsGroupFourBreaker={setIsGroupFourBreaker}
-                isGroupFourBreaker={isGroupFourBreaker}
-                //group five
-                groupFiveBreakerType={groupFiveBreakerType}
-                setgroupFiveBreakerType={setgroupFiveBreakerType}
-                isGroupFiveBreaker={isGroupFiveBreaker}
-                setIsGroupFiveBreaker={setIsGroupFiveBreaker}
-                //laundry
-                laundaryBreakerType={laundaryBreakerType}
-                setLaundaryBreakerType={setLaundaryBreakerType}
-                isLaundaryBreaker={isLaundaryBreaker}
-                setIsLaundaryBreaker={setIsLaundaryBreaker}
-                wholeCorruptDevice={allCorruptDevice}
-              />
-            }
-          />
-          <Route
-            path="/ground-floor/living-room"
-            element={
-              <LivingIndex
-                toiletFan={toiletFan}
-                toiletLight={toiletLight}
-                setToiletFan={setToiletFan}
-                setToiletLight={setToiletLight}
-                hallLamp={hallLamp}
-                setHallLamp={setHallLamp}
-                hallLight01={hallLight01}
-                setHallLight01={setHallLight01}
-                hallLight02={hallLight02}
-                setHallLight02={setHallLight02}
-                livingLight01={livingLight01}
-                setLivingLight01={setLivingLight01}
-                livingLight03={livingLight03}
-                setLivingLight03={setLivingLight03}
-                livingAC={livingAC}
-                setLivingAC={setLivingAC}
-                livingRadio={livingRadio}
-                setLivingRadio={setLivingRadio}
-                rndAll={rndAll}
-                allCorruptDevice={allCorruptDevice}
-                setAllCorruptDevice={setAllCorruptDevice}
-                // firstGroupBreakerType={firstGroupBreakerType}
-                // setFirstGroupBreakerType={setFirstGroupBreakerType}
-                // isFirstGroupBreaker={isFirstGroupBreaker}
-                // setIsFirstGroupBreaker={setIsFirstGroupBreaker}
+                  // group one
+                  firstGroupBreakerType={firstGroupBreakerType}
+                  setFirstGroupBreakerType={setFirstGroupBreakerType}
+                  isFirstGroupBreaker={isFirstGroupBreaker}
+                  setIsFirstGroupBreaker={setIsFirstGroupBreaker}
+                  //kitchen
+                  kitchenBreakerType={kitchenBreakerType}
+                  setKitchenBreakerType={setKitchenBreakerType}
+                  isKitchenBreaker={isKitchenBreaker}
+                  setIsKitchenBreaker={setIsKitchenBreaker}
+                  //group three
+                  groupThreeBreakerType={groupThreeBreakerType}
+                  setGroupThreeBreakerType={setGroupThreeBreakerType}
+                  isGroupThreeBreaker={isGroupThreeBreaker}
+                  setIsGroupThreeBreaker={setIsGroupThreeBreaker}
+                  //group four
+                  setGroupFourBreakerType={setGroupFourBreakerType}
+                  groupFourBreakerType={groupFourBreakerType}
+                  setIsGroupFourBreaker={setIsGroupFourBreaker}
+                  isGroupFourBreaker={isGroupFourBreaker}
+                  //group five
+                  groupFiveBreakerType={groupFiveBreakerType}
+                  setgroupFiveBreakerType={setgroupFiveBreakerType}
+                  isGroupFiveBreaker={isGroupFiveBreaker}
+                  setIsGroupFiveBreaker={setIsGroupFiveBreaker}
+                  //laundry
+                  laundaryBreakerType={laundaryBreakerType}
+                  setLaundaryBreakerType={setLaundaryBreakerType}
+                  isLaundaryBreaker={isLaundaryBreaker}
+                  setIsLaundaryBreaker={setIsLaundaryBreaker}
+                  wholeCorruptDevice={allCorruptDevice}
+                />
+              }
+            />
+            <Route
+              path="/ground-floor/living-room"
+              element={
+                <LivingIndex
+                  toiletFan={toiletFan}
+                  toiletLight={toiletLight}
+                  setToiletFan={setToiletFan}
+                  setToiletLight={setToiletLight}
+                  hallLamp={hallLamp}
+                  setHallLamp={setHallLamp}
+                  hallLight01={hallLight01}
+                  setHallLight01={setHallLight01}
+                  hallLight02={hallLight02}
+                  setHallLight02={setHallLight02}
+                  livingLight01={livingLight01}
+                  setLivingLight01={setLivingLight01}
+                  livingLight03={livingLight03}
+                  setLivingLight03={setLivingLight03}
+                  livingAC={livingAC}
+                  setLivingAC={setLivingAC}
+                  livingRadio={livingRadio}
+                  setLivingRadio={setLivingRadio}
+                  rndAll={rndAll}
+                  allCorruptDevice={allCorruptDevice}
+                  setAllCorruptDevice={setAllCorruptDevice}
+                  // firstGroupBreakerType={firstGroupBreakerType}
+                  // setFirstGroupBreakerType={setFirstGroupBreakerType}
+                  // isFirstGroupBreaker={isFirstGroupBreaker}
+                  // setIsFirstGroupBreaker={setIsFirstGroupBreaker}
 
-                // group one
-                firstGroupBreakerType={firstGroupBreakerType}
-                setFirstGroupBreakerType={setFirstGroupBreakerType}
-                isFirstGroupBreaker={isFirstGroupBreaker}
-                setIsFirstGroupBreaker={setIsFirstGroupBreaker}
-                //kitchen
-                kitchenBreakerType={kitchenBreakerType}
-                setKitchenBreakerType={setKitchenBreakerType}
-                isKitchenBreaker={isKitchenBreaker}
-                setIsKitchenBreaker={setIsKitchenBreaker}
-                //group three
-                groupThreeBreakerType={groupThreeBreakerType}
-                setGroupThreeBreakerType={setGroupThreeBreakerType}
-                isGroupThreeBreaker={isGroupThreeBreaker}
-                setIsGroupThreeBreaker={setIsGroupThreeBreaker}
-                //group four
-                setGroupFourBreakerType={setGroupFourBreakerType}
-                groupFourBreakerType={groupFourBreakerType}
-                setIsGroupFourBreaker={setIsGroupFourBreaker}
-                isGroupFourBreaker={isGroupFourBreaker}
-                //group five
-                groupFiveBreakerType={groupFiveBreakerType}
-                setgroupFiveBreakerType={setgroupFiveBreakerType}
-                isGroupFiveBreaker={isGroupFiveBreaker}
-                setIsGroupFiveBreaker={setIsGroupFiveBreaker}
-                //laundry
-                laundaryBreakerType={laundaryBreakerType}
-                setLaundaryBreakerType={setLaundaryBreakerType}
-                isLaundaryBreaker={isLaundaryBreaker}
-                setIsLaundaryBreaker={setIsLaundaryBreaker}
-                wholeCorruptDevice={allCorruptDevice}
-              />
-            }
-          />
-          <Route
-            path="/ground-floor/toilet"
-            element={
-              <ToiletIndex
-                toiletFan={toiletFan}
-                toiletLight={toiletLight}
-                setToiletFan={setToiletFan}
-                setToiletLight={setToiletLight}
-                hallLamp={hallLamp}
-                setHallLamp={setHallLamp}
-                hallLight01={hallLight01}
-                setHallLight01={setHallLight01}
-                hallLight02={hallLight02}
-                setHallLight02={setHallLight02}
-                livingLight01={livingLight01}
-                setLivingLight01={setLivingLight01}
-                livingLight03={livingLight03}
-                setLivingLight03={setLivingLight03}
-                livingAC={livingAC}
-                setLivingAC={setLivingAC}
-                livingRadio={livingRadio}
-                setLivingRadio={setLivingRadio}
-                rndAll={rndAll}
-                allCorruptDevice={allCorruptDevice}
-                setAllCorruptDevice={setAllCorruptDevice}
-                // firstGroupBreakerType={firstGroupBreakerType}
-                // setFirstGroupBreakerType={setFirstGroupBreakerType}
-                // isFirstGroupBreaker={isFirstGroupBreaker}
-                // setIsFirstGroupBreaker={setIsFirstGroupBreaker}
-                // group one
-                firstGroupBreakerType={firstGroupBreakerType}
-                setFirstGroupBreakerType={setFirstGroupBreakerType}
-                isFirstGroupBreaker={isFirstGroupBreaker}
-                setIsFirstGroupBreaker={setIsFirstGroupBreaker}
-                //kitchen
-                kitchenBreakerType={kitchenBreakerType}
-                setKitchenBreakerType={setKitchenBreakerType}
-                isKitchenBreaker={isKitchenBreaker}
-                setIsKitchenBreaker={setIsKitchenBreaker}
-                //group three
-                groupThreeBreakerType={groupThreeBreakerType}
-                setGroupThreeBreakerType={setGroupThreeBreakerType}
-                isGroupThreeBreaker={isGroupThreeBreaker}
-                setIsGroupThreeBreaker={setIsGroupThreeBreaker}
-                //group four
-                setGroupFourBreakerType={setGroupFourBreakerType}
-                groupFourBreakerType={groupFourBreakerType}
-                setIsGroupFourBreaker={setIsGroupFourBreaker}
-                isGroupFourBreaker={isGroupFourBreaker}
-                //group five
-                groupFiveBreakerType={groupFiveBreakerType}
-                setgroupFiveBreakerType={setgroupFiveBreakerType}
-                isGroupFiveBreaker={isGroupFiveBreaker}
-                setIsGroupFiveBreaker={setIsGroupFiveBreaker}
-                //laundry
-                laundaryBreakerType={laundaryBreakerType}
-                setLaundaryBreakerType={setLaundaryBreakerType}
-                isLaundaryBreaker={isLaundaryBreaker}
-                setIsLaundaryBreaker={setIsLaundaryBreaker}
-                wholeCorruptDevice={allCorruptDevice}
-              />
-            }
-          />
-          <Route
-            path="/ground-floor/kitchen"
-            element={
-              <KitchenIndex
-                // kitchen states ..........
-                kitchenLight01={kitchenLight01}
-                setKitchenLight01={setKitchenLight01}
-                kitchenLight02={kitchenLight02}
-                setKitchenLight02={setKitchenLight02}
-                kitchenLight03={kitchenLight03}
-                setKitchenLight03={setKitchenLight03}
-                kitchenMixture={kitchenMixture}
-                setKitchenMixture={setKitchenMixture}
-                kitchenOven={kitchenOven}
-                setKitchenOven={setKitchenOven}
-                kitchenToster={kitchenToster}
-                setKitchenToster={setKitchenToster}
-                // rndAll={rndAll}
-                // allCorruptDevice={allCorruptDevice}
-                // setAllCorruptDevice={setAllCorruptDevice}
+                  // group one
+                  firstGroupBreakerType={firstGroupBreakerType}
+                  setFirstGroupBreakerType={setFirstGroupBreakerType}
+                  isFirstGroupBreaker={isFirstGroupBreaker}
+                  setIsFirstGroupBreaker={setIsFirstGroupBreaker}
+                  //kitchen
+                  kitchenBreakerType={kitchenBreakerType}
+                  setKitchenBreakerType={setKitchenBreakerType}
+                  isKitchenBreaker={isKitchenBreaker}
+                  setIsKitchenBreaker={setIsKitchenBreaker}
+                  //group three
+                  groupThreeBreakerType={groupThreeBreakerType}
+                  setGroupThreeBreakerType={setGroupThreeBreakerType}
+                  isGroupThreeBreaker={isGroupThreeBreaker}
+                  setIsGroupThreeBreaker={setIsGroupThreeBreaker}
+                  //group four
+                  setGroupFourBreakerType={setGroupFourBreakerType}
+                  groupFourBreakerType={groupFourBreakerType}
+                  setIsGroupFourBreaker={setIsGroupFourBreaker}
+                  isGroupFourBreaker={isGroupFourBreaker}
+                  //group five
+                  groupFiveBreakerType={groupFiveBreakerType}
+                  setgroupFiveBreakerType={setgroupFiveBreakerType}
+                  isGroupFiveBreaker={isGroupFiveBreaker}
+                  setIsGroupFiveBreaker={setIsGroupFiveBreaker}
+                  //laundry
+                  laundaryBreakerType={laundaryBreakerType}
+                  setLaundaryBreakerType={setLaundaryBreakerType}
+                  isLaundaryBreaker={isLaundaryBreaker}
+                  setIsLaundaryBreaker={setIsLaundaryBreaker}
+                  wholeCorruptDevice={allCorruptDevice}
+                />
+              }
+            />
+            <Route
+              path="/ground-floor/toilet"
+              element={
+                <ToiletIndex
+                  toiletFan={toiletFan}
+                  toiletLight={toiletLight}
+                  setToiletFan={setToiletFan}
+                  setToiletLight={setToiletLight}
+                  hallLamp={hallLamp}
+                  setHallLamp={setHallLamp}
+                  hallLight01={hallLight01}
+                  setHallLight01={setHallLight01}
+                  hallLight02={hallLight02}
+                  setHallLight02={setHallLight02}
+                  livingLight01={livingLight01}
+                  setLivingLight01={setLivingLight01}
+                  livingLight03={livingLight03}
+                  setLivingLight03={setLivingLight03}
+                  livingAC={livingAC}
+                  setLivingAC={setLivingAC}
+                  livingRadio={livingRadio}
+                  setLivingRadio={setLivingRadio}
+                  rndAll={rndAll}
+                  allCorruptDevice={allCorruptDevice}
+                  setAllCorruptDevice={setAllCorruptDevice}
+                  // firstGroupBreakerType={firstGroupBreakerType}
+                  // setFirstGroupBreakerType={setFirstGroupBreakerType}
+                  // isFirstGroupBreaker={isFirstGroupBreaker}
+                  // setIsFirstGroupBreaker={setIsFirstGroupBreaker}
+                  // group one
+                  firstGroupBreakerType={firstGroupBreakerType}
+                  setFirstGroupBreakerType={setFirstGroupBreakerType}
+                  isFirstGroupBreaker={isFirstGroupBreaker}
+                  setIsFirstGroupBreaker={setIsFirstGroupBreaker}
+                  //kitchen
+                  kitchenBreakerType={kitchenBreakerType}
+                  setKitchenBreakerType={setKitchenBreakerType}
+                  isKitchenBreaker={isKitchenBreaker}
+                  setIsKitchenBreaker={setIsKitchenBreaker}
+                  //group three
+                  groupThreeBreakerType={groupThreeBreakerType}
+                  setGroupThreeBreakerType={setGroupThreeBreakerType}
+                  isGroupThreeBreaker={isGroupThreeBreaker}
+                  setIsGroupThreeBreaker={setIsGroupThreeBreaker}
+                  //group four
+                  setGroupFourBreakerType={setGroupFourBreakerType}
+                  groupFourBreakerType={groupFourBreakerType}
+                  setIsGroupFourBreaker={setIsGroupFourBreaker}
+                  isGroupFourBreaker={isGroupFourBreaker}
+                  //group five
+                  groupFiveBreakerType={groupFiveBreakerType}
+                  setgroupFiveBreakerType={setgroupFiveBreakerType}
+                  isGroupFiveBreaker={isGroupFiveBreaker}
+                  setIsGroupFiveBreaker={setIsGroupFiveBreaker}
+                  //laundry
+                  laundaryBreakerType={laundaryBreakerType}
+                  setLaundaryBreakerType={setLaundaryBreakerType}
+                  isLaundaryBreaker={isLaundaryBreaker}
+                  setIsLaundaryBreaker={setIsLaundaryBreaker}
+                  wholeCorruptDevice={allCorruptDevice}
+                />
+              }
+            />
+            <Route
+              path="/ground-floor/kitchen"
+              element={
+                <KitchenIndex
+                  // kitchen states ..........
+                  kitchenLight01={kitchenLight01}
+                  setKitchenLight01={setKitchenLight01}
+                  kitchenLight02={kitchenLight02}
+                  setKitchenLight02={setKitchenLight02}
+                  kitchenLight03={kitchenLight03}
+                  setKitchenLight03={setKitchenLight03}
+                  kitchenMixture={kitchenMixture}
+                  setKitchenMixture={setKitchenMixture}
+                  kitchenOven={kitchenOven}
+                  setKitchenOven={setKitchenOven}
+                  kitchenToster={kitchenToster}
+                  setKitchenToster={setKitchenToster}
+                  // rndAll={rndAll}
+                  // allCorruptDevice={allCorruptDevice}
+                  // setAllCorruptDevice={setAllCorruptDevice}
 
-                kitchenCorruptDevice={allCorruptDevice}
-                setKitchenCorruptDevice={setAllCorruptDevice}
-                rndKitchen={rndAll}
-                // setRndKitchen={setRndKitchen}
-                // kitchenBreakerType={kitchenBreakerType}
-                // setKitchenBreakerType={setKitchenBreakerType}
-                // isKitchenBreaker={isKitchenBreaker}
-                // setIsKitchenBreaker={setIsKitchenBreaker}
+                  kitchenCorruptDevice={allCorruptDevice}
+                  setKitchenCorruptDevice={setAllCorruptDevice}
+                  rndKitchen={rndAll}
+                  // setRndKitchen={setRndKitchen}
+                  // kitchenBreakerType={kitchenBreakerType}
+                  // setKitchenBreakerType={setKitchenBreakerType}
+                  // isKitchenBreaker={isKitchenBreaker}
+                  // setIsKitchenBreaker={setIsKitchenBreaker}
 
-                firstGroupBreakerType={firstGroupBreakerType}
-                setFirstGroupBreakerType={setFirstGroupBreakerType}
-                isFirstGroupBreaker={isFirstGroupBreaker}
-                setIsFirstGroupBreaker={setIsFirstGroupBreaker}
-                //kitchen
-                kitchenBreakerType={kitchenBreakerType}
-                setKitchenBreakerType={setKitchenBreakerType}
-                isKitchenBreaker={isKitchenBreaker}
-                setIsKitchenBreaker={setIsKitchenBreaker}
-                //group three
-                groupThreeBreakerType={groupThreeBreakerType}
-                setGroupThreeBreakerType={setGroupThreeBreakerType}
-                isGroupThreeBreaker={isGroupThreeBreaker}
-                setIsGroupThreeBreaker={setIsGroupThreeBreaker}
-                //group four
-                setGroupFourBreakerType={setGroupFourBreakerType}
-                groupFourBreakerType={groupFourBreakerType}
-                setIsGroupFourBreaker={setIsGroupFourBreaker}
-                isGroupFourBreaker={isGroupFourBreaker}
-                //group five
-                groupFiveBreakerType={groupFiveBreakerType}
-                setgroupFiveBreakerType={setgroupFiveBreakerType}
-                isGroupFiveBreaker={isGroupFiveBreaker}
-                setIsGroupFiveBreaker={setIsGroupFiveBreaker}
-                //laundry
-                laundaryBreakerType={laundaryBreakerType}
-                setLaundaryBreakerType={setLaundaryBreakerType}
-                isLaundaryBreaker={isLaundaryBreaker}
-                setIsLaundaryBreaker={setIsLaundaryBreaker}
-                wholeCorruptDevice={allCorruptDevice}
-              />
-            }
-          />
-          <Route
-            path="/first-floor/living-room02"
-            element={
-              <LivingRoomTwoIndex
-                // livingone .............................
-                livingOneLignt01={livingOneLignt01}
-                setLivingOneLignt01={setLivingOneLignt01}
-                livingOneLignt02={livingOneLignt02}
-                setLivingOneLignt02={setLivingOneLignt02}
-                livingOneLignt03={livingOneLignt03}
-                setLivingOneLignt03={setLivingOneLignt03}
-                livingOneFan={livingOneFan}
-                setLivingOneFan={setLivingOneFan}
-                livingOneTV={livingOneTV}
-                setLivingOneTV={setLivingOneTV}
-                // living two
-                livingTwoLignt01={livingTwoLignt01}
-                setLivingTwoLignt01={setLivingTwoLignt01}
-                livingTwoLignt02={livingTwoLignt02}
-                setLivingTwoLignt02={setLivingTwoLignt02}
-                livingTwoSmallLamp={livingTwoSmallLamp}
-                setLivingTwoSmallLamp={setLivingTwoSmallLamp}
-                livingTwoFan={livingTwoFan}
-                setLivingTwoFan={setLivingTwoFan}
-                groupThreeCorruptDevice={allCorruptDevice}
-                setGroupThreeCorruptDevice={setAllCorruptDevice}
-                rndGroupThree={rndAll}
-                // setRndGroupThree={setRndGroupThree}
+                  firstGroupBreakerType={firstGroupBreakerType}
+                  setFirstGroupBreakerType={setFirstGroupBreakerType}
+                  isFirstGroupBreaker={isFirstGroupBreaker}
+                  setIsFirstGroupBreaker={setIsFirstGroupBreaker}
+                  //kitchen
+                  kitchenBreakerType={kitchenBreakerType}
+                  setKitchenBreakerType={setKitchenBreakerType}
+                  isKitchenBreaker={isKitchenBreaker}
+                  setIsKitchenBreaker={setIsKitchenBreaker}
+                  //group three
+                  groupThreeBreakerType={groupThreeBreakerType}
+                  setGroupThreeBreakerType={setGroupThreeBreakerType}
+                  isGroupThreeBreaker={isGroupThreeBreaker}
+                  setIsGroupThreeBreaker={setIsGroupThreeBreaker}
+                  //group four
+                  setGroupFourBreakerType={setGroupFourBreakerType}
+                  groupFourBreakerType={groupFourBreakerType}
+                  setIsGroupFourBreaker={setIsGroupFourBreaker}
+                  isGroupFourBreaker={isGroupFourBreaker}
+                  //group five
+                  groupFiveBreakerType={groupFiveBreakerType}
+                  setgroupFiveBreakerType={setgroupFiveBreakerType}
+                  isGroupFiveBreaker={isGroupFiveBreaker}
+                  setIsGroupFiveBreaker={setIsGroupFiveBreaker}
+                  //laundry
+                  laundaryBreakerType={laundaryBreakerType}
+                  setLaundaryBreakerType={setLaundaryBreakerType}
+                  isLaundaryBreaker={isLaundaryBreaker}
+                  setIsLaundaryBreaker={setIsLaundaryBreaker}
+                  wholeCorruptDevice={allCorruptDevice}
+                />
+              }
+            />
+            <Route
+              path="/first-floor/living-room02"
+              element={
+                <LivingRoomTwoIndex
+                  // livingone .............................
+                  livingOneLignt01={livingOneLignt01}
+                  setLivingOneLignt01={setLivingOneLignt01}
+                  livingOneLignt02={livingOneLignt02}
+                  setLivingOneLignt02={setLivingOneLignt02}
+                  livingOneLignt03={livingOneLignt03}
+                  setLivingOneLignt03={setLivingOneLignt03}
+                  livingOneFan={livingOneFan}
+                  setLivingOneFan={setLivingOneFan}
+                  livingOneTV={livingOneTV}
+                  setLivingOneTV={setLivingOneTV}
+                  // living two
+                  livingTwoLignt01={livingTwoLignt01}
+                  setLivingTwoLignt01={setLivingTwoLignt01}
+                  livingTwoLignt02={livingTwoLignt02}
+                  setLivingTwoLignt02={setLivingTwoLignt02}
+                  livingTwoSmallLamp={livingTwoSmallLamp}
+                  setLivingTwoSmallLamp={setLivingTwoSmallLamp}
+                  livingTwoFan={livingTwoFan}
+                  setLivingTwoFan={setLivingTwoFan}
+                  groupThreeCorruptDevice={allCorruptDevice}
+                  setGroupThreeCorruptDevice={setAllCorruptDevice}
+                  rndGroupThree={rndAll}
+                  // setRndGroupThree={setRndGroupThree}
 
-                // groupThreeBreakerType={groupThreeBreakerType}
-                // setGroupThreeBreakerType={setGroupThreeBreakerType}
-                // isGroupThreeBreaker={isGroupThreeBreaker}
-                // setIsGroupThreeBreaker={setIsGroupThreeBreaker}
+                  // groupThreeBreakerType={groupThreeBreakerType}
+                  // setGroupThreeBreakerType={setGroupThreeBreakerType}
+                  // isGroupThreeBreaker={isGroupThreeBreaker}
+                  // setIsGroupThreeBreaker={setIsGroupThreeBreaker}
 
-                // group one
-                firstGroupBreakerType={firstGroupBreakerType}
-                setFirstGroupBreakerType={setFirstGroupBreakerType}
-                isFirstGroupBreaker={isFirstGroupBreaker}
-                setIsFirstGroupBreaker={setIsFirstGroupBreaker}
-                //kitchen
-                kitchenBreakerType={kitchenBreakerType}
-                setKitchenBreakerType={setKitchenBreakerType}
-                isKitchenBreaker={isKitchenBreaker}
-                setIsKitchenBreaker={setIsKitchenBreaker}
-                //group three
-                groupThreeBreakerType={groupThreeBreakerType}
-                setGroupThreeBreakerType={setGroupThreeBreakerType}
-                isGroupThreeBreaker={isGroupThreeBreaker}
-                setIsGroupThreeBreaker={setIsGroupThreeBreaker}
-                //group four
-                setGroupFourBreakerType={setGroupFourBreakerType}
-                groupFourBreakerType={groupFourBreakerType}
-                setIsGroupFourBreaker={setIsGroupFourBreaker}
-                isGroupFourBreaker={isGroupFourBreaker}
-                //group five
-                groupFiveBreakerType={groupFiveBreakerType}
-                setgroupFiveBreakerType={setgroupFiveBreakerType}
-                isGroupFiveBreaker={isGroupFiveBreaker}
-                setIsGroupFiveBreaker={setIsGroupFiveBreaker}
-                //laundry
-                laundaryBreakerType={laundaryBreakerType}
-                setLaundaryBreakerType={setLaundaryBreakerType}
-                isLaundaryBreaker={isLaundaryBreaker}
-                setIsLaundaryBreaker={setIsLaundaryBreaker}
-                wholeCorruptDevice={allCorruptDevice}
-              />
-            }
-          />
-          <Route
-            path="/first-floor/bed-room"
-            element={
-              <BedRoomIndex
-                // Toilet
-                setToiletFan={setToiletFanFirst}
-                toiletFan={toiletFanFirst}
-                setToiletLight={setToiletLightFirst}
-                toiletLight={toiletLightFirst}
-                setToiletLight02={setToiletLight02}
-                toiletLight02={toiletLight02}
-                setToiletLight03={setToiletLight03}
-                toiletLight03={toiletLight03}
-                //bedroom ...................
-                livingLight01={bedRoomLight01}
-                setLivingLight01={setBedRoomLight01}
-                livingLight02={bedRoomLight02}
-                setLivingLight02={setBedRoomLight02}
-                livingSilingFan={livingSilingFan}
-                setLivingSilingFan={setLivingSilingFan}
-                // hall
-                hallLedTv={hallLedTv}
-                setHallLedTv={setHallLedTv}
-                hallLight01={hallLight01First}
-                setHallLight01={setHallLight01First}
-                hallLight02={hallLight02First}
-                setHallLight02={setHallLight02First}
-                rndGroupFour={rndAll}
-                setGroupFourCorruptDevice={setAllCorruptDevice}
-                groupFourCorruptDevice={allCorruptDevice}
-                // setGroupFourBreakerType={setGroupFourBreakerType}
-                // groupFourBreakerType={groupFourBreakerType}
-                // setIsGroupFourBreaker={setIsGroupFourBreaker}
-                // isGroupFourBreaker={isGroupFourBreaker}
+                  // group one
+                  firstGroupBreakerType={firstGroupBreakerType}
+                  setFirstGroupBreakerType={setFirstGroupBreakerType}
+                  isFirstGroupBreaker={isFirstGroupBreaker}
+                  setIsFirstGroupBreaker={setIsFirstGroupBreaker}
+                  //kitchen
+                  kitchenBreakerType={kitchenBreakerType}
+                  setKitchenBreakerType={setKitchenBreakerType}
+                  isKitchenBreaker={isKitchenBreaker}
+                  setIsKitchenBreaker={setIsKitchenBreaker}
+                  //group three
+                  groupThreeBreakerType={groupThreeBreakerType}
+                  setGroupThreeBreakerType={setGroupThreeBreakerType}
+                  isGroupThreeBreaker={isGroupThreeBreaker}
+                  setIsGroupThreeBreaker={setIsGroupThreeBreaker}
+                  //group four
+                  setGroupFourBreakerType={setGroupFourBreakerType}
+                  groupFourBreakerType={groupFourBreakerType}
+                  setIsGroupFourBreaker={setIsGroupFourBreaker}
+                  isGroupFourBreaker={isGroupFourBreaker}
+                  //group five
+                  groupFiveBreakerType={groupFiveBreakerType}
+                  setgroupFiveBreakerType={setgroupFiveBreakerType}
+                  isGroupFiveBreaker={isGroupFiveBreaker}
+                  setIsGroupFiveBreaker={setIsGroupFiveBreaker}
+                  //laundry
+                  laundaryBreakerType={laundaryBreakerType}
+                  setLaundaryBreakerType={setLaundaryBreakerType}
+                  isLaundaryBreaker={isLaundaryBreaker}
+                  setIsLaundaryBreaker={setIsLaundaryBreaker}
+                  wholeCorruptDevice={allCorruptDevice}
+                />
+              }
+            />
+            <Route
+              path="/first-floor/bed-room"
+              element={
+                <BedRoomIndex
+                  // Toilet
+                  setToiletFan={setToiletFanFirst}
+                  toiletFan={toiletFanFirst}
+                  setToiletLight={setToiletLightFirst}
+                  toiletLight={toiletLightFirst}
+                  setToiletLight02={setToiletLight02}
+                  toiletLight02={toiletLight02}
+                  setToiletLight03={setToiletLight03}
+                  toiletLight03={toiletLight03}
+                  //bedroom ...................
+                  livingLight01={bedRoomLight01}
+                  setLivingLight01={setBedRoomLight01}
+                  livingLight02={bedRoomLight02}
+                  setLivingLight02={setBedRoomLight02}
+                  livingSilingFan={livingSilingFan}
+                  setLivingSilingFan={setLivingSilingFan}
+                  // hall
+                  hallLedTv={hallLedTv}
+                  setHallLedTv={setHallLedTv}
+                  hallLight01={hallLight01First}
+                  setHallLight01={setHallLight01First}
+                  hallLight02={hallLight02First}
+                  setHallLight02={setHallLight02First}
+                  rndGroupFour={rndAll}
+                  setGroupFourCorruptDevice={setAllCorruptDevice}
+                  groupFourCorruptDevice={allCorruptDevice}
+                  // setGroupFourBreakerType={setGroupFourBreakerType}
+                  // groupFourBreakerType={groupFourBreakerType}
+                  // setIsGroupFourBreaker={setIsGroupFourBreaker}
+                  // isGroupFourBreaker={isGroupFourBreaker}
 
-                // group one
-                firstGroupBreakerType={firstGroupBreakerType}
-                setFirstGroupBreakerType={setFirstGroupBreakerType}
-                isFirstGroupBreaker={isFirstGroupBreaker}
-                setIsFirstGroupBreaker={setIsFirstGroupBreaker}
-                //kitchen
-                kitchenBreakerType={kitchenBreakerType}
-                setKitchenBreakerType={setKitchenBreakerType}
-                isKitchenBreaker={isKitchenBreaker}
-                setIsKitchenBreaker={setIsKitchenBreaker}
-                //group three
-                groupThreeBreakerType={groupThreeBreakerType}
-                setGroupThreeBreakerType={setGroupThreeBreakerType}
-                isGroupThreeBreaker={isGroupThreeBreaker}
-                setIsGroupThreeBreaker={setIsGroupThreeBreaker}
-                //group four
-                setGroupFourBreakerType={setGroupFourBreakerType}
-                groupFourBreakerType={groupFourBreakerType}
-                setIsGroupFourBreaker={setIsGroupFourBreaker}
-                isGroupFourBreaker={isGroupFourBreaker}
-                //group five
-                groupFiveBreakerType={groupFiveBreakerType}
-                setgroupFiveBreakerType={setgroupFiveBreakerType}
-                isGroupFiveBreaker={isGroupFiveBreaker}
-                setIsGroupFiveBreaker={setIsGroupFiveBreaker}
-                //laundry
-                laundaryBreakerType={laundaryBreakerType}
-                setLaundaryBreakerType={setLaundaryBreakerType}
-                isLaundaryBreaker={isLaundaryBreaker}
-                setIsLaundaryBreaker={setIsLaundaryBreaker}
-                wholeCorruptDevice={allCorruptDevice}
-              />
-            }
-          />
-          <Route
-            path="/first-floor/toilet"
-            element={
-              <ToiletIndexFirst
-                // Toilet
-                setToiletFan={setToiletFanFirst}
-                toiletFan={toiletFanFirst}
-                setToiletLight={setToiletLightFirst}
-                toiletLight={toiletLightFirst}
-                setToiletLight02={setToiletLight02}
-                toiletLight02={toiletLight02}
-                setToiletLight03={setToiletLight03}
-                toiletLight03={toiletLight03}
-                //bedroom ...................
-                livingLight01={bedRoomLight01}
-                setLivingLight01={setBedRoomLight01}
-                livingLight02={bedRoomLight02}
-                setLivingLight02={setBedRoomLight02}
-                livingSilingFan={livingSilingFan}
-                setLivingSilingFan={setLivingSilingFan}
-                // hall
-                hallLedTv={hallLedTv}
-                setHallLedTv={setHallLedTv}
-                hallLight01={hallLight01First}
-                setHallLight01={setHallLight01First}
-                hallLight02={hallLight02First}
-                setHallLight02={setHallLight02First}
-                rndGroupFour={rndAll}
-                setGroupFourCorruptDevice={setAllCorruptDevice}
-                groupFourCorruptDevice={allCorruptDevice}
-                // setGroupFourBreakerType={setGroupFourBreakerType}
-                // groupFourBreakerType={groupFourBreakerType}
-                // setIsGroupFourBreaker={setIsGroupFourBreaker}
-                // isGroupFourBreaker={isGroupFourBreaker}
+                  // group one
+                  firstGroupBreakerType={firstGroupBreakerType}
+                  setFirstGroupBreakerType={setFirstGroupBreakerType}
+                  isFirstGroupBreaker={isFirstGroupBreaker}
+                  setIsFirstGroupBreaker={setIsFirstGroupBreaker}
+                  //kitchen
+                  kitchenBreakerType={kitchenBreakerType}
+                  setKitchenBreakerType={setKitchenBreakerType}
+                  isKitchenBreaker={isKitchenBreaker}
+                  setIsKitchenBreaker={setIsKitchenBreaker}
+                  //group three
+                  groupThreeBreakerType={groupThreeBreakerType}
+                  setGroupThreeBreakerType={setGroupThreeBreakerType}
+                  isGroupThreeBreaker={isGroupThreeBreaker}
+                  setIsGroupThreeBreaker={setIsGroupThreeBreaker}
+                  //group four
+                  setGroupFourBreakerType={setGroupFourBreakerType}
+                  groupFourBreakerType={groupFourBreakerType}
+                  setIsGroupFourBreaker={setIsGroupFourBreaker}
+                  isGroupFourBreaker={isGroupFourBreaker}
+                  //group five
+                  groupFiveBreakerType={groupFiveBreakerType}
+                  setgroupFiveBreakerType={setgroupFiveBreakerType}
+                  isGroupFiveBreaker={isGroupFiveBreaker}
+                  setIsGroupFiveBreaker={setIsGroupFiveBreaker}
+                  //laundry
+                  laundaryBreakerType={laundaryBreakerType}
+                  setLaundaryBreakerType={setLaundaryBreakerType}
+                  isLaundaryBreaker={isLaundaryBreaker}
+                  setIsLaundaryBreaker={setIsLaundaryBreaker}
+                  wholeCorruptDevice={allCorruptDevice}
+                />
+              }
+            />
+            <Route
+              path="/first-floor/toilet"
+              element={
+                <ToiletIndexFirst
+                  // Toilet
+                  setToiletFan={setToiletFanFirst}
+                  toiletFan={toiletFanFirst}
+                  setToiletLight={setToiletLightFirst}
+                  toiletLight={toiletLightFirst}
+                  setToiletLight02={setToiletLight02}
+                  toiletLight02={toiletLight02}
+                  setToiletLight03={setToiletLight03}
+                  toiletLight03={toiletLight03}
+                  //bedroom ...................
+                  livingLight01={bedRoomLight01}
+                  setLivingLight01={setBedRoomLight01}
+                  livingLight02={bedRoomLight02}
+                  setLivingLight02={setBedRoomLight02}
+                  livingSilingFan={livingSilingFan}
+                  setLivingSilingFan={setLivingSilingFan}
+                  // hall
+                  hallLedTv={hallLedTv}
+                  setHallLedTv={setHallLedTv}
+                  hallLight01={hallLight01First}
+                  setHallLight01={setHallLight01First}
+                  hallLight02={hallLight02First}
+                  setHallLight02={setHallLight02First}
+                  rndGroupFour={rndAll}
+                  setGroupFourCorruptDevice={setAllCorruptDevice}
+                  groupFourCorruptDevice={allCorruptDevice}
+                  // setGroupFourBreakerType={setGroupFourBreakerType}
+                  // groupFourBreakerType={groupFourBreakerType}
+                  // setIsGroupFourBreaker={setIsGroupFourBreaker}
+                  // isGroupFourBreaker={isGroupFourBreaker}
 
-                // group one
-                firstGroupBreakerType={firstGroupBreakerType}
-                setFirstGroupBreakerType={setFirstGroupBreakerType}
-                isFirstGroupBreaker={isFirstGroupBreaker}
-                setIsFirstGroupBreaker={setIsFirstGroupBreaker}
-                //kitchen
-                kitchenBreakerType={kitchenBreakerType}
-                setKitchenBreakerType={setKitchenBreakerType}
-                isKitchenBreaker={isKitchenBreaker}
-                setIsKitchenBreaker={setIsKitchenBreaker}
-                //group three
-                groupThreeBreakerType={groupThreeBreakerType}
-                setGroupThreeBreakerType={setGroupThreeBreakerType}
-                isGroupThreeBreaker={isGroupThreeBreaker}
-                setIsGroupThreeBreaker={setIsGroupThreeBreaker}
-                //group four
-                setGroupFourBreakerType={setGroupFourBreakerType}
-                groupFourBreakerType={groupFourBreakerType}
-                setIsGroupFourBreaker={setIsGroupFourBreaker}
-                isGroupFourBreaker={isGroupFourBreaker}
-                //group five
-                groupFiveBreakerType={groupFiveBreakerType}
-                setgroupFiveBreakerType={setgroupFiveBreakerType}
-                isGroupFiveBreaker={isGroupFiveBreaker}
-                setIsGroupFiveBreaker={setIsGroupFiveBreaker}
-                //laundry
-                laundaryBreakerType={laundaryBreakerType}
-                setLaundaryBreakerType={setLaundaryBreakerType}
-                isLaundaryBreaker={isLaundaryBreaker}
-                setIsLaundaryBreaker={setIsLaundaryBreaker}
-                wholeCorruptDevice={allCorruptDevice}
-              />
-            }
-          />
-          <Route
-            path="/first-floor/living-room01"
-            element={
-              <LivingRoomOneIndex
-                // livingone .............................
-                livingOneLignt01={livingOneLignt01}
-                setLivingOneLignt01={setLivingOneLignt01}
-                livingOneLignt02={livingOneLignt02}
-                setLivingOneLignt02={setLivingOneLignt02}
-                livingOneLignt03={livingOneLignt03}
-                setLivingOneLignt03={setLivingOneLignt03}
-                livingOneFan={livingOneFan}
-                setLivingOneFan={setLivingOneFan}
-                livingOneTV={livingOneTV}
-                setLivingOneTV={setLivingOneTV}
-                // living two
-                livingTwoLignt01={livingTwoLignt01}
-                setLivingTwoLignt01={setLivingTwoLignt01}
-                livingTwoLignt02={livingTwoLignt02}
-                setLivingTwoLignt02={setLivingTwoLignt02}
-                livingTwoSmallLamp={livingTwoSmallLamp}
-                setLivingTwoSmallLamp={setLivingTwoSmallLamp}
-                livingTwoFan={livingTwoFan}
-                setLivingTwoFan={setLivingTwoFan}
-                groupThreeCorruptDevice={allCorruptDevice}
-                setGroupThreeCorruptDevice={setAllCorruptDevice}
-                rndGroupThree={rndAll}
-                // setRndGroupThree={setRndGroupThree}
-                // groupThreeBreakerType={groupThreeBreakerType}
-                // setGroupThreeBreakerType={setGroupThreeBreakerType}
-                // isGroupThreeBreaker={isGroupThreeBreaker}
-                // setIsGroupThreeBreaker={setIsGroupThreeBreaker}
+                  // group one
+                  firstGroupBreakerType={firstGroupBreakerType}
+                  setFirstGroupBreakerType={setFirstGroupBreakerType}
+                  isFirstGroupBreaker={isFirstGroupBreaker}
+                  setIsFirstGroupBreaker={setIsFirstGroupBreaker}
+                  //kitchen
+                  kitchenBreakerType={kitchenBreakerType}
+                  setKitchenBreakerType={setKitchenBreakerType}
+                  isKitchenBreaker={isKitchenBreaker}
+                  setIsKitchenBreaker={setIsKitchenBreaker}
+                  //group three
+                  groupThreeBreakerType={groupThreeBreakerType}
+                  setGroupThreeBreakerType={setGroupThreeBreakerType}
+                  isGroupThreeBreaker={isGroupThreeBreaker}
+                  setIsGroupThreeBreaker={setIsGroupThreeBreaker}
+                  //group four
+                  setGroupFourBreakerType={setGroupFourBreakerType}
+                  groupFourBreakerType={groupFourBreakerType}
+                  setIsGroupFourBreaker={setIsGroupFourBreaker}
+                  isGroupFourBreaker={isGroupFourBreaker}
+                  //group five
+                  groupFiveBreakerType={groupFiveBreakerType}
+                  setgroupFiveBreakerType={setgroupFiveBreakerType}
+                  isGroupFiveBreaker={isGroupFiveBreaker}
+                  setIsGroupFiveBreaker={setIsGroupFiveBreaker}
+                  //laundry
+                  laundaryBreakerType={laundaryBreakerType}
+                  setLaundaryBreakerType={setLaundaryBreakerType}
+                  isLaundaryBreaker={isLaundaryBreaker}
+                  setIsLaundaryBreaker={setIsLaundaryBreaker}
+                  wholeCorruptDevice={allCorruptDevice}
+                />
+              }
+            />
+            <Route
+              path="/first-floor/living-room01"
+              element={
+                <LivingRoomOneIndex
+                  // livingone .............................
+                  livingOneLignt01={livingOneLignt01}
+                  setLivingOneLignt01={setLivingOneLignt01}
+                  livingOneLignt02={livingOneLignt02}
+                  setLivingOneLignt02={setLivingOneLignt02}
+                  livingOneLignt03={livingOneLignt03}
+                  setLivingOneLignt03={setLivingOneLignt03}
+                  livingOneFan={livingOneFan}
+                  setLivingOneFan={setLivingOneFan}
+                  livingOneTV={livingOneTV}
+                  setLivingOneTV={setLivingOneTV}
+                  // living two
+                  livingTwoLignt01={livingTwoLignt01}
+                  setLivingTwoLignt01={setLivingTwoLignt01}
+                  livingTwoLignt02={livingTwoLignt02}
+                  setLivingTwoLignt02={setLivingTwoLignt02}
+                  livingTwoSmallLamp={livingTwoSmallLamp}
+                  setLivingTwoSmallLamp={setLivingTwoSmallLamp}
+                  livingTwoFan={livingTwoFan}
+                  setLivingTwoFan={setLivingTwoFan}
+                  groupThreeCorruptDevice={allCorruptDevice}
+                  setGroupThreeCorruptDevice={setAllCorruptDevice}
+                  rndGroupThree={rndAll}
+                  // setRndGroupThree={setRndGroupThree}
+                  // groupThreeBreakerType={groupThreeBreakerType}
+                  // setGroupThreeBreakerType={setGroupThreeBreakerType}
+                  // isGroupThreeBreaker={isGroupThreeBreaker}
+                  // setIsGroupThreeBreaker={setIsGroupThreeBreaker}
 
-                // group one
-                firstGroupBreakerType={firstGroupBreakerType}
-                setFirstGroupBreakerType={setFirstGroupBreakerType}
-                isFirstGroupBreaker={isFirstGroupBreaker}
-                setIsFirstGroupBreaker={setIsFirstGroupBreaker}
-                //kitchen
-                kitchenBreakerType={kitchenBreakerType}
-                setKitchenBreakerType={setKitchenBreakerType}
-                isKitchenBreaker={isKitchenBreaker}
-                setIsKitchenBreaker={setIsKitchenBreaker}
-                //group three
-                groupThreeBreakerType={groupThreeBreakerType}
-                setGroupThreeBreakerType={setGroupThreeBreakerType}
-                isGroupThreeBreaker={isGroupThreeBreaker}
-                setIsGroupThreeBreaker={setIsGroupThreeBreaker}
-                //group four
-                setGroupFourBreakerType={setGroupFourBreakerType}
-                groupFourBreakerType={groupFourBreakerType}
-                setIsGroupFourBreaker={setIsGroupFourBreaker}
-                isGroupFourBreaker={isGroupFourBreaker}
-                //group five
-                groupFiveBreakerType={groupFiveBreakerType}
-                setgroupFiveBreakerType={setgroupFiveBreakerType}
-                isGroupFiveBreaker={isGroupFiveBreaker}
-                setIsGroupFiveBreaker={setIsGroupFiveBreaker}
-                //laundry
-                laundaryBreakerType={laundaryBreakerType}
-                setLaundaryBreakerType={setLaundaryBreakerType}
-                isLaundaryBreaker={isLaundaryBreaker}
-                setIsLaundaryBreaker={setIsLaundaryBreaker}
-                wholeCorruptDevice={allCorruptDevice}
-              />
-            }
-          />
-          <Route
-            path="/attic/study-room"
-            element={
-              <StudyRoomIndex
-                // hall
-                hallLampFive={hallLampFive}
-                setHallLampFive={setHallLampFive}
-                hallLight01Five={hallLight01Five}
-                setHallLight01Five={setHallLight01Five}
-                hallLight02Five={hallLight02Five}
-                setHallLight02Five={setHallLight02Five}
-                // guest room
-                setGuestLamp={setGuestLamp}
-                guestLamp={guestLamp}
-                setGuestRadio={setGuestRadio}
-                guestRadio={guestRadio}
-                setGuestFan={setGuestFan}
-                guestFan={guestFan}
-                setGuestLED={setGuestLED}
-                guestLED={guestLED}
-                // study room
-                studyLamp={studyLamp}
-                setStudyLamp={setStudyLamp}
-                studyLamp02={studyLamp02}
-                setStudyLamp02={setStudyLamp02}
-                // store
-                livingOneLignt01={livingOneLignt01Five}
-                setLivingOneLignt01={setLivingOneLignt01Five}
-                livingOneLignt02={livingOneLignt02Five}
-                setLivingOneLignt02={setLivingOneLignt02Five}
-                livingOneLignt03={livingOneLignt03Five}
-                setLivingOneLignt03={setLivingOneLignt03Five}
-                groupFiveCorruptDevice={allCorruptDevice}
-                setGroupFiveCorruptDevice={setAllCorruptDevice}
-                rndGroupFive={rndAll}
-                // groupFiveBreakerType={groupFiveBreakerType}
-                // setgroupFiveBreakerType={setgroupFiveBreakerType}
-                // isGroupFiveBreaker={isGroupFiveBreaker}
-                // setIsGroupFiveBreaker={setIsGroupFiveBreaker}
+                  // group one
+                  firstGroupBreakerType={firstGroupBreakerType}
+                  setFirstGroupBreakerType={setFirstGroupBreakerType}
+                  isFirstGroupBreaker={isFirstGroupBreaker}
+                  setIsFirstGroupBreaker={setIsFirstGroupBreaker}
+                  //kitchen
+                  kitchenBreakerType={kitchenBreakerType}
+                  setKitchenBreakerType={setKitchenBreakerType}
+                  isKitchenBreaker={isKitchenBreaker}
+                  setIsKitchenBreaker={setIsKitchenBreaker}
+                  //group three
+                  groupThreeBreakerType={groupThreeBreakerType}
+                  setGroupThreeBreakerType={setGroupThreeBreakerType}
+                  isGroupThreeBreaker={isGroupThreeBreaker}
+                  setIsGroupThreeBreaker={setIsGroupThreeBreaker}
+                  //group four
+                  setGroupFourBreakerType={setGroupFourBreakerType}
+                  groupFourBreakerType={groupFourBreakerType}
+                  setIsGroupFourBreaker={setIsGroupFourBreaker}
+                  isGroupFourBreaker={isGroupFourBreaker}
+                  //group five
+                  groupFiveBreakerType={groupFiveBreakerType}
+                  setgroupFiveBreakerType={setgroupFiveBreakerType}
+                  isGroupFiveBreaker={isGroupFiveBreaker}
+                  setIsGroupFiveBreaker={setIsGroupFiveBreaker}
+                  //laundry
+                  laundaryBreakerType={laundaryBreakerType}
+                  setLaundaryBreakerType={setLaundaryBreakerType}
+                  isLaundaryBreaker={isLaundaryBreaker}
+                  setIsLaundaryBreaker={setIsLaundaryBreaker}
+                  wholeCorruptDevice={allCorruptDevice}
+                />
+              }
+            />
+            <Route
+              path="/attic/study-room"
+              element={
+                <StudyRoomIndex
+                  // hall
+                  hallLampFive={hallLampFive}
+                  setHallLampFive={setHallLampFive}
+                  hallLight01Five={hallLight01Five}
+                  setHallLight01Five={setHallLight01Five}
+                  hallLight02Five={hallLight02Five}
+                  setHallLight02Five={setHallLight02Five}
+                  // guest room
+                  setGuestLamp={setGuestLamp}
+                  guestLamp={guestLamp}
+                  setGuestRadio={setGuestRadio}
+                  guestRadio={guestRadio}
+                  setGuestFan={setGuestFan}
+                  guestFan={guestFan}
+                  setGuestLED={setGuestLED}
+                  guestLED={guestLED}
+                  // study room
+                  studyLamp={studyLamp}
+                  setStudyLamp={setStudyLamp}
+                  studyLamp02={studyLamp02}
+                  setStudyLamp02={setStudyLamp02}
+                  // store
+                  livingOneLignt01={livingOneLignt01Five}
+                  setLivingOneLignt01={setLivingOneLignt01Five}
+                  livingOneLignt02={livingOneLignt02Five}
+                  setLivingOneLignt02={setLivingOneLignt02Five}
+                  livingOneLignt03={livingOneLignt03Five}
+                  setLivingOneLignt03={setLivingOneLignt03Five}
+                  groupFiveCorruptDevice={allCorruptDevice}
+                  setGroupFiveCorruptDevice={setAllCorruptDevice}
+                  rndGroupFive={rndAll}
+                  // groupFiveBreakerType={groupFiveBreakerType}
+                  // setgroupFiveBreakerType={setgroupFiveBreakerType}
+                  // isGroupFiveBreaker={isGroupFiveBreaker}
+                  // setIsGroupFiveBreaker={setIsGroupFiveBreaker}
 
-                // group one
-                firstGroupBreakerType={firstGroupBreakerType}
-                setFirstGroupBreakerType={setFirstGroupBreakerType}
-                isFirstGroupBreaker={isFirstGroupBreaker}
-                setIsFirstGroupBreaker={setIsFirstGroupBreaker}
-                //kitchen
-                kitchenBreakerType={kitchenBreakerType}
-                setKitchenBreakerType={setKitchenBreakerType}
-                isKitchenBreaker={isKitchenBreaker}
-                setIsKitchenBreaker={setIsKitchenBreaker}
-                //group three
-                groupThreeBreakerType={groupThreeBreakerType}
-                setGroupThreeBreakerType={setGroupThreeBreakerType}
-                isGroupThreeBreaker={isGroupThreeBreaker}
-                setIsGroupThreeBreaker={setIsGroupThreeBreaker}
-                //group four
-                setGroupFourBreakerType={setGroupFourBreakerType}
-                groupFourBreakerType={groupFourBreakerType}
-                setIsGroupFourBreaker={setIsGroupFourBreaker}
-                isGroupFourBreaker={isGroupFourBreaker}
-                //group five
-                groupFiveBreakerType={groupFiveBreakerType}
-                setgroupFiveBreakerType={setgroupFiveBreakerType}
-                isGroupFiveBreaker={isGroupFiveBreaker}
-                setIsGroupFiveBreaker={setIsGroupFiveBreaker}
-                //laundry
-                laundaryBreakerType={laundaryBreakerType}
-                setLaundaryBreakerType={setLaundaryBreakerType}
-                isLaundaryBreaker={isLaundaryBreaker}
-                setIsLaundaryBreaker={setIsLaundaryBreaker}
-                wholeCorruptDevice={allCorruptDevice}
-              />
-            }
-          />
-          <Route
-            path="/attic/guest-room"
-            element={
-              <GuestRoomIndexAttic
-                // hall
-                hallLampFive={hallLampFive}
-                setHallLampFive={setHallLampFive}
-                hallLight01Five={hallLight01Five}
-                setHallLight01Five={setHallLight01Five}
-                hallLight02Five={hallLight02Five}
-                setHallLight02Five={setHallLight02Five}
-                // guest room
-                setGuestLamp={setGuestLamp}
-                guestLamp={guestLamp}
-                setGuestRadio={setGuestRadio}
-                guestRadio={guestRadio}
-                setGuestFan={setGuestFan}
-                guestFan={guestFan}
-                setGuestLED={setGuestLED}
-                guestLED={guestLED}
-                // study room
-                studyLamp={studyLamp}
-                setStudyLamp={setStudyLamp}
-                studyLamp02={studyLamp02}
-                setStudyLamp02={setStudyLamp02}
-                // store
-                livingOneLignt01={livingOneLignt01Five}
-                setLivingOneLignt01={setLivingOneLignt01Five}
-                livingOneLignt02={livingOneLignt02Five}
-                setLivingOneLignt02={setLivingOneLignt02Five}
-                livingOneLignt03={livingOneLignt03Five}
-                setLivingOneLignt03={setLivingOneLignt03Five}
-                groupFiveCorruptDevice={allCorruptDevice}
-                setGroupFiveCorruptDevice={setAllCorruptDevice}
-                rndGroupFive={rndAll}
-                // groupFiveBreakerType={groupFiveBreakerType}
-                // setgroupFiveBreakerType={setgroupFiveBreakerType}
-                // isGroupFiveBreaker={isGroupFiveBreaker}
-                // setIsGroupFiveBreaker={setIsGroupFiveBreaker}
+                  // group one
+                  firstGroupBreakerType={firstGroupBreakerType}
+                  setFirstGroupBreakerType={setFirstGroupBreakerType}
+                  isFirstGroupBreaker={isFirstGroupBreaker}
+                  setIsFirstGroupBreaker={setIsFirstGroupBreaker}
+                  //kitchen
+                  kitchenBreakerType={kitchenBreakerType}
+                  setKitchenBreakerType={setKitchenBreakerType}
+                  isKitchenBreaker={isKitchenBreaker}
+                  setIsKitchenBreaker={setIsKitchenBreaker}
+                  //group three
+                  groupThreeBreakerType={groupThreeBreakerType}
+                  setGroupThreeBreakerType={setGroupThreeBreakerType}
+                  isGroupThreeBreaker={isGroupThreeBreaker}
+                  setIsGroupThreeBreaker={setIsGroupThreeBreaker}
+                  //group four
+                  setGroupFourBreakerType={setGroupFourBreakerType}
+                  groupFourBreakerType={groupFourBreakerType}
+                  setIsGroupFourBreaker={setIsGroupFourBreaker}
+                  isGroupFourBreaker={isGroupFourBreaker}
+                  //group five
+                  groupFiveBreakerType={groupFiveBreakerType}
+                  setgroupFiveBreakerType={setgroupFiveBreakerType}
+                  isGroupFiveBreaker={isGroupFiveBreaker}
+                  setIsGroupFiveBreaker={setIsGroupFiveBreaker}
+                  //laundry
+                  laundaryBreakerType={laundaryBreakerType}
+                  setLaundaryBreakerType={setLaundaryBreakerType}
+                  isLaundaryBreaker={isLaundaryBreaker}
+                  setIsLaundaryBreaker={setIsLaundaryBreaker}
+                  wholeCorruptDevice={allCorruptDevice}
+                />
+              }
+            />
+            <Route
+              path="/attic/guest-room"
+              element={
+                <GuestRoomIndexAttic
+                  // hall
+                  hallLampFive={hallLampFive}
+                  setHallLampFive={setHallLampFive}
+                  hallLight01Five={hallLight01Five}
+                  setHallLight01Five={setHallLight01Five}
+                  hallLight02Five={hallLight02Five}
+                  setHallLight02Five={setHallLight02Five}
+                  // guest room
+                  setGuestLamp={setGuestLamp}
+                  guestLamp={guestLamp}
+                  setGuestRadio={setGuestRadio}
+                  guestRadio={guestRadio}
+                  setGuestFan={setGuestFan}
+                  guestFan={guestFan}
+                  setGuestLED={setGuestLED}
+                  guestLED={guestLED}
+                  // study room
+                  studyLamp={studyLamp}
+                  setStudyLamp={setStudyLamp}
+                  studyLamp02={studyLamp02}
+                  setStudyLamp02={setStudyLamp02}
+                  // store
+                  livingOneLignt01={livingOneLignt01Five}
+                  setLivingOneLignt01={setLivingOneLignt01Five}
+                  livingOneLignt02={livingOneLignt02Five}
+                  setLivingOneLignt02={setLivingOneLignt02Five}
+                  livingOneLignt03={livingOneLignt03Five}
+                  setLivingOneLignt03={setLivingOneLignt03Five}
+                  groupFiveCorruptDevice={allCorruptDevice}
+                  setGroupFiveCorruptDevice={setAllCorruptDevice}
+                  rndGroupFive={rndAll}
+                  // groupFiveBreakerType={groupFiveBreakerType}
+                  // setgroupFiveBreakerType={setgroupFiveBreakerType}
+                  // isGroupFiveBreaker={isGroupFiveBreaker}
+                  // setIsGroupFiveBreaker={setIsGroupFiveBreaker}
 
-                // group one
-                firstGroupBreakerType={firstGroupBreakerType}
-                setFirstGroupBreakerType={setFirstGroupBreakerType}
-                isFirstGroupBreaker={isFirstGroupBreaker}
-                setIsFirstGroupBreaker={setIsFirstGroupBreaker}
-                //kitchen
-                kitchenBreakerType={kitchenBreakerType}
-                setKitchenBreakerType={setKitchenBreakerType}
-                isKitchenBreaker={isKitchenBreaker}
-                setIsKitchenBreaker={setIsKitchenBreaker}
-                //group three
-                groupThreeBreakerType={groupThreeBreakerType}
-                setGroupThreeBreakerType={setGroupThreeBreakerType}
-                isGroupThreeBreaker={isGroupThreeBreaker}
-                setIsGroupThreeBreaker={setIsGroupThreeBreaker}
-                //group four
-                setGroupFourBreakerType={setGroupFourBreakerType}
-                groupFourBreakerType={groupFourBreakerType}
-                setIsGroupFourBreaker={setIsGroupFourBreaker}
-                isGroupFourBreaker={isGroupFourBreaker}
-                //group five
-                groupFiveBreakerType={groupFiveBreakerType}
-                setgroupFiveBreakerType={setgroupFiveBreakerType}
-                isGroupFiveBreaker={isGroupFiveBreaker}
-                setIsGroupFiveBreaker={setIsGroupFiveBreaker}
-                //laundry
-                laundaryBreakerType={laundaryBreakerType}
-                setLaundaryBreakerType={setLaundaryBreakerType}
-                isLaundaryBreaker={isLaundaryBreaker}
-                setIsLaundaryBreaker={setIsLaundaryBreaker}
-                wholeCorruptDevice={allCorruptDevice}
-              />
-            }
-          />
-          <Route
-            path="/attic/storage-room"
-            element={
-              <StorageRoomIndex
-                // hall
-                hallLampFive={hallLampFive}
-                setHallLampFive={setHallLampFive}
-                hallLight01Five={hallLight01Five}
-                setHallLight01Five={setHallLight01Five}
-                hallLight02Five={hallLight02Five}
-                setHallLight02Five={setHallLight02Five}
-                // guest room
-                setGuestLamp={setGuestLamp}
-                guestLamp={guestLamp}
-                setGuestRadio={setGuestRadio}
-                guestRadio={guestRadio}
-                setGuestFan={setGuestFan}
-                guestFan={guestFan}
-                setGuestLED={setGuestLED}
-                guestLED={guestLED}
-                // study room
-                studyLamp={studyLamp}
-                setStudyLamp={setStudyLamp}
-                studyLamp02={studyLamp02}
-                setStudyLamp02={setStudyLamp02}
-                // store
-                livingOneLignt01={livingOneLignt01Five}
-                setLivingOneLignt01={setLivingOneLignt01Five}
-                livingOneLignt02={livingOneLignt02Five}
-                setLivingOneLignt02={setLivingOneLignt02Five}
-                livingOneLignt03={livingOneLignt03Five}
-                setLivingOneLignt03={setLivingOneLignt03Five}
-                groupFiveCorruptDevice={allCorruptDevice}
-                setGroupFiveCorruptDevice={setAllCorruptDevice}
-                rndGroupFive={rndAll}
-                // groupFiveBreakerType={groupFiveBreakerType}
-                // setgroupFiveBreakerType={setgroupFiveBreakerType}
-                // isGroupFiveBreaker={isGroupFiveBreaker}
-                // setIsGroupFiveBreaker={setIsGroupFiveBreaker}
+                  // group one
+                  firstGroupBreakerType={firstGroupBreakerType}
+                  setFirstGroupBreakerType={setFirstGroupBreakerType}
+                  isFirstGroupBreaker={isFirstGroupBreaker}
+                  setIsFirstGroupBreaker={setIsFirstGroupBreaker}
+                  //kitchen
+                  kitchenBreakerType={kitchenBreakerType}
+                  setKitchenBreakerType={setKitchenBreakerType}
+                  isKitchenBreaker={isKitchenBreaker}
+                  setIsKitchenBreaker={setIsKitchenBreaker}
+                  //group three
+                  groupThreeBreakerType={groupThreeBreakerType}
+                  setGroupThreeBreakerType={setGroupThreeBreakerType}
+                  isGroupThreeBreaker={isGroupThreeBreaker}
+                  setIsGroupThreeBreaker={setIsGroupThreeBreaker}
+                  //group four
+                  setGroupFourBreakerType={setGroupFourBreakerType}
+                  groupFourBreakerType={groupFourBreakerType}
+                  setIsGroupFourBreaker={setIsGroupFourBreaker}
+                  isGroupFourBreaker={isGroupFourBreaker}
+                  //group five
+                  groupFiveBreakerType={groupFiveBreakerType}
+                  setgroupFiveBreakerType={setgroupFiveBreakerType}
+                  isGroupFiveBreaker={isGroupFiveBreaker}
+                  setIsGroupFiveBreaker={setIsGroupFiveBreaker}
+                  //laundry
+                  laundaryBreakerType={laundaryBreakerType}
+                  setLaundaryBreakerType={setLaundaryBreakerType}
+                  isLaundaryBreaker={isLaundaryBreaker}
+                  setIsLaundaryBreaker={setIsLaundaryBreaker}
+                  wholeCorruptDevice={allCorruptDevice}
+                />
+              }
+            />
+            <Route
+              path="/attic/storage-room"
+              element={
+                <StorageRoomIndex
+                  // hall
+                  hallLampFive={hallLampFive}
+                  setHallLampFive={setHallLampFive}
+                  hallLight01Five={hallLight01Five}
+                  setHallLight01Five={setHallLight01Five}
+                  hallLight02Five={hallLight02Five}
+                  setHallLight02Five={setHallLight02Five}
+                  // guest room
+                  setGuestLamp={setGuestLamp}
+                  guestLamp={guestLamp}
+                  setGuestRadio={setGuestRadio}
+                  guestRadio={guestRadio}
+                  setGuestFan={setGuestFan}
+                  guestFan={guestFan}
+                  setGuestLED={setGuestLED}
+                  guestLED={guestLED}
+                  // study room
+                  studyLamp={studyLamp}
+                  setStudyLamp={setStudyLamp}
+                  studyLamp02={studyLamp02}
+                  setStudyLamp02={setStudyLamp02}
+                  // store
+                  livingOneLignt01={livingOneLignt01Five}
+                  setLivingOneLignt01={setLivingOneLignt01Five}
+                  livingOneLignt02={livingOneLignt02Five}
+                  setLivingOneLignt02={setLivingOneLignt02Five}
+                  livingOneLignt03={livingOneLignt03Five}
+                  setLivingOneLignt03={setLivingOneLignt03Five}
+                  groupFiveCorruptDevice={allCorruptDevice}
+                  setGroupFiveCorruptDevice={setAllCorruptDevice}
+                  rndGroupFive={rndAll}
+                  // groupFiveBreakerType={groupFiveBreakerType}
+                  // setgroupFiveBreakerType={setgroupFiveBreakerType}
+                  // isGroupFiveBreaker={isGroupFiveBreaker}
+                  // setIsGroupFiveBreaker={setIsGroupFiveBreaker}
 
-                // group one
-                firstGroupBreakerType={firstGroupBreakerType}
-                setFirstGroupBreakerType={setFirstGroupBreakerType}
-                isFirstGroupBreaker={isFirstGroupBreaker}
-                setIsFirstGroupBreaker={setIsFirstGroupBreaker}
-                //kitchen
-                kitchenBreakerType={kitchenBreakerType}
-                setKitchenBreakerType={setKitchenBreakerType}
-                isKitchenBreaker={isKitchenBreaker}
-                setIsKitchenBreaker={setIsKitchenBreaker}
-                //group three
-                groupThreeBreakerType={groupThreeBreakerType}
-                setGroupThreeBreakerType={setGroupThreeBreakerType}
-                isGroupThreeBreaker={isGroupThreeBreaker}
-                setIsGroupThreeBreaker={setIsGroupThreeBreaker}
-                //group four
-                setGroupFourBreakerType={setGroupFourBreakerType}
-                groupFourBreakerType={groupFourBreakerType}
-                setIsGroupFourBreaker={setIsGroupFourBreaker}
-                isGroupFourBreaker={isGroupFourBreaker}
-                //group five
-                groupFiveBreakerType={groupFiveBreakerType}
-                setgroupFiveBreakerType={setgroupFiveBreakerType}
-                isGroupFiveBreaker={isGroupFiveBreaker}
-                setIsGroupFiveBreaker={setIsGroupFiveBreaker}
-                //laundry
-                laundaryBreakerType={laundaryBreakerType}
-                setLaundaryBreakerType={setLaundaryBreakerType}
-                isLaundaryBreaker={isLaundaryBreaker}
-                setIsLaundaryBreaker={setIsLaundaryBreaker}
-                wholeCorruptDevice={allCorruptDevice}
-              />
-            }
-          />
-          <Route
-            path="/attic/laundary"
-            element={
-              <LaundaryIndex
-                // laundary
-                laundaryWashing={laundaryWashing}
-                setLaundaryWashing={setLaundaryWashing}
-                laundaryLight01={laundaryLight01}
-                setLaundaryLight01={setLaundaryLight01}
-                laundaryLight02={laundaryLight02}
-                setLaundaryLight02={setLaundaryLight02}
-                laundaryCorruptDevice={allCorruptDevice}
-                setLaundaryCorruptDevice={setAllCorruptDevice}
-                rndLaundary={rndAll}
-                // laundaryBreakerType={laundaryBreakerType}
-                // setLaundaryBreakerType={setLaundaryBreakerType}
-                // isLaundaryBreaker={isLaundaryBreaker}
-                // setIsLaundaryBreaker={setIsLaundaryBreaker}
+                  // group one
+                  firstGroupBreakerType={firstGroupBreakerType}
+                  setFirstGroupBreakerType={setFirstGroupBreakerType}
+                  isFirstGroupBreaker={isFirstGroupBreaker}
+                  setIsFirstGroupBreaker={setIsFirstGroupBreaker}
+                  //kitchen
+                  kitchenBreakerType={kitchenBreakerType}
+                  setKitchenBreakerType={setKitchenBreakerType}
+                  isKitchenBreaker={isKitchenBreaker}
+                  setIsKitchenBreaker={setIsKitchenBreaker}
+                  //group three
+                  groupThreeBreakerType={groupThreeBreakerType}
+                  setGroupThreeBreakerType={setGroupThreeBreakerType}
+                  isGroupThreeBreaker={isGroupThreeBreaker}
+                  setIsGroupThreeBreaker={setIsGroupThreeBreaker}
+                  //group four
+                  setGroupFourBreakerType={setGroupFourBreakerType}
+                  groupFourBreakerType={groupFourBreakerType}
+                  setIsGroupFourBreaker={setIsGroupFourBreaker}
+                  isGroupFourBreaker={isGroupFourBreaker}
+                  //group five
+                  groupFiveBreakerType={groupFiveBreakerType}
+                  setgroupFiveBreakerType={setgroupFiveBreakerType}
+                  isGroupFiveBreaker={isGroupFiveBreaker}
+                  setIsGroupFiveBreaker={setIsGroupFiveBreaker}
+                  //laundry
+                  laundaryBreakerType={laundaryBreakerType}
+                  setLaundaryBreakerType={setLaundaryBreakerType}
+                  isLaundaryBreaker={isLaundaryBreaker}
+                  setIsLaundaryBreaker={setIsLaundaryBreaker}
+                  wholeCorruptDevice={allCorruptDevice}
+                />
+              }
+            />
+            <Route
+              path="/attic/laundary"
+              element={
+                <LaundaryIndex
+                  // laundary
+                  laundaryWashing={laundaryWashing}
+                  setLaundaryWashing={setLaundaryWashing}
+                  laundaryLight01={laundaryLight01}
+                  setLaundaryLight01={setLaundaryLight01}
+                  laundaryLight02={laundaryLight02}
+                  setLaundaryLight02={setLaundaryLight02}
+                  laundaryCorruptDevice={allCorruptDevice}
+                  setLaundaryCorruptDevice={setAllCorruptDevice}
+                  rndLaundary={rndAll}
+                  // laundaryBreakerType={laundaryBreakerType}
+                  // setLaundaryBreakerType={setLaundaryBreakerType}
+                  // isLaundaryBreaker={isLaundaryBreaker}
+                  // setIsLaundaryBreaker={setIsLaundaryBreaker}
 
-                // group one
-                firstGroupBreakerType={firstGroupBreakerType}
-                setFirstGroupBreakerType={setFirstGroupBreakerType}
-                isFirstGroupBreaker={isFirstGroupBreaker}
-                setIsFirstGroupBreaker={setIsFirstGroupBreaker}
-                //kitchen
-                kitchenBreakerType={kitchenBreakerType}
-                setKitchenBreakerType={setKitchenBreakerType}
-                isKitchenBreaker={isKitchenBreaker}
-                setIsKitchenBreaker={setIsKitchenBreaker}
-                //group three
-                groupThreeBreakerType={groupThreeBreakerType}
-                setGroupThreeBreakerType={setGroupThreeBreakerType}
-                isGroupThreeBreaker={isGroupThreeBreaker}
-                setIsGroupThreeBreaker={setIsGroupThreeBreaker}
-                //group four
-                setGroupFourBreakerType={setGroupFourBreakerType}
-                groupFourBreakerType={groupFourBreakerType}
-                setIsGroupFourBreaker={setIsGroupFourBreaker}
-                isGroupFourBreaker={isGroupFourBreaker}
-                //group five
-                groupFiveBreakerType={groupFiveBreakerType}
-                setgroupFiveBreakerType={setgroupFiveBreakerType}
-                isGroupFiveBreaker={isGroupFiveBreaker}
-                setIsGroupFiveBreaker={setIsGroupFiveBreaker}
-                //laundry
-                laundaryBreakerType={laundaryBreakerType}
-                setLaundaryBreakerType={setLaundaryBreakerType}
-                isLaundaryBreaker={isLaundaryBreaker}
-                setIsLaundaryBreaker={setIsLaundaryBreaker}
-                wholeCorruptDevice={allCorruptDevice}
-              />
-            }
-          />
+                  // group one
+                  firstGroupBreakerType={firstGroupBreakerType}
+                  setFirstGroupBreakerType={setFirstGroupBreakerType}
+                  isFirstGroupBreaker={isFirstGroupBreaker}
+                  setIsFirstGroupBreaker={setIsFirstGroupBreaker}
+                  //kitchen
+                  kitchenBreakerType={kitchenBreakerType}
+                  setKitchenBreakerType={setKitchenBreakerType}
+                  isKitchenBreaker={isKitchenBreaker}
+                  setIsKitchenBreaker={setIsKitchenBreaker}
+                  //group three
+                  groupThreeBreakerType={groupThreeBreakerType}
+                  setGroupThreeBreakerType={setGroupThreeBreakerType}
+                  isGroupThreeBreaker={isGroupThreeBreaker}
+                  setIsGroupThreeBreaker={setIsGroupThreeBreaker}
+                  //group four
+                  setGroupFourBreakerType={setGroupFourBreakerType}
+                  groupFourBreakerType={groupFourBreakerType}
+                  setIsGroupFourBreaker={setIsGroupFourBreaker}
+                  isGroupFourBreaker={isGroupFourBreaker}
+                  //group five
+                  groupFiveBreakerType={groupFiveBreakerType}
+                  setgroupFiveBreakerType={setgroupFiveBreakerType}
+                  isGroupFiveBreaker={isGroupFiveBreaker}
+                  setIsGroupFiveBreaker={setIsGroupFiveBreaker}
+                  //laundry
+                  laundaryBreakerType={laundaryBreakerType}
+                  setLaundaryBreakerType={setLaundaryBreakerType}
+                  isLaundaryBreaker={isLaundaryBreaker}
+                  setIsLaundaryBreaker={setIsLaundaryBreaker}
+                  wholeCorruptDevice={allCorruptDevice}
+                />
+              }
+            />
 
-          {/* exercise links */}
+            {/* exercise links */}
 
-          <Route path="/exercise-start" element={<StartPage />} />
-          <Route path="/exercise-groundFloor" element={<GroundFloorPage />} />
-          <Route path="/exercise-firstFloor" element={<FirstFloorPage />} />
-          <Route path="/exercise-atticFloor" element={<AtticFloorPage />} />
-          <Route path="/exercise-step3" element={<Step3Page />} />
-          <Route path="/exercise-meter" element={<BoardPage />} />
-          <Route path="/exercise-devices" element={<DevicesPage />} />
-          <Route path="/exercise-step3-finish" element={<FinishPage />} />
-          <Route path="/exercise-step4" element={<Step4Page />} />
-        </Routes>
-      </BrowserRouter>
+            <Route path="/exercise-start" element={<StartPage />} />
+            <Route path="/exercise-groundFloor" element={<GroundFloorPage />} />
+            <Route path="/exercise-firstFloor" element={<FirstFloorPage />} />
+            <Route path="/exercise-atticFloor" element={<AtticFloorPage />} />
+            <Route path="/exercise-step3" element={<Step3Page />} />
+            <Route path="/exercise-meter" element={<BoardPage />} />
+            <Route path="/exercise-devices" element={<DevicesPage />} />
+            <Route path="/exercise-step3-finish" element={<FinishPage />} />
+            <Route path="/exercise-step4" element={<Step4Page />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
     </>
   );
 }

@@ -33,6 +33,8 @@ import {
   corrupGroupDeviceError,
   corruptAttempted,
   correctGroupDeviceError,
+  removeDisconnectDevice,
+  addDisconnectDevice,
 } from "../../../../Redux/Action";
 import {
   breakerOffDutch,
@@ -85,18 +87,22 @@ const LivingRoomTwo = (props) => {
     if (val === 21) {
       props.setLivingTwoLignt01("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("livingTwoLignt01"));
     }
     if (val === 22) {
       props.setLivingTwoFan("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("livingTwoFan"));
     }
     if (val === 23) {
       props.setLivingTwoLignt02("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("livingTwoLignt02"));
     }
     if (val === 24) {
       props.setLivingTwoSmallLamp("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("livingTwoSmallLamp"));
     }
 
     if (props.rndGroupThree === val) {
@@ -132,18 +138,22 @@ const LivingRoomTwo = (props) => {
     if (val === 21) {
       props.setLivingTwoLignt01("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("livingTwoLignt01"));
     }
     if (val === 22) {
       props.setLivingTwoFan("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("livingTwoFan"));
     }
     if (val === 23) {
       props.setLivingTwoLignt02("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("livingTwoLignt02"));
     }
     if (val === 24) {
       props.setLivingTwoSmallLamp("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("livingTwoSmallLamp"));
     }
     if (props.rndGroupThree === val) {
       dispatch(hideFinishBtn());

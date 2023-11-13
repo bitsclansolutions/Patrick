@@ -21,6 +21,8 @@ import {
   corrupGroupDeviceError,
   corruptAttempted,
   correctGroupDeviceError,
+  removeDisconnectDevice,
+  addDisconnectDevice,
 } from "../../../Redux/Action";
 import Swal from "sweetalert2";
 import useSound from "use-sound";
@@ -86,14 +88,17 @@ const Hall = (props) => {
     if (val === 3) {
       props.setHallLamp("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("hallLamp"));
     }
     if (val === 4) {
       props.setHallLight01("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("hallLight01"));
     }
     if (val === 5) {
       props.setHallLight02("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("hallLight02"));
     }
     if (props.completeRnd === val) {
       props.setCompleteCorruptDevice(0);
@@ -128,14 +133,17 @@ const Hall = (props) => {
     if (val === 3) {
       props.setHallLamp("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("hallLamp"));
     }
     if (val === 4) {
       props.setHallLight01("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("hallLight01"));
     }
     if (val === 5) {
       props.setHallLight02("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("hallLight02"));
     }
     if (props.completeRnd === val) {
       dispatch(hideFinishBtn());

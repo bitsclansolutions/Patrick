@@ -32,6 +32,8 @@ import {
   corrupGroupDeviceError,
   corruptAttempted,
   correctGroupDeviceError,
+  removeDisconnectDevice,
+  addDisconnectDevice,
 } from "../../../../Redux/Action";
 import {
   breakerOffDutch,
@@ -86,18 +88,22 @@ const ToiletFirstFloor = (props) => {
     if (val === 31) {
       props.setToiletLight("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("toiletLight"));
     }
     if (val === 32) {
       props.setToiletLight02("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("toiletLight02"));
     }
     if (val === 33) {
       props.setToiletFan("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("toiletFan"));
     }
     if (val === 34) {
       props.setToiletLight03("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("toiletLight03"));
     }
     if (props.rndGroupFour === val) {
       props.setGroupFourCorruptDevice(0);
@@ -130,18 +136,22 @@ const ToiletFirstFloor = (props) => {
     if (val === 31) {
       props.setToiletLight("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("toiletLight"));
     }
     if (val === 32) {
       props.setToiletLight02("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("toiletLight02"));
     }
     if (val === 33) {
       props.setToiletFan("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("toiletFan"));
     }
     if (val === 34) {
       props.setToiletLight03("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("toiletLight03"));
     }
     if (props.rndGroupFour === val) {
       dispatch(hideFinishBtn());

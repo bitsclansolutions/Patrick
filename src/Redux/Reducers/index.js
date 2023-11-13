@@ -12,6 +12,7 @@ import corruptGroupReducer from "./CorruptGroup";
 import GroupDevicesCounterReducer from "./GroupDevicesCounter";
 import ChangeLanguageReducer from "./ChangeLanguage";
 import ExerciseReducer from "./ExerciseReducer";
+import allDisconnectedDevices from "./AllDisconnectedDevices";
 
 export const rootReducer = combineReducers({
   UserReducer: UserReducer,
@@ -27,4 +28,5 @@ export const rootReducer = combineReducers({
   GroupDevicesCounterReducer,
   ChangeLanguageReducer,
   ExerciseReducer,
+  allDisconnectedDevices,
 });

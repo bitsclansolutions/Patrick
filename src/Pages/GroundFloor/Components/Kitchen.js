@@ -34,6 +34,8 @@ import {
   corrupGroupDeviceError,
   corruptAttempted,
   correctGroupDeviceError,
+  removeDisconnectDevice,
+  addDisconnectDevice,
 } from "../../../Redux/Action";
 
 import "antd/dist/antd.css";
@@ -94,26 +96,32 @@ const Kitchen = (props) => {
     if (val === 10) {
       props.setKitchenMixture("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("kitchenMixture"));
     }
     if (val === 11) {
       props.setKitchenOven("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("kitchenOven"));
     }
     if (val === 12) {
       props.setKitchenLight01("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("kitchenLight01"));
     }
     if (val === 13) {
       props.setKitchenLight02("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("kitchenLight02"));
     }
     if (val === 14) {
       props.setKitchenLight03("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("kitchenLight03"));
     }
     if (val === 15) {
       props.setKitchenToster("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("kitchenToster"));
     }
     if (props.rndKitchen === val) {
       props.setKitchenCorruptDevice(0);
@@ -143,26 +151,32 @@ const Kitchen = (props) => {
     if (val === 10) {
       props.setKitchenMixture("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("kitchenMixture"));
     }
     if (val === 11) {
       props.setKitchenOven("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("kitchenOven"));
     }
     if (val === 12) {
       props.setKitchenLight01("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("kitchenLight01"));
     }
     if (val === 13) {
       props.setKitchenLight02("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("kitchenLight02"));
     }
     if (val === 14) {
       props.setKitchenLight03("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("kitchenLight03"));
     }
     if (val === 15) {
       props.setKitchenToster("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("kitchenToster"));
     }
     if (props.rndKitchen === val) {
       dispatch(hideFinishBtn());

@@ -28,6 +28,8 @@ import {
   corrupGroupDeviceError,
   corruptAttempted,
   correctGroupDeviceError,
+  removeDisconnectDevice,
+  addDisconnectDevice,
 } from "../../../../Redux/Action";
 import {
   breakerOffDutch,
@@ -80,10 +82,12 @@ const StudyRoom = (props) => {
     if (val === 42) {
       props.setStudyLamp("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("studyLamp"));
     }
     if (val === 43) {
       props.setStudyLamp02("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("studyLamp02"));
     }
     if (props.rndGroupFive === val) {
       props.setGroupFiveCorruptDevice(0);
@@ -113,10 +117,12 @@ const StudyRoom = (props) => {
     if (val === 42) {
       props.setStudyLamp("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("studyLamp"));
     }
     if (val === 43) {
       props.setStudyLamp02("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("studyLamp02"));
     }
     if (props.rndGroupFive === val) {
       dispatch(hideFinishBtn());

@@ -234,3 +234,18 @@ export const setExerciseCounter = (val) => {
     payload: val,
   };
 };
+
+// disconnected devices
+
+export const addDisconnectDevice = (val) => {
+  return {
+    type: "addDisconnectDevice",
+    payload: val,
+  };
+};
+export const removeDisconnectDevice = (val) => {
+  return {
+    type: "removeDisconnectDevice",
+    payload: val,
+  };
+};

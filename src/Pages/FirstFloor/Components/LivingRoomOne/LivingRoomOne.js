@@ -39,6 +39,8 @@ import {
   corrupGroupDeviceError,
   corruptAttempted,
   correctGroupDeviceError,
+  removeDisconnectDevice,
+  addDisconnectDevice,
 } from "../../../../Redux/Action";
 import {
   breakerOffDutch,
@@ -93,22 +95,27 @@ const LivingRoomOne = (props) => {
     if (val === 16) {
       props.setLivingOneLignt01("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("livingOneLignt01"));
     }
     if (val === 17) {
       props.setLivingOneLignt02("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("livingOneLignt02"));
     }
     if (val === 18) {
       props.setLivingOneLignt03("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("livingOneLignt03"));
     }
     if (val === 19) {
       props.setLivingOneFan("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("livingOneFan"));
     }
     if (val === 20) {
       props.setLivingOneTV("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("livingOneTV"));
     }
     if (props.rndGroupThree === val) {
       props.setGroupThreeCorruptDevice(0);
@@ -144,22 +151,27 @@ const LivingRoomOne = (props) => {
     if (val === 16) {
       props.setLivingOneLignt01("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("livingOneLignt01"));
     }
     if (val === 17) {
       props.setLivingOneLignt02("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("livingOneLignt02"));
     }
     if (val === 18) {
       props.setLivingOneLignt03("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("livingOneLignt03"));
     }
     if (val === 19) {
       props.setLivingOneFan("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("livingOneFan"));
     }
     if (val === 20) {
       props.setLivingOneTV("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("livingOneTV"));
     }
     if (props.rndGroupThree === val) {
       dispatch(hideFinishBtn());

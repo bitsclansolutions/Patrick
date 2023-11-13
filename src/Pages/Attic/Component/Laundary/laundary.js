@@ -30,6 +30,8 @@ import {
   corrupGroupDeviceError,
   corruptAttempted,
   correctGroupDeviceError,
+  addDisconnectDevice,
+  removeDisconnectDevice,
 } from "../../../../Redux/Action";
 import {
   breakerOffDutch,
@@ -83,14 +85,17 @@ const Laundary = (props) => {
     }
     if (val === 47) {
       props.setLaundaryWashing("disconnect");
+      dispatch(addDisconnectDevice("laundaryWashing"));
       dispatchdisconnect(disconnectDevice());
     }
     if (val === 48) {
       props.setLaundaryLight01("disconnect");
+      dispatch(addDisconnectDevice("laundaryLight01"));
       dispatchdisconnect(disconnectDevice());
     }
     if (val === 49) {
       props.setLaundaryLight02("disconnect");
+      dispatch(addDisconnectDevice("laundaryLight02"));
       dispatchdisconnect(disconnectDevice());
     }
     if (props.rndLaundary === val) {
@@ -121,14 +126,17 @@ const Laundary = (props) => {
     props.setLaundaryCorruptDevice(val);
     if (val === 47) {
       props.setLaundaryWashing("connected");
+      dispatch(removeDisconnectDevice("laundaryWashing"));
       dispatchconnect(connectDevice());
     }
     if (val === 48) {
       props.setLaundaryLight01("connected");
+      dispatch(removeDisconnectDevice("laundaryLight01"));
       dispatchconnect(connectDevice());
     }
     if (val === 49) {
       props.setLaundaryLight02("connected");
+      dispatch(removeDisconnectDevice("laundaryLight02"));
       dispatchconnect(connectDevice());
     }
     if (props.rndLaundary === val) {
@@ -304,7 +312,9 @@ const Laundary = (props) => {
                   onMouseEnter={() => setHover("laundaryLight02")}
                   onMouseLeave={() => setHover("")}
                   className="btn btn-danger btn-sm active btn-font"
-                  onClick={() => connectHandler(49)}
+                  onClick={() => {
+                    connectHandler(49);
+                  }}
                 >
                   {isDutch ? "Aansluiten" : "Connect"}
                 </button>
@@ -313,7 +323,9 @@ const Laundary = (props) => {
                   onMouseEnter={() => setHover("laundaryLight02")}
                   onMouseLeave={() => setHover("")}
                   className="btn btn-success btn-sm active btn-font"
-                  onClick={() => disconnectHandler(49)}
+                  onClick={() => {
+                    disconnectHandler(49);
+                  }}
                 >
                   {isDutch ? "Loskoppelen" : "Disconnect"}
                 </button>

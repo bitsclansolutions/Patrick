@@ -32,6 +32,8 @@ import {
   corrupGroupDeviceError,
   corruptAttempted,
   correctGroupDeviceError,
+  removeDisconnectDevice,
+  addDisconnectDevice,
 } from "../../../../Redux/Action";
 import {
   breakerOffDutch,
@@ -87,14 +89,17 @@ const HallAttic = (props) => {
     if (val === 35) {
       props.setHallLampFive("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("hallLampFive"));
     }
     if (val === 36) {
       props.setHallLight01Five("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("hallLight01Five"));
     }
     if (val === 37) {
       props.setHallLight02Five("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("hallLight02Five"));
     }
     if (props.rndGroupFive === val) {
       props.setGroupFiveCorruptDevice(0);
@@ -126,14 +131,17 @@ const HallAttic = (props) => {
     if (val === 35) {
       props.setHallLampFive("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("hallLampFive"));
     }
     if (val === 36) {
       props.setHallLight01Five("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("hallLight01Five"));
     }
     if (val === 37) {
       props.setHallLight02Five("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("hallLight02Five"));
     }
     if (props.rndGroupFive === val) {
       dispatch(hideFinishBtn());

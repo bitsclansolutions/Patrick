@@ -15,6 +15,7 @@ import Avator from "../../Components/Avator";
 import { useDispatch, useSelector } from "react-redux";
 import { SwalResult } from "../../Components/SwalModules";
 import {
+  addDisconnectDevice,
   changeLanguage,
   corruptBreakerAttemptedHandler,
   increaseCouter,
@@ -114,6 +115,10 @@ const RightNavBar = (props) => {
   const counter = useSelector((state) => state.CounterReducer.count);
   const deviceCounter = useSelector(
     (state) => state.CounterRemainingDevicesReducer.count
+  );
+
+  const allDisconnectedDevices = useSelector(
+    (state) => state.allDisconnectedDevices.devices
   );
 
   console.log(deviceCounter);
@@ -568,12 +573,28 @@ const RightNavBar = (props) => {
         // console.log("run")
       }
     } else {
-      if (rand >= 1 && rand <= 9) {
-        SwalInitial(initialPopupText);
-        dispatchCounter(increaseCouter());
-      } else {
+      if (
+        (corruptDevice === 1 && allDisconnectedDevices.includes("toiletFan")) ||
+        (corruptDevice === 2 &&
+          allDisconnectedDevices.includes("toiletLight")) ||
+        (corruptDevice === 3 && allDisconnectedDevices.includes("hallLamp")) ||
+        (corruptDevice === 4 &&
+          allDisconnectedDevices.includes("hallLight01")) ||
+        (corruptDevice === 5 &&
+          allDisconnectedDevices.includes("hallLight02")) ||
+        (corruptDevice === 6 &&
+          allDisconnectedDevices.includes("livingRadio")) ||
+        (corruptDevice === 7 &&
+          allDisconnectedDevices.includes("livingLight01")) ||
+        (corruptDevice === 8 && allDisconnectedDevices.includes("livingAC")) ||
+        (corruptDevice === 9 &&
+          allDisconnectedDevices.includes("livingLight03"))
+      ) {
         props.setFirstGroupBreakerType("red");
         props.setIsFirstGroupBreaker(true);
+      } else {
+        SwalInitial(initialPopupText);
+        dispatchCounter(increaseCouter());
       }
     }
     // console.log("handle on")
@@ -758,12 +779,25 @@ const RightNavBar = (props) => {
         props.setIsKitchenBreaker(true);
       }
     } else {
-      if (rand >= 10 && rand <= 15) {
-        SwalInitial(initialPopupText);
-        dispatchCounter(increaseCouter());
-      } else {
+      if (
+        (corruptDevice === 10 &&
+          allDisconnectedDevices.includes("kitchenMixture")) ||
+        (corruptDevice === 11 &&
+          allDisconnectedDevices.includes("kitchenOven")) ||
+        (corruptDevice === 12 &&
+          allDisconnectedDevices.includes("kitchenLight01")) ||
+        (corruptDevice === 13 &&
+          allDisconnectedDevices.includes("kitchenLight02")) ||
+        (corruptDevice === 14 &&
+          allDisconnectedDevices.includes("kitchenLight03")) ||
+        (corruptDevice === 15 &&
+          allDisconnectedDevices.includes("kitchenToster"))
+      ) {
         props.setKitchenBreakerType("red");
         props.setIsKitchenBreaker(true);
+      } else {
+        SwalInitial(initialPopupText);
+        dispatchCounter(increaseCouter());
       }
     }
   };
@@ -1015,12 +1049,31 @@ const RightNavBar = (props) => {
         props.setIsGroupThreeBreaker(true);
       }
     } else {
-      if (rand >= 16 && rand <= 24) {
-        SwalInitial(initialPopupText);
-        dispatchCounter(increaseCouter());
-      } else {
+      if (
+        (corruptDevice === 16 &&
+          allDisconnectedDevices.includes("livingOneLignt01")) ||
+        (corruptDevice === 17 &&
+          allDisconnectedDevices.includes("livingOneLignt02")) ||
+        (corruptDevice === 18 &&
+          allDisconnectedDevices.includes("livingOneLignt03")) ||
+        (corruptDevice === 19 &&
+          allDisconnectedDevices.includes("livingOneFan")) ||
+        (corruptDevice === 20 &&
+          allDisconnectedDevices.includes("livingOneTV")) ||
+        (corruptDevice === 21 &&
+          allDisconnectedDevices.includes("livingTwoLignt01")) ||
+        (corruptDevice === 22 &&
+          allDisconnectedDevices.includes("livingTwoFan")) ||
+        (corruptDevice === 23 &&
+          allDisconnectedDevices.includes("livingTwoLignt02")) ||
+        (corruptDevice === 24 &&
+          allDisconnectedDevices.includes("livingTwoSmallLamp"))
+      ) {
         props.setGroupThreeBreakerType("red");
         props.setIsGroupThreeBreaker(true);
+      } else {
+        SwalInitial(initialPopupText);
+        dispatchCounter(increaseCouter());
       }
     }
     //end my code for breaker pop up
@@ -1291,12 +1344,33 @@ const RightNavBar = (props) => {
         props.setIsGroupFourBreaker(true);
       }
     } else {
-      if (rand >= 25 && rand <= 34) {
-        SwalInitial(initialPopupText);
-        dispatchCounter(increaseCouter());
-      } else {
+      if (
+        (corruptDevice === 25 &&
+          allDisconnectedDevices.includes("hallLedTv")) ||
+        (corruptDevice === 26 &&
+          allDisconnectedDevices.includes("hallLight01")) ||
+        (corruptDevice === 27 &&
+          allDisconnectedDevices.includes("hallLight02")) ||
+        (corruptDevice === 28 &&
+          allDisconnectedDevices.includes("livingLight01")) ||
+        (corruptDevice === 29 &&
+          allDisconnectedDevices.includes("livingLight02")) ||
+        (corruptDevice === 30 &&
+          allDisconnectedDevices.includes("livingSilingFan")) ||
+        (corruptDevice === 31 &&
+          allDisconnectedDevices.includes("toiletLight")) ||
+        (corruptDevice === 32 &&
+          allDisconnectedDevices.includes("toiletLight02")) ||
+        (corruptDevice === 33 &&
+          allDisconnectedDevices.includes("toiletFan")) ||
+        (corruptDevice === 34 &&
+          allDisconnectedDevices.includes("toiletLight03"))
+      ) {
         props.setGroupFourBreakerType("red");
         props.setIsGroupFourBreaker(true);
+      } else {
+        SwalInitial(initialPopupText);
+        dispatchCounter(increaseCouter());
       }
     }
   };
@@ -1633,12 +1707,35 @@ const RightNavBar = (props) => {
         props.setIsGroupFiveBreaker(true);
       }
     } else {
-      if (rand >= 35 && rand <= 46) {
-        SwalInitial(initialPopupText);
-        dispatchCounter(increaseCouter());
-      } else {
+      if (
+        (corruptDevice === 35 &&
+          allDisconnectedDevices.includes("hallLampFive")) ||
+        (corruptDevice === 36 &&
+          allDisconnectedDevices.includes("hallLight01Five")) ||
+        (corruptDevice === 37 &&
+          allDisconnectedDevices.includes("hallLight02Five")) ||
+        (corruptDevice === 38 &&
+          allDisconnectedDevices.includes("guestLamp")) ||
+        (corruptDevice === 39 &&
+          allDisconnectedDevices.includes("guestRadio")) ||
+        (corruptDevice === 40 && allDisconnectedDevices.includes("guestFan")) ||
+        (corruptDevice === 41 && allDisconnectedDevices.includes("guestLED")) ||
+        (corruptDevice === 42 &&
+          allDisconnectedDevices.includes("studyLamp")) ||
+        (corruptDevice === 43 &&
+          allDisconnectedDevices.includes("studyLamp02")) ||
+        (corruptDevice === 44 &&
+          allDisconnectedDevices.includes("livingOneLignt01")) ||
+        (corruptDevice === 45 &&
+          allDisconnectedDevices.includes("livingOneLignt02")) ||
+        (corruptDevice === 46 &&
+          allDisconnectedDevices.includes("livingOneLignt03"))
+      ) {
         props.setgroupFiveBreakerType("red");
         props.setIsGroupFiveBreaker(true);
+      } else {
+        SwalInitial(initialPopupText);
+        dispatchCounter(increaseCouter());
       }
     }
   };
@@ -1668,8 +1765,12 @@ const RightNavBar = (props) => {
   };
 
   const laundaryBreakerHandlerOff = () => {
+    console.log(corruptDevice);
     if (location === "/attic/laundary") {
-      if (props.rndLaundary >= 47 && props.rndLaundary <= 49) {
+      if (
+        (props.rndLaundary >= 47 && props.rndLaundary <= 49) ||
+        (corruptDevice >= 47 && corruptDevice <= 49)
+      ) {
         if (
           props.rndLaundary === 47 &&
           props.laundaryWashing === "disconnect" &&
@@ -1696,6 +1797,7 @@ const RightNavBar = (props) => {
         }
 
         if (props.laundaryCorruptDevice === props.rndLaundary) {
+          console.log("kdsajf");
           SwalInitial(initialPopupText);
           props.setIsLaundaryBreaker(false);
         } else {
@@ -1718,6 +1820,7 @@ const RightNavBar = (props) => {
           ) {
             props.setLaundaryBreakerType("black");
             props.setIsLaundaryBreaker(false);
+            console.log("kdsajf");
             SwalInitial(initialPopupText);
             dispatchCounter(increaseCouter());
           }
@@ -1731,6 +1834,7 @@ const RightNavBar = (props) => {
         ) {
           props.setLaundaryBreakerType("black");
           props.setIsLaundaryBreaker(false);
+          console.log("kdsajf");
           SwalInitial(initialPopupText);
           dispatchCounter(increaseCouter());
         } else if (
@@ -1740,6 +1844,7 @@ const RightNavBar = (props) => {
         ) {
           props.setLaundaryBreakerType("black");
           props.setIsLaundaryBreaker(false);
+          console.log("kdsajf");
           SwalInitial(initialPopupText);
           dispatchCounter(increaseCouter());
         }
@@ -1749,15 +1854,27 @@ const RightNavBar = (props) => {
         props.setIsLaundaryBreaker(true);
       }
     } else {
-      if (rand >= 47 && rand <= 49) {
-        SwalInitial(initialPopupText);
-        dispatchCounter(increaseCouter());
-      } else {
+      if (
+        (corruptDevice === 47 &&
+          allDisconnectedDevices.includes("laundaryWashing")) ||
+        (corruptDevice === 48 &&
+          allDisconnectedDevices.includes("laundaryLight01")) ||
+        (corruptDevice === 49 &&
+          allDisconnectedDevices.includes("laundaryLight02"))
+      ) {
         props.setLaundaryBreakerType("red");
         props.setIsLaundaryBreaker(true);
+      } else {
+        SwalInitial(initialPopupText);
+        dispatchCounter(increaseCouter());
       }
     }
     //end my code for breaker pop up
+    console.log(
+      props.laundaryLight01,
+      props.laundaryLight02,
+      props.LaundaryWashing
+    );
   };
 
   const redirect = () => {

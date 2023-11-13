@@ -39,6 +39,8 @@ import {
   corrupGroupDeviceError,
   corruptAttempted,
   correctGroupDeviceError,
+  addDisconnectDevice,
+  removeDisconnectDevice,
 } from "../../../../Redux/Action";
 
 const GuestRoom = (props) => {
@@ -87,18 +89,22 @@ const GuestRoom = (props) => {
     if (val === 38) {
       props.setGuestLamp("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("guestLamp"));
     }
     if (val === 39) {
       props.setGuestRadio("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("guestRadio"));
     }
     if (val === 40) {
       props.setGuestFan("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("guestFan"));
     }
     if (val === 41) {
       props.setGuestLED("disconnect");
       dispatchdisconnect(disconnectDevice());
+      dispatch(addDisconnectDevice("guestLED"));
     }
     if (props.rndGroupFive === val) {
       props.setGroupFiveCorruptDevice(0);
@@ -128,18 +134,22 @@ const GuestRoom = (props) => {
     if (val === 38) {
       props.setGuestLamp("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("guestLamp"));
     }
     if (val === 39) {
       props.setGuestRadio("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("guestRadio"));
     }
     if (val === 40) {
       props.setGuestFan("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("guestFan"));
     }
     if (val === 41) {
       props.setGuestLED("connected");
       dispatchconnect(connectDevice());
+      dispatch(removeDisconnectDevice("guestLED"));
     }
     if (props.rndGroupFive === val) {
       dispatch(hideFinishBtn());

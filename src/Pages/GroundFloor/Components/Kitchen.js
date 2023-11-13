@@ -240,7 +240,7 @@ const Kitchen = (props) => {
                 className="btn btn-danger btn-sm active btn-font"
                 onClick={() => connectHandler(10)}
               >
-                {isDutch ? "Aansluiten" : "connect"}
+                {isDutch ? "Aansluiten" : "Connect"}
               </button>
             ) : (
               <button
@@ -307,7 +307,7 @@ const Kitchen = (props) => {
                 className="btn btn-danger btn-sm active btn-font"
                 onClick={() => connectHandler(11)}
               >
-                {isDutch ? "Aansluiten" : "connect"}
+                {isDutch ? "Aansluiten" : "Connect"}
               </button>
             ) : (
               <button
@@ -357,7 +357,7 @@ const Kitchen = (props) => {
                 className="btn btn-danger btn-sm active btn-font"
                 onClick={() => connectHandler(12)}
               >
-                {isDutch ? "Aansluiten" : "connect"}
+                {isDutch ? "Aansluiten" : "Connect"}
               </button>
             ) : (
               <button
@@ -385,7 +385,7 @@ const Kitchen = (props) => {
                 className="btn btn-danger btn-sm active btn-font set-top-btn-ab"
                 onClick={() => connectHandler(13)}
               >
-                {isDutch ? "Aansluiten" : "connect"}
+                {isDutch ? "Aansluiten" : "Connect"}
               </button>
             ) : (
               <button
@@ -427,7 +427,7 @@ const Kitchen = (props) => {
                 className="btn btn-danger btn-sm active btn-font"
                 onClick={() => connectHandler(14)}
               >
-                {isDutch ? "Aansluiten" : "connect"}
+                {isDutch ? "Aansluiten" : "Connect"}
               </button>
             ) : (
               <button
@@ -479,7 +479,7 @@ const Kitchen = (props) => {
                 className="btn btn-danger btn-sm active btn-font"
                 onClick={() => connectHandler(15)}
               >
-                {isDutch ? "Aansluiten" : "connect"}
+                {isDutch ? "Aansluiten" : "Connect"}
               </button>
             ) : (
               <button

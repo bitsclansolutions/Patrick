@@ -51,7 +51,7 @@ const FirstFloor = (props) => {
           ""
         )}
         <div className="row" style={{ height: "100vh" }}>
-          <div className="col-lg-2 navbar-background2">
+          <div className="col-lg-2 navbar-background">
             <RightNavBar
               // navbar .............................
               isModalOpen={isModalOpen}

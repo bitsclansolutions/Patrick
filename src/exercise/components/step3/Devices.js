@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import Popup from "../../utils/Popup";
 import { Link } from "react-router-dom";
 import ChangeLanguageToggle from "../../../utils/ChangeLanguageToggle";
+import Highlight from "../../utils/Highlight";
+import ExerciseName from "../../utils/ExerciseName";
 
 const Devices = () => {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
@@ -26,24 +28,27 @@ const Devices = () => {
           : "kitchen-main-div-exercise-eng"
       }
     >
+      <ExerciseName />
       <div className="translator-exercise">
         <ChangeLanguageToggle />
       </div>
-      <Popup bottom={0} right={0} width={47} opacity={1}>
+      <Highlight width={300} left={-4} top={8} />
+      <Popup bottom={0} right={0} width={47} opacity={0}>
         {isDutch ? (
           <>
             <p className="popup-text-base">
-              Je staat nu in de keuken van de begane grond. In het schema links
-              van je scherm zie dat de <b>keuken</b> op <b>stroomgroep 2</b> zit
-              Door te klikken op de knop Loskoppelen of Koppelen kun je een
-              apparaat uit het stopcontact halen of loskoppelen van het netwerk.
+              Je staat nu in de <b>keuken</b> op de <b>begane grond</b>. <br />{" "}
+              In het schema links van je scherm zie je dat de <b>keuken</b> op{" "}
+              <b>stroomgroep 2</b> zit. <br /> Door te klikken op de knop
+              Loskoppelen of Koppelen kun je een apparaat uit het stopcontact
+              halen of loskoppelen van het netwerk.
             </p>
             <p className="popup-text-base">
-              Als er andere kamers op dezelfde stroomgroep zitten moet je de
-              apparaten uit die kamers ook uitschakelen.
+              Als er andere kamers op dezelfde stroomgroep zitten, moet je de
+              apparaten van die kamers ook uitschakelen.
             </p>
             <p className="popup-text-base">
-              Wanneer je een kamer wilt verlaten klik je op de knop 'Terug'
+              Wanneer je een kamer wilt verlaten klik je op de knop ‘Ga Terug'
             </p>
             <div className="popup-button">
               <Link to="/exercise-step3-finish">

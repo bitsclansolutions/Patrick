@@ -2,6 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Popup from "../../utils/Popup";
 import { Link } from "react-router-dom";
+import "./GroundFloor.css";
+import ExerciseName from "../../utils/ExerciseName";
 
 const GroundFloor = () => {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
@@ -27,24 +29,22 @@ const GroundFloor = () => {
             : "hall-main-div-exercise-eng"
         }
       >
+        <ExerciseName />
         <Popup opacity="20" top={0} right={0} position={true} width={45}>
           {isDutch ? (
             <>
               <p className="welcome">Begane Grond</p>
+              <p className="popup-text-base">Je bevindt je in de hal</p>
               <p className="popup-text-base">
-                Dit is de begane grond, dat is de onderste verdieping van het
-                huis. Je bevind je op de gang.
+                Je ziet verschillende deuren met de naam van de ruimte erop
+                Links van het scherm zie je de meterkast. Daarboven staat een
+                overzicht waarop je kunt zien welke stroomgroep bij welke
+                ruimte(s) hoort Je kunt daar ook zien op welke stroomgroep de
+                elektriciteit is aangesloten.
               </p>
               <p className="popup-text-base">
-                e ziet verschillende deuren met de naam van de ruimte erop.
-                Links van het scherm zie je de meterkast met daarboven een
-                overzicht waar je kunt zien welke stroomgroep op welke ruimte
-                zit. Je ziet ook op welke stroomgroep de elektriciteit is
-                aangesloten.
-              </p>
-              <p className="popup-text-base">
-                Hier zie je dat de <b>keuken</b> op <b>stroomgroep 2</b> zit en
-                het <b>toilet, de woonkamer</b> en de <b>hal</b> op{" "}
+                Hier zie je dat de <b>keuken</b> op <b>stroomgroep 2</b> zit.{" "}
+                <br /> Het <b>toilet, de woonkamer</b> en de <b>hal</b> ziten op{" "}
                 <b>stroomgroep 1</b>.
               </p>
               <div className="popup-button">

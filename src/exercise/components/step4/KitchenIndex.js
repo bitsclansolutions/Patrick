@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../RightNavbar.css";
 import ChangeLanguageToggle from "../../../utils/ChangeLanguageToggle";
 import Avator from "../../../Pages/Components/Avator";
@@ -41,6 +41,7 @@ const KitchenIndex = () => {
   const [breaker6, setBreaker6] = useState(true);
   const [showDisconnectDevices, setShowDisconnectDevices] = useState(true);
   const [showDisconnectAll, setShowDisconnectAll] = useState(false);
+  const [exercise2, setExercise2] = useState(false);
   const [showMeterFuse, setShowMeterFuse] = useState(false);
   const [showWrongBreaker, setShowWrongBreaker] = useState(false);
   const [showRightBreaker, setShowRightBreaker] = useState(false);
@@ -66,6 +67,10 @@ const KitchenIndex = () => {
   const exerciseDisconnected = useSelector(
     (state) => state.ExerciseReducer.deviceCount
   );
+
+  useEffect(() => {
+    dispatch(resetExerciseCounter());
+  }, []);
 
   console.log(exerciseDisconnected);
 
@@ -126,26 +131,38 @@ const KitchenIndex = () => {
   };
   const disconnectAll = () => {
     setShowDisconnectAll(false);
-    setShowMeterFuse(true);
   };
 
+  const startExercise2 = () => {
+    if (!bulb1 && !bulb2 && !oven && !smoke && !toaster && !mixer) {
+      setShowMeterFuse(true);
+      setExercise2(true);
+    }
+  };
+
+  useEffect(() => {
+    if (!exercise2) {
+      startExercise2();
+    }
+  }, [bulb1, bulb2, oven, smoke, toaster, mixer]);
+
   const wrongBreakerHandler = () => {
-    setBreaker1(true);
-    setBreaker3(true);
-    setBreaker4(true);
-    setBreaker5(true);
-    setBreaker6(true);
+    // setBreaker1(true);
+    // setBreaker3(true);
+    // setBreaker4(true);
+    // setBreaker5(true);
+    // setBreaker6(true);
     setShowWrongBreaker(false);
   };
   const deviceErrorHandler = () => {
-    setBulb1(true);
-    setBulb2(true);
-    setOven(true);
-    setToaster(true);
-    setMixer(true);
-    setSmoke(true);
+    // setBulb1(true);
+    // setBulb2(true);
+    // setOven(true);
+    // setToaster(true);
+    // setMixer(true);
+    // setSmoke(true);
     setShowDeviceError(false);
-    dispatch(resetExerciseCounter());
+    // dispatch(resetExerciseCounter());
   };
   const rightBreakerHandler = () => {
     setShowRightBreaker(false);
@@ -631,28 +648,26 @@ const KitchenIndex = () => {
           <Popup opacity={2}>
             {isDutch ? (
               <>
-                <p className="welcome">Zet de zekering aan</p>
+                <p className="welcome">Goed gedaan!</p>
                 <p className="popup-text">
-                  Nadat u alle apparaten hebt losgekoppeld, kijkt u naar de
-                  meterkast. Klik op de zekering van groep 2 om de stroom weer
-                  in te schakelen.
+                  Je hebt alle apparaten losgekoppeld. Schakel nu de zekering
+                  in.
                 </p>
                 <div className="popup-button">
                   <button onClick={() => setShowMeterFuse(false)}>
-                    Klik hier om verder te gaan
+                    Ik snap dit
                   </button>
                 </div>
               </>
             ) : (
               <>
-                <p className="welcome">Turn fuse on</p>
+                <p className="welcome">Well done!</p>
                 <p className="popup-text">
-                  After disconnecting all devices look to the meterbox Click on
-                  the group 2 fuse to turn power back on.
+                  You have disconnected all devices. Now switch on the fuse.
                 </p>
                 <div className="popup-button">
                   <button onClick={() => setShowMeterFuse(false)}>
-                    Click here to continue
+                    I get this
                   </button>
                 </div>
               </>
@@ -764,9 +779,9 @@ const KitchenIndex = () => {
         <Popup opacity={1}>
           {isDutch ? (
             <>
-              <div className="welcome">Corrupt apparaat</div>
+              <div className="welcome">Defect apparaat</div>
               <p className="popup-text">
-                Je hebt het apparaat proberen in te schakelen, maar dat lukt
+                Je hebt het apparaat proberen in te schakelen, maar dat kan
                 niet. Kijk nu in de meterkast.
               </p>
               <div className="popup-button">

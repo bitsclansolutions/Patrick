@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import Popup from "../../utils/Popup";
 import { Link } from "react-router-dom";
 import ChangeLanguageToggle from "../../../utils/ChangeLanguageToggle";
+import ExerciseName from "../../utils/ExerciseName";
 
 const Finish = () => {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
@@ -26,6 +27,7 @@ const Finish = () => {
           : "kitchen-main-div-exercise-eng"
       }
     >
+      <ExerciseName />
       <div className="translator-exercise">
         <ChangeLanguageToggle />
       </div>

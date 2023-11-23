@@ -4,6 +4,8 @@ import "./Step3.css";
 import Popup from "../../utils/Popup";
 import { Link } from "react-router-dom";
 import ChangeLanguageToggle from "../../../utils/ChangeLanguageToggle";
+import Video from "../../exercise-videos/stroom-uitgevalle.mp4";
+import ExerciseName from "../../utils/ExerciseName";
 
 const Step3 = () => {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
@@ -27,11 +29,12 @@ const Step3 = () => {
           : "kitchen-main-div-exercise-eng"
       }
     >
+      <ExerciseName />
       <div className="translator-exercise">
         <ChangeLanguageToggle />
       </div>
       <Popup opacity={6}>
-        <iframe
+        {/* <iframe
           width="100%"
           height="263"
           src="https://www.youtube.com/embed/R2211e3cKbc?si=XMRDNYJm5zLETtbA"
@@ -39,7 +42,10 @@ const Step3 = () => {
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
-        ></iframe>
+        ></iframe> */}
+        <video width="100%" controls>
+          <source src={Video} type="video/mp4" />
+        </video>
         <div className="popup-button">
           <Link to="/exercise-meter">
             {isDutch

@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import "./FirstFloor.css";
 import Popup from "../../utils/Popup";
 import { Link } from "react-router-dom";
+import ExerciseName from "../../utils/ExerciseName";
 
 const FirstFloor = () => {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
@@ -27,23 +28,22 @@ const FirstFloor = () => {
           : "firstFloor-main-div-exercise-eng"
       }
     >
+      <ExerciseName />
       <Popup opacity="20" top={0} right={0} position={true} width={47}>
         {isDutch ? (
           <>
             {" "}
-            <p className="welcome">Eerste Verdieping</p>
-            <p className="popup-text-base">
-              Dit is de eerste verdieping van het huis. Je bevind je op de
-              overloop.
-            </p>
+            <p className="welcome">Eerste verdieping</p>
+            <p className="popup-text-base">le benvindt je op de overloop</p>
             <p className="popup-text-base">
               Bij het trapgat kun je van de ene verdieping naar de andere
               verdieping gaan.
             </p>
             <p className="popup-text-base">
               Hier zie je dat <b>slaapkamers 1</b> en <b>2</b> op{" "}
-              <b>stroomgroep 3</b>. De <b>overloop</b>, de <b>badkamer</b> en{" "}
-              <b>slaapkamer 3</b> zitten op <b>stroomgroep 4</b>.
+              <b>stroomgroep 3</b> zitten. <br /> De <b>overloop</b>, de{" "}
+              <b>badkamer</b> en <b>slaapkamer 3</b> zitten op{" "}
+              <b>stroomgroep 4</b>.
             </p>
             <div className="popup-button">
               <Link to="/exercise-atticFloor">

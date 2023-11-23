@@ -5,6 +5,7 @@ import Popup from "../../utils/Popup";
 import "./Board.css";
 import { Link } from "react-router-dom";
 import ChangeLanguageToggle from "../../../utils/ChangeLanguageToggle";
+import ExerciseName from "../../utils/ExerciseName";
 
 const Board = () => {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
@@ -28,17 +29,22 @@ const Board = () => {
           : "kitchen-main-div-exercise-eng"
       }
     >
+      <ExerciseName />
       <div className="translator-exercise">
         <ChangeLanguageToggle />
       </div>
-      <Highlight bottom={6} width="20%" left={-1.5} opacity={70} />
+      <Highlight bottom={8} width="19%" left={-1.5} opacity={70} />
       <Popup bottom={15} left={20}>
         {isDutch ? (
           <>
             <p className="popup-text">
-              Op deze afbeelding zie je dat <b>stroomgroep 2</b> is
-              uitgeschakeld. De schakelaar staat naar onder en is zwart van
-              kleur geworden.
+              Dit is de meterkast waarmee je alle stroom in huis in en uit kunt
+              schakelen.
+            </p>
+            <p className="popup-text">
+              Op deze afbeelding zie je <b>dat stroomgroep 2</b> is
+              uitgeschakeld. <br /> De schakelaar staat naar beneden en is nu
+              zwart van kleur.
             </p>
             <div className="popup-button">
               <Link to="/exercise-devices">Klik hier om verder te gaan</Link>
@@ -46,6 +52,10 @@ const Board = () => {
           </>
         ) : (
           <>
+            <p className="popup-text">
+              This is the meter box with which you can switch all the power in
+              your house on and off.
+            </p>
             <p className="popup-text">
               In this board you can see that power <b>group 2</b> is switched
               off and changed color.

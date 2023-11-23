@@ -4,6 +4,8 @@ import "./Start.css";
 import Popup from "../../utils/Popup";
 import { Link } from "react-router-dom";
 import ChangeLanguageToggle from "../../../utils/ChangeLanguageToggle";
+import ExerciseName from "../../utils/ExerciseName";
+import Video from "../../exercise-videos/wat-is-kortsluiting.mp4";
 // import ExerciseHall from "/exercise-images/Screenshot 2023-10-20 220310.png";
 
 const Start = () => {
@@ -31,6 +33,7 @@ const Start = () => {
             : "hall-main-div-exercise-eng"
         }
       >
+        <ExerciseName />
         <div className="translator-exercise">
           <ChangeLanguageToggle />
         </div>
@@ -42,7 +45,7 @@ const Start = () => {
               : "Dear student, In this assignment you will learn how to find out if there is a short circuit at home and how to solve it. Watch the video to understand what a short circuit is."}
           </p>
           <div className="video">
-            <iframe
+            {/* <iframe
               width="90%"
               height="235"
               src="https://www.youtube.com/embed/-SORycnF0Yo?si=awMxZ_iEH1eSV2O9"
@@ -50,8 +53,12 @@ const Start = () => {
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
-            ></iframe>
+            ></iframe> */}
+            <video width="100%" controls>
+              <source src={Video} type="video/mp4" />
+            </video>
           </div>
+
           <p className="popup-text">
             {isDutch
               ? "Je krijgt straks een rondleiding te zien in een woning."

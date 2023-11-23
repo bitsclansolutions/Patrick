@@ -46,7 +46,7 @@ const Attic = (props) => {
           />
         ) : null}
         <div className="row" style={{ height: "100vh" }}>
-          <div className="col-lg-2 navbar-background3">
+          <div className="col-lg-2 navbar-background">
             <RightNavBar
               isModalOpen1={isModalOpen1}
               setIsModalOpen1={setIsModalOpen1}

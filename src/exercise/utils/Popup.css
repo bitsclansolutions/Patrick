@@ -24,6 +24,13 @@
   box-shadow: 0 0 20px #3f3f3f;
 }
 
+.head {
+  font-size: 35px;
+  font-weight: 700;
+  color: #085ca8;
+  text-align: center;
+}
+
 .welcome {
   text-align: center;
   font-size: 32px;

@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import "./AtticFloor.css";
 import Popup from "../../utils/Popup";
 import { Link } from "react-router-dom";
+import ExerciseName from "../../utils/ExerciseName";
 
 const AtticFloor = () => {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
@@ -27,19 +28,17 @@ const AtticFloor = () => {
           : "atticFloor-main-div-exercise-eng"
       }
     >
+      <ExerciseName />
       {!endStep && (
         <Popup right={0} top={0} opacity={10}>
           {isDutch ? (
             <>
               <p className="welcome">Zolder</p>
-              <p className="popup-text-base">
-                Dit is de zolder, die bevind zich op de tweede verdieping van
-                het huis. Je bevind je op de overloop van de zolder.
-              </p>
+              <p className="popup-text-base">Je bevindt je op de overloop.</p>
               <p className="popup-text-base">
                 Hier zie je dat de <b>overloop</b>, <b>logeerkamer</b>,{" "}
                 <b>studeerkamer</b> en <b>berging</b> op <b>stroomgroep 5</b>{" "}
-                zitten en de <b>washok</b> op <b>stroomgroep 6</b>.
+                zitten. <br /> Het <b>washok</b> zit op <b>stroomgroep 6</b>.
               </p>
               <div className="popup-button">
                 <button onClick={() => setEndStep(true)}>

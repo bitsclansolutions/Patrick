@@ -194,7 +194,7 @@ const RightNavBar = (props) => {
         } of different groups, Do you still want to finish?`;
   }
   const sureText = isDutchLocal
-    ? "Weet je zeker dat je het spel wilt voltooien?"
+    ? "Weet je zeker dat je het spel wilt Afronden??"
     : "Are you sure you want to finish the game?";
   // const counter = useSelector((state) => state.CounterReducer.count);
   // console.log(counter + " redux counter");

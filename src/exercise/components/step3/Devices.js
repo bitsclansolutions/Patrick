@@ -32,7 +32,7 @@ const Devices = () => {
       <div className="translator-exercise">
         <ChangeLanguageToggle />
       </div>
-      <Highlight width={300} left={-4} top={8} />
+      <Highlight width={220} height={300} left={0} top={8} radius="30px" />
       <Popup bottom={0} right={0} width={47} opacity={0}>
         {isDutch ? (
           <>

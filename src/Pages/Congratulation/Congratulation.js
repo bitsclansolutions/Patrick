@@ -150,7 +150,7 @@ const Congratulation = () => {
           <p className="set-font-20">
             <strong>
               {isDutch
-                ? "Sorry, u heeft het corrupte apparaat niet losgekoppeld!"
+                ? "Helaas, je hebt het defecte apparaat niet losgekoppeld!"
                 : "Sorry, You have not disconnected the corrupt device!"}{" "}
             </strong>
           </p>

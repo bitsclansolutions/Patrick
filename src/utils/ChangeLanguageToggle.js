@@ -24,7 +24,7 @@ const ChangeLanguageToggle = ({ color }) => {
       <div className="translate" style={{ color: color }}>
         <p>English</p>
         <input type="checkbox" checked={isDutch} onChange={translateHandler} />
-        <p>Dutch</p>
+        <p>Nederlands</p>
       </div>
     </div>
   );

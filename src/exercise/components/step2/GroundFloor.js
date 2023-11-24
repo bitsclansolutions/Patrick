@@ -36,11 +36,12 @@ const GroundFloor = () => {
               <p className="welcome">Begane Grond</p>
               <p className="popup-text-base">Je bevindt je in de hal</p>
               <p className="popup-text-base">
-                Je ziet verschillende deuren met de naam van de ruimte erop
-                Links van het scherm zie je de meterkast. Daarboven staat een
-                overzicht waarop je kunt zien welke stroomgroep bij welke
-                ruimte(s) hoort Je kunt daar ook zien op welke stroomgroep de
-                elektriciteit is aangesloten.
+                Je ziet verschillende deuren met de naam van de ruimte erop.{" "}
+                <br />
+                Links van het scherm zie je de meterkast. <br /> Daarboven staat
+                een overzicht waarop je kunt zien welke stroomgroep bij welke
+                ruimte(s) hoort. <br /> Je kunt daar ook zien op welke
+                stroomgroep de elektriciteit is aangesloten.
               </p>
               <p className="popup-text-base">
                 Hier zie je dat de <b>keuken</b> op <b>stroomgroep 2</b> zit.{" "}

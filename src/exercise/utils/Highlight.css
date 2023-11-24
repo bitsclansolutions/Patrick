@@ -11,6 +11,5 @@
   position: absolute;
   background: transparent;
   width: 200px;
-  aspect-ratio: 1;
-  border-radius: 99999px;
+  height: 200px;
 }

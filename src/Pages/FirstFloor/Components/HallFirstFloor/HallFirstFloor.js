@@ -56,6 +56,8 @@ const HallFirstFloor = (props) => {
   const corruptDevice = useSelector(
     (state) => state.CorruptDeviceReducer.corrupt
   );
+  const exerciseNumber = useSelector((state) => state.ExerciseReducer.exercise);
+
   const redirectSorry = () => {
     navigate("/result");
   };
@@ -117,7 +119,7 @@ const HallFirstFloor = (props) => {
     if (props.rndGroupFour === val && props.groupFourBreakerType === "red") {
       props.setGroupFourBreakerType("black");
       props.setIsGroupFourBreaker(false);
-      // SwalBreakerOff(popupText, redirectSorry);
+      exerciseNumber === 2 && SwalBreakerOff(popupText, redirectSorry);
       dispatch(increaseDeviceCounter());
       errorSound();
       // props.setFirstFloorTrial(props.firstFloorTrial + 1);

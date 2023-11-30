@@ -55,6 +55,8 @@ const BedRoomFirstFloor = (props) => {
 
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
 
+  const exerciseNumber = useSelector((state) => state.ExerciseReducer.exercise);
+
   const corruptDevice = useSelector(
     (state) => state.CorruptDeviceReducer.corrupt
   );
@@ -120,7 +122,7 @@ const BedRoomFirstFloor = (props) => {
       props.setGroupFourBreakerType("black");
 
       props.setIsGroupFourBreaker(false);
-      // SwalBreakerOff(popupText, redirectSorry);
+      exerciseNumber === 2 && SwalBreakerOff(popupText, redirectSorry);
       dispatch(increaseDeviceCounter());
       props.setFirstFloorTrial(props.firstFloorTrial + 1);
       localStorage.setItem(

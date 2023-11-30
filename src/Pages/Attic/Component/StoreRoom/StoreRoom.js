@@ -53,6 +53,8 @@ const StoreRoom = (props) => {
   const corruptDevice = useSelector(
     (state) => state.CorruptDeviceReducer.corrupt
   );
+  const exerciseNumber = useSelector((state) => state.ExerciseReducer.exercise);
+
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
   const redirectSorry = () => {
     navigate("/result");
@@ -114,7 +116,7 @@ const StoreRoom = (props) => {
       props.setgroupFiveBreakerType("black");
       errorSound();
       props.setIsGroupFiveBreaker(false);
-      // SwalBreakerOff(popupText, redirectSorry);
+      exerciseNumber === 2 && SwalBreakerOff(popupText, redirectSorry);
       dispatch(increaseDeviceCounter());
       props.setAtticTrial(props.atticTrial + 1);
       localStorage.setItem("state-attic", JSON.stringify(props.atticTrial + 1));

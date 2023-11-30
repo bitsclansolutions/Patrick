@@ -34,7 +34,7 @@ const FirstFloor = () => {
           <>
             {" "}
             <p className="welcome">Eerste verdieping</p>
-            <p className="popup-text-base">le benvindt je op de overloop</p>
+            <p className="popup-text-base">Je bevindt je op de overloop.</p>
             <p className="popup-text-base">
               Bij het trapgat kun je van de ene verdieping naar de andere
               verdieping gaan.

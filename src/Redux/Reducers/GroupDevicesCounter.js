@@ -1,4 +1,5 @@
 const data = {
+  exercise: null,
   corruptGroupDisconnected: 0,
   correctGroupDisconnected: 0,
   corruptGroupError: 0,

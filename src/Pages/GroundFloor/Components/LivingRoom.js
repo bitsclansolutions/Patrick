@@ -57,6 +57,8 @@ const LivingRoom = (props) => {
   const corruptDevice = useSelector(
     (state) => state.CorruptDeviceReducer.corrupt
   );
+  const exerciseNumber = useSelector((state) => state.ExerciseReducer.exercise);
+
   const redirectSorry = () => {
     navigate("/result");
   };
@@ -121,7 +123,7 @@ const LivingRoom = (props) => {
     if (props.completeRnd === val && props.firstGroupBreakerType === "red") {
       props.setFirstGroupBreakerType("black");
       props.setIsFirstGroupBreaker(false);
-      // SwalBreakerOff(popupText, redirectSorry);
+      exerciseNumber === 2 && SwalBreakerOff(popupText, redirectSorry);
       dispatch(increaseDeviceCounter());
       props.setGroundFloorTrial(props.groundFloorTrial + 1);
       localStorage.setItem("state", JSON.stringify(props.groundFloorTrial + 1));

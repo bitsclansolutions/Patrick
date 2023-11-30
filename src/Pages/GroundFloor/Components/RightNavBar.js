@@ -87,6 +87,8 @@ const RightNavBar = (props) => {
     (state) => state.corruptGroupReducer.corruptGroup
   );
 
+  const exerciseNumber = useSelector((state) => state.ExerciseReducer.exercise);
+
   useEffect(() => {
     // if (corruptGroup === 1) {
     //   setBreaker1(false);
@@ -144,7 +146,18 @@ const RightNavBar = (props) => {
   const showFinishBtn = useSelector((state) => state.ShowFinishReducer.show);
   console.log(showFinishBtn);
   let popupText;
-  if (!showFinishBtn) {
+  if (!showFinishBtn && exerciseNumber === 2) {
+    popupText = isDutchLocal
+      ? ` <ul style="textAlign: left">
+        <li>Je hebt het defecte apparaat nog niet losgekoppeld.</li>
+        <li>Zoek eerst het defecte apparaat.</li>
+      </ul>`
+      : ` <ul style = {{textAlign: "left"}}>
+        <li>You have not yet disconnected the defective device.</li>
+        <li>First find the faulty device.</li>
+      </ul>`;
+  }
+  if (!showFinishBtn && exerciseNumber === 3) {
     popupText = isDutchLocal
       ? "U heeft het corrupte apparaat niet losgekoppeld. Wilt u toch doorgaan?"
       : "You have not disconnected the corrupt device, Do you still want to finish?";
@@ -194,7 +207,11 @@ const RightNavBar = (props) => {
         } of different groups, Do you still want to finish?`;
   }
   const sureText = isDutchLocal
-    ? "Weet je zeker dat je het spel wilt Afronden??"
+    ? exerciseNumber === 2
+      ? "Je kunt het spel nog niet afronden!"
+      : "Weet je zeker dat je het spel wilt Afronden??"
+    : exerciseNumber === 2
+    ? "You can't complete the game yet!"
     : "Are you sure you want to finish the game?";
   // const counter = useSelector((state) => state.CounterReducer.count);
   // console.log(counter + " redux counter");
@@ -504,7 +521,7 @@ const RightNavBar = (props) => {
             props.livingAC === "disconnect" &&
             props.livingLight03 === "disconnect"
           ) {
-            // SwalBreakerOn(onPopupText);
+            exerciseNumber === 2 && SwalBreakerOn(onPopupText);
           }
 
           //start my code for breaker pop up
@@ -728,7 +745,7 @@ const RightNavBar = (props) => {
             props.kitchenOven === "disconnect" &&
             props.kitchenToster === "disconnect"
           ) {
-            // SwalBreakerOn(onPopupText);
+            exerciseNumber === 2 && SwalBreakerOn(onPopupText);
           }
 
           //start my code for breaker pop up
@@ -977,7 +994,7 @@ const RightNavBar = (props) => {
             props.livingTwoLignt02 === "disconnect" &&
             props.livingTwoSmallLamp === "disconnect"
           ) {
-            // SwalBreakerOn(onPopupText);
+            exerciseNumber === 2 && SwalBreakerOn(onPopupText);
           }
           //start my code for breaker pop up
           if (
@@ -1279,7 +1296,7 @@ const RightNavBar = (props) => {
             props.toiletFan === "disconnect" &&
             props.toiletLight03 === "disconnect"
           ) {
-            // SwalBreakerOn(onPopupText);
+            exerciseNumber === 2 && SwalBreakerOn(onPopupText);
           }
 
           //start my code for breaker pop up
@@ -1632,7 +1649,7 @@ const RightNavBar = (props) => {
             props.livingOneLignt03 === "disconnect" &&
             props.livingOneLignt02 === "disconnect"
           ) {
-            // SwalBreakerOn(onPopupText);
+            exerciseNumber === 2 && SwalBreakerOn(onPopupText);
           }
           if (
             (props.rndGroupFive === 35 && props.hallLampFive === "connected") ||
@@ -1808,7 +1825,7 @@ const RightNavBar = (props) => {
             props.laundaryLight02 === "disconnect" &&
             props.laundaryWashing === "disconnect"
           ) {
-            // SwalBreakerOn(onPopupText);
+            exerciseNumber === 2 && SwalBreakerOn(onPopupText);
           }
           //start my code for breaker pop up
           if (
@@ -1892,7 +1909,13 @@ const RightNavBar = (props) => {
   const modalTexts = {
     text: popupText,
     head: sureText,
-    continue: isDutchLocal ? "Nee" : "No",
+    continue: isDutchLocal
+      ? exerciseNumber === 2
+        ? "Ik snap dit"
+        : "Nee"
+      : exerciseNumber === 2
+      ? "I understand"
+      : "No",
     finish: isDutchLocal ? "Ja" : "Yes",
   };
   const finishBreakerHandler = () => {
@@ -1903,7 +1926,7 @@ const RightNavBar = (props) => {
 
     // console.log("sakldfj");
     // navigate("/result");
-    SwalResult(redirect, modalTexts);
+    SwalResult(redirect, modalTexts, exerciseNumber === 3);
 
     console.log(counter, "this is the breaker counter");
 

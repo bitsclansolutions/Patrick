@@ -138,16 +138,16 @@ export const SwalDisconnectedCorrupt = (popupText) => {
     text: popupText.text,
   });
 };
-export const SwalResult = (redirect, text) => {
+export const SwalResult = (redirect, text, test) => {
   Swal.fire({
     title: text.head,
     html: text.text,
-    denyButtonColor: "#7399b4",
+    denyButtonColor: test ? "#7399b4" : "#085CA8",
     showDenyButton: true,
     denyButtonText: text.continue,
     confirmButtonColor: "#085CA8",
     confirmButtonText: text.finish,
-    showConfirmButton: true,
+    showConfirmButton: test,
     // confirmButtonText: 'I understand',
   }).then((result) => {
     if (result.isConfirmed) {

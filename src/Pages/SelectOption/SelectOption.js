@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./SelectOption.css";
 import ChangeLanguageToggle from "../../utils/ChangeLanguageToggle";
+import { setExercise } from "../../Redux/Action";
 
 const SelectOption = () => {
   const dispatch = useDispatch();
@@ -115,8 +116,10 @@ const SelectOption = () => {
                 onClick={() => {
                   if (largeBtn === "IQ test") {
                     navigate("/mask-group");
+                    dispatch(setExercise(3));
                   } else {
                     navigate("/exercise-start");
+                    dispatch(setExercise(1));
                   }
                 }}
               >

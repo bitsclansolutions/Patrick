@@ -51,6 +51,8 @@ const StudyRoom = (props) => {
   const corruptDevice = useSelector(
     (state) => state.CorruptDeviceReducer.corrupt
   );
+  const exerciseNumber = useSelector((state) => state.ExerciseReducer.exercise);
+
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
   const redirectSorry = () => {
     navigate("/result");
@@ -107,7 +109,7 @@ const StudyRoom = (props) => {
     if (props.rndGroupFive === val && props.groupFiveBreakerType === "red") {
       props.setgroupFiveBreakerType("black");
       props.setIsGroupFiveBreaker(false);
-      // SwalBreakerOff(popupText, redirectSorry);
+      exerciseNumber === 2 && SwalBreakerOff(popupText, redirectSorry);
       dispatch(increaseDeviceCounter());
       errorSound();
       props.setAtticTrial(props.atticTrial + 1);

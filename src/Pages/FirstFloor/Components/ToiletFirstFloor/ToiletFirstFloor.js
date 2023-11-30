@@ -56,6 +56,7 @@ const ToiletFirstFloor = (props) => {
   const corruptDevice = useSelector(
     (state) => state.CorruptDeviceReducer.corrupt
   );
+  const exerciseNumber = useSelector((state) => state.ExerciseReducer.exercise);
 
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
 
@@ -124,7 +125,7 @@ const ToiletFirstFloor = (props) => {
       props.setGroupFourBreakerType("black");
       errorSound();
       props.setIsGroupFourBreaker(false);
-      // SwalBreakerOff(popupText, redirectSorry);
+      exerciseNumber === 2 && SwalBreakerOff(popupText, redirectSorry);
       dispatch(increaseDeviceCounter());
       props.setFirstFloorTrial(props.firstFloorTrial + 1);
       localStorage.setItem(

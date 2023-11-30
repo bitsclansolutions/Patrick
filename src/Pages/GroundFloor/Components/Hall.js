@@ -52,6 +52,8 @@ const Hall = (props) => {
     (state) => state.GroupDevicesCounterReducer.corruptAttempted
   );
 
+  const exerciseNumber = useSelector((state) => state.ExerciseReducer.exercise);
+
   const dispatch = useDispatch();
   const dispatchdisconnect = useDispatch();
   const dispatchconnect = useDispatch();
@@ -119,7 +121,7 @@ const Hall = (props) => {
       props.setFirstGroupBreakerType("black");
 
       props.setIsFirstGroupBreaker(false);
-      // SwalBreakerOff(popupText, redirectSorry);
+      exerciseNumber === 2 && SwalBreakerOff(popupText, redirectSorry);
       // DISPATCH COUNTER REDUX
       dispatch(increaseDeviceCounter());
       errorSound();

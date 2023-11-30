@@ -211,6 +211,13 @@ export const changeLanguage = (val) => {
 
 // exercise
 
+export const setExercise = (val) => {
+  return {
+    type: "setExercise",
+    payload: val,
+  };
+};
+
 export const increaseExerciseCounter = () => {
   return {
     type: "increaseExerciseCounter",

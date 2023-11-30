@@ -64,6 +64,8 @@ const Kitchen = (props) => {
     (state) => state.CorruptDeviceReducer.corrupt
   );
 
+  const exerciseNumber = useSelector((state) => state.ExerciseReducer.exercise);
+
   console.log(corruptGroup);
 
   const redirectSorry = () => {
@@ -143,7 +145,7 @@ const Kitchen = (props) => {
       props.setIsKitchenBreaker(false);
       dispatch(increaseDeviceCounter());
       errorSound();
-      // SwalBreakerOff(popupText, redirectSorry);
+      exerciseNumber === 2 && SwalBreakerOff(popupText, redirectSorry);
       // props.setGroundFloorTrial(props.groundFloorTrial + 1);
       // localStorage.setItem("state", JSON.stringify(props.groundFloorTrial + 1));
     }

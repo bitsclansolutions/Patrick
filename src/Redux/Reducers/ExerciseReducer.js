@@ -1,9 +1,16 @@
 const data = {
+  exercise: null,
   deviceCount: 0,
 };
 
 const ExerciseReducer = (state = data, action) => {
   switch (action.type) {
+    case "setExercise":
+      localStorage.setItem("exerciseNumber", action.payload);
+      return {
+        ...state,
+        exercise: action.payload,
+      };
     case "increaseExerciseCounter":
       return {
         ...state,

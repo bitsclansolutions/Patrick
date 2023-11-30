@@ -9,6 +9,7 @@ import {
   increaseCouter,
   increaseExerciseCounter,
   resetExerciseCounter,
+  setExercise,
   setExerciseCounter,
 } from "../../../Redux/Action";
 
@@ -25,7 +26,7 @@ import OvenOn from "../../kitchen-items/ovenOn.png";
 import OvenOff from "../../kitchen-items/ovenOff.png";
 import ToasterOn from "../../kitchen-items/toasterOn.png";
 import ToasterOff from "../../kitchen-items/toasterOff.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const KitchenIndex = () => {
   const isDutchLocal = useSelector(
@@ -71,6 +72,8 @@ const KitchenIndex = () => {
   useEffect(() => {
     dispatch(resetExerciseCounter());
   }, []);
+
+  const navigate = useNavigate();
 
   console.log(exerciseDisconnected);
 
@@ -194,6 +197,11 @@ const KitchenIndex = () => {
   const connectCorrectHandler = () => {
     setConnectCorrect(false);
     setBreaker2(false);
+  };
+
+  const finishExercise2 = () => {
+    dispatch(setExercise(2));
+    navigate("/mask-group");
   };
 
   return (
@@ -576,18 +584,18 @@ const KitchenIndex = () => {
       </div>
 
       {showDisconnectDevices && (
-        <Popup opacity={2} bottom={5} right={2}>
+        <Popup opacity={2} bottom={2} right={0} width={48}>
           {isDutch ? (
             <>
               <p className="popup-text">
                 Je ziet dat in de keuken verschillende elektrische apparaten
-                staan. Bij elk apparaat of lamp staat een groene knop
+                staan. <br /> Bij elk apparaat of lamp staat een groene knop
                 <b>'Loskoppelen'</b>.
               </p>
               <p className="popup-text">
                 Door op deze knop te drukken haal je de stekker uit het
-                stopcontact. De knop veranderd van kleur zodat je kunt zien dat
-                deze is uitgeschald.
+                stopcontact. <br /> De knop veranderd van kleur zodat je kunt
+                zien dat deze is uitgeschald.
               </p>
               <div className="popup-button">
                 <button onClick={disconnectDevices}>
@@ -621,7 +629,7 @@ const KitchenIndex = () => {
             <>
               <p className="welcome">Alles Loskoppelen</p>
               <p className="popup-text">
-                klik op alle elektrische apparaten in de keuken om deze uit te
+                Klik op alle elektrische apparaten in de keuken om deze uit te
                 schakelen.
               </p>
               <div className="popup-button">
@@ -648,10 +656,10 @@ const KitchenIndex = () => {
           <Popup opacity={2}>
             {isDutch ? (
               <>
-                <p className="welcome">Goed gedaan!</p>
+                <p className="welcome">Je hebt alle apparaten losgekoppeld!</p>
                 <p className="popup-text">
-                  Je hebt alle apparaten losgekoppeld. Schakel nu de zekering
-                  in.
+                  Schakel nu juiste groep in door op zekering van groep 2 in te
+                  klikken.
                 </p>
                 <div className="popup-button">
                   <button onClick={() => setShowMeterFuse(false)}>
@@ -661,9 +669,10 @@ const KitchenIndex = () => {
               </>
             ) : (
               <>
-                <p className="welcome">Well done!</p>
+                <p className="welcome">You have disconnected all devices!</p>
                 <p className="popup-text">
-                  You have disconnected all devices. Now switch on the fuse.
+                  Now switch on the correct group by clicking on the fuse of
+                  group 2.
                 </p>
                 <div className="popup-button">
                   <button onClick={() => setShowMeterFuse(false)}>
@@ -731,9 +740,8 @@ const KitchenIndex = () => {
         <Popup opacity={7}>
           {isDutch ? (
             <>
-              <p className="welcome">
-                Goed gedaan! Je hebt de stroom weer ingeschakeld.
-              </p>
+              <p className="welcome">Goed gedaan!</p>
+              <p className="popup-text">Je hebt de stroom weer ingeschakeld.</p>
               <div className="popup-button">
                 <button onClick={rightBreakerHandler}>
                   Klik hier om verder te gaan
@@ -782,7 +790,7 @@ const KitchenIndex = () => {
               <div className="welcome">Defect apparaat</div>
               <p className="popup-text">
                 Je hebt het apparaat proberen in te schakelen, maar dat kan
-                niet. Kijk nu in de meterkast.
+                niet. <br /> Kijk nu in de meterkast.
               </p>
               <div className="popup-button">
                 <button onClick={corruptErrorHandler}>
@@ -812,9 +820,10 @@ const KitchenIndex = () => {
             <>
               <p className="welcome">Zekering uitgeschakeld</p>
               <p className="popup-text">
-                De zekering is nu uitgeschakeld. De schakelaar staat naar onder
-                en is nu zwart. Dit betekent dat in het laatste apparaat dat je
-                had ingeschakeld een kortsluiting zit.
+                De schakelaar van de zekering staat naar onder en is nu zwart.{" "}
+                <br />
+                Dit betekent dat in het laatste apparaat dat je had ingeschakeld
+                een kortsluiting zit.
               </p>
               <div className="popup-button">
                 <button onClick={fuseErrorHandler}>
@@ -826,8 +835,8 @@ const KitchenIndex = () => {
             <>
               <p className="welcome">Fuse turned off</p>
               <p className="popup-text">
-                Fuse is now switched off. This means that the last device you
-                switched on had a short circuit.
+                The fuse switch is down and is now black. <br /> This means that
+                in the last device you had turned on there is a short circuit.
               </p>
               <div className="popup-button">
                 <button onClick={fuseErrorHandler}>
@@ -844,11 +853,14 @@ const KitchenIndex = () => {
             <>
               <p className="welcome">Zekering uitgeschakeld</p>
               <p className="popup-text">
-                Je ziet dat in de keuken (groep 2) vier apparaten zijn
-                uitgeschakeld. In het laatste apparaat zit dus kortsluiting. Die
-                moet je normaal gesproken vervangen of laten repareren.
+                Je ziet dat in de keuken (groep 2) vijf apparaten zijn
+                uitgeschakeld. In het laatste apparaat zit dus kortsluiting.{" "}
+                <br /> Dit apparaat moet je normaal gesproken vervangen of laten
+                repareren.
               </p>
-              <p className="popup-text">Begrijp je dit?</p>
+              <p className="popup-text" style={{ fontSize: "20px" }}>
+                <b>Begrijp je dit?</b>
+              </p>
               <p></p>
               <div className="popup-button">
                 <button onClick={() => window.location.reload(false)}>
@@ -865,7 +877,9 @@ const KitchenIndex = () => {
                 in the kitchen (group 2). The last device has a short circuit.
                 So you have to replace it or have it repaired.
               </p>
-              <p className="popup-text">Do you understand this?</p>
+              <p className="popup-text" style={{ fontSize: "20px" }}>
+                Do you understand this?
+              </p>
               <p></p>
               <div className="popup-button">
                 <button onClick={() => window.location.reload(false)}>
@@ -881,7 +895,7 @@ const KitchenIndex = () => {
         <Popup opacity={1}>
           {isDutch ? (
             <>
-              <p className="welcome">Andere Verbinden</p>
+              <p className="welcome">Aansluiten / Loskoppelen</p>
               <p className="popup-text">
                 Schakel nu de {exerciseDisconnected - 1} goede apparaten weer in
                 en laat het defecte apparaat uitgeschakeld.
@@ -934,6 +948,7 @@ const KitchenIndex = () => {
                 This is not right. Choose again. Do you want to step back? Then
                 click on step back.
               </p>
+
               <p></p>
               <div className="popup-button">
                 <button onClick={() => window.location.reload(false)}>
@@ -951,10 +966,13 @@ const KitchenIndex = () => {
             <>
               <p className="welcome">Sluit alles correct aan</p>
               <p className="popup-text">
-                U heeft niet alle juiste apparaten ingeschakeld. Sluit ze
-                allemaal aan. Wil je een stap terug doen?
+                Je hebt niet alle goede apparaten ingeschakeld. <br /> Schakel
+                alle goede apparaten allemaal in.
               </p>
-              <p></p>
+
+              <p className="popup-text" style={{ fontSize: "20px" }}>
+                <b>Wil je een stap terug doen?</b>
+              </p>
               <div className="popup-button">
                 <button onClick={() => window.location.reload(false)}>
                   Stap terug
@@ -984,24 +1002,24 @@ const KitchenIndex = () => {
         <Popup opacity={7}>
           {isDutch ? (
             <>
-              <p className="welcome">Hoera</p>
+              <p className="welcome">Goed zo!</p>
               <p className="popup-text">
-                Goed zo! Je bent nu zover om de toets te maken.
+                Je bent nu zover om de oefening 2 te maken.
               </p>
               <p></p>
               <div className="popup-button">
-                <Link to="/mask-group">laten we gaan</Link>
+                <button onClick={finishExercise2}>Ga verder</button>
               </div>
             </>
           ) : (
             <>
-              <p className="welcome">Hurray</p>
-              <p className="popup-text">
-                Well done! You are now ready to take the test.
-              </p>
+              <p className="welcome">Well done!</p>
+              <p className="popup-text">You are now ready to do exercise 2.</p>
               <p></p>
               <div className="popup-button">
-                <Link to="/mask-group">Let's go</Link>
+                <button onClick={finishExercise2} to="/mask-group">
+                  Continue
+                </button>
               </div>
             </>
           )}

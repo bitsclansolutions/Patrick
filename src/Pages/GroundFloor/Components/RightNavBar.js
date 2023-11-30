@@ -23,6 +23,7 @@ import {
   kitchenBreaker,
   resetCouter,
   resultGroundFloor,
+  setExercise,
 } from "../../../Redux/Action";
 import { useState } from "react";
 import FrontScreenModel from "../../Components/FrontScreenModel";
@@ -197,7 +198,7 @@ const RightNavBar = (props) => {
           correctGroupDevices + (corruptGroupDevices - 1) > 1
             ? "apparaten"
             : "apparaat"
-        } van verschillende groepen aan te sluiten. Wil je toch afronden?`
+        } van verschillende groepen aan te sluiten. <br/> Wil je toch afronden?`
       : `You forgot to connect ${
           correctGroupDevices + (corruptGroupDevices - 1)
         } correct ${
@@ -208,8 +209,10 @@ const RightNavBar = (props) => {
   }
   const sureText = isDutchLocal
     ? exerciseNumber === 2
-      ? "Je kunt het spel nog niet afronden!"
-      : "Weet je zeker dat je het spel wilt Afronden??"
+      ? !showFinishBtn
+        ? "Je kunt het spel nog niet afronden!"
+        : "Weet je zeker dat je het spel wilt Afronden?"
+      : "Weet je zeker dat je het spel wilt Afronden?"
     : exerciseNumber === 2
     ? "You can't complete the game yet!"
     : "Are you sure you want to finish the game?";
@@ -1895,7 +1898,12 @@ const RightNavBar = (props) => {
   };
 
   const redirect = () => {
-    navigate("/result");
+    if (exerciseNumber === 2) {
+      dispatch(setExercise(3));
+      window.location.href = "/mask-group";
+    } else {
+      navigate("/result");
+    }
   };
 
   const laundaryBreakerHandlerOn = () => {
@@ -1910,7 +1918,7 @@ const RightNavBar = (props) => {
     text: popupText,
     head: sureText,
     continue: isDutchLocal
-      ? exerciseNumber === 2
+      ? exerciseNumber === 2 && !showFinishBtn
         ? "Ik snap dit"
         : "Nee"
       : exerciseNumber === 2
@@ -1926,7 +1934,7 @@ const RightNavBar = (props) => {
 
     // console.log("sakldfj");
     // navigate("/result");
-    SwalResult(redirect, modalTexts, exerciseNumber === 3);
+    SwalResult(redirect, modalTexts, exerciseNumber === 2 && !showFinishBtn);
 
     console.log(counter, "this is the breaker counter");
 

@@ -110,8 +110,8 @@ function App() {
 
   useEffect(() => {
     // iron in laundary
-    setRndAll(49);
-    // setRndAll(Math.floor(Math.random() * 49) + 1);
+    // setRndAll(49);
+    setRndAll(Math.floor(Math.random() * 49) + 1);
   }, []);
 
   useEffect(() => {

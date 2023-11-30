@@ -13,7 +13,7 @@ export const SwalInitial = (initialText) => {
     title: initialText.title,
     // showConfirmButton: false,
     // text: "One device is not working properly you have to first disconnect all the devices",
-    text: initialText.text,
+    html: initialText.text,
     buttons: true,
     confirmButtonColor: "#085CA8",
     confirmButtonText: initialText.understand,
@@ -142,12 +142,12 @@ export const SwalResult = (redirect, text, test) => {
   Swal.fire({
     title: text.head,
     html: text.text,
-    denyButtonColor: test ? "#7399b4" : "#085CA8",
+    denyButtonColor: !test ? "#7399b4" : "#085CA8",
     showDenyButton: true,
     denyButtonText: text.continue,
     confirmButtonColor: "#085CA8",
     confirmButtonText: text.finish,
-    showConfirmButton: test,
+    showConfirmButton: !test,
     // confirmButtonText: 'I understand',
   }).then((result) => {
     if (result.isConfirmed) {

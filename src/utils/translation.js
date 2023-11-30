@@ -6,8 +6,8 @@ export const breakerOffEnglish = {
 };
 
 export const breakerOffDutch = {
-  head: "Oeps... Breaker stapt uit &#128576",
-  text: "Het apparaat dat je zojuist in het stopcontact hebt gestoken, maakt kortsluiting en dat is niet veilig! Koppel eerst dit apparaat los en sluit alle overige apparaten aan en zet vervolgens de onderbreker weer aan!",
+  head: "Oeps… De zekering is uitgeschakeld &#128576",
+  text: "<ul><li>Het apparaat dat je zojuist hebt aangesloten maakt kortsluiting en dat is niet veilig!</li><li>Koppel eerst dit apparaat los en sluit alle overige apparaten aan.</li><li>Zet vervolgens de zekering weer aan!</li></ul>",
   continue: "Doorgaan",
   finish: "Finish",
 };
@@ -18,9 +18,9 @@ export const disconnectedCorruptEnglish = {
   understand: "I Understand",
 };
 export const disconnectedCorruptDutch = {
-  head: "Nu kunt u op de breker!",
-  text: "U hebt alle apparaten van de groep losgekoppeld van het stopcontact.",
-  understand: "Ik Begrijp",
+  head: "Je kunt nu de zekering inschakelen",
+  text: "Je hebt alle apparaten van de groep losgekoppeld van het stopcontact.",
+  understand: "Ik snap dit",
 };
 
 export const breakerOnEnglish = {
@@ -30,9 +30,9 @@ export const breakerOnEnglish = {
 };
 
 export const breakerOnDutch = {
-  head: "De breker staat aan &#128571",
-  text: "Sluit nu alle apparaten één voor één aan om te controleren welk apparaat defect is",
-  understand: "Ik Begrijp",
+  head: "De zekering is nu ingeschakeld &#128571",
+  text: "Sluit nu alle apparaten één voor één aan om te controleren welk apparaat defect is.",
+  understand: "Ik snap dit",
 };
 
 export const initialEnglish = {
@@ -42,7 +42,17 @@ export const initialEnglish = {
 };
 
 export const initialDutch = {
-  title: "Je kunt niet op deze breker 	&#128542",
-  text: "Eén apparaat werkt niet goed. U moet eerst alle apparaten loskoppelen van deze stroomonderbreker. Als u deze apparaten wilt zien, controleer dan de legenda en ga naar de betreffende verdieping.",
-  understand: "Ik Begrijp",
+  title: "Je kunt deze zekering nog niet inschakelen 	&#128542",
+  text: `<ul>
+          <li>Eén apparaat werkt niet goed. Je moet eerst
+          alle apparaten loskoppelen van deze
+          zekering. </li>
+          <li>Kijk in het overzicht aan de linkerkant als je
+          wilt weten welke apparaten op deze groep
+          zitten.</li>
+          <li>Ga vervolgens naar de betreffende
+          verdieping en of ruimte.
+          </li>
+        </ul>`,
+  understand: "Ik snap dit",
 };

@@ -23,12 +23,14 @@ const MaskGroup = () => {
   //   props.setIsModalOpen2(true);
   // };
 
+  const exerciseNumber = useSelector((state) => state.ExerciseReducer.exercise);
+
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
 
   const popupHtml = `
     <p style="font-size: 20px;margin-bottom: 6px;">${
       isDutch
-        ? "Ergens in huis is een zekering uitgeschakeld. Los dit probleem op zoals je geleerd hebt."
+        ? "Ergens in huis is een zekering uitgeschakeld. <br/> Los dit probleem op zoals je geleerd hebt."
         : "Somewhere in the house a fuse has been switched off. Solve this problem as you have been taught."
     } </p>
     <div className="legend">
@@ -122,14 +124,14 @@ const MaskGroup = () => {
             </div>
             <p style="font-size: 20px;margin-bottom: 0px; margin-top: 6px;">${
               isDutch
-                ? "Als je klaar bent druk je op deknop “Ik ben klaar”"
+                ? "Als je klaar bent druk je op de knop"
                 : "You have to disconnect all devices of the group then you can on the breaker and connect all the devices one by one to check which device is defected.</p>"
             }`;
 
   const popupText = {
     title: isDutch ? "Opdracht" : "User Task",
     html: popupHtml,
-    okay: isDutch ? "Oké" : "Okay",
+    okay: isDutch ? "Ik ben klaar" : "I understand",
   };
 
   return (
@@ -155,6 +157,15 @@ const MaskGroup = () => {
         }}
         className="main-mask-div"
       >
+        <p className="exercise-label">
+          {exerciseNumber === 2
+            ? isDutch
+              ? "Oefening 2"
+              : "Exercise 2"
+            : isDutch
+            ? "Toets"
+            : "IQ Test"}
+        </p>
         <div
           style={{
             position: "absolute",

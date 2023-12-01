@@ -24,6 +24,7 @@ import {
   resetCouter,
   resultGroundFloor,
   setExercise,
+  setExerciseGate,
 } from "../../../Redux/Action";
 import { useState } from "react";
 import FrontScreenModel from "../../Components/FrontScreenModel";
@@ -164,6 +165,18 @@ const RightNavBar = (props) => {
       : "You have not disconnected the corrupt device, Do you still want to finish?";
   } else if (
     showFinishBtn &&
+    exerciseNumber === 2 &&
+    (corruptGroupDevices > 0 || correctGroupDevices > 0)
+  ) {
+    popupText = isDutchLocal
+      ? `Je bent vergeten ${corruptGroupDevices - 1} juiste ${
+          corruptGroupDevices > 2 ? "apparaten" : "apparaat"
+        }  die niet defect zijn aan te sluiten. <br/> Wil je toch afronden?`
+      : `You forgot to connect ${corruptGroupDevices - 1} correct ${
+          corruptGroupDevices > 2 ? "devices" : "device"
+        } <br/> Do you still want to finish?`;
+  } else if (
+    showFinishBtn &&
     corruptGroupDevices > 1 &&
     correctGroupDevices === 0
   ) {
@@ -214,7 +227,7 @@ const RightNavBar = (props) => {
         : "Weet je zeker dat je het spel wilt Afronden?"
       : "Weet je zeker dat je het spel wilt Afronden?"
     : exerciseNumber === 2
-    ? "You can't complete the game yet!"
+    ? "Are you sure you want to finish the game?"
     : "Are you sure you want to finish the game?";
   // const counter = useSelector((state) => state.CounterReducer.count);
   // console.log(counter + " redux counter");
@@ -1899,7 +1912,7 @@ const RightNavBar = (props) => {
 
   const redirect = () => {
     if (exerciseNumber === 2) {
-      dispatch(setExercise(3));
+      dispatch(setExerciseGate(3));
       window.location.href = "/mask-group";
     } else {
       navigate("/result");

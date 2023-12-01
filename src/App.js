@@ -33,6 +33,7 @@ import {
   corruptDevice,
   corruptGroup,
   setExercise,
+  setExerciseGate,
 } from "./Redux/Action";
 import {
   disconnectedCorruptDutch,
@@ -57,6 +58,9 @@ function App() {
 
   useEffect(() => {
     dispatch(setExercise(Number(localStorage.getItem("exerciseNumber"))));
+    dispatch(
+      setExerciseGate(Number(localStorage.getItem("exerciseGateNumber")))
+    );
   });
 
   console.log(isFinished);

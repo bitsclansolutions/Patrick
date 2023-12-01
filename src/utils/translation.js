@@ -44,9 +44,10 @@ export const initialEnglish = {
 export const initialDutch = {
   title: "Je kunt deze zekering nog niet inschakelen 	&#128542",
   text: `<ul>
-          <li>Eén apparaat werkt niet goed. Je moet eerst
+          <li>Eén apparaat werkt niet goed.</li>
+          <li>Je moet eerst
           alle apparaten loskoppelen van deze
-          zekering. </li>
+          zekering.</li>
           <li>Kijk in het overzicht aan de linkerkant als je
           wilt weten welke apparaten op deze groep
           zitten.</li>

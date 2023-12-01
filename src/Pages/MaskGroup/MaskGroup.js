@@ -6,8 +6,9 @@ import ErrorPage from "../404/ErrorPage";
 import Avator from "../Components/Avator";
 import FrontScreenModel from "../Components/FrontScreenModel";
 import { SwalStarter } from "../Components/SwalModules";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ChangeLanguageToggle from "../../utils/ChangeLanguageToggle";
+import { setExercise, setExerciseGate } from "../../Redux/Action";
 // import AtticModel from "../../PopUpModels/AtticModel";
 // import FirstFloorModel from "../../PopUpModels/FirstFloorModel";
 // import GroundFloorModel from "../../PopUpModels/GroundFloorModel"
@@ -23,7 +24,11 @@ const MaskGroup = () => {
   //   props.setIsModalOpen2(true);
   // };
 
-  const exerciseNumber = useSelector((state) => state.ExerciseReducer.exercise);
+  const dispatch = useDispatch();
+
+  const exerciseGateNumber = useSelector(
+    (state) => state.ExerciseReducer.exerciseGate
+  );
 
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
 
@@ -158,13 +163,9 @@ const MaskGroup = () => {
         className="main-mask-div"
       >
         <p className="exercise-label">
-          {exerciseNumber === 2
-            ? isDutch
-              ? "Oefening 2"
-              : "Exercise 2"
-            : isDutch
-            ? "Toets"
-            : "IQ Test"}
+          {exerciseGateNumber === 1 && (isDutch ? "Oefening 1" : "Exercise 1")}
+          {exerciseGateNumber === 2 && (isDutch ? "Oefening 2" : "Exercise 2")}
+          {exerciseGateNumber === 3 && (isDutch ? "Toets" : "IQ Test")}
         </p>
         <div
           style={{
@@ -200,10 +201,22 @@ const MaskGroup = () => {
             }}
             onMouseLeave={() => setBtnPhase("")}
             onClick={() => {
-              // setShowAttic(true)
-              navigate("/ground-floor");
-              SwalStarter(popupText);
-              localStorage.setItem("state", JSON.stringify(-4));
+              if (exerciseGateNumber === 1) {
+                dispatch(setExercise(1));
+                navigate("/exercise-start");
+              } else if (exerciseGateNumber === 2) {
+                // setShowAttic(true)
+                dispatch(setExercise(2));
+                navigate("/ground-floor");
+                SwalStarter(popupText);
+                localStorage.setItem("state", JSON.stringify(-4));
+              } else if (exerciseGateNumber === 3) {
+                // setShowAttic(true)
+                dispatch(setExercise(3));
+                navigate("/ground-floor");
+                SwalStarter(popupText);
+                localStorage.setItem("state", JSON.stringify(-4));
+              }
             }}
           >
             Open!

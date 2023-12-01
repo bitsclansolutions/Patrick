@@ -1,5 +1,6 @@
 const data = {
   exercise: null,
+  exerciseGate: null,
   deviceCount: 0,
 };
 
@@ -10,6 +11,12 @@ const ExerciseReducer = (state = data, action) => {
       return {
         ...state,
         exercise: action.payload,
+      };
+    case "setExerciseGate":
+      localStorage.setItem("exerciseGateNumber", action.payload);
+      return {
+        ...state,
+        exerciseGate: action.payload,
       };
     case "increaseExerciseCounter":
       return {

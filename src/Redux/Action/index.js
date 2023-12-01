@@ -218,6 +218,13 @@ export const setExercise = (val) => {
   };
 };
 
+export const setExerciseGate = (val) => {
+  return {
+    type: "setExerciseGate",
+    payload: val,
+  };
+};
+
 export const increaseExerciseCounter = () => {
   return {
     type: "increaseExerciseCounter",

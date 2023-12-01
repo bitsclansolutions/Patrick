@@ -11,6 +11,7 @@ import {
   resetExerciseCounter,
   setExercise,
   setExerciseCounter,
+  setExerciseGate,
 } from "../../../Redux/Action";
 
 import "./Kitchen.css";
@@ -199,8 +200,8 @@ const KitchenIndex = () => {
     setBreaker2(false);
   };
 
-  const finishExercise2 = () => {
-    dispatch(setExercise(2));
+  const finishExercise1 = () => {
+    dispatch(setExerciseGate(2));
     navigate("/mask-group");
   };
 
@@ -595,7 +596,7 @@ const KitchenIndex = () => {
               <p className="popup-text">
                 Door op deze knop te drukken haal je de stekker uit het
                 stopcontact. <br /> De knop veranderd van kleur zodat je kunt
-                zien dat deze is uitgeschald.
+                zien dat deze is uitgeschakeld.
               </p>
               <div className="popup-button">
                 <button onClick={disconnectDevices}>
@@ -854,9 +855,9 @@ const KitchenIndex = () => {
               <p className="welcome">Zekering uitgeschakeld</p>
               <p className="popup-text">
                 Je ziet dat in de keuken (groep 2) vijf apparaten zijn
-                uitgeschakeld. In het laatste apparaat zit dus kortsluiting.{" "}
-                <br /> Dit apparaat moet je normaal gesproken vervangen of laten
-                repareren.
+                uitgeschakeld. <br /> In het laatste apparaat zit dus
+                kortsluiting. <br /> Dit apparaat moet je normaal gesproken
+                vervangen of laten repareren.
               </p>
               <p className="popup-text" style={{ fontSize: "20px" }}>
                 <b>Begrijp je dit?</b>
@@ -1008,7 +1009,7 @@ const KitchenIndex = () => {
               </p>
               <p></p>
               <div className="popup-button">
-                <button onClick={finishExercise2}>Ga verder</button>
+                <button onClick={finishExercise1}>Ga verder</button>
               </div>
             </>
           ) : (
@@ -1017,7 +1018,7 @@ const KitchenIndex = () => {
               <p className="popup-text">You are now ready to do exercise 2.</p>
               <p></p>
               <div className="popup-button">
-                <button onClick={finishExercise2} to="/mask-group">
+                <button onClick={finishExercise1} to="/mask-group">
                   Continue
                 </button>
               </div>

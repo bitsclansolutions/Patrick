@@ -166,7 +166,7 @@ const RightNavBar = (props) => {
   } else if (
     showFinishBtn &&
     exerciseNumber === 2 &&
-    (corruptGroupDevices > 0 || correctGroupDevices > 0)
+    (corruptGroupDevices > 1 || correctGroupDevices > 0)
   ) {
     popupText = isDutchLocal
       ? `Je bent vergeten ${corruptGroupDevices - 1} juiste ${

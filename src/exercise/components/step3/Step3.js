@@ -1,13 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./Step3.css";
 import Popup from "../../utils/Popup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ChangeLanguageToggle from "../../../utils/ChangeLanguageToggle";
 import Video from "../../exercise-videos/stroom-uitgevalle.mp4";
 import ExerciseName from "../../utils/ExerciseName";
+import { setExerciseGate } from "../../../Redux/Action";
 
 const Step3 = () => {
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
 
   return (
@@ -47,11 +50,16 @@ const Step3 = () => {
           <source src={Video} type="video/mp4" />
         </video>
         <div className="popup-button">
-          <Link to="/exercise-meter">
+          <button
+            onClick={() => {
+              dispatch(setExerciseGate(1));
+              navigate("/mask-group");
+            }}
+          >
             {isDutch
               ? "klik op de deze knop om verder te gaan"
               : "Click here to continue"}
-          </Link>
+          </button>
         </div>
       </Popup>
     </div>

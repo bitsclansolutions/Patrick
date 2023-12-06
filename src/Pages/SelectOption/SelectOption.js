@@ -115,11 +115,10 @@ const SelectOption = () => {
                 }}
                 onClick={() => {
                   if (largeBtn === "IQ test") {
-                    navigate("/mask-group");
                     dispatch(setExerciseGate(3));
-                  } else {
                     navigate("/mask-group");
-                    dispatch(setExerciseGate(1));
+                  } else {
+                    navigate("/exercise-start");
                   }
                 }}
               >

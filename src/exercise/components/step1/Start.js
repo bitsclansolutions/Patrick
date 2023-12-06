@@ -39,11 +39,21 @@ const Start = () => {
         </div>
         <Popup opacity={60}>
           <p className="welcome">{isDutch ? "Welkom" : "Welcome"}</p>
-          <p className="popup-text">
-            {isDutch
-              ? "Beste leerling, In deze opdracht ga je leren hoe je een thuis kunt ontdekken of er een kortsluiting is en hoe je dit kunt oplossen. bekijk het filmpje om te begrijpen wat een kortsluiting is."
-              : "Dear student, In this assignment you will learn how to find out if there is a short circuit at home and how to solve it. Watch the video to understand what a short circuit is."}
-          </p>
+          {isDutch ? (
+            <p className="popup-text">
+              Beste leerling, In deze opdracht ga je leren hoe je een thuis kunt
+              ontdekken of er een kortsluiting is en hoe je dit kunt oplossen.
+              <br />
+              <br />
+              Bekijk het filmpje om te begrijpen wat een kortsluiting is.
+            </p>
+          ) : (
+            <p className="popup-text">
+              Dear student, In this assignment you will learn how to find out if
+              there is a short circuit at home and how to solve it. <br />
+              <br /> Watch the video to understand what a short circuit is.
+            </p>
+          )}
           <div className="video">
             {/* <iframe
               width="90%"

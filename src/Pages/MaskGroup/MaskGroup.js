@@ -203,7 +203,7 @@ const MaskGroup = () => {
             onClick={() => {
               if (exerciseGateNumber === 1) {
                 dispatch(setExercise(1));
-                navigate("/exercise-start");
+                navigate("/exercise-meter");
               } else if (exerciseGateNumber === 2) {
                 // setShowAttic(true)
                 dispatch(setExercise(2));

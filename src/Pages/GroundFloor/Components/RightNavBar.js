@@ -13,7 +13,7 @@ import "antd/dist/antd.css";
 import ResultModel from "../../Components/ResultModel";
 import Avator from "../../Components/Avator";
 import { useDispatch, useSelector } from "react-redux";
-import { SwalResult } from "../../Components/SwalModules";
+import { SwalResult, SwalTest } from "../../Components/SwalModules";
 import {
   addDisconnectDevice,
   changeLanguage,
@@ -161,7 +161,7 @@ const RightNavBar = (props) => {
   }
   if (!showFinishBtn && exerciseNumber === 3) {
     popupText = isDutchLocal
-      ? "U heeft het corrupte apparaat niet losgekoppeld. Wilt u toch doorgaan?"
+      ? "Je hebt het defecte apparaat nog niet losgekoppeld. <br/> Wil je toch doorgaan?"
       : "You have not disconnected the corrupt device, Do you still want to finish?";
   } else if (
     showFinishBtn &&
@@ -169,7 +169,9 @@ const RightNavBar = (props) => {
     (corruptGroupDevices > 1 || correctGroupDevices > 0)
   ) {
     popupText = isDutchLocal
-      ? `Je bent vergeten ${corruptGroupDevices - 1} juiste ${
+      ? `Je bent vergeten ${
+          corruptGroupDevices - 1 + correctGroupDevices
+        } juiste ${
           corruptGroupDevices > 2 ? "apparaten" : "apparaat"
         }  die niet defect zijn aan te sluiten. <br/> Wil je toch afronden?`
       : `You forgot to connect ${corruptGroupDevices - 1} correct ${
@@ -1910,10 +1912,26 @@ const RightNavBar = (props) => {
     );
   };
 
+  const testModalText = {
+    head: isDutchLocal ? "Goed zo!" : "Well done!",
+    text: isDutchLocal
+      ? "Je bent nu zover om de toets te maken"
+      : "You are now ready to take the test",
+    finish: isDutchLocal ? "Ga verder" : "Continue",
+  };
+
+  const redirectTest = () => {
+    dispatch(setExerciseGate(3));
+    window.location.href = "/mask-group";
+  };
+
+  const testModalHandler = () => {
+    SwalTest(redirectTest, testModalText);
+  };
+
   const redirect = () => {
     if (exerciseNumber === 2) {
-      dispatch(setExerciseGate(3));
-      window.location.href = "/mask-group";
+      testModalHandler();
     } else {
       navigate("/result");
     }
@@ -1939,6 +1957,7 @@ const RightNavBar = (props) => {
       : "No",
     finish: isDutchLocal ? "Ja" : "Yes",
   };
+
   const finishBreakerHandler = () => {
     // FinishSwal();
     // setTimeout(() => {
@@ -1947,7 +1966,12 @@ const RightNavBar = (props) => {
 
     // console.log("sakldfj");
     // navigate("/result");
-    SwalResult(redirect, modalTexts, exerciseNumber === 2 && !showFinishBtn);
+    SwalResult(
+      redirect,
+      modalTexts,
+      exerciseNumber === 2 && !showFinishBtn,
+      testModalHandler
+    );
 
     console.log(counter, "this is the breaker counter");
 
@@ -2052,7 +2076,7 @@ const RightNavBar = (props) => {
       laundaryBreakerHandlerOn();
     }
     if (val === corruptGroup) {
-      // if (corruptBreakerAttempted) {
+      // if (corruptBreakerAt tempted) {
       dispatch(increaseCouter());
       // }
       // dispatch(corruptBreakerAttemptedHandler());

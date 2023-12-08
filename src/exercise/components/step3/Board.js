@@ -33,7 +33,7 @@ const Board = () => {
       <div className="translator-exercise">
         <ChangeLanguageToggle />
       </div>
-      <Highlight bottom={8} width="19%" left={-1.5} opacity={70} />
+      <Highlight bottom={8} width={"19%"} left={-1.5} opacity={70} />
       <Popup bottom={15} left={20}>
         {isDutch ? (
           <>

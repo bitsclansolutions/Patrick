@@ -112,10 +112,19 @@ function App() {
   const [firstGroupBreakerType, setFirstGroupBreakerType] = useState("red");
   const [isFirstGroupBreaker, setIsFirstGroupBreaker] = useState(true);
 
+  const randomDevice = () => {
+    const rndNo = Math.floor(Math.random() * 46) + 1;
+    if (rndNo >= 10 && rndNo <= 15) {
+      randomDevice();
+    } else {
+      setRndAll(rndNo);
+    }
+  };
+
   useEffect(() => {
     // iron in laundary
-    // setRndAll(49);
-    setRndAll(Math.floor(Math.random() * 49) + 1);
+    setRndAll(49);
+    // randomDevice();
   }, []);
 
   useEffect(() => {
@@ -138,7 +147,7 @@ function App() {
       dispatch(corruptGroup(4));
     } else if (rndAll >= 35 && rndAll <= 46) {
       dispatch(corruptGroup(5));
-    } else if (rndAll >= 46 && rndAll <= 49) {
+    } else if (rndAll >= 47 && rndAll <= 49) {
       dispatch(corruptGroup(6));
     }
   }, [rndAll]);

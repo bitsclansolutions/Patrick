@@ -31,8 +31,13 @@ const MaskGroup = () => {
   );
 
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
+  const exerciseNumber = useSelector((state) => state.ExerciseReducer.exercise);
 
-  const popupHtml = `
+  console.log(exerciseNumber);
+
+  const popupHtml =
+    exerciseGateNumber === 3
+      ? `
     <p style="font-size: 20px;margin-bottom: 6px;">${
       isDutch
         ? "Ergens in huis is een zekering uitgeschakeld. <br/> Los dit probleem op zoals je geleerd hebt."
@@ -131,12 +136,27 @@ const MaskGroup = () => {
               isDutch
                 ? "Als je klaar bent druk je op de knop"
                 : "You have to disconnect all devices of the group then you can on the breaker and connect all the devices one by one to check which device is defected.</p>"
-            }`;
+            }`
+      : `<div style="font-size: 20px" ><p>Ergens in huis is een zekering uitgeschakeld.
+In deze oefening zitten er meerdere ruimtes
+op dezelfde groep.
+</p><p>In dit geval moet je de stroom in meerdere
+ruimtes controleren en eventueel in of
+uitschakelen.
+</p><p><b>Kijk daarom goed in het overzicht welke
+ruimtes op dezelfde groep zitten!</b></p><br/><p>Als je klaar bent druk je op de blauwe knop <br/>
+“Ik ben klaar”</p></div>`;
 
   const popupText = {
     title: isDutch ? "Opdracht" : "User Task",
     html: popupHtml,
-    okay: isDutch ? "Ik ben klaar" : "I understand",
+    okay: isDutch
+      ? exerciseNumber === 3
+        ? "Ik ben klaar"
+        : "Ik snap dit"
+      : exerciseNumber === 3
+      ? "I understand"
+      : "I get this",
   };
 
   return (

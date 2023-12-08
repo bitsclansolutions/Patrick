@@ -150,6 +150,22 @@ export const SwalResult = (redirect, text, test) => {
     showConfirmButton: !test,
     // confirmButtonText: 'I understand',
   }).then((result) => {
+    if (result.isConfirmed && !test) {
+      setTimeout(redirect, 500);
+    }
+  });
+};
+
+export const SwalTest = (redirect, text) => {
+  Swal.fire({
+    title: text.head,
+    html: text.text,
+    showDenyButton: false,
+    confirmButtonColor: "#085CA8",
+    confirmButtonText: text.finish,
+    showConfirmButton: true,
+    // confirmButtonText: 'I understand',
+  }).then((result) => {
     if (result.isConfirmed) {
       setTimeout(redirect, 500);
     }

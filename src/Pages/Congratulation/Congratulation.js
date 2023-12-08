@@ -299,14 +299,11 @@ const Congratulation = () => {
             // className={firstBtn === "attic" ? 'btn-01-maskGroup' : "btn-maskGroup mb-4 "}
             //   boom-bum
             className={"set-position-btn boom-bum set-btn-tell-teacher"}
-            onClick={() => {
-              // setShowAttic(true)
-              // navigate("/mask-group");
-              window.location.href = "/";
-            }}
           >
             {/* <img src={RestartIcon} /> */}
-            {isDutch ? "Vertel het uw supervisor" : "Tell Your Supervisor"}
+            {isDutch
+              ? "Laat je begeleider je opdracht controleren"
+              : "Have your supervisor check your assignment"}
           </button>
         </div>
       </div>

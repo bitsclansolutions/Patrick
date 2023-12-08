@@ -854,9 +854,9 @@ const KitchenIndex = () => {
             <>
               <p className="welcome">Zekering uitgeschakeld</p>
               <p className="popup-text">
-                Je ziet dat in de keuken (groep 2) vijf apparaten zijn
-                uitgeschakeld. <br /> In het laatste apparaat zit dus
-                kortsluiting. <br /> Dit apparaat moet je normaal gesproken
+                Je ziet dat in de keuken (groep 2) {exerciseDisconnected}{" "}
+                apparaten zijn uitgeschakeld. <br /> In het laatste apparaat zit
+                dus kortsluiting. <br /> Dit apparaat moet je normaal gesproken
                 vervangen of laten repareren.
               </p>
               <p className="popup-text" style={{ fontSize: "20px" }}>

@@ -19,6 +19,7 @@
   border-radius: 12px;
   font-family: "circular";
   font-weight: 900;
+  cursor: default !important;
 }
 
 .congo-msg {

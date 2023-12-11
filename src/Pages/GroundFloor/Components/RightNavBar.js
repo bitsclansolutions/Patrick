@@ -185,7 +185,7 @@ const RightNavBar = (props) => {
     popupText = isDutchLocal
       ? `Je bent vergeten de ${corruptGroupDevices - 1} juiste ${
           corruptGroupDevices > 2 ? "apparaten" : "apparaat"
-        } van de gehandicaptengroep aan te sluiten. Wil je toch afronden?`
+        } van de gehandicaptengroep aan te sluiten.<br/> Wil je toch afronden?`
       : `You forgot to connect ${corruptGroupDevices - 1} correct ${
           corruptGroupDevices > 2 ? "devices" : "device"
         } of the disabled group, Do you still want to finish?`;
@@ -197,7 +197,7 @@ const RightNavBar = (props) => {
     popupText = isDutchLocal
       ? `Je bent vergeten ${correctGroupDevices} juiste ${
           correctGroupDevices > 1 ? "apparaten" : "apparaat"
-        } van een andere groep aan te sluiten. Wil je toch afsluiten?`
+        } van een andere groep aan te sluiten.<br/> Wil je toch afsluiten?`
       : `You forgot to connect ${correctGroupDevices} correct ${
           correctGroupDevices > 1 ? "devices" : "device"
         } of another group, Do you still want to finish?`;

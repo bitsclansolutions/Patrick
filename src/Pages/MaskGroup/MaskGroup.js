@@ -137,7 +137,7 @@ const MaskGroup = () => {
                 ? "Als je klaar bent druk je op de knop"
                 : "You have to disconnect all devices of the group then you can on the breaker and connect all the devices one by one to check which device is defected.</p>"
             }`
-      : `<div style="font-size: 20px" ><p>Ergens in huis is een zekering uitgeschakeld.
+      : `<div style="font-size: 20px" ><p>Ergens in huis is een zekering uitgeschakeld. <br/>
 In deze oefening zitten er meerdere ruimtes
 op dezelfde groep.
 </p><p>In dit geval moet je de stroom in meerdere

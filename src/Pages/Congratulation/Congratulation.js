@@ -147,7 +147,7 @@ const Congratulation = () => {
     result = (
       <>
         <div>
-          <p className="set-font-20">
+          <p className="set-font-20" style={{ textAlign: "center" }}>
             <strong>
               {isDutch
                 ? "Helaas, je hebt het defecte apparaat niet losgekoppeld!"

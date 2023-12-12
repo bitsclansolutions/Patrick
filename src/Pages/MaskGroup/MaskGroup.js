@@ -134,7 +134,7 @@ const MaskGroup = () => {
             </div>
             <p style="font-size: 20px;margin-bottom: 0px; margin-top: 6px;">${
               isDutch
-                ? "Als je klaar bent druk je op de knop"
+                ? "Als je klaar bent druk je op de knop <br/> “Ik ben klaar” "
                 : "You have to disconnect all devices of the group then you can on the breaker and connect all the devices one by one to check which device is defected.</p>"
             }`
       : `<div style="font-size: 20px" ><p>Ergens in huis is een zekering uitgeschakeld. <br/>
@@ -150,13 +150,7 @@ ruimtes op dezelfde groep zitten!</b></p><br/><p>Als je klaar bent druk je op de
   const popupText = {
     title: isDutch ? "Opdracht" : "User Task",
     html: popupHtml,
-    okay: isDutch
-      ? exerciseNumber === 3
-        ? "Ik ben klaar"
-        : "Ik snap dit"
-      : exerciseNumber === 3
-      ? "I understand"
-      : "I get this",
+    okay: isDutch ? "Ik snap dit" : "I understand",
   };
 
   return (

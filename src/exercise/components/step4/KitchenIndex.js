@@ -45,6 +45,8 @@ const KitchenIndex = () => {
   const [showDisconnectAll, setShowDisconnectAll] = useState(false);
   const [exercise2, setExercise2] = useState(false);
   const [showMeterFuse, setShowMeterFuse] = useState(false);
+  const [turnFuseOn, setTurnFuseOn] = useState(false);
+  const [notAFuse, setNotAFuse] = useState(false);
   const [showWrongBreaker, setShowWrongBreaker] = useState(false);
   const [showRightBreaker, setShowRightBreaker] = useState(false);
   const [showDeviceError, setShowDeviceError] = useState(false);
@@ -95,6 +97,7 @@ const KitchenIndex = () => {
 
     if (val === 2 && exerciseDisconnected === 6 && !breakerOn) {
       setShowRightBreaker(true);
+      setTurnFuseOn(false);
     } else if (val === 2 && exerciseDisconnected !== 6 && !breakerOn) {
       setShowDeviceError(true);
     } else if (val !== 2) {
@@ -107,6 +110,43 @@ const KitchenIndex = () => {
     }
     if (val === 2 && warning && exerciseDisconnected !== 1) {
       setConnectCorrect(true);
+    }
+  };
+
+  const changeDeviceHandler = (device) => {
+    if (turnFuseOn) {
+      setNotAFuse(true);
+    } else {
+      if (device === "oven") {
+        dispatch(!oven ? decreaseExerciseCounter() : increaseExerciseCounter());
+        setOven(!oven);
+      } else if (device === "smoke") {
+        dispatch(
+          !smoke ? decreaseExerciseCounter() : increaseExerciseCounter()
+        );
+        setSmoke(!smoke);
+      } else if (device === "toaster") {
+        dispatch(
+          !toaster ? decreaseExerciseCounter() : increaseExerciseCounter()
+        );
+        setToaster(!toaster);
+      } else if (device === "mixer") {
+        dispatch(
+          !mixer ? decreaseExerciseCounter() : increaseExerciseCounter()
+        );
+        setMixer(!mixer);
+      } else if (device === "bulb1") {
+        dispatch(
+          !bulb1 ? decreaseExerciseCounter() : increaseExerciseCounter()
+        );
+        setBulb1(!bulb1);
+      } else if (device === "bulb2") {
+        !breakerOn &&
+          dispatch(
+            !bulb2 ? decreaseExerciseCounter() : increaseExerciseCounter()
+          );
+        bulb2On();
+      }
     }
   };
 
@@ -141,6 +181,7 @@ const KitchenIndex = () => {
     if (!bulb1 && !bulb2 && !oven && !smoke && !toaster && !mixer) {
       setShowMeterFuse(true);
       setExercise2(true);
+      setTurnFuseOn(true);
     }
   };
 
@@ -428,14 +469,7 @@ const KitchenIndex = () => {
                       className={`btn btn-${
                         smoke ? "success" : "danger"
                       } btn-sm active btn-font`}
-                      onClick={() => {
-                        dispatch(
-                          !smoke
-                            ? decreaseExerciseCounter()
-                            : increaseExerciseCounter()
-                        );
-                        setSmoke(!smoke);
-                      }}
+                      onClick={() => changeDeviceHandler("smoke")}
                     >
                       {smoke
                         ? isDutch
@@ -454,14 +488,7 @@ const KitchenIndex = () => {
                       className={`btn btn-${
                         mixer ? "success" : "danger"
                       } btn-sm active btn-font`}
-                      onClick={() => {
-                        dispatch(
-                          !mixer
-                            ? decreaseExerciseCounter()
-                            : increaseExerciseCounter()
-                        );
-                        setMixer(!mixer);
-                      }}
+                      onClick={() => changeDeviceHandler("mixer")}
                     >
                       {mixer
                         ? isDutch
@@ -480,14 +507,7 @@ const KitchenIndex = () => {
                       className={`btn btn-${
                         toaster ? "success" : "danger"
                       } btn-sm active btn-font`}
-                      onClick={() => {
-                        dispatch(
-                          !toaster
-                            ? decreaseExerciseCounter()
-                            : increaseExerciseCounter()
-                        );
-                        setToaster(!toaster);
-                      }}
+                      onClick={() => changeDeviceHandler("toaster")}
                     >
                       {toaster
                         ? isDutch
@@ -506,14 +526,7 @@ const KitchenIndex = () => {
                       className={`btn btn-${
                         oven ? "success" : "danger"
                       } btn-sm active btn-font`}
-                      onClick={() => {
-                        dispatch(
-                          !oven
-                            ? decreaseExerciseCounter()
-                            : increaseExerciseCounter()
-                        );
-                        setOven(!oven);
-                      }}
+                      onClick={() => changeDeviceHandler("oven")}
                     >
                       {oven
                         ? isDutch
@@ -532,14 +545,7 @@ const KitchenIndex = () => {
                       className={`btn btn-${
                         bulb1 ? "success" : "danger"
                       } btn-sm active btn-font`}
-                      onClick={() => {
-                        dispatch(
-                          !bulb1
-                            ? decreaseExerciseCounter()
-                            : increaseExerciseCounter()
-                        );
-                        setBulb1(!bulb1);
-                      }}
+                      onClick={() => changeDeviceHandler("bulb1")}
                     >
                       {bulb1
                         ? isDutch
@@ -558,15 +564,7 @@ const KitchenIndex = () => {
                       className={`btn btn-${
                         bulb2 ? "success" : "danger"
                       } btn-sm active btn-font`}
-                      onClick={() => {
-                        !breakerOn &&
-                          dispatch(
-                            !bulb2
-                              ? decreaseExerciseCounter()
-                              : increaseExerciseCounter()
-                          );
-                        bulb2On();
-                      }}
+                      onClick={() => changeDeviceHandler("bulb2")}
                     >
                       {bulb2
                         ? isDutch
@@ -679,6 +677,37 @@ const KitchenIndex = () => {
                   <button onClick={() => setShowMeterFuse(false)}>
                     I get this
                   </button>
+                </div>
+              </>
+            )}
+          </Popup>
+        </>
+      )}
+      {notAFuse && (
+        <>
+          <Popup opacity={4}>
+            {isDutch ? (
+              <>
+                <p className="welcome">Dit is niet de zekering</p>
+                <p className="popup-text">
+                  Dit is een apparaat en geen zekering. <br /> Klik op zekering
+                  2 in de meterkast.
+                </p>
+                <div className="popup-button">
+                  <button onClick={() => setNotAFuse(false)}>
+                    Ik snap dit
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <p className="welcome">This is not the fuse</p>
+                <p className="popup-text">
+                  This is a device and not a fuse. <br /> Click on fuse 2 in the
+                  meter cupboard.
+                </p>
+                <div className="popup-button">
+                  <button onClick={() => setNotAFuse(false)}>I get this</button>
                 </div>
               </>
             )}

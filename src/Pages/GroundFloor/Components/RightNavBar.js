@@ -173,10 +173,10 @@ const RightNavBar = (props) => {
           corruptGroupDevices - 1 + correctGroupDevices
         } juiste ${
           corruptGroupDevices > 2 ? "apparaten" : "apparaat"
-        }  die niet defect zijn aan te sluiten. <br/> Wil je toch afronden?`
-      : `You forgot to connect ${corruptGroupDevices - 1} correct ${
-          corruptGroupDevices > 2 ? "devices" : "device"
-        } <br/> Do you still want to finish?`;
+        }  die niet defect zijn aan te sluiten.`
+      : `You forgot to connect ${
+          corruptGroupDevices - 1 + correctGroupDevices
+        } correct ${corruptGroupDevices > 2 ? "devices" : "device"}`;
   } else if (
     showFinishBtn &&
     corruptGroupDevices > 1 &&
@@ -185,10 +185,10 @@ const RightNavBar = (props) => {
     popupText = isDutchLocal
       ? `Je bent vergeten de ${corruptGroupDevices - 1} juiste ${
           corruptGroupDevices > 2 ? "apparaten" : "apparaat"
-        } van de gehandicaptengroep aan te sluiten.<br/> Wil je toch afronden?`
+        } van de gehandicaptengroep aan te sluiten.`
       : `You forgot to connect ${corruptGroupDevices - 1} correct ${
           corruptGroupDevices > 2 ? "devices" : "device"
-        } of the disabled group, Do you still want to finish?`;
+        } of the disabled group.`;
   } else if (
     showFinishBtn &&
     corruptGroupDevices === 1 &&
@@ -197,10 +197,10 @@ const RightNavBar = (props) => {
     popupText = isDutchLocal
       ? `Je bent vergeten ${correctGroupDevices} juiste ${
           correctGroupDevices > 1 ? "apparaten" : "apparaat"
-        } van een andere groep aan te sluiten.<br/> Wil je toch afsluiten?`
+        } van een andere groep aan te sluiten.`
       : `You forgot to connect ${correctGroupDevices} correct ${
           correctGroupDevices > 1 ? "devices" : "device"
-        } of another group, Do you still want to finish?`;
+        } of another group.`;
   } else if (
     showFinishBtn &&
     corruptGroupDevices > 1 &&
@@ -224,7 +224,7 @@ const RightNavBar = (props) => {
   }
   const sureText = isDutchLocal
     ? exerciseNumber === 2
-      ? !showFinishBtn
+      ? !showFinishBtn || corruptGroupDevices - 1 + correctGroupDevices
         ? "Je kunt het spel nog niet afronden!"
         : "Weet je zeker dat je het spel wilt Afronden?"
       : "Weet je zeker dat je het spel wilt Afronden?"
@@ -522,7 +522,7 @@ const RightNavBar = (props) => {
         }
 
         if (props.completeCorruptDevice === props.completeRnd) {
-          SwalInitial(initialPopupText);
+          exerciseNumber === 2 && SwalInitial(initialPopupText);
           props.setIsFirstGroupBreaker(false);
         } else {
           props.setFirstGroupBreakerType("red");
@@ -558,7 +558,7 @@ const RightNavBar = (props) => {
             props.setIsFirstGroupBreaker(false);
             dispatchCounter(increaseCouter());
             console.log("should be hit when connected");
-            SwalInitial(initialPopupText);
+            exerciseNumber === 2 && SwalInitial(initialPopupText);
             //ADD COUNTER
             // dispatch(isHurray(true));
 
@@ -582,7 +582,7 @@ const RightNavBar = (props) => {
         ) {
           props.setFirstGroupBreakerType("black");
           props.setIsFirstGroupBreaker(false);
-          SwalInitial(initialPopupText);
+          exerciseNumber === 2 && SwalInitial(initialPopupText);
           // setCounterBreaker(counterBreaker + 1);
           // console.log(counterBreaker, "Heloo counter");
           dispatchCounter(increaseCouter());
@@ -600,7 +600,7 @@ const RightNavBar = (props) => {
           props.setFirstGroupBreakerType("black");
           props.setIsFirstGroupBreaker(false);
           dispatchCounter(increaseCouter());
-          SwalInitial(initialPopupText);
+          exerciseNumber === 2 && SwalInitial(initialPopupText);
         }
       } else {
         props.setFirstGroupBreakerType("red");
@@ -608,27 +608,34 @@ const RightNavBar = (props) => {
         // console.log("run")
       }
     } else {
-      if (
-        (corruptDevice === 1 && allDisconnectedDevices.includes("toiletFan")) ||
-        (corruptDevice === 2 &&
-          allDisconnectedDevices.includes("toiletLight")) ||
-        (corruptDevice === 3 && allDisconnectedDevices.includes("hallLamp")) ||
-        (corruptDevice === 4 &&
-          allDisconnectedDevices.includes("hallLight01")) ||
-        (corruptDevice === 5 &&
-          allDisconnectedDevices.includes("hallLight02")) ||
-        (corruptDevice === 6 &&
-          allDisconnectedDevices.includes("livingRadio")) ||
-        (corruptDevice === 7 &&
-          allDisconnectedDevices.includes("livingLight01")) ||
-        (corruptDevice === 8 && allDisconnectedDevices.includes("livingAC")) ||
-        (corruptDevice === 9 &&
-          allDisconnectedDevices.includes("livingLight03"))
+      if (corruptDevice < 1 || corruptDevice > 9) {
+        props.setFirstGroupBreakerType("red");
+        props.setIsFirstGroupBreaker(true);
+      } else if (
+        (corruptDevice >= 1 || corruptDevice <= 9) &&
+        ((corruptDevice === 1 &&
+          allDisconnectedDevices.includes("toiletFan")) ||
+          (corruptDevice === 2 &&
+            allDisconnectedDevices.includes("toiletLight")) ||
+          (corruptDevice === 3 &&
+            allDisconnectedDevices.includes("hallLamp")) ||
+          (corruptDevice === 4 &&
+            allDisconnectedDevices.includes("hallLight01")) ||
+          (corruptDevice === 5 &&
+            allDisconnectedDevices.includes("hallLight02")) ||
+          (corruptDevice === 6 &&
+            allDisconnectedDevices.includes("livingRadio")) ||
+          (corruptDevice === 7 &&
+            allDisconnectedDevices.includes("livingLight01")) ||
+          (corruptDevice === 8 &&
+            allDisconnectedDevices.includes("livingAC")) ||
+          (corruptDevice === 9 &&
+            allDisconnectedDevices.includes("livingLight03")))
       ) {
         props.setFirstGroupBreakerType("red");
         props.setIsFirstGroupBreaker(true);
       } else {
-        SwalInitial(initialPopupText);
+        exerciseNumber === 2 && SwalInitial(initialPopupText);
         dispatchCounter(increaseCouter());
       }
     }
@@ -750,7 +757,7 @@ const RightNavBar = (props) => {
         }
         // console.log("kitchen CorruptDevice",props.kitchenCorruptDevice);
         if (props.kitchenCorruptDevice === props.rndKitchen) {
-          SwalInitial(initialPopupText);
+          exerciseNumber === 2 && SwalInitial(initialPopupText);
           props.setIsKitchenBreaker(false);
         } else {
           props.setKitchenBreakerType("red");
@@ -777,7 +784,7 @@ const RightNavBar = (props) => {
           ) {
             props.setKitchenBreakerType("black");
             props.setIsKitchenBreaker(false);
-            SwalInitial(initialPopupText);
+            exerciseNumber === 2 && SwalInitial(initialPopupText);
             dispatchCounter(increaseCouter());
           }
           // end my code for breaker pop up
@@ -794,7 +801,7 @@ const RightNavBar = (props) => {
         ) {
           props.setKitchenBreakerType("black");
           props.setIsKitchenBreaker(false);
-          SwalInitial(initialPopupText);
+          exerciseNumber === 2 && SwalInitial(initialPopupText);
           dispatchCounter(increaseCouter());
         } else if (
           (props.rndKitchen === 10 && props.kitchenMixture === "connected") ||
@@ -806,7 +813,7 @@ const RightNavBar = (props) => {
         ) {
           props.setKitchenBreakerType("black");
           props.setIsKitchenBreaker(false);
-          SwalInitial(initialPopupText);
+          exerciseNumber === 2 && SwalInitial(initialPopupText);
           dispatchCounter(increaseCouter());
         }
       } else {
@@ -814,24 +821,28 @@ const RightNavBar = (props) => {
         props.setIsKitchenBreaker(true);
       }
     } else {
-      if (
-        (corruptDevice === 10 &&
+      if (corruptDevice < 10 || corruptDevice > 15) {
+        props.setKitchenBreakerType("red");
+        props.setIsKitchenBreaker(true);
+      } else if (
+        (corruptDevice >= 10 || corruptDevice <= 15) &&
+        ((corruptDevice === 10 &&
           allDisconnectedDevices.includes("kitchenMixture")) ||
-        (corruptDevice === 11 &&
-          allDisconnectedDevices.includes("kitchenOven")) ||
-        (corruptDevice === 12 &&
-          allDisconnectedDevices.includes("kitchenLight01")) ||
-        (corruptDevice === 13 &&
-          allDisconnectedDevices.includes("kitchenLight02")) ||
-        (corruptDevice === 14 &&
-          allDisconnectedDevices.includes("kitchenLight03")) ||
-        (corruptDevice === 15 &&
-          allDisconnectedDevices.includes("kitchenToster"))
+          (corruptDevice === 11 &&
+            allDisconnectedDevices.includes("kitchenOven")) ||
+          (corruptDevice === 12 &&
+            allDisconnectedDevices.includes("kitchenLight01")) ||
+          (corruptDevice === 13 &&
+            allDisconnectedDevices.includes("kitchenLight02")) ||
+          (corruptDevice === 14 &&
+            allDisconnectedDevices.includes("kitchenLight03")) ||
+          (corruptDevice === 15 &&
+            allDisconnectedDevices.includes("kitchenToster")))
       ) {
         props.setKitchenBreakerType("red");
         props.setIsKitchenBreaker(true);
       } else {
-        SwalInitial(initialPopupText);
+        exerciseNumber === 2 && SwalInitial(initialPopupText);
         dispatchCounter(increaseCouter());
       }
     }
@@ -996,7 +1007,7 @@ const RightNavBar = (props) => {
         }
 
         if (props.groupThreeCorruptDevice === props.rndGroupThree) {
-          SwalInitial(initialPopupText);
+          exerciseNumber === 2 && SwalInitial(initialPopupText);
           props.setIsGroupThreeBreaker(false);
         } else {
           props.setGroupThreeBreakerType("red");
@@ -1034,7 +1045,7 @@ const RightNavBar = (props) => {
           ) {
             props.setGroupThreeBreakerType("black");
             props.setIsGroupThreeBreaker(false);
-            SwalInitial(initialPopupText);
+            exerciseNumber === 2 && SwalInitial(initialPopupText);
             dispatchCounter(increaseCouter());
           }
           // end my code for breaker pop up
@@ -1053,7 +1064,7 @@ const RightNavBar = (props) => {
         ) {
           props.setGroupThreeBreakerType("black");
           props.setIsGroupThreeBreaker(false);
-          SwalInitial(initialPopupText);
+          exerciseNumber === 2 && SwalInitial(initialPopupText);
           dispatchCounter(increaseCouter());
         } else if (
           (props.rndGroupThree === 16 &&
@@ -1074,7 +1085,7 @@ const RightNavBar = (props) => {
         ) {
           props.setGroupThreeBreakerType("black");
           props.setIsGroupThreeBreaker(false);
-          SwalInitial(initialPopupText);
+          exerciseNumber === 2 && SwalInitial(initialPopupText);
           dispatchCounter(increaseCouter());
         }
         // console.log("run third");
@@ -1084,30 +1095,34 @@ const RightNavBar = (props) => {
         props.setIsGroupThreeBreaker(true);
       }
     } else {
-      if (
-        (corruptDevice === 16 &&
+      if (corruptDevice < 16 || corruptDevice > 24) {
+        props.setGroupThreeBreakerType("red");
+        props.setIsGroupThreeBreaker(true);
+      } else if (
+        (corruptDevice >= 16 || corruptDevice <= 24) &&
+        ((corruptDevice === 16 &&
           allDisconnectedDevices.includes("livingOneLignt01")) ||
-        (corruptDevice === 17 &&
-          allDisconnectedDevices.includes("livingOneLignt02")) ||
-        (corruptDevice === 18 &&
-          allDisconnectedDevices.includes("livingOneLignt03")) ||
-        (corruptDevice === 19 &&
-          allDisconnectedDevices.includes("livingOneFan")) ||
-        (corruptDevice === 20 &&
-          allDisconnectedDevices.includes("livingOneTV")) ||
-        (corruptDevice === 21 &&
-          allDisconnectedDevices.includes("livingTwoLignt01")) ||
-        (corruptDevice === 22 &&
-          allDisconnectedDevices.includes("livingTwoFan")) ||
-        (corruptDevice === 23 &&
-          allDisconnectedDevices.includes("livingTwoLignt02")) ||
-        (corruptDevice === 24 &&
-          allDisconnectedDevices.includes("livingTwoSmallLamp"))
+          (corruptDevice === 17 &&
+            allDisconnectedDevices.includes("livingOneLignt02")) ||
+          (corruptDevice === 18 &&
+            allDisconnectedDevices.includes("livingOneLignt03")) ||
+          (corruptDevice === 19 &&
+            allDisconnectedDevices.includes("livingOneFan")) ||
+          (corruptDevice === 20 &&
+            allDisconnectedDevices.includes("livingOneTV")) ||
+          (corruptDevice === 21 &&
+            allDisconnectedDevices.includes("livingTwoLignt01")) ||
+          (corruptDevice === 22 &&
+            allDisconnectedDevices.includes("livingTwoFan")) ||
+          (corruptDevice === 23 &&
+            allDisconnectedDevices.includes("livingTwoLignt02")) ||
+          (corruptDevice === 24 &&
+            allDisconnectedDevices.includes("livingTwoSmallLamp")))
       ) {
         props.setGroupThreeBreakerType("red");
         props.setIsGroupThreeBreaker(true);
       } else {
-        SwalInitial(initialPopupText);
+        exerciseNumber === 2 && SwalInitial(initialPopupText);
         dispatchCounter(increaseCouter());
       }
     }
@@ -1297,7 +1312,7 @@ const RightNavBar = (props) => {
         }
 
         if (props.groupFourCorruptDevice === props.rndGroupFour) {
-          SwalInitial(initialPopupText);
+          exerciseNumber === 2 && SwalInitial(initialPopupText);
           props.setIsGroupFourBreaker(false);
         } else {
           props.setGroupFourBreakerType("red");
@@ -1333,7 +1348,7 @@ const RightNavBar = (props) => {
           ) {
             props.setGroupFourBreakerType("black");
             props.setIsGroupFourBreaker(false);
-            SwalInitial(initialPopupText);
+            exerciseNumber === 2 && SwalInitial(initialPopupText);
             dispatchCounter(increaseCouter());
           }
           // end my code for breaker pop up
@@ -1355,7 +1370,7 @@ const RightNavBar = (props) => {
         ) {
           props.setGroupFourBreakerType("black");
           props.setIsGroupFourBreaker(false);
-          SwalInitial(initialPopupText);
+          exerciseNumber === 2 && SwalInitial(initialPopupText);
           dispatchCounter(increaseCouter());
         } else if (
           (props.rndGroupFour === 25 && props.hallLedTv == "connected") ||
@@ -1371,7 +1386,7 @@ const RightNavBar = (props) => {
         ) {
           props.setGroupFourBreakerType("black");
           props.setIsGroupFourBreaker(false);
-          SwalInitial(initialPopupText);
+          exerciseNumber === 2 && SwalInitial(initialPopupText);
           dispatchCounter(increaseCouter());
         }
       } else {
@@ -1379,32 +1394,36 @@ const RightNavBar = (props) => {
         props.setIsGroupFourBreaker(true);
       }
     } else {
-      if (
-        (corruptDevice === 25 &&
+      if (corruptDevice < 25 || corruptDevice > 34) {
+        props.setGroupFourBreakerType("red");
+        props.setIsGroupFourBreaker(true);
+      } else if (
+        (corruptDevice >= 25 || corruptDevice <= 34) &&
+        ((corruptDevice === 25 &&
           allDisconnectedDevices.includes("hallLedTv")) ||
-        (corruptDevice === 26 &&
-          allDisconnectedDevices.includes("hallLight01")) ||
-        (corruptDevice === 27 &&
-          allDisconnectedDevices.includes("hallLight02")) ||
-        (corruptDevice === 28 &&
-          allDisconnectedDevices.includes("livingLight01")) ||
-        (corruptDevice === 29 &&
-          allDisconnectedDevices.includes("livingLight02")) ||
-        (corruptDevice === 30 &&
-          allDisconnectedDevices.includes("livingSilingFan")) ||
-        (corruptDevice === 31 &&
-          allDisconnectedDevices.includes("toiletLight")) ||
-        (corruptDevice === 32 &&
-          allDisconnectedDevices.includes("toiletLight02")) ||
-        (corruptDevice === 33 &&
-          allDisconnectedDevices.includes("toiletFan")) ||
-        (corruptDevice === 34 &&
-          allDisconnectedDevices.includes("toiletLight03"))
+          (corruptDevice === 26 &&
+            allDisconnectedDevices.includes("hallLight01")) ||
+          (corruptDevice === 27 &&
+            allDisconnectedDevices.includes("hallLight02")) ||
+          (corruptDevice === 28 &&
+            allDisconnectedDevices.includes("livingLight01")) ||
+          (corruptDevice === 29 &&
+            allDisconnectedDevices.includes("livingLight02")) ||
+          (corruptDevice === 30 &&
+            allDisconnectedDevices.includes("livingSilingFan")) ||
+          (corruptDevice === 31 &&
+            allDisconnectedDevices.includes("toiletLight")) ||
+          (corruptDevice === 32 &&
+            allDisconnectedDevices.includes("toiletLight02")) ||
+          (corruptDevice === 33 &&
+            allDisconnectedDevices.includes("toiletFan")) ||
+          (corruptDevice === 34 &&
+            allDisconnectedDevices.includes("toiletLight03")))
       ) {
         props.setGroupFourBreakerType("red");
         props.setIsGroupFourBreaker(true);
       } else {
-        SwalInitial(initialPopupText);
+        exerciseNumber === 2 && SwalInitial(initialPopupText);
         dispatchCounter(increaseCouter());
       }
     }
@@ -1648,7 +1667,7 @@ const RightNavBar = (props) => {
         }
 
         if (props.groupFiveCorruptDevice === props.rndGroupFive) {
-          SwalInitial(initialPopupText);
+          exerciseNumber === 2 && SwalInitial(initialPopupText);
           props.setIsGroupFiveBreaker(false);
         } else {
           props.setgroupFiveBreakerType("red");
@@ -1688,7 +1707,7 @@ const RightNavBar = (props) => {
             (props.rndGroupFive === 46 &&
               props.livingOneLignt03 === "connected")
           ) {
-            SwalInitial(initialPopupText);
+            exerciseNumber === 2 && SwalInitial(initialPopupText);
             props.setgroupFiveBreakerType("black");
             props.setIsGroupFiveBreaker(false);
             dispatchCounter(increaseCouter());
@@ -1711,7 +1730,7 @@ const RightNavBar = (props) => {
         ) {
           props.setgroupFiveBreakerType("black");
           props.setIsGroupFiveBreaker(false);
-          SwalInitial(initialPopupText);
+          exerciseNumber === 2 && SwalInitial(initialPopupText);
           dispatchCounter(increaseCouter());
         } else if (
           (props.rndGroupFive === 35 && props.hallLampFive === "connected") ||
@@ -1731,7 +1750,7 @@ const RightNavBar = (props) => {
             props.livingOneLignt02 === "connected") ||
           (props.rndGroupFive === 46 && props.livingOneLignt03 === "connected")
         ) {
-          SwalInitial(initialPopupText);
+          exerciseNumber === 2 && SwalInitial(initialPopupText);
           props.setgroupFiveBreakerType("black");
           props.setIsGroupFiveBreaker(false);
           dispatchCounter(increaseCouter());
@@ -1742,34 +1761,40 @@ const RightNavBar = (props) => {
         props.setIsGroupFiveBreaker(true);
       }
     } else {
-      if (
-        (corruptDevice === 35 &&
+      if (corruptDevice < 35 || corruptDevice > 46) {
+        props.setgroupFiveBreakerType("red");
+        props.setIsGroupFiveBreaker(true);
+      } else if (
+        (corruptDevice >= 35 || corruptDevice <= 46) &&
+        ((corruptDevice === 35 &&
           allDisconnectedDevices.includes("hallLampFive")) ||
-        (corruptDevice === 36 &&
-          allDisconnectedDevices.includes("hallLight01Five")) ||
-        (corruptDevice === 37 &&
-          allDisconnectedDevices.includes("hallLight02Five")) ||
-        (corruptDevice === 38 &&
-          allDisconnectedDevices.includes("guestLamp")) ||
-        (corruptDevice === 39 &&
-          allDisconnectedDevices.includes("guestRadio")) ||
-        (corruptDevice === 40 && allDisconnectedDevices.includes("guestFan")) ||
-        (corruptDevice === 41 && allDisconnectedDevices.includes("guestLED")) ||
-        (corruptDevice === 42 &&
-          allDisconnectedDevices.includes("studyLamp")) ||
-        (corruptDevice === 43 &&
-          allDisconnectedDevices.includes("studyLamp02")) ||
-        (corruptDevice === 44 &&
-          allDisconnectedDevices.includes("livingOneLignt01")) ||
-        (corruptDevice === 45 &&
-          allDisconnectedDevices.includes("livingOneLignt02")) ||
-        (corruptDevice === 46 &&
-          allDisconnectedDevices.includes("livingOneLignt03"))
+          (corruptDevice === 36 &&
+            allDisconnectedDevices.includes("hallLight01Five")) ||
+          (corruptDevice === 37 &&
+            allDisconnectedDevices.includes("hallLight02Five")) ||
+          (corruptDevice === 38 &&
+            allDisconnectedDevices.includes("guestLamp")) ||
+          (corruptDevice === 39 &&
+            allDisconnectedDevices.includes("guestRadio")) ||
+          (corruptDevice === 40 &&
+            allDisconnectedDevices.includes("guestFan")) ||
+          (corruptDevice === 41 &&
+            allDisconnectedDevices.includes("guestLED")) ||
+          (corruptDevice === 42 &&
+            allDisconnectedDevices.includes("studyLamp")) ||
+          (corruptDevice === 43 &&
+            allDisconnectedDevices.includes("studyLamp02")) ||
+          (corruptDevice === 44 &&
+            allDisconnectedDevices.includes("livingOneLignt01")) ||
+          (corruptDevice === 45 &&
+            allDisconnectedDevices.includes("livingOneLignt02")) ||
+          (corruptDevice === 46 &&
+            allDisconnectedDevices.includes("livingOneLignt03")))
       ) {
         props.setgroupFiveBreakerType("red");
         props.setIsGroupFiveBreaker(true);
       } else {
-        SwalInitial(initialPopupText);
+        exerciseNumber === 2 && SwalInitial(initialPopupText);
         dispatchCounter(increaseCouter());
       }
     }
@@ -1833,7 +1858,7 @@ const RightNavBar = (props) => {
 
         if (props.laundaryCorruptDevice === props.rndLaundary) {
           console.log("kdsajf");
-          SwalInitial(initialPopupText);
+          exerciseNumber === 2 && SwalInitial(initialPopupText);
           props.setIsLaundaryBreaker(false);
         } else {
           props.setLaundaryBreakerType("red");
@@ -1856,7 +1881,7 @@ const RightNavBar = (props) => {
             props.setLaundaryBreakerType("black");
             props.setIsLaundaryBreaker(false);
             console.log("kdsajf");
-            SwalInitial(initialPopupText);
+            exerciseNumber === 2 && SwalInitial(initialPopupText);
             dispatchCounter(increaseCouter());
           }
           // end my code for breaker pop up
@@ -1870,7 +1895,7 @@ const RightNavBar = (props) => {
           props.setLaundaryBreakerType("black");
           props.setIsLaundaryBreaker(false);
           console.log("kdsajf");
-          SwalInitial(initialPopupText);
+          exerciseNumber === 2 && SwalInitial(initialPopupText);
           dispatchCounter(increaseCouter());
         } else if (
           (props.rndLaundary === 47 && props.laundaryWashing === "connected") ||
@@ -1880,7 +1905,7 @@ const RightNavBar = (props) => {
           props.setLaundaryBreakerType("black");
           props.setIsLaundaryBreaker(false);
           console.log("kdsajf");
-          SwalInitial(initialPopupText);
+          exerciseNumber === 2 && SwalInitial(initialPopupText);
           dispatchCounter(increaseCouter());
         }
       } else {
@@ -1889,18 +1914,22 @@ const RightNavBar = (props) => {
         props.setIsLaundaryBreaker(true);
       }
     } else {
-      if (
-        (corruptDevice === 47 &&
+      if (corruptDevice < 47 || corruptDevice > 49) {
+        props.setLaundaryBreakerType("red");
+        props.setIsLaundaryBreaker(true);
+      } else if (
+        (corruptDevice >= 47 || corruptDevice <= 49) &&
+        ((corruptDevice === 47 &&
           allDisconnectedDevices.includes("laundaryWashing")) ||
-        (corruptDevice === 48 &&
-          allDisconnectedDevices.includes("laundaryLight01")) ||
-        (corruptDevice === 49 &&
-          allDisconnectedDevices.includes("laundaryLight02"))
+          (corruptDevice === 48 &&
+            allDisconnectedDevices.includes("laundaryLight01")) ||
+          (corruptDevice === 49 &&
+            allDisconnectedDevices.includes("laundaryLight02")))
       ) {
         props.setLaundaryBreakerType("red");
         props.setIsLaundaryBreaker(true);
       } else {
-        SwalInitial(initialPopupText);
+        exerciseNumber === 2 && SwalInitial(initialPopupText);
         dispatchCounter(increaseCouter());
       }
     }
@@ -1949,7 +1978,8 @@ const RightNavBar = (props) => {
     text: popupText,
     head: sureText,
     continue: isDutchLocal
-      ? exerciseNumber === 2 && !showFinishBtn
+      ? exerciseNumber === 2 &&
+        (!showFinishBtn || corruptGroupDevices - 1 + correctGroupDevices)
         ? "Ik snap dit"
         : "Nee"
       : exerciseNumber === 2
@@ -1966,12 +1996,14 @@ const RightNavBar = (props) => {
 
     // console.log("sakldfj");
     // navigate("/result");
-    SwalResult(
-      redirect,
-      modalTexts,
-      exerciseNumber === 2 && !showFinishBtn,
-      testModalHandler
-    );
+    exerciseNumber === 2 &&
+      SwalResult(
+        redirect,
+        modalTexts,
+        exerciseNumber === 2 &&
+          (!showFinishBtn || corruptGroupDevices - 1 + correctGroupDevices),
+        testModalHandler
+      );
 
     console.log(counter, "this is the breaker counter");
 
@@ -2004,6 +2036,8 @@ const RightNavBar = (props) => {
       correctAttemptedDevices + corruptAttemptedDevices
     );
 
+    exerciseNumber === 3 && navigate("/result");
+
     // if (rand >= 1 && rand <= 49) {
     //start my code for breaker pop up
     // if (
@@ -2025,7 +2059,7 @@ const RightNavBar = (props) => {
     // ) {
     //   // props.setFirstGroupBreakerType("black");
     //   // props.setIsFirstGroupBreaker(false);
-    //   SwalInitial(initialPopupText);
+    //   exerciseNumber === 2 && SwalInitial(initialPopupText);;
     // }
     // }
   };

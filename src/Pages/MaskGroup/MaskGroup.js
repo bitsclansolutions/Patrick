@@ -137,15 +137,103 @@ const MaskGroup = () => {
                 ? "Als je klaar bent druk je op de knop <br/> “Ik ben klaar” "
                 : "You have to disconnect all devices of the group then you can on the breaker and connect all the devices one by one to check which device is defected.</p>"
             }`
-      : `<div style="font-size: 20px" ><p>Ergens in huis is een zekering uitgeschakeld. <br/>
-In deze oefening zitten er meerdere ruimtes
-op dezelfde groep.
-</p><p>In dit geval moet je de stroom in meerdere
-ruimtes controleren en eventueel in of
-uitschakelen.
-</p><p><b>Kijk daarom goed in het overzicht welke
-ruimtes op dezelfde groep zitten!</b></p><br/><p>Als je klaar bent druk je op de blauwe knop <br/>
-“Ik ben klaar”</p></div>`;
+      : `<div style="font-size: 15px" ><p>Ergens in huis is een zekering uitgeschakeld. <br/>
+            In deze oefening zitten er meerdere ruimtes
+            op dezelfde groep.
+            </p><p>In dit geval moet je de stroom in meerdere
+            ruimtes controleren en eventueel in of
+            uitschakelen.
+            </p><p><b>Kijk daarom goed in het overzicht welke
+            ruimtes op dezelfde groep zitten!</b></p><div className="legend">
+    <table border="1" width="100%">
+      <tr>
+        <td colspan="2" style="text-align: left;padding-left: 14px;"><p style="margin-bottom: 0px; font-size: 16px;color:#B41D1D;"><strong style="border-bottom: 2px solid #B41D1D;">${
+          isDutch ? "Begane Grond" : "Ground Floor"
+        }  </strong></p></td>
+      </tr>
+      <tr class="d-flex">
+        <td style="width: 50%;text-align: left;padding-left: 14px;margin-top: 18px;">
+          <div className="set-legend-text" style="margin-bottom: 1px solid red;">
+            <p style="margin-bottom: 0px;font-size: 16px;color:#B41D1D;line-height: 6px;"><sup><strong>
+            ${isDutch ? "Groep&nbsp;1" : "Group&nbsp;1"} </strong></sup></p>
+            <p style="margin-bottom: 0px; font-size: 16px;"><small>${
+              isDutch ? "Hal, Toilet, Woonkamer" : "Hall, Toilet, Living room"
+            } </small></p>
+            </div>
+        </td>
+        <td style="width: 50%;text-align: left;padding-left: 14px;margin-top: 18px;">
+        <div className="set-legend-text">
+        <p style="margin-bottom: 0px;font-size: 16px;color:#B41D1D;line-height: 6px;"><strong><sup>${
+          isDutch ? "Groep&nbsp;2" : "Group&nbsp;2"
+        }</sup></strong></p>
+        <p style="margin-bottom: 0px; font-size: 16px;"><small>${
+          isDutch ? "Keuken" : "Kitchen"
+        }</small></p>
+          </div>
+          </td>
+          </tr>
+      <tr>
+        <td colspan="2" style="text-align: left;padding-left: 14px;"><p style="margin-bottom: 0px; font-size: 16px;color:#B41D1D;"><strong style="border-bottom: 2px solid #B41D1D;">${
+          isDutch ? "Eerste verdieping" : "First Floor"
+        } </strong></p></td>
+        </tr>
+        <tr class="d-flex">
+        <td style="width: 50%;text-align: left;padding-left: 14px;margin-top: 18px;">
+        <div className="set-legend-text">
+        <p style="margin-bottom: 0px;font-size: 16px;color:#B41D1D;line-height: 6px;"><sup><strong>${
+          isDutch ? "Groep&nbsp;3" : "Group&nbsp;3"
+        }</strong></sup></p>
+        <p style="margin-bottom: 0px; font-size: 16px;"><small>${
+          isDutch ? "Slaapkamer 01, Slaapkamer 02" : "Bedroom 01, Bedroom 02"
+        }</small></p>
+          </div>
+        </td>
+        <td style="width: 50%;text-align: left;padding-left: 14px;margin-top: 18px;">
+        <div className="set-legend-text">
+        <p style="margin-bottom: 0px;font-size: 16px;color:#B41D1D;line-height: 6px;"><strong><sup>${
+          isDutch ? "Groep&nbsp;4" : "Group&nbsp;4"
+        }</sup></strong></p>
+        <p style="margin-bottom: 0px; font-size: 16px;"><small>${
+          isDutch
+            ? "Badkamer, Overloop, Slaapkamer 03"
+            : "Hall, Bathroom, Bedroom 03"
+        }</small></p>
+          </div>
+          </td>
+      </tr>
+
+      <tr>
+        <td colspan="2" style="text-align: left;padding-left: 14px;"><p style="margin-bottom: 0px; font-size: 16px;color:#B41D1D;"><strong style="border-bottom: 2px solid #B41D1D;">${
+          isDutch ? "Zolder" : "Attic Floor"
+        }</strong></p></td>
+      </tr>
+      <tr class="d-flex">
+      <td style="width: 50%;text-align: left;padding-left: 14px;margin-top: 18px;">
+          <div className="set-legend-text">
+          <p style="margin-bottom: 0px;font-size: 16px;color:#B41D1D;line-height: 6px;"><sup><strong>${
+            isDutch ? "Groep&nbsp;5" : "Group&nbsp;5"
+          }</strong></sup></p>
+            <p style="margin-bottom: 0px; font-size: 16px;"><small>${
+              isDutch
+                ? "Logeerkamer, Overloop, Studeerkamer, Berging"
+                : "Hall, Guest room, Study room, Storage room"
+            }</small></p>
+            </div>
+            </td>
+            <td style="width: 50%;text-align: left;padding-left: 14px;margin-top: 18px;">
+            <div className="set-legend-text">
+            <p style="margin-bottom: 0px;font-size: 16px;color:#B41D1D;line-height: 6px;"><strong><sup>${
+              isDutch ? "Groep&nbsp;6" : "Group&nbsp;6"
+            }</sup></strong></p>
+            <p style="margin-bottom: 0px; font-size: 16px;"><small>${
+              isDutch ? "Washok" : "Laundry"
+            }</small></p>
+            </div>
+            </td>
+            </tr>
+            </table>
+            </div><p style="margin-bottom : 0">Als je klaar bent druk je op de blauwe knop <br/>
+            “Ik ben klaar”</p></div>`;
 
   const popupText = {
     title: isDutch ? "Opdracht" : "User Task",

@@ -80,6 +80,8 @@ const KitchenIndex = () => {
 
   console.log(exerciseDisconnected);
 
+  // breakers on and off and corrupt breaker logic
+
   const breakerHnadler = (val) => {
     if (val === 1) {
       setBreaker1(!breaker1);
@@ -113,6 +115,7 @@ const KitchenIndex = () => {
     }
   };
 
+  // device on and off
   const changeDeviceHandler = (device) => {
     if (turnFuseOn) {
       setNotAFuse(true);
@@ -150,7 +153,7 @@ const KitchenIndex = () => {
     }
   };
 
-  console.log(warning);
+  // corrupt device logic
   const bulb2On = () => {
     if (breakerOn && !warning) {
       console.log("hello");
@@ -165,10 +168,7 @@ const KitchenIndex = () => {
     }
   };
 
-  console.log(showStepBack);
-
-  console.log(breaker2);
-
+  // show popups logic
   const disconnectDevices = () => {
     setShowDisconnectDevices(false);
     setShowDisconnectAll(true);
@@ -248,6 +248,7 @@ const KitchenIndex = () => {
 
   return (
     <>
+      {/* right navbar */}
       <div className="flex" style={{ height: "100vh", display: "flex" }}>
         <div
           className=" navbar-background"
@@ -439,6 +440,7 @@ const KitchenIndex = () => {
             </div>
           </>
         </div>
+        {/* kitchen */}
         <div style={{ background: "#B33759", height: "100uh", width: "83%" }}>
           <div className="">
             <div className="row">

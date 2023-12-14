@@ -84,9 +84,9 @@ const KitchenIndex = () => {
   // breakers on and off and corrupt breaker logic
 
   const breakerHnadler = (val) => {
-    if (breakerBlocked) {
-      return;
-    }
+    // if (breakerBlocked) {
+    //   return;
+    // }
     if (val === 1) {
       setBreaker1(!breaker1);
     } else if (val === 2 && exerciseDisconnected === 6) {
@@ -104,7 +104,7 @@ const KitchenIndex = () => {
     if (val === 2 && exerciseDisconnected === 6 && !breakerOn) {
       setShowRightBreaker(true);
       setTurnFuseOn(false);
-      setBreakerBlocked(true);
+      // setBreakerBlocked(true);
     } else if (val === 2 && exerciseDisconnected !== 6 && !breakerOn) {
       setShowDeviceError(true);
     } else if (val !== 2) {
@@ -164,7 +164,7 @@ const KitchenIndex = () => {
       console.log("hello");
       setShowCorruptError(true);
       setBreaker2(false);
-      setBreakerBlocked(false);
+      // setBreakerBlocked(false);
       setWarning(true);
     } else if (warning) {
       console.log("hello");

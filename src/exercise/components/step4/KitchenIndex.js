@@ -49,6 +49,7 @@ const KitchenIndex = () => {
   const [notAFuse, setNotAFuse] = useState(false);
   const [showWrongBreaker, setShowWrongBreaker] = useState(false);
   const [showRightBreaker, setShowRightBreaker] = useState(false);
+  const [breakerBlocked, setBreakerBlocked] = useState(false);
   const [showDeviceError, setShowDeviceError] = useState(false);
   const [showCorruptError, setShowCorruptError] = useState(false);
   const [showFuseError, setShowFuseError] = useState(false);
@@ -83,6 +84,9 @@ const KitchenIndex = () => {
   // breakers on and off and corrupt breaker logic
 
   const breakerHnadler = (val) => {
+    if (breakerBlocked) {
+      return;
+    }
     if (val === 1) {
       setBreaker1(!breaker1);
     } else if (val === 2 && exerciseDisconnected === 6) {
@@ -100,6 +104,7 @@ const KitchenIndex = () => {
     if (val === 2 && exerciseDisconnected === 6 && !breakerOn) {
       setShowRightBreaker(true);
       setTurnFuseOn(false);
+      setBreakerBlocked(true);
     } else if (val === 2 && exerciseDisconnected !== 6 && !breakerOn) {
       setShowDeviceError(true);
     } else if (val !== 2) {
@@ -159,6 +164,7 @@ const KitchenIndex = () => {
       console.log("hello");
       setShowCorruptError(true);
       setBreaker2(false);
+      setBreakerBlocked(false);
       setWarning(true);
     } else if (warning) {
       console.log("hello");

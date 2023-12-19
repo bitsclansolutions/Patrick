@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./Home.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -6,18 +6,47 @@ import ErrorPage from "../404/ErrorPage";
 import { useDispatch, useSelector } from "react-redux";
 import { userinfo } from "../../Redux/Action";
 import ChangeLanguageToggle from "../../utils/ChangeLanguageToggle";
+import audio from "../../audios/Audio-1.m4a";
+import { Howl } from "howler";
 
 const Home = () => {
   const dispatch = useDispatch();
   let navigate = useNavigate();
+  const myRef = useRef();
 
   const [userName, setUserName] = useState("");
   const [errUserName, setErrUserName] = useState("");
   const [phase, setPhase] = useState("first");
   const [smallBtn, setSmallBtn] = useState("next");
   const [largeBtn, setLargeBtn] = useState("IQ test");
+  const [audioPlay, setAudioPlay] = useState(false);
 
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
+
+  const audio1 = new Howl({
+    src: [audio],
+  });
+
+  // const playAudioHandler = () => {
+  //   if (!audioPlay) {
+  //     console.log("play audio");
+  //     audio1.play();
+  //   } else {
+  //     console.log("pause audio");
+  //     audio1.pause();
+  //   }
+  //   setAudioPlay(!audioPlay);
+  // };
+
+  const startAudio = () => {
+    if (!audioPlay) {
+      myRef.current.play();
+    } else {
+      myRef.current.pause();
+    }
+
+    setAudioPlay(!audioPlay);
+  };
 
   useEffect(() => {
     setErrUserName("");
@@ -44,6 +73,7 @@ const Home = () => {
 
   return (
     <>
+      <audio ref={myRef} id="audio_tag" src={audio} />
       <div className="error-page">
         <ErrorPage />
       </div>
@@ -95,15 +125,19 @@ const Home = () => {
                     }
                   />
                   <button
-                    className="btn-blue set-opacity-btn"
                     type="button"
+                    onClick={() => startAudio()}
+                    className="btn-blue set-opacity-btn"
                     style={{
                       paddingRight: "10px",
                       padding: "4px 12px 1px 12px",
+                      width: "65px",
                     }}
                   >
                     <i
-                      class="fa-solid fa-microphone-slash"
+                      className={`fa-solid  ${
+                        audioPlay ? "fa-microphone" : "fa-microphone-slash"
+                      }`}
                       style={{ fontSize: "23px" }}
                     ></i>
                   </button>
@@ -175,11 +209,12 @@ const Home = () => {
                   Do you want to perform a IQ test?
                 </button>
                 <button
+                  onClick={() => startAudio()}
                   className="btn-blue set-opacity-btn"
                   style={{ paddingRight: "10px", padding: "4px 12px 1px 12px" }}
                 >
                   <i
-                    className="fa-solid fa-microphone-slash"
+                    className={`fa-solid fa-microphone-slash ${"fa-microphone"}`}
                     style={{ fontSize: "23px" }}
                   ></i>
                 </button>

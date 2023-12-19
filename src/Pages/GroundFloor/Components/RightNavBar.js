@@ -1988,6 +1988,10 @@ const RightNavBar = (props) => {
     finish: isDutchLocal ? "Ja" : "Yes",
   };
 
+  const confirmationText = isDutch
+    ? "Weet je zeker dat je het spel wilt Afronden?"
+    : "Are you sure you want to finish the game?";
+
   const finishBreakerHandler = () => {
     // FinishSwal();
     // setTimeout(() => {
@@ -1996,14 +2000,14 @@ const RightNavBar = (props) => {
 
     // console.log("sakldfj");
     // navigate("/result");
-    exerciseNumber === 2 &&
-      SwalResult(
-        redirect,
-        modalTexts,
-        exerciseNumber === 2 &&
-          (!showFinishBtn || corruptGroupDevices - 1 + correctGroupDevices),
-        testModalHandler
-      );
+    SwalResult(
+      redirect,
+      modalTexts,
+      exerciseNumber === 3,
+      exerciseNumber === 2 &&
+        (!showFinishBtn || corruptGroupDevices - 1 + correctGroupDevices),
+      testModalHandler
+    );
 
     console.log(counter, "this is the breaker counter");
 
@@ -2036,7 +2040,7 @@ const RightNavBar = (props) => {
       correctAttemptedDevices + corruptAttemptedDevices
     );
 
-    exerciseNumber === 3 && navigate("/result");
+    // exerciseNumber === 3 && navigate("/result");
 
     // if (rand >= 1 && rand <= 49) {
     //start my code for breaker pop up

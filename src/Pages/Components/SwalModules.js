@@ -138,10 +138,10 @@ export const SwalDisconnectedCorrupt = (popupText) => {
     text: popupText.text,
   });
 };
-export const SwalResult = (redirect, text, test) => {
+export const SwalResult = (redirect, text, test3, test) => {
   Swal.fire({
     title: text.head,
-    html: text.text,
+    html: test3 ? false : text.text,
     denyButtonColor: !test ? "#7399b4" : "#085CA8",
     showDenyButton: true,
     denyButtonText: text.continue,

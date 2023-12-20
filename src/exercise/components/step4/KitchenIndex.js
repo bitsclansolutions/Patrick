@@ -28,6 +28,10 @@ import OvenOff from "../../kitchen-items/ovenOff.png";
 import ToasterOn from "../../kitchen-items/toasterOn.png";
 import ToasterOff from "../../kitchen-items/toasterOff.png";
 import { Link, useNavigate } from "react-router-dom";
+import AudioPlayer from "../../../utils/AudioPlayer";
+import audio7 from "../../../audios/audio7.m4a";
+import audio8 from "../../../audios/audio8.m4a";
+import audio9 from "../../../audios/audio9.m4a";
 
 const KitchenIndex = () => {
   const isDutchLocal = useSelector(
@@ -604,10 +608,16 @@ const KitchenIndex = () => {
                 stopcontact. <br /> De knop veranderd van kleur zodat je kunt
                 zien dat deze is uitgeschakeld.
               </p>
-              <div className="popup-button">
-                <button onClick={disconnectDevices}>
-                  Klik hier om verder te gaan
-                </button>
+              <div className="popup-bottom">
+                <div className="vol-icon"></div>
+                <div className="popup-button">
+                  <button onClick={disconnectDevices}>
+                    Klik hier om verder te gaan
+                  </button>
+                </div>
+                <div className="vol-icon">
+                  <AudioPlayer file={audio7} />
+                </div>
               </div>
             </>
           ) : (
@@ -863,10 +873,16 @@ const KitchenIndex = () => {
                 Dit betekent dat in het laatste apparaat dat je had ingeschakeld
                 een kortsluiting zit.
               </p>
-              <div className="popup-button">
-                <button onClick={fuseErrorHandler}>
-                  Klik hier om verder te gaan
-                </button>
+              <div className="popup-bottom">
+                <div className="vol-icon"></div>
+                <div className="popup-button">
+                  <button onClick={fuseErrorHandler}>
+                    Klik hier om verder te gaan
+                  </button>
+                </div>
+                <div className="vol-icon">
+                  <AudioPlayer file={audio8} />
+                </div>
               </div>
             </>
           ) : (
@@ -900,11 +916,17 @@ const KitchenIndex = () => {
                 <b>Begrijp je dit?</b>
               </p>
               <p></p>
-              <div className="popup-button">
-                <button onClick={() => window.location.reload(false)}>
-                  Nee
-                </button>
-                <button onClick={repairHandler}>Ja</button>
+              <div className="popup-bottom">
+                <div className="vol-icon"></div>
+                <div className="popup-button">
+                  <button onClick={() => window.location.reload(false)}>
+                    Nee
+                  </button>
+                  <button onClick={repairHandler}>Ja</button>
+                </div>
+                <div className="vol-icon">
+                  <AudioPlayer file={audio9} />
+                </div>
               </div>
             </>
           ) : (

@@ -6,12 +6,12 @@ import { Link } from "react-router-dom";
 import ChangeLanguageToggle from "../../../utils/ChangeLanguageToggle";
 import ExerciseName from "../../utils/ExerciseName";
 import Video from "../../exercise-videos/wat-is-kortsluiting.mp4";
+import audio1 from "../../../audios/audio1.m4a";
+import AudioPlayer from "../../../utils/AudioPlayer";
 // import ExerciseHall from "/exercise-images/Screenshot 2023-10-20 220310.png";
 
 const Start = () => {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
-
-  console.log(process.env.PUBLIC_URL);
 
   return (
     <>
@@ -74,12 +74,18 @@ const Start = () => {
               ? "Je krijgt straks een rondleiding te zien in een woning."
               : "You will be shown a tour of a house."}
           </p>
-          <div className="popup-button">
-            <Link to={"/exercise-groundFloor"}>
-              {isDutch
-                ? "klik hier om verder te gaan"
-                : "Click here to continue"}
-            </Link>
+          <div className="popup-bottom">
+            <div className="vol-icon"></div>
+            <div className="popup-button">
+              <Link to={"/exercise-groundFloor"}>
+                {isDutch
+                  ? "klik hier om verder te gaan"
+                  : "Click here to continue"}
+              </Link>
+            </div>
+            <div className="vol-icon">
+              <AudioPlayer file={audio1} />
+            </div>
           </div>
         </Popup>
       </div>

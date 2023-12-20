@@ -9,6 +9,8 @@ import { SwalStarter } from "../Components/SwalModules";
 import { useDispatch, useSelector } from "react-redux";
 import ChangeLanguageToggle from "../../utils/ChangeLanguageToggle";
 import { setExercise, setExerciseGate } from "../../Redux/Action";
+import AudioPlayer from "../../utils/AudioPlayer";
+import audio10 from "../../audios/audio10.m4a";
 // import AtticModel from "../../PopUpModels/AtticModel";
 // import FirstFloorModel from "../../PopUpModels/FirstFloorModel";
 // import GroundFloorModel from "../../PopUpModels/GroundFloorModel"
@@ -233,7 +235,8 @@ const MaskGroup = () => {
             </tr>
             </table>
             </div><p style="margin-bottom : 0">Als je klaar bent druk je op de blauwe knop <br/>
-            “Ik ben klaar”</p></div>`;
+            “Ik ben klaar”</p></div>
+            <div><audio src="../../audios/audio10.m4a" autoplay></audio></div>`;
 
   const popupText = {
     title: isDutch ? "Opdracht" : "User Task",

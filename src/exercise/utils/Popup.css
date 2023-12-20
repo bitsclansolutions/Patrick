@@ -53,7 +53,7 @@
   text-align: center;
 }
 .popup-button {
-  margin: 25px 0 10px !important;
+  margin: 10px 0 !important;
   text-align: center;
   display: flex;
   gap: 20px;
@@ -88,4 +88,19 @@
 }
 .popup-button button:hover {
   background: #115697;
+}
+
+.popup-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vol-icon {
+  width: 50px;
+}
+
+.vol-icon i {
+  font-size: 23px;
+  cursor: pointer;
 }

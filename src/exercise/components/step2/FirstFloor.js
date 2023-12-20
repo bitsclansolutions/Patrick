@@ -4,6 +4,8 @@ import "./FirstFloor.css";
 import Popup from "../../utils/Popup";
 import { Link } from "react-router-dom";
 import ExerciseName from "../../utils/ExerciseName";
+import AudioPlayer from "../../../utils/AudioPlayer";
+import audio3 from "../../../audios/audio3.m4a";
 
 const FirstFloor = () => {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
@@ -45,10 +47,16 @@ const FirstFloor = () => {
               <b>badkamer</b> en <b>slaapkamer 3</b> zitten op{" "}
               <b>stroomgroep 4</b>.
             </p>
-            <div className="popup-button">
-              <Link to="/exercise-atticFloor">
-                klik op de deze knop om verder te gaan
-              </Link>
+            <div className="popup-bottom">
+              <div className="vol-icon"></div>
+              <div className="popup-button">
+                <Link to="/exercise-atticFloor">
+                  klik op de deze knop om verder te gaan
+                </Link>
+              </div>
+              <div className="vol-icon">
+                <AudioPlayer file={audio3} />
+              </div>
             </div>
           </>
         ) : (

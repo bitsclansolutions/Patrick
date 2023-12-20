@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import ChangeLanguageToggle from "../../../utils/ChangeLanguageToggle";
 import Highlight from "../../utils/Highlight";
 import ExerciseName from "../../utils/ExerciseName";
+import AudioPlayer from "../../../utils/AudioPlayer";
+import audio6 from "../../../audios/audio6.m4a";
 
 const Devices = () => {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
@@ -50,10 +52,16 @@ const Devices = () => {
             <p className="popup-text-base">
               Wanneer je een kamer wilt verlaten klik je op de knop ‘Ga Terug'
             </p>
-            <div className="popup-button">
-              <Link to="/exercise-step3-finish">
-                Klik hier om verder te gaan
-              </Link>
+            <div className="popup-bottom">
+              <div className="vol-icon"></div>
+              <div className="popup-button">
+                <Link to="/exercise-step3-finish">
+                  Klik hier om verder te gaan
+                </Link>
+              </div>
+              <div className="vol-icon">
+                <AudioPlayer file={audio6} />
+              </div>
             </div>
           </>
         ) : (

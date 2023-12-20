@@ -6,7 +6,7 @@ import ErrorPage from "../404/ErrorPage";
 import { useDispatch, useSelector } from "react-redux";
 import { userinfo } from "../../Redux/Action";
 import ChangeLanguageToggle from "../../utils/ChangeLanguageToggle";
-import audio from "../../audios/Audio-1.m4a";
+// import audio from "../../audios/Audio-1.m4a";
 import { Howl } from "howler";
 
 const Home = () => {
@@ -22,10 +22,6 @@ const Home = () => {
   const [audioPlay, setAudioPlay] = useState(false);
 
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
-
-  const audio1 = new Howl({
-    src: [audio],
-  });
 
   // const playAudioHandler = () => {
   //   if (!audioPlay) {
@@ -73,7 +69,6 @@ const Home = () => {
 
   return (
     <>
-      <audio ref={myRef} id="audio_tag" src={audio} />
       <div className="error-page">
         <ErrorPage />
       </div>

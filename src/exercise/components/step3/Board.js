@@ -6,6 +6,8 @@ import "./Board.css";
 import { Link } from "react-router-dom";
 import ChangeLanguageToggle from "../../../utils/ChangeLanguageToggle";
 import ExerciseName from "../../utils/ExerciseName";
+import AudioPlayer from "../../../utils/AudioPlayer";
+import audio5 from "../../../audios/audio5.m4a";
 
 const Board = () => {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
@@ -46,8 +48,14 @@ const Board = () => {
               uitgeschakeld. <br /> De schakelaar staat naar beneden en is nu
               zwart van kleur.
             </p>
-            <div className="popup-button">
-              <Link to="/exercise-devices">Klik hier om verder te gaan</Link>
+            <div className="popup-bottom">
+              <div className="vol-icon"></div>
+              <div className="popup-button">
+                <Link to="/exercise-devices">Klik hier om verder te gaan</Link>
+              </div>
+              <div className="vol-icon">
+                <AudioPlayer file={audio5} />
+              </div>
             </div>
           </>
         ) : (

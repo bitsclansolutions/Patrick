@@ -4,6 +4,8 @@ import "./AtticFloor.css";
 import Popup from "../../utils/Popup";
 import { Link } from "react-router-dom";
 import ExerciseName from "../../utils/ExerciseName";
+import AudioPlayer from "../../../utils/AudioPlayer";
+import audio4 from "../../../audios/audio4.m4a";
 
 const AtticFloor = () => {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
@@ -40,10 +42,16 @@ const AtticFloor = () => {
                 <b>studeerkamer</b> en <b>berging</b> op <b>stroomgroep 5</b>{" "}
                 zitten. <br /> Het <b>washok</b> zit op <b>stroomgroep 6</b>.
               </p>
-              <div className="popup-button">
-                <button onClick={() => setEndStep(true)}>
-                  klik op de deze knop om verder te gaan
-                </button>
+              <div className="popup-bottom">
+                <div className="vol-icon"></div>
+                <div className="popup-button">
+                  <button onClick={() => setEndStep(true)}>
+                    klik op de deze knop om verder te gaan
+                  </button>
+                </div>
+                <div className="vol-icon">
+                  <AudioPlayer file={audio4} />
+                </div>
               </div>
             </>
           ) : (
@@ -59,6 +67,7 @@ const AtticFloor = () => {
                 <b>group 5</b> and the <b>laundry room</b> on stream{" "}
                 <b>group 6</b>.
               </p>
+
               <div className="popup-button">
                 <button onClick={() => setEndStep(true)}>
                   Click here to continue

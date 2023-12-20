@@ -4,6 +4,8 @@ import Popup from "../../utils/Popup";
 import { Link } from "react-router-dom";
 import "./GroundFloor.css";
 import ExerciseName from "../../utils/ExerciseName";
+import AudioPlayer from "../../../utils/AudioPlayer";
+import audio2 from "../../../audios/audio2.m4a";
 
 const GroundFloor = () => {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
@@ -48,10 +50,16 @@ const GroundFloor = () => {
                 <br /> Het <b>toilet, de woonkamer</b> en de <b>hal</b> ziten op{" "}
                 <b>stroomgroep 1</b>.
               </p>
-              <div className="popup-button">
-                <Link to="/exercise-firstFloor">
-                  klik op de deze knop om verder te gaan
-                </Link>
+              <div className="popup-bottom">
+                <div className="vol-icon"></div>
+                <div className="popup-button">
+                  <Link to="/exercise-firstFloor">
+                    klik op de deze knop om verder te gaan
+                  </Link>
+                </div>
+                <div className="vol-icon">
+                  <AudioPlayer file={audio2} />
+                </div>
               </div>
             </>
           ) : (

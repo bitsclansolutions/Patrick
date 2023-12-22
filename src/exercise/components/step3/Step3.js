@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./Step3.css";
-import Popup from "../../utils/Popup";
+import Popup from "../../../utils/Popup";
 import { useNavigate } from "react-router-dom";
 import ChangeLanguageToggle from "../../../utils/ChangeLanguageToggle";
 import Video from "../../exercise-videos/stroom-uitgevalle.mp4";

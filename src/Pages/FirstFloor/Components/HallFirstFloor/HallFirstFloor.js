@@ -38,9 +38,11 @@ import {
   breakerOffDutch,
   breakerOffEnglish,
 } from "../../../../utils/translation";
+import BreakerOffPopup from "../../../../utils/BreakerOffPopup";
 
 const HallFirstFloor = (props) => {
   const navigate = useNavigate();
+  const [breakerOff, setBreakerOff] = useState(false);
 
   const disconnectedDevices = useSelector(
     (state) => state.CounterRemainingDevicesReducer.count
@@ -119,7 +121,7 @@ const HallFirstFloor = (props) => {
     if (props.rndGroupFour === val && props.groupFourBreakerType === "red") {
       props.setGroupFourBreakerType("black");
       props.setIsGroupFourBreaker(false);
-      exerciseNumber === 2 && SwalBreakerOff(popupText, redirectSorry);
+      exerciseNumber === 2 && setBreakerOff(true);
       dispatch(increaseDeviceCounter());
       errorSound();
       // props.setFirstFloorTrial(props.firstFloorTrial + 1);
@@ -151,6 +153,8 @@ const HallFirstFloor = (props) => {
 
   return (
     <>
+      {breakerOff && <BreakerOffPopup close={() => setBreakerOff(false)} />}
+
       {props.gamePhaseGroup4 === "hall" ? (
         <div
           style={{

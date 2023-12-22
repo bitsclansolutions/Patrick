@@ -46,9 +46,11 @@ import {
   breakerOffDutch,
   breakerOffEnglish,
 } from "../../../../utils/translation";
+import BreakerOffPopup from "../../../../utils/BreakerOffPopup";
 
 const LivingRoomOne = (props) => {
   const navigate = useNavigate();
+  const [breakerOff, setBreakerOff] = useState(false);
 
   const disconnectedDevices = useSelector(
     (state) => state.CounterRemainingDevicesReducer.count
@@ -140,7 +142,7 @@ const LivingRoomOne = (props) => {
     if (props.rndGroupThree === val && props.groupThreeBreakerType === "red") {
       props.setGroupThreeBreakerType("black");
       props.setIsGroupThreeBreaker(false);
-      exerciseNumber === 2 && SwalBreakerOff(popupText, redirectSorry);
+      exerciseNumber === 2 && setBreakerOff(true);
       dispatch(increaseDeviceCounter());
       errorSound();
       props.setFirstFloorTrial(props.firstFloorTrial + 1);
@@ -183,6 +185,8 @@ const LivingRoomOne = (props) => {
   return (
     <>
       <>
+        {breakerOff && <BreakerOffPopup close={() => setBreakerOff(false)} />}
+
         {props.gamePhase === "livingOne" ? (
           <div
             style={{

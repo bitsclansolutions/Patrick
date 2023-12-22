@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Highlight from "../../utils/Highlight";
-import Popup from "../../utils/Popup";
+import Popup from "../../../utils/Popup";
 import "./Board.css";
 import { Link } from "react-router-dom";
 import ChangeLanguageToggle from "../../../utils/ChangeLanguageToggle";

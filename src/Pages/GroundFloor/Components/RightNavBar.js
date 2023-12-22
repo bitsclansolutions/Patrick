@@ -47,6 +47,9 @@ import {
   initialEnglish,
 } from "../../../utils/translation";
 import ChangeLanguageToggle from "../../../utils/ChangeLanguageToggle";
+import Popup from "../../../utils/Popup";
+import AudioPlayer from "../../../utils/AudioPlayer";
+import audio11 from "../../../audios/audio11.m4a";
 
 const RightNavBar = (props) => {
   const { id } = useParams();
@@ -56,6 +59,8 @@ const RightNavBar = (props) => {
   const [breaker4, setBreaker4] = useState(true);
   const [breaker5, setBreaker5] = useState(true);
   const [breaker6, setBreaker6] = useState(true);
+
+  const [corruptBreakerPopup, setCorruptBreakerPopup] = useState(false);
 
   const [breakers, setBreakers] = useState([
     true,
@@ -522,7 +527,7 @@ const RightNavBar = (props) => {
         }
 
         if (props.completeCorruptDevice === props.completeRnd) {
-          exerciseNumber === 2 && SwalInitial(initialPopupText);
+          exerciseNumber === 2 && setCorruptBreakerPopup(true);
           props.setIsFirstGroupBreaker(false);
         } else {
           props.setFirstGroupBreakerType("red");
@@ -558,7 +563,7 @@ const RightNavBar = (props) => {
             props.setIsFirstGroupBreaker(false);
             dispatchCounter(increaseCouter());
             console.log("should be hit when connected");
-            exerciseNumber === 2 && SwalInitial(initialPopupText);
+            exerciseNumber === 2 && setCorruptBreakerPopup(true);
             //ADD COUNTER
             // dispatch(isHurray(true));
 
@@ -582,7 +587,7 @@ const RightNavBar = (props) => {
         ) {
           props.setFirstGroupBreakerType("black");
           props.setIsFirstGroupBreaker(false);
-          exerciseNumber === 2 && SwalInitial(initialPopupText);
+          exerciseNumber === 2 && setCorruptBreakerPopup(true);
           // setCounterBreaker(counterBreaker + 1);
           // console.log(counterBreaker, "Heloo counter");
           dispatchCounter(increaseCouter());
@@ -600,7 +605,7 @@ const RightNavBar = (props) => {
           props.setFirstGroupBreakerType("black");
           props.setIsFirstGroupBreaker(false);
           dispatchCounter(increaseCouter());
-          exerciseNumber === 2 && SwalInitial(initialPopupText);
+          exerciseNumber === 2 && setCorruptBreakerPopup(true);
         }
       } else {
         props.setFirstGroupBreakerType("red");
@@ -635,7 +640,7 @@ const RightNavBar = (props) => {
         props.setFirstGroupBreakerType("red");
         props.setIsFirstGroupBreaker(true);
       } else {
-        exerciseNumber === 2 && SwalInitial(initialPopupText);
+        exerciseNumber === 2 && setCorruptBreakerPopup(true);
         dispatchCounter(increaseCouter());
       }
     }
@@ -757,7 +762,7 @@ const RightNavBar = (props) => {
         }
         // console.log("kitchen CorruptDevice",props.kitchenCorruptDevice);
         if (props.kitchenCorruptDevice === props.rndKitchen) {
-          exerciseNumber === 2 && SwalInitial(initialPopupText);
+          exerciseNumber === 2 && setCorruptBreakerPopup(true);
           props.setIsKitchenBreaker(false);
         } else {
           props.setKitchenBreakerType("red");
@@ -784,7 +789,7 @@ const RightNavBar = (props) => {
           ) {
             props.setKitchenBreakerType("black");
             props.setIsKitchenBreaker(false);
-            exerciseNumber === 2 && SwalInitial(initialPopupText);
+            exerciseNumber === 2 && setCorruptBreakerPopup(true);
             dispatchCounter(increaseCouter());
           }
           // end my code for breaker pop up
@@ -801,7 +806,7 @@ const RightNavBar = (props) => {
         ) {
           props.setKitchenBreakerType("black");
           props.setIsKitchenBreaker(false);
-          exerciseNumber === 2 && SwalInitial(initialPopupText);
+          exerciseNumber === 2 && setCorruptBreakerPopup(true);
           dispatchCounter(increaseCouter());
         } else if (
           (props.rndKitchen === 10 && props.kitchenMixture === "connected") ||
@@ -813,7 +818,7 @@ const RightNavBar = (props) => {
         ) {
           props.setKitchenBreakerType("black");
           props.setIsKitchenBreaker(false);
-          exerciseNumber === 2 && SwalInitial(initialPopupText);
+          exerciseNumber === 2 && setCorruptBreakerPopup(true);
           dispatchCounter(increaseCouter());
         }
       } else {
@@ -842,7 +847,7 @@ const RightNavBar = (props) => {
         props.setKitchenBreakerType("red");
         props.setIsKitchenBreaker(true);
       } else {
-        exerciseNumber === 2 && SwalInitial(initialPopupText);
+        exerciseNumber === 2 && setCorruptBreakerPopup(true);
         dispatchCounter(increaseCouter());
       }
     }
@@ -1007,7 +1012,7 @@ const RightNavBar = (props) => {
         }
 
         if (props.groupThreeCorruptDevice === props.rndGroupThree) {
-          exerciseNumber === 2 && SwalInitial(initialPopupText);
+          exerciseNumber === 2 && setCorruptBreakerPopup(true);
           props.setIsGroupThreeBreaker(false);
         } else {
           props.setGroupThreeBreakerType("red");
@@ -1045,7 +1050,7 @@ const RightNavBar = (props) => {
           ) {
             props.setGroupThreeBreakerType("black");
             props.setIsGroupThreeBreaker(false);
-            exerciseNumber === 2 && SwalInitial(initialPopupText);
+            exerciseNumber === 2 && setCorruptBreakerPopup(true);
             dispatchCounter(increaseCouter());
           }
           // end my code for breaker pop up
@@ -1064,7 +1069,7 @@ const RightNavBar = (props) => {
         ) {
           props.setGroupThreeBreakerType("black");
           props.setIsGroupThreeBreaker(false);
-          exerciseNumber === 2 && SwalInitial(initialPopupText);
+          exerciseNumber === 2 && setCorruptBreakerPopup(true);
           dispatchCounter(increaseCouter());
         } else if (
           (props.rndGroupThree === 16 &&
@@ -1085,7 +1090,7 @@ const RightNavBar = (props) => {
         ) {
           props.setGroupThreeBreakerType("black");
           props.setIsGroupThreeBreaker(false);
-          exerciseNumber === 2 && SwalInitial(initialPopupText);
+          exerciseNumber === 2 && setCorruptBreakerPopup(true);
           dispatchCounter(increaseCouter());
         }
         // console.log("run third");
@@ -1122,7 +1127,7 @@ const RightNavBar = (props) => {
         props.setGroupThreeBreakerType("red");
         props.setIsGroupThreeBreaker(true);
       } else {
-        exerciseNumber === 2 && SwalInitial(initialPopupText);
+        exerciseNumber === 2 && setCorruptBreakerPopup(true);
         dispatchCounter(increaseCouter());
       }
     }
@@ -1312,7 +1317,7 @@ const RightNavBar = (props) => {
         }
 
         if (props.groupFourCorruptDevice === props.rndGroupFour) {
-          exerciseNumber === 2 && SwalInitial(initialPopupText);
+          exerciseNumber === 2 && setCorruptBreakerPopup(true);
           props.setIsGroupFourBreaker(false);
         } else {
           props.setGroupFourBreakerType("red");
@@ -1348,7 +1353,7 @@ const RightNavBar = (props) => {
           ) {
             props.setGroupFourBreakerType("black");
             props.setIsGroupFourBreaker(false);
-            exerciseNumber === 2 && SwalInitial(initialPopupText);
+            exerciseNumber === 2 && setCorruptBreakerPopup(true);
             dispatchCounter(increaseCouter());
           }
           // end my code for breaker pop up
@@ -1370,7 +1375,7 @@ const RightNavBar = (props) => {
         ) {
           props.setGroupFourBreakerType("black");
           props.setIsGroupFourBreaker(false);
-          exerciseNumber === 2 && SwalInitial(initialPopupText);
+          exerciseNumber === 2 && setCorruptBreakerPopup(true);
           dispatchCounter(increaseCouter());
         } else if (
           (props.rndGroupFour === 25 && props.hallLedTv == "connected") ||
@@ -1386,7 +1391,7 @@ const RightNavBar = (props) => {
         ) {
           props.setGroupFourBreakerType("black");
           props.setIsGroupFourBreaker(false);
-          exerciseNumber === 2 && SwalInitial(initialPopupText);
+          exerciseNumber === 2 && setCorruptBreakerPopup(true);
           dispatchCounter(increaseCouter());
         }
       } else {
@@ -1423,7 +1428,7 @@ const RightNavBar = (props) => {
         props.setGroupFourBreakerType("red");
         props.setIsGroupFourBreaker(true);
       } else {
-        exerciseNumber === 2 && SwalInitial(initialPopupText);
+        exerciseNumber === 2 && setCorruptBreakerPopup(true);
         dispatchCounter(increaseCouter());
       }
     }
@@ -1667,7 +1672,7 @@ const RightNavBar = (props) => {
         }
 
         if (props.groupFiveCorruptDevice === props.rndGroupFive) {
-          exerciseNumber === 2 && SwalInitial(initialPopupText);
+          exerciseNumber === 2 && setCorruptBreakerPopup(true);
           props.setIsGroupFiveBreaker(false);
         } else {
           props.setgroupFiveBreakerType("red");
@@ -1707,7 +1712,7 @@ const RightNavBar = (props) => {
             (props.rndGroupFive === 46 &&
               props.livingOneLignt03 === "connected")
           ) {
-            exerciseNumber === 2 && SwalInitial(initialPopupText);
+            exerciseNumber === 2 && setCorruptBreakerPopup(true);
             props.setgroupFiveBreakerType("black");
             props.setIsGroupFiveBreaker(false);
             dispatchCounter(increaseCouter());
@@ -1730,7 +1735,7 @@ const RightNavBar = (props) => {
         ) {
           props.setgroupFiveBreakerType("black");
           props.setIsGroupFiveBreaker(false);
-          exerciseNumber === 2 && SwalInitial(initialPopupText);
+          exerciseNumber === 2 && setCorruptBreakerPopup(true);
           dispatchCounter(increaseCouter());
         } else if (
           (props.rndGroupFive === 35 && props.hallLampFive === "connected") ||
@@ -1750,7 +1755,7 @@ const RightNavBar = (props) => {
             props.livingOneLignt02 === "connected") ||
           (props.rndGroupFive === 46 && props.livingOneLignt03 === "connected")
         ) {
-          exerciseNumber === 2 && SwalInitial(initialPopupText);
+          exerciseNumber === 2 && setCorruptBreakerPopup(true);
           props.setgroupFiveBreakerType("black");
           props.setIsGroupFiveBreaker(false);
           dispatchCounter(increaseCouter());
@@ -1794,7 +1799,7 @@ const RightNavBar = (props) => {
         props.setgroupFiveBreakerType("red");
         props.setIsGroupFiveBreaker(true);
       } else {
-        exerciseNumber === 2 && SwalInitial(initialPopupText);
+        exerciseNumber === 2 && setCorruptBreakerPopup(true);
         dispatchCounter(increaseCouter());
       }
     }
@@ -1858,7 +1863,7 @@ const RightNavBar = (props) => {
 
         if (props.laundaryCorruptDevice === props.rndLaundary) {
           console.log("kdsajf");
-          exerciseNumber === 2 && SwalInitial(initialPopupText);
+          exerciseNumber === 2 && setCorruptBreakerPopup(true);
           props.setIsLaundaryBreaker(false);
         } else {
           props.setLaundaryBreakerType("red");
@@ -1881,7 +1886,7 @@ const RightNavBar = (props) => {
             props.setLaundaryBreakerType("black");
             props.setIsLaundaryBreaker(false);
             console.log("kdsajf");
-            exerciseNumber === 2 && SwalInitial(initialPopupText);
+            exerciseNumber === 2 && setCorruptBreakerPopup(true);
             dispatchCounter(increaseCouter());
           }
           // end my code for breaker pop up
@@ -1895,7 +1900,7 @@ const RightNavBar = (props) => {
           props.setLaundaryBreakerType("black");
           props.setIsLaundaryBreaker(false);
           console.log("kdsajf");
-          exerciseNumber === 2 && SwalInitial(initialPopupText);
+          exerciseNumber === 2 && setCorruptBreakerPopup(true);
           dispatchCounter(increaseCouter());
         } else if (
           (props.rndLaundary === 47 && props.laundaryWashing === "connected") ||
@@ -1905,7 +1910,7 @@ const RightNavBar = (props) => {
           props.setLaundaryBreakerType("black");
           props.setIsLaundaryBreaker(false);
           console.log("kdsajf");
-          exerciseNumber === 2 && SwalInitial(initialPopupText);
+          exerciseNumber === 2 && setCorruptBreakerPopup(true);
           dispatchCounter(increaseCouter());
         }
       } else {
@@ -1929,7 +1934,7 @@ const RightNavBar = (props) => {
         props.setLaundaryBreakerType("red");
         props.setIsLaundaryBreaker(true);
       } else {
-        exerciseNumber === 2 && SwalInitial(initialPopupText);
+        exerciseNumber === 2 && setCorruptBreakerPopup(true);
         dispatchCounter(increaseCouter());
       }
     }
@@ -2063,7 +2068,7 @@ const RightNavBar = (props) => {
     // ) {
     //   // props.setFirstGroupBreakerType("black");
     //   // props.setIsFirstGroupBreaker(false);
-    //   exerciseNumber === 2 && SwalInitial(initialPopupText);;
+    //   exerciseNumber === 2 && setCorruptBreakerPopup(true);;
     // }
     // }
   };
@@ -2130,18 +2135,50 @@ const RightNavBar = (props) => {
   }, [isDutch]);
 
   return (
-    <div>
-      <div className=" text-center">
-        <div style={{ display: "none" }}>
-          <ResultModel
-            isModalOpen={props.isModalOpen}
-            setIsModalOpen={props.setIsModalOpen}
-            trial={props.groundFloorTrial}
-            setTrial={props.setGroundFloorTrial}
-            floor={"groundFloor"}
-          />
-        </div>
-        {/* <div className="translate">
+    <>
+      {corruptBreakerPopup && (
+        <Popup opacity={5}>
+          <div>
+            <p className="welcome" style={{ fontSize: "45px" }}>
+              Je kunt deze zekering nog niet inschakelen 😞
+            </p>
+          </div>
+          <ul
+            style={{ fontSize: "24px", textAlign: "center", color: "#474747" }}
+          >
+            <li>Eén apparaat werkt niet goed.</li>
+            <li>Je moet eerst alle apparaten loskoppelen van deze zekering.</li>
+            <li>
+              Kijk in het overzicht aan de linkerkant als je wilt weten welke
+              apparaten op deze groep zitten.
+            </li>
+            <li>Ga vervolgens naar de betreffende verdieping en of ruimte.</li>
+          </ul>
+          <div className="popup-bottom">
+            <div className="vol-icon"></div>
+            <div className="popup-button">
+              <button onClick={() => setCorruptBreakerPopup(false)}>
+                Ik snap dit
+              </button>
+            </div>
+            <div className="vol-icon">
+              <AudioPlayer file={audio11} />
+            </div>
+          </div>
+        </Popup>
+      )}
+      <div>
+        <div className=" text-center">
+          <div style={{ display: "none" }}>
+            <ResultModel
+              isModalOpen={props.isModalOpen}
+              setIsModalOpen={props.setIsModalOpen}
+              trial={props.groundFloorTrial}
+              setTrial={props.setGroundFloorTrial}
+              floor={"groundFloor"}
+            />
+          </div>
+          {/* <div className="translate">
           <p>English</p>
           <input
             type="checkbox"
@@ -2150,130 +2187,168 @@ const RightNavBar = (props) => {
           />
           <p>Dutch</p>
         </div> */}
-        <div className="set-position-translator">
-          {<ChangeLanguageToggle />}
-        </div>
-        <div
-          className="check-exercise-div"
-          style={{ cursor: "pointer" }}
-          onClick={() => {
-            navigate("/mask-group");
-          }}
-        >
-          <Avator phase={"game"} />
-        </div>
-
-        <hr style={{ marginTop: "2%" }} />
-        <div className="legend">
-          {/* GROUP 1 */}
-          <div className="text-start">
-            <Link to="/ground-floor" className="set-link-color">
-              {isDutchLocal ? "Begane Grond" : "Ground Floor"}
-            </Link>
+          <div className="set-position-translator">
+            {<ChangeLanguageToggle />}
           </div>
-          <div className="set-legend-text">
-            {isDutchLocal ? <p>Groep&nbsp;1:</p> : <p>Group&nbsp;1:</p>}
-            <p className="grp-detail">
-              {isDutchLocal
-                ? "Hal, Toilet, Woonkamer"
-                : "Hall, Toilet, Living room"}
-            </p>
-          </div>
-          {/* GROUP 2 */}
-          <div className="set-legend-text">
-            {isDutchLocal ? <p>Groep&nbsp;2:</p> : <p>Group&nbsp;2:</p>}
-            <p className="grp-detail">{isDutchLocal ? "keuken" : "Kitchen"}</p>
-          </div>
-          {/* GROUP 3 */}
-          <div className="text-start">
-            <Link to="/first-floor" className="set-link-color">
-              {isDutchLocal ? "Eerste Verdieping" : "First Floor"}
-            </Link>
-          </div>
-          <div className="set-legend-text">
-            {isDutchLocal ? <p>Groep&nbsp;3:</p> : <p>Group&nbsp;3:</p>}
-            <p className="grp-detail">
-              {isDutchLocal
-                ? "Slaapkamer 01, Slaapkamer 02"
-                : "Bedroom 01, Bedroom 02"}
-            </p>
-          </div>
-          {/* GROUP 4 */}
-          <div className="set-legend-text">
-            {isDutchLocal ? <p>Groep&nbsp;4:</p> : <p>Group&nbsp;4:</p>}
-            <p className="grp-detail">
-              {isDutchLocal
-                ? "Badkamer, Overloop, Slaapkamer 03"
-                : "Hall, Bathroom, Bedroom 03"}
-            </p>
-          </div>
-          <div className="text-start">
-            <Link to="/attic" className="set-link-color">
-              {isDutchLocal ? "Zolder" : "Attic Floor"}
-            </Link>
-          </div>
-          {/* GROUP 5 */}
-          <div className="set-legend-text">
-            {isDutchLocal ? <p>Groep&nbsp;5:</p> : <p>Group&nbsp;5:</p>}
-            <p className="grp-detail">
-              {isDutchLocal
-                ? "Logeerkamer, Overloop, Studeerkamer, Berging"
-                : "hall, guest room, study room, storage room"}
-            </p>
-          </div>
-          {/* GROUP 6 */}
-          <div className="set-legend-text">
-            {isDutchLocal ? <p>Groep&nbsp;6:</p> : <p>Group&nbsp;6:</p>}
-            <p className="grp-detail">{isDutchLocal ? "Washok" : "laundry"}</p>
-          </div>
-          {/* END GROUP */}
-        </div>
-        <div className="set-main-flex-container" style={{ marginTop: "2rem" }}>
           <div
-            className="meter-inner-img"
-            style={{
-              backgroundImage: `url(${process.env.PUBLIC_URL}${
-                !isDutchLocal
-                  ? "/images/meterGroup.png"
-                  : "/dutch-images/breakers-15.png"
-              })`,
+            className="check-exercise-div"
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              navigate("/mask-group");
             }}
           >
-            <>
-              {/* MAIN .................................................................. */}
-              <div className="groupA">
-                <div className="d-flex justify-content-center">
-                  <>
-                    {props.firstGroupBreakerType === "black" ? (
-                      //  && props.completeRnd === props.allCorruptDevice
-                      <button
-                        className="group-btn position-Bath font-height-width btn-shadow"
-                        onClick={groupFirstBreakerHandlerOff}
-                        // onClick={() => breakerClickHandler(1)}
-                      >
-                        <img
-                          src={breakerOffIMG}
-                          alt=""
-                          className="breakerImg"
-                        />
-                      </button>
-                    ) : (
-                      <button
-                        className="group-btn position-Bath font-height-width btn-shadow"
-                        onClick={() => breakerClickHandler(1)}
-                      >
-                        <img src={breakerOnIMG} alt="" className="breakerImg" />
-                      </button>
-                    )}
-                  </>
-                  <>
-                    {
-                      // ((props.rndKitchen) >= 10 && (props.rndKitchen) <= 15) ? (
-                      props.kitchenBreakerType === "black" ? (
-                        // && props.rndKitchen === props.kitchenCorruptDevice
+            <Avator phase={"game"} />
+          </div>
+
+          <hr style={{ marginTop: "2%" }} />
+          <div className="legend">
+            {/* GROUP 1 */}
+            <div className="text-start">
+              <Link to="/ground-floor" className="set-link-color">
+                {isDutchLocal ? "Begane Grond" : "Ground Floor"}
+              </Link>
+            </div>
+            <div className="set-legend-text">
+              {isDutchLocal ? <p>Groep&nbsp;1:</p> : <p>Group&nbsp;1:</p>}
+              <p className="grp-detail">
+                {isDutchLocal
+                  ? "Hal, Toilet, Woonkamer"
+                  : "Hall, Toilet, Living room"}
+              </p>
+            </div>
+            {/* GROUP 2 */}
+            <div className="set-legend-text">
+              {isDutchLocal ? <p>Groep&nbsp;2:</p> : <p>Group&nbsp;2:</p>}
+              <p className="grp-detail">
+                {isDutchLocal ? "keuken" : "Kitchen"}
+              </p>
+            </div>
+            {/* GROUP 3 */}
+            <div className="text-start">
+              <Link to="/first-floor" className="set-link-color">
+                {isDutchLocal ? "Eerste Verdieping" : "First Floor"}
+              </Link>
+            </div>
+            <div className="set-legend-text">
+              {isDutchLocal ? <p>Groep&nbsp;3:</p> : <p>Group&nbsp;3:</p>}
+              <p className="grp-detail">
+                {isDutchLocal
+                  ? "Slaapkamer 01, Slaapkamer 02"
+                  : "Bedroom 01, Bedroom 02"}
+              </p>
+            </div>
+            {/* GROUP 4 */}
+            <div className="set-legend-text">
+              {isDutchLocal ? <p>Groep&nbsp;4:</p> : <p>Group&nbsp;4:</p>}
+              <p className="grp-detail">
+                {isDutchLocal
+                  ? "Badkamer, Overloop, Slaapkamer 03"
+                  : "Hall, Bathroom, Bedroom 03"}
+              </p>
+            </div>
+            <div className="text-start">
+              <Link to="/attic" className="set-link-color">
+                {isDutchLocal ? "Zolder" : "Attic Floor"}
+              </Link>
+            </div>
+            {/* GROUP 5 */}
+            <div className="set-legend-text">
+              {isDutchLocal ? <p>Groep&nbsp;5:</p> : <p>Group&nbsp;5:</p>}
+              <p className="grp-detail">
+                {isDutchLocal
+                  ? "Logeerkamer, Overloop, Studeerkamer, Berging"
+                  : "hall, guest room, study room, storage room"}
+              </p>
+            </div>
+            {/* GROUP 6 */}
+            <div className="set-legend-text">
+              {isDutchLocal ? <p>Groep&nbsp;6:</p> : <p>Group&nbsp;6:</p>}
+              <p className="grp-detail">
+                {isDutchLocal ? "Washok" : "laundry"}
+              </p>
+            </div>
+            {/* END GROUP */}
+          </div>
+          <div
+            className="set-main-flex-container"
+            style={{ marginTop: "2rem" }}
+          >
+            <div
+              className="meter-inner-img"
+              style={{
+                backgroundImage: `url(${process.env.PUBLIC_URL}${
+                  !isDutchLocal
+                    ? "/images/meterGroup.png"
+                    : "/dutch-images/breakers-15.png"
+                })`,
+              }}
+            >
+              <>
+                {/* MAIN .................................................................. */}
+                <div className="groupA">
+                  <div className="d-flex justify-content-center">
+                    <>
+                      {props.firstGroupBreakerType === "black" ? (
+                        //  && props.completeRnd === props.allCorruptDevice
+                        <button
+                          className="group-btn position-Bath font-height-width btn-shadow"
+                          onClick={groupFirstBreakerHandlerOff}
+                          // onClick={() => breakerClickHandler(1)}
+                        >
+                          <img
+                            src={breakerOffIMG}
+                            alt=""
+                            className="breakerImg"
+                          />
+                        </button>
+                      ) : (
+                        <button
+                          className="group-btn position-Bath font-height-width btn-shadow"
+                          onClick={() => breakerClickHandler(1)}
+                        >
+                          <img
+                            src={breakerOnIMG}
+                            alt=""
+                            className="breakerImg"
+                          />
+                        </button>
+                      )}
+                    </>
+                    <>
+                      {
+                        // ((props.rndKitchen) >= 10 && (props.rndKitchen) <= 15) ? (
+                        props.kitchenBreakerType === "black" ? (
+                          // && props.rndKitchen === props.kitchenCorruptDevice
+                          <button
+                            className="group-btn position-living font-height-width btn-shadow"
+                            onClick={kitchenBreakerHandlerOff}
+                          >
+                            <img
+                              src={breakerOffIMG}
+                              alt=""
+                              className="breakerImg"
+                            />
+                          </button>
+                        ) : (
+                          <button
+                            className="group-btn position-living font-height-width btn-shadow"
+                            onClick={() => breakerClickHandler(2)}
+                          >
+                            <img
+                              src={breakerOnIMG}
+                              alt=""
+                              className="breakerImg"
+                            />
+                          </button>
+                        )
+                      }
+                    </>
+                    <>
+                      {props.groupThreeBreakerType === "black" ? (
+                        // && props.rndGroupThree === props.groupThreeCorruptDevice
                         <button
                           className="group-btn position-living font-height-width btn-shadow"
-                          onClick={kitchenBreakerHandlerOff}
+                          onClick={groupThreeBreakerHandlerOff}
                         >
                           <img
                             src={breakerOffIMG}
@@ -2284,7 +2359,7 @@ const RightNavBar = (props) => {
                       ) : (
                         <button
                           className="group-btn position-living font-height-width btn-shadow"
-                          onClick={() => breakerClickHandler(2)}
+                          onClick={() => breakerClickHandler(3)}
                         >
                           <img
                             src={breakerOnIMG}
@@ -2292,15 +2367,19 @@ const RightNavBar = (props) => {
                             className="breakerImg"
                           />
                         </button>
-                      )
-                    }
-                  </>
+                      )}
+                    </>
+                  </div>
+                </div>
+
+                {/* Groups row 2 .................................................................. */}
+                <div className="groupB">
                   <>
-                    {props.groupThreeBreakerType === "black" ? (
-                      // && props.rndGroupThree === props.groupThreeCorruptDevice
+                    {props.groupFourBreakerType === "black" ? (
+                      // && props.rndGroupFour === props.groupFourCorruptDevice
                       <button
-                        className="group-btn position-living font-height-width btn-shadow"
-                        onClick={groupThreeBreakerHandlerOff}
+                        className="group-btn position-Hall font-height-width  btn-shadow"
+                        onClick={groupFourBreakerHandlerOff}
                       >
                         <img
                           src={breakerOffIMG}
@@ -2310,100 +2389,88 @@ const RightNavBar = (props) => {
                       </button>
                     ) : (
                       <button
-                        className="group-btn position-living font-height-width btn-shadow"
-                        onClick={() => breakerClickHandler(3)}
+                        className="group-btn position-Hall font-height-width  btn-shadow"
+                        onClick={() => breakerClickHandler(4)}
+                      >
+                        <img src={breakerOnIMG} alt="" className="breakerImg" />
+                      </button>
+                    )}
+                  </>
+                  <>
+                    {props.groupFiveBreakerType === "black" ? (
+                      //old was // but new is &&
+                      // || props.rndGroupFive === props.groupFiveCorruptDevice
+                      <button
+                        className="group-btn position-Hall font-height-width  btn-shadow"
+                        onClick={groupFifthBreakerHandlerOff}
+                      >
+                        <img
+                          src={breakerOffIMG}
+                          alt=""
+                          className="breakerImg"
+                        />
+                      </button>
+                    ) : (
+                      <button
+                        className="group-btn position-Hall font-height-width  btn-shadow"
+                        onClick={() => breakerClickHandler(5)}
+                      >
+                        <img src={breakerOnIMG} alt="" className="breakerImg" />
+                      </button>
+                    )}
+                  </>
+                  <>
+                    {props.laundaryBreakerType === "black" ? (
+                      // || props.rndLaundary === props.laundaryCorruptDevice
+                      <button
+                        className="group-btn position-Hall font-height-width  btn-shadow"
+                        onClick={laundaryBreakerHandlerOff}
+                      >
+                        <img
+                          src={breakerOffIMG}
+                          alt=""
+                          className="breakerImg"
+                        />
+                      </button>
+                    ) : (
+                      <button
+                        className="group-btn position-Hall font-height-width  btn-shadow"
+                        onClick={() => breakerClickHandler(6)}
                       >
                         <img src={breakerOnIMG} alt="" className="breakerImg" />
                       </button>
                     )}
                   </>
                 </div>
-              </div>
-
-              {/* Groups row 2 .................................................................. */}
-              <div className="groupB">
-                <>
-                  {props.groupFourBreakerType === "black" ? (
-                    // && props.rndGroupFour === props.groupFourCorruptDevice
-                    <button
-                      className="group-btn position-Hall font-height-width  btn-shadow"
-                      onClick={groupFourBreakerHandlerOff}
-                    >
-                      <img src={breakerOffIMG} alt="" className="breakerImg" />
-                    </button>
-                  ) : (
-                    <button
-                      className="group-btn position-Hall font-height-width  btn-shadow"
-                      onClick={() => breakerClickHandler(4)}
-                    >
-                      <img src={breakerOnIMG} alt="" className="breakerImg" />
-                    </button>
-                  )}
-                </>
-                <>
-                  {props.groupFiveBreakerType === "black" ? (
-                    //old was // but new is &&
-                    // || props.rndGroupFive === props.groupFiveCorruptDevice
-                    <button
-                      className="group-btn position-Hall font-height-width  btn-shadow"
-                      onClick={groupFifthBreakerHandlerOff}
-                    >
-                      <img src={breakerOffIMG} alt="" className="breakerImg" />
-                    </button>
-                  ) : (
-                    <button
-                      className="group-btn position-Hall font-height-width  btn-shadow"
-                      onClick={() => breakerClickHandler(5)}
-                    >
-                      <img src={breakerOnIMG} alt="" className="breakerImg" />
-                    </button>
-                  )}
-                </>
-                <>
-                  {props.laundaryBreakerType === "black" ? (
-                    // || props.rndLaundary === props.laundaryCorruptDevice
-                    <button
-                      className="group-btn position-Hall font-height-width  btn-shadow"
-                      onClick={laundaryBreakerHandlerOff}
-                    >
-                      <img src={breakerOffIMG} alt="" className="breakerImg" />
-                    </button>
-                  ) : (
-                    <button
-                      className="group-btn position-Hall font-height-width  btn-shadow"
-                      onClick={() => breakerClickHandler(6)}
-                    >
-                      <img src={breakerOnIMG} alt="" className="breakerImg" />
-                    </button>
-                  )}
-                </>
-              </div>
-            </>
+              </>
+            </div>
           </div>
+          <h3 className="set-floor-title">
+            {" "}
+            {isDutchLocal ? "Meterkast" : "House Breakers"}
+          </h3>
+          <hr />
         </div>
-        <h3 className="set-floor-title">
-          {" "}
-          {isDutchLocal ? "Meterkast" : "House Breakers"}
-        </h3>
-        <hr />
-      </div>
-      {/* to open attic model */}
-      {showAttic && (
-        <AtticModel isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-      )}
+        {/* to open attic model */}
+        {showAttic && (
+          <AtticModel
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
+          />
+        )}
 
-      {/* to open first floor model  */}
+        {/* to open first floor model  */}
 
-      {showFirstFloor && (
-        <FirstFloorModel
-          isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
-        />
-      )}
+        {showFirstFloor && (
+          <FirstFloorModel
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
+          />
+        )}
 
-      {/* to open ground floor model  */}
+        {/* to open ground floor model  */}
 
-      {/* {
+        {/* {
         showGroundFloor && (
           <GroundFloorModel isModalOpen={isModalOpen}
             setIsModalOpen={setIsModalOpen}/> 
@@ -2411,70 +2478,71 @@ const RightNavBar = (props) => {
         )
       } */}
 
-      <div className="check-exercise-div d-none-btns-sidebar">
-        <button
-          className={
-            btnHover === "attic"
-              ? "btn-Check-Exercise btnHover"
-              : "btn-Check-Exercise"
-          }
-          onClick={() => {
-            // setShowAttic(true)
-            navigate("/attic");
-          }}
-          onMouseEnter={() => setBtnHover("attic")}
-          onMouseLeave={() => setBtnHover("")}
-        >
-          Attic
-        </button>
-      </div>
-      <div className="check-exercise-div d-none-btns-sidebar">
-        <button
-          className={
-            btnHover === "firstFloor"
-              ? "btn-Check-Exercise btnHover"
-              : "btn-Check-Exercise"
-          }
-          onClick={() => {
-            // setshowFirstFloor(true)
-            navigate("/first-floor");
-          }}
-          onMouseEnter={() => setBtnHover("firstFloor")}
-          onMouseLeave={() => setBtnHover("")}
-        >
-          First Floor
-        </button>
-      </div>
-      <div className="check-exercise-div d-none-btns-sidebar">
-        <button
-          className={
-            btnHover === "groundFloor"
-              ? "btn-Check-Exercise btnHover"
-              : "btn-Check-Exercise"
-          }
-          style={{ background: "white", color: "#b41c1c" }}
-          onClick={() => {
-            // setshowGroundFloor(true)
-
-            navigate("/ground-floor");
-            // console.log("on ground floor");
-          }}
-          onMouseEnter={() => setBtnHover("groundFloor")}
-          onMouseLeave={() => setBtnHover("")}
-        >
-          Ground Floor
-        </button>
-      </div>
-
-      {
-        <div className="set-position-bottom-finish">
-          <button className="set-btn-finish" onClick={finishBreakerHandler}>
-            {isDutchLocal ? "Ik ben klaar" : "I AM READY"}
+        <div className="check-exercise-div d-none-btns-sidebar">
+          <button
+            className={
+              btnHover === "attic"
+                ? "btn-Check-Exercise btnHover"
+                : "btn-Check-Exercise"
+            }
+            onClick={() => {
+              // setShowAttic(true)
+              navigate("/attic");
+            }}
+            onMouseEnter={() => setBtnHover("attic")}
+            onMouseLeave={() => setBtnHover("")}
+          >
+            Attic
           </button>
         </div>
-      }
-      <swalResult />
-    </div>
+        <div className="check-exercise-div d-none-btns-sidebar">
+          <button
+            className={
+              btnHover === "firstFloor"
+                ? "btn-Check-Exercise btnHover"
+                : "btn-Check-Exercise"
+            }
+            onClick={() => {
+              // setshowFirstFloor(true)
+              navigate("/first-floor");
+            }}
+            onMouseEnter={() => setBtnHover("firstFloor")}
+            onMouseLeave={() => setBtnHover("")}
+          >
+            First Floor
+          </button>
+        </div>
+        <div className="check-exercise-div d-none-btns-sidebar">
+          <button
+            className={
+              btnHover === "groundFloor"
+                ? "btn-Check-Exercise btnHover"
+                : "btn-Check-Exercise"
+            }
+            style={{ background: "white", color: "#b41c1c" }}
+            onClick={() => {
+              // setshowGroundFloor(true)
+
+              navigate("/ground-floor");
+              // console.log("on ground floor");
+            }}
+            onMouseEnter={() => setBtnHover("groundFloor")}
+            onMouseLeave={() => setBtnHover("")}
+          >
+            Ground Floor
+          </button>
+        </div>
+
+        {
+          <div className="set-position-bottom-finish">
+            <button className="set-btn-finish" onClick={finishBreakerHandler}>
+              {isDutchLocal ? "Ik ben klaar" : "I AM READY"}
+            </button>
+          </div>
+        }
+        <swalResult />
+      </div>
+    </>
   );
 };
 

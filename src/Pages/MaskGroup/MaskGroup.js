@@ -313,13 +313,13 @@ const MaskGroup = () => {
                 // setShowAttic(true)
                 dispatch(setExercise(2));
                 navigate("/ground-floor");
-                SwalStarter(popupText);
+                // SwalStarter(popupText);
                 localStorage.setItem("state", JSON.stringify(-4));
               } else if (exerciseGateNumber === 3) {
                 // setShowAttic(true)
                 dispatch(setExercise(3));
                 navigate("/ground-floor");
-                SwalStarter(popupText);
+                // SwalStarter(popupText);
                 localStorage.setItem("state", JSON.stringify(-4));
               }
             }}

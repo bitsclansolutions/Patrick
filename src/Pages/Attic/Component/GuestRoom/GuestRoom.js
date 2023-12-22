@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import RadioStudyRoomIMG from "../images/RadioStudyRoomIMG.png";
 import RadioStudyRoomIMGOn from "../images/RadioStudyRoomIMGOn.png";
 import LampGuestRoomIMG from "../images/LampGuestRoomIMG.png";
@@ -42,9 +42,12 @@ import {
   addDisconnectDevice,
   removeDisconnectDevice,
 } from "../../../../Redux/Action";
+import BreakerOffPopup from "../../../../utils/BreakerOffPopup";
 
 const GuestRoom = (props) => {
   const navigate = useNavigate();
+
+  const [breakerOff, setBreakerOff] = useState(false);
 
   const corruptDevice = useSelector(
     (state) => state.CorruptDeviceReducer.corrupt
@@ -126,7 +129,7 @@ const GuestRoom = (props) => {
     if (props.rndGroupFive === val && props.groupFiveBreakerType === "red") {
       props.setgroupFiveBreakerType("black");
       props.setIsGroupFiveBreaker(false);
-      exerciseNumber === 2 && SwalBreakerOff(popupText, redirectSorry);
+      exerciseNumber === 2 && setBreakerOff(true);
       dispatch(increaseDeviceCounter());
       errorSound();
       props.setAtticTrial(props.atticTrial + 1);
@@ -159,6 +162,8 @@ const GuestRoom = (props) => {
   };
   return (
     <>
+      {breakerOff && <BreakerOffPopup close={() => setBreakerOff(false)} />}
+
       {props.gamePhase === "GuestRoom" ? (
         <div
           style={{

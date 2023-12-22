@@ -9,16 +9,19 @@ const Popup = ({
   right,
   bottom,
   width,
-  higlight,
+  show,
 }) => {
   console.log(opacity);
+  console.log(typeof opacity === "number");
   console.log(top, right);
   return (
-    <div className="popup">
+    <div className={`popup ${show !== false ? "show" : "hide"}`}>
       <div
         className="backdrop"
         style={{
-          background: `hsla(0, 0%, 0%, 0.${opacity !== null ? opacity : "50"})`,
+          background: `hsla(0, 0%, 0%, 0.${
+            opacity !== null && opacity !== undefined ? opacity : "50"
+          })`,
         }}
       >
         <div
@@ -31,7 +34,7 @@ const Popup = ({
             width: width !== null ? width + "%" : "initial",
           }}
         >
-          {children}
+          <div className="overlay-inner">{children}</div>
         </div>
       </div>
     </div>

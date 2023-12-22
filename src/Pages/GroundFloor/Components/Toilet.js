@@ -31,9 +31,11 @@ import {
 } from "../../../Redux/Action";
 import { useNavigate } from "react-router-dom";
 import { breakerOffDutch, breakerOffEnglish } from "../../../utils/translation";
+import BreakerOffPopup from "../../../utils/BreakerOffPopup";
 
 const Toilet = (props) => {
   const navigate = useNavigate();
+  const [breakerOff, setBreakerOff] = useState(false);
 
   const dispatch = useDispatch();
   const dispatchdisconnect = useDispatch();
@@ -113,7 +115,7 @@ const Toilet = (props) => {
 
       errorSound();
       props.setIsFirstGroupBreaker(false);
-      exerciseNumber === 2 && SwalBreakerOff(popupText, redirectSorry);
+      exerciseNumber === 2 && setBreakerOff(true);
       dispatch(increaseDeviceCounter());
       props.setGroundFloorTrial(props.groundFloorTrial + 1);
       localStorage.setItem("state", JSON.stringify(props.groundFloorTrial + 1));
@@ -136,6 +138,8 @@ const Toilet = (props) => {
   return (
     <>
       {/* {props.gamePhase === "toilet" ? ( */}
+      {breakerOff && <BreakerOffPopup close={() => setBreakerOff(false)} />}
+
       <div
         style={{
           backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%),url(${

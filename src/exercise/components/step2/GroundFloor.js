@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Popup from "../../utils/Popup";
+import Popup from "../../../utils/Popup";
 import { Link } from "react-router-dom";
 import "./GroundFloor.css";
 import ExerciseName from "../../utils/ExerciseName";

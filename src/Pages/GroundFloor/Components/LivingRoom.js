@@ -35,9 +35,12 @@ import {
   addDisconnectDevice,
 } from "../../../Redux/Action";
 import { breakerOffDutch, breakerOffEnglish } from "../../../utils/translation";
+import BreakerOffPopup from "../../../utils/BreakerOffPopup";
 
 const LivingRoom = (props) => {
   const navigate = useNavigate();
+
+  const [breakerOff, setBreakerOff] = useState(false);
 
   const dispatch = useDispatch();
   const dispatchdisconnect = useDispatch();
@@ -123,7 +126,7 @@ const LivingRoom = (props) => {
     if (props.completeRnd === val && props.firstGroupBreakerType === "red") {
       props.setFirstGroupBreakerType("black");
       props.setIsFirstGroupBreaker(false);
-      exerciseNumber === 2 && SwalBreakerOff(popupText, redirectSorry);
+      exerciseNumber === 2 && setBreakerOff(true);
       dispatch(increaseDeviceCounter());
       props.setGroundFloorTrial(props.groundFloorTrial + 1);
       localStorage.setItem("state", JSON.stringify(props.groundFloorTrial + 1));
@@ -175,6 +178,8 @@ const LivingRoom = (props) => {
   return (
     <>
       {/* {props.gamePhase === "livingRoom" ? ( */}
+      {breakerOff && <BreakerOffPopup close={() => setBreakerOff(false)} />}
+
       <div
         style={{
           backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%),url(${

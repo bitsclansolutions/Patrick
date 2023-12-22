@@ -37,9 +37,12 @@ import {
   breakerOffDutch,
   breakerOffEnglish,
 } from "../../../../utils/translation";
+import BreakerOffPopup from "../../../../utils/BreakerOffPopup";
 
 const Laundary = (props) => {
   const navigate = useNavigate();
+
+  const [breakerOff, setBreakerOff] = useState(false);
 
   const disconnectedDevices = useSelector(
     (state) => state.CounterRemainingDevicesReducer.count
@@ -122,7 +125,7 @@ const Laundary = (props) => {
       props.setAtticTrial(props.atticTrial + 1);
       localStorage.setItem("state-attic", JSON.stringify(props.atticTrial + 1));
 
-      exerciseNumber === 2 && SwalBreakerOff(popupText, redirectSorry);
+      exerciseNumber === 2 && setBreakerOff(true);
       dispatch(increaseDeviceCounter());
     }
     props.setLaundaryCorruptDevice(val);
@@ -147,6 +150,8 @@ const Laundary = (props) => {
   };
   return (
     <>
+      {breakerOff && <BreakerOffPopup close={() => setBreakerOff(false)} />}
+
       <div
         style={{
           backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%),url(${

@@ -30,10 +30,29 @@ import error from "../SoundEffects/error.mp3";
 import { SwalBreakerOff, SwalDisconnected } from "../../Components/SwalModules";
 import { useNavigate } from "react-router-dom";
 import { breakerOffDutch, breakerOffEnglish } from "../../../utils/translation";
+import Popup from "../../../utils/Popup";
+import AudioPlayer from "../../../utils/AudioPlayer";
+import audio10 from "../../../audios/audio10.m4a";
+import BreakerOffPopup from "../../../utils/BreakerOffPopup";
 
 const Hall = (props) => {
   // const counterHall = useSelector((state) => state.CounterDeviceReducer.count);
   // console.log(counterHall + " redux device counter");
+  const [initialPopup, setInitialPopup] = useState(false);
+  const [breakerOff, setBreakerOff] = useState(false);
+
+  const [compMounted, setCompMounted] = useState(false);
+
+  console.log(compMounted);
+
+  useEffect(() => {
+    if (!compMounted) {
+      setInitialPopup(true);
+    }
+    setCompMounted(true);
+  }, []);
+
+  console.log(compMounted);
 
   const disconnectedDevices = useSelector(
     (state) => state.CounterRemainingDevicesReducer.count
@@ -121,7 +140,7 @@ const Hall = (props) => {
       props.setFirstGroupBreakerType("black");
 
       props.setIsFirstGroupBreaker(false);
-      exerciseNumber === 2 && SwalBreakerOff(popupText, redirectSorry);
+      exerciseNumber === 2 && setBreakerOff(true);
       // DISPATCH COUNTER REDUX
       dispatch(increaseDeviceCounter());
       errorSound();
@@ -158,6 +177,298 @@ const Hall = (props) => {
 
   return (
     <>
+      {breakerOff && <BreakerOffPopup close={() => setBreakerOff(false)} />}
+
+      {initialPopup && (
+        <Popup opacity={5}>
+          <p className="welcome">Opdracht</p>
+          <div
+            style={{
+              fontSize: "15px",
+              textAlign: "center",
+              color: "#474747 ",
+            }}
+          >
+            <p>
+              Ergens in huis is een zekering uitgeschakeld. <br /> In deze
+              oefening zitten er meerdere ruimtes op dezelfde groep.
+            </p>
+            {exerciseNumber === 2 && (
+              <>
+                <p>
+                  {" "}
+                  In dit geval moet je de stroom in meerdere ruimtes controleren
+                  en eventueel in of uitschakelen.
+                </p>
+                <p>
+                  <b>
+                    Kijk daarom goed in het overzicht welke ruimtes op dezelfde
+                    groep zitten!
+                  </b>
+                </p>
+              </>
+            )}
+            <div style={{ width: "100%" }}>
+              {/* Legend Table */}
+              <table border="1" style={{ width: "100%" }}>
+                <tbody>
+                  <tr>
+                    <td
+                      colSpan="2"
+                      style={{ textAlign: "left", paddingLeft: "14px" }}
+                    >
+                      <p
+                        style={{
+                          marginBottom: "0px",
+                          fontSize: "16px",
+                          color: "#B41D1D",
+                        }}
+                      >
+                        <strong style={{ borderBottom: "2px solid #B41D1D" }}>
+                          {isDutch ? "Begane Grond" : "Ground Floor"}
+                        </strong>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr className="d-flex">
+                    <td
+                      style={{
+                        width: "50%",
+                        textAlign: "left",
+                        paddingLeft: "14px",
+                        marginTop: "18px",
+                      }}
+                    >
+                      <div
+                        className="set-legend-text-popup"
+                        style={{ marginBottom: "1px solid red" }}
+                      >
+                        <p
+                          style={{
+                            marginBottom: "0px",
+                            fontSize: "16px",
+                            color: "#B41D1D",
+                            lineHeight: "6px",
+                          }}
+                        >
+                          <sup>
+                            <strong>{isDutch ? "Groep 1" : "Group 1"}</strong>
+                          </sup>
+                        </p>
+                        <p style={{ marginBottom: "0px", fontSize: "16px" }}>
+                          <small>
+                            {isDutch
+                              ? "Hal, Toilet, Woonkamer"
+                              : "Hall, Toilet, Living room"}
+                          </small>
+                        </p>
+                      </div>
+                    </td>
+                    <td
+                      style={{
+                        width: "50%",
+                        textAlign: "left",
+                        paddingLeft: "14px",
+                        marginTop: "18px",
+                      }}
+                    >
+                      <div className="set-legend-text-popup">
+                        <p
+                          style={{
+                            marginBottom: "0px",
+                            fontSize: "16px",
+                            color: "#B41D1D",
+                            lineHeight: "6px",
+                          }}
+                        >
+                          <strong>
+                            <sup>{isDutch ? "Groep 2" : "Group 2"}</sup>
+                          </strong>
+                        </p>
+                        <p style={{ marginBottom: "0px", fontSize: "16px" }}>
+                          <small>{isDutch ? "Keuken" : "Kitchen"}</small>
+                        </p>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      colSpan="2"
+                      style={{ textAlign: "left", paddingLeft: "14px" }}
+                    >
+                      <p
+                        style={{
+                          marginBottom: "0px",
+                          fontSize: "16px",
+                          color: "#B41D1D",
+                        }}
+                      >
+                        <strong style={{ borderBottom: "2px solid #B41D1D" }}>
+                          {isDutch ? "Eerste verdieping" : "First Floor"}
+                        </strong>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr className="d-flex">
+                    <td
+                      style={{
+                        width: "50%",
+                        textAlign: "left",
+                        paddingLeft: "14px",
+                        marginTop: "18px",
+                      }}
+                    >
+                      <div className="set-legend-text-popup">
+                        <p
+                          style={{
+                            marginBottom: "0px",
+                            fontSize: "16px",
+                            color: "#B41D1D",
+                            lineHeight: "6px",
+                          }}
+                        >
+                          <sup>
+                            <strong>{isDutch ? "Groep 3" : "Group 3"}</strong>
+                          </sup>
+                        </p>
+                        <p style={{ marginBottom: "0px", fontSize: "16px" }}>
+                          <small>
+                            {isDutch
+                              ? "Slaapkamer 01, Slaapkamer 02"
+                              : "Bedroom 01, Bedroom 02"}
+                          </small>
+                        </p>
+                      </div>
+                    </td>
+                    <td
+                      style={{
+                        width: "50%",
+                        textAlign: "left",
+                        paddingLeft: "14px",
+                        marginTop: "18px",
+                      }}
+                    >
+                      <div className="set-legend-text-popup">
+                        <p
+                          style={{
+                            marginBottom: "0px",
+                            fontSize: "16px",
+                            color: "#B41D1D",
+                            lineHeight: "6px",
+                          }}
+                        >
+                          <strong>
+                            <sup>{isDutch ? "Groep 4" : "Group 4"}</sup>
+                          </strong>
+                        </p>
+                        <p style={{ marginBottom: "0px", fontSize: "16px" }}>
+                          <small>
+                            {isDutch
+                              ? "Badkamer, Overloop, Slaapkamer 03"
+                              : "Hall, Bathroom, Bedroom 03"}
+                          </small>
+                        </p>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      colSpan="2"
+                      style={{ textAlign: "left", paddingLeft: "14px" }}
+                    >
+                      <p
+                        style={{
+                          marginBottom: "0px",
+                          fontSize: "16px",
+                          color: "#B41D1D",
+                        }}
+                      >
+                        <strong style={{ borderBottom: "2px solid #B41D1D" }}>
+                          {isDutch ? "Zolder" : "Attic Floor"}
+                        </strong>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr className="d-flex">
+                    <td
+                      style={{
+                        width: "50%",
+                        textAlign: "left",
+                        paddingLeft: "14px",
+                        marginTop: "18px",
+                      }}
+                    >
+                      <div className="set-legend-text-popup-popup">
+                        <p
+                          style={{
+                            marginBottom: "0px",
+                            fontSize: "16px",
+                            color: "#B41D1D",
+                            lineHeight: "6px",
+                          }}
+                        >
+                          <sup>
+                            <strong>{isDutch ? "Groep 5" : "Group 5"}</strong>
+                          </sup>
+                        </p>
+                        <p style={{ marginBottom: "0px", fontSize: "16px" }}>
+                          <small>
+                            {isDutch
+                              ? "Logeerkamer, Overloop, Studeerkamer, Berging"
+                              : "Hall, Guest room, Study room, Storage room"}
+                          </small>
+                        </p>
+                      </div>
+                    </td>
+                    <td
+                      style={{
+                        width: "50%",
+                        textAlign: "left",
+                        paddingLeft: "14px",
+                        marginTop: "18px",
+                      }}
+                    >
+                      <div className="set-legend-text-popup-popup">
+                        <p
+                          style={{
+                            marginBottom: "0px",
+                            fontSize: "16px",
+                            color: "#B41D1D",
+                            lineHeight: "6px",
+                          }}
+                        >
+                          <strong>
+                            <sup>{isDutch ? "Groep 6" : "Group 6"}</sup>
+                          </strong>
+                        </p>
+                        <p style={{ marginBottom: "0px", fontSize: "16px" }}>
+                          <small>{isDutch ? "Washok" : "Laundry"}</small>
+                        </p>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p style={{ marginBottom: "0", fontSize: "16px" }}>
+              Als je klaar bent druk je op de blauwe knop <br /> "Ik ben klaar"
+            </p>
+
+            <div className="popup-bottom">
+              <div className="vol-icon"></div>
+              <div className="popup-button">
+                <button onClick={() => setInitialPopup(false)}>
+                  Ik snap dit
+                </button>
+              </div>
+              <div className="vol-icon">
+                {exerciseNumber === 2 && <AudioPlayer file={audio10} />}
+              </div>
+            </div>
+          </div>
+        </Popup>
+      )}
       {/* {props.gamePhase === "hall" ? ( */}
       <div
         style={{

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import "./Start.css";
-import Popup from "../../utils/Popup";
+import Popup from "../../../utils/Popup";
 import { Link } from "react-router-dom";
 import ChangeLanguageToggle from "../../../utils/ChangeLanguageToggle";
 import ExerciseName from "../../utils/ExerciseName";

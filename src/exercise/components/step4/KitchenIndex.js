@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../RightNavbar.css";
 import ChangeLanguageToggle from "../../../utils/ChangeLanguageToggle";
 import Avator from "../../../Pages/Components/Avator";
-import Popup from "../../utils/Popup";
+import Popup from "../../../utils/Popup";
 import { useDispatch, useSelector } from "react-redux";
 import {
   decreaseExerciseCounter,

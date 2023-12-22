@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import "./AtticFloor.css";
-import Popup from "../../utils/Popup";
+import Popup from "../../../utils/Popup";
 import { Link } from "react-router-dom";
 import ExerciseName from "../../utils/ExerciseName";
 import AudioPlayer from "../../../utils/AudioPlayer";

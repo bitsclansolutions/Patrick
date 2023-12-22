@@ -42,9 +42,12 @@ import "antd/dist/antd.css";
 import { SwalBreakerOff, SwalDisconnected } from "../../Components/SwalModules";
 import CounterRemainingDevicesReducer from "./../../../Redux/Reducers/CounterRemainingDevices";
 import { breakerOffDutch, breakerOffEnglish } from "../../../utils/translation";
+import BreakerOffPopup from "../../../utils/BreakerOffPopup";
 
 const Kitchen = (props) => {
   const navigate = useNavigate();
+
+  const [breakerOff, setBreakerOff] = useState(false);
 
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
 
@@ -145,7 +148,7 @@ const Kitchen = (props) => {
       props.setIsKitchenBreaker(false);
       dispatch(increaseDeviceCounter());
       errorSound();
-      exerciseNumber === 2 && SwalBreakerOff(popupText, redirectSorry);
+      exerciseNumber === 2 && setBreakerOff(true);
       // props.setGroundFloorTrial(props.groundFloorTrial + 1);
       // localStorage.setItem("state", JSON.stringify(props.groundFloorTrial + 1));
     }
@@ -186,343 +189,348 @@ const Kitchen = (props) => {
   };
 
   return (
-    <div
-      style={{
-        backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%),url(${
-          process.env.PUBLIC_URL
-        }${
-          isDutch
-            ? "/dutch-images/kitchen-ground-4.png"
-            : "/images/kitchen-ground.png"
-        })`,
+    <>
+      {breakerOff && <BreakerOffPopup close={() => setBreakerOff(false)} />}
 
-        height: "100%",
-        width: "100%",
-        border: "2px dotted white",
-      }}
-      className="kitchen-main-div"
-    >
-      <div className=" d-flex img-div">
-        {/* lamp div .............. */}
-        <div
-          className={
-            props.isKitchenBreaker === true &&
-            props.kitchenMixture === "connected"
-              ? "div-mixture-On"
-              : "div-mixture"
-          }
-        >
-          <img
-            src={
+      <div
+        style={{
+          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%),url(${
+            process.env.PUBLIC_URL
+          }${
+            isDutch
+              ? "/dutch-images/kitchen-ground-4.png"
+              : "/images/kitchen-ground.png"
+          })`,
+
+          height: "100%",
+          width: "100%",
+          border: "2px dotted white",
+        }}
+        className="kitchen-main-div"
+      >
+        <div className=" d-flex img-div">
+          {/* lamp div .............. */}
+          <div
+            className={
               props.isKitchenBreaker === true &&
               props.kitchenMixture === "connected"
-                ? MixtureOnIMG
-                : props.kitchenMixture === "disconnect"
-                ? MixtureOffIMG_D
-                : MixtureOffIMG
-              //   ? MixtureOnIMG : props.kitchenMixture === "disconnect" ? MixtureOnIMG_D
-              //   : MixtureOnIMG
+                ? "div-mixture-On"
+                : "div-mixture"
             }
-            alt=""
-            // className={
-            //   props.kitchenMixture === "disconnect" ? "disconnected" : ""
-            // }
-            style={{
-              height:
+          >
+            <img
+              src={
                 props.isKitchenBreaker === true &&
                 props.kitchenMixture === "connected"
-                  ? "15vh"
-                  : "15vh",
+                  ? MixtureOnIMG
+                  : props.kitchenMixture === "disconnect"
+                  ? MixtureOffIMG_D
+                  : MixtureOffIMG
+                //   ? MixtureOnIMG : props.kitchenMixture === "disconnect" ? MixtureOnIMG_D
+                //   : MixtureOnIMG
+              }
+              alt=""
+              // className={
+              //   props.kitchenMixture === "disconnect" ? "disconnected" : ""
+              // }
+              style={{
+                height:
+                  props.isKitchenBreaker === true &&
+                  props.kitchenMixture === "connected"
+                    ? "15vh"
+                    : "15vh",
+              }}
+            />
+
+            <>
+              {props.kitchenMixture === "disconnect" ? (
+                <button
+                  className="btn btn-danger btn-sm active btn-font"
+                  onClick={() => connectHandler(10)}
+                >
+                  {isDutch ? "Aansluiten" : "Connect"}
+                </button>
+              ) : (
+                <button
+                  className="btn btn-success btn-sm active btn-font"
+                  onClick={() => disconnectHandler(10)}
+                >
+                  {isDutch ? "Loskoppelen" : "Disconnect"}
+                </button>
+              )}
+            </>
+          </div>
+          {/* start my code 12/29...................... */}
+
+          <button
+            // className={firstBtn === "attic" ? 'btn-01-maskGroup' : "btn-maskGroup mb-4 "}
+            className={"btn-maskGroup set-btns-kitchen-ground"}
+            onMouseEnter={() => {
+              // setBtnPhase("attic")
+              // setfirstBtn('')
             }}
-          />
+            // onMouseLeave={()=> setBtnPhase("")}
+            onClick={() => {
+              // setShowAttic(true)
+              navigate("/ground-floor");
+            }}
+          >
+            {isDutch ? "Ga Terug" : "Go Back"}
+          </button>
+          {/* end my code 12/29...................... */}
 
-          <>
-            {props.kitchenMixture === "disconnect" ? (
-              <button
-                className="btn btn-danger btn-sm active btn-font"
-                onClick={() => connectHandler(10)}
-              >
-                {isDutch ? "Aansluiten" : "Connect"}
-              </button>
-            ) : (
-              <button
-                className="btn btn-success btn-sm active btn-font"
-                onClick={() => disconnectHandler(10)}
-              >
-                {isDutch ? "Loskoppelen" : "Disconnect"}
-              </button>
-            )}
-          </>
-        </div>
-        {/* start my code 12/29...................... */}
-
-        <button
-          // className={firstBtn === "attic" ? 'btn-01-maskGroup' : "btn-maskGroup mb-4 "}
-          className={"btn-maskGroup set-btns-kitchen-ground"}
-          onMouseEnter={() => {
-            // setBtnPhase("attic")
-            // setfirstBtn('')
-          }}
-          // onMouseLeave={()=> setBtnPhase("")}
-          onClick={() => {
-            // setShowAttic(true)
-            navigate("/ground-floor");
-          }}
-        >
-          {isDutch ? "Ga Terug" : "Go Back"}
-        </button>
-        {/* end my code 12/29...................... */}
-
-        {/* oven div ................. */}
-        <div
-          className={
-            props.isKitchenBreaker === true && props.kitchenOven === "connected"
-              ? "div-oven"
-              : "div-oven"
-          }
-        >
-          <img
-            src={
+          {/* oven div ................. */}
+          <div
+            className={
               props.isKitchenBreaker === true &&
               props.kitchenOven === "connected"
-                ? OvenOnIMG
-                : OvenOffIMG
-              // ? OvenOnIMG : props.kitchenOven === "disconnect" ? OvenOffIMG
-              // : OvenOnIMG
+                ? "div-oven"
+                : "div-oven"
             }
-            className={
-              props.kitchenOven === "disconnect" ? "disconnected-my" : ""
-            }
-            style={{
-              height:
+          >
+            <img
+              src={
                 props.isKitchenBreaker === true &&
                 props.kitchenOven === "connected"
-                  ? "15vh"
-                  : "15vh",
-            }}
-            alt=""
-          />
+                  ? OvenOnIMG
+                  : OvenOffIMG
+                // ? OvenOnIMG : props.kitchenOven === "disconnect" ? OvenOffIMG
+                // : OvenOnIMG
+              }
+              className={
+                props.kitchenOven === "disconnect" ? "disconnected-my" : ""
+              }
+              style={{
+                height:
+                  props.isKitchenBreaker === true &&
+                  props.kitchenOven === "connected"
+                    ? "15vh"
+                    : "15vh",
+              }}
+              alt=""
+            />
 
-          <>
-            {props.kitchenOven === "disconnect" ? (
-              <button
-                className="btn btn-danger btn-sm active btn-font"
-                onClick={() => connectHandler(11)}
-              >
-                {isDutch ? "Aansluiten" : "Connect"}
-              </button>
-            ) : (
-              <button
-                className="btn btn-success btn-sm active btn-font"
-                onClick={() => disconnectHandler(11)}
-              >
-                {isDutch ? "Loskoppelen" : "Disconnect"}
-              </button>
-            )}
-          </>
-        </div>
+            <>
+              {props.kitchenOven === "disconnect" ? (
+                <button
+                  className="btn btn-danger btn-sm active btn-font"
+                  onClick={() => connectHandler(11)}
+                >
+                  {isDutch ? "Aansluiten" : "Connect"}
+                </button>
+              ) : (
+                <button
+                  className="btn btn-success btn-sm active btn-font"
+                  onClick={() => disconnectHandler(11)}
+                >
+                  {isDutch ? "Loskoppelen" : "Disconnect"}
+                </button>
+              )}
+            </>
+          </div>
 
-        {/* first light div ................. */}
-        <div
-          className={
-            props.isKitchenBreaker === true &&
-            props.kitchenLight01 === "connected"
-              ? "div-kitchenLight01-On"
-              : "div-kitchenLight01"
-          }
-        >
-          <img
-            src={
+          {/* first light div ................. */}
+          <div
+            className={
               props.isKitchenBreaker === true &&
               props.kitchenLight01 === "connected"
-                ? KitchenBulbOnIMG
-                : props.kitchenLight01 === "disconnect"
-                ? KitchenBlbOff_d
-                : KitchenBulbOffIMG
+                ? "div-kitchenLight01-On"
+                : "div-kitchenLight01"
             }
-            // className={
-            //   props.kitchenLight01 === "disconnect" ? "disconnected" : ""
-            // }
-            alt="bulb"
-            style={{
-              height:
+          >
+            <img
+              src={
                 props.isKitchenBreaker === true &&
                 props.kitchenLight01 === "connected"
-                  ? "30vh"
-                  : "30vh",
-            }}
-          />
+                  ? KitchenBulbOnIMG
+                  : props.kitchenLight01 === "disconnect"
+                  ? KitchenBlbOff_d
+                  : KitchenBulbOffIMG
+              }
+              // className={
+              //   props.kitchenLight01 === "disconnect" ? "disconnected" : ""
+              // }
+              alt="bulb"
+              style={{
+                height:
+                  props.isKitchenBreaker === true &&
+                  props.kitchenLight01 === "connected"
+                    ? "30vh"
+                    : "30vh",
+              }}
+            />
 
-          <>
-            {props.kitchenLight01 === "disconnect" ? (
-              <button
-                className="btn btn-danger btn-sm active btn-font"
-                onClick={() => connectHandler(12)}
-              >
-                {isDutch ? "Aansluiten" : "Connect"}
-              </button>
-            ) : (
-              <button
-                className="btn btn-success btn-sm active btn-font"
-                onClick={() => disconnectHandler(12)}
-              >
-                {isDutch ? "Loskoppelen" : "Disconnect"}
-              </button>
-            )}
-          </>
-        </div>
+            <>
+              {props.kitchenLight01 === "disconnect" ? (
+                <button
+                  className="btn btn-danger btn-sm active btn-font"
+                  onClick={() => connectHandler(12)}
+                >
+                  {isDutch ? "Aansluiten" : "Connect"}
+                </button>
+              ) : (
+                <button
+                  className="btn btn-success btn-sm active btn-font"
+                  onClick={() => disconnectHandler(12)}
+                >
+                  {isDutch ? "Loskoppelen" : "Disconnect"}
+                </button>
+              )}
+            </>
+          </div>
 
-        {/* padestal div .............. */}
-        <div
-          className={
-            props.isKitchenBreaker === true &&
-            props.kitchenLight02 === "connected"
-              ? "div-kitchenLight02-On"
-              : "div-kitchenLight02"
-          }
-        >
-          <>
-            {props.kitchenLight02 === "disconnect" ? (
-              <button
-                className="btn btn-danger btn-sm active btn-font set-top-btn-ab"
-                onClick={() => connectHandler(13)}
-              >
-                {isDutch ? "Aansluiten" : "Connect"}
-              </button>
-            ) : (
-              <button
-                className="btn btn-success btn-sm active btn-font set-top-btn-ab"
-                onClick={() => disconnectHandler(13)}
-              >
-                {isDutch ? "Loskoppelen" : "Disconnect"}
-              </button>
-            )}
-          </>
-
-          <img
-            src={
+          {/* padestal div .............. */}
+          <div
+            className={
               props.isKitchenBreaker === true &&
               props.kitchenLight02 === "connected"
-                ? // ? KitchenBulbOnIMG
-                  // : KitchenBulbOffIMG
-                  SmookOn
-                : props.kitchenLight02 === "disconnect"
-                ? ""
-                : SmookOn
+                ? "div-kitchenLight02-On"
+                : "div-kitchenLight02"
             }
-            alt=""
-          />
-        </div>
+          >
+            <>
+              {props.kitchenLight02 === "disconnect" ? (
+                <button
+                  className="btn btn-danger btn-sm active btn-font set-top-btn-ab"
+                  onClick={() => connectHandler(13)}
+                >
+                  {isDutch ? "Aansluiten" : "Connect"}
+                </button>
+              ) : (
+                <button
+                  className="btn btn-success btn-sm active btn-font set-top-btn-ab"
+                  onClick={() => disconnectHandler(13)}
+                >
+                  {isDutch ? "Loskoppelen" : "Disconnect"}
+                </button>
+              )}
+            </>
 
-        {/* light 03 div .............. */}
-        <div
-          className={
-            props.isKitchenBreaker === true &&
-            props.kitchenLight03 === "connected"
-              ? "div-kitchenLight03-On"
-              : "div-kitchenLight03"
-          }
-        >
-          <>
-            {props.kitchenLight03 === "disconnect" ? (
-              <button
-                className="btn btn-danger btn-sm active btn-font"
-                onClick={() => connectHandler(14)}
-              >
-                {isDutch ? "Aansluiten" : "Connect"}
-              </button>
-            ) : (
-              <button
-                className="btn btn-success btn-sm active btn-font"
-                onClick={() => disconnectHandler(14)}
-              >
-                {isDutch ? "Loskoppelen" : "Disconnect"}
-              </button>
-            )}
-          </>
+            <img
+              src={
+                props.isKitchenBreaker === true &&
+                props.kitchenLight02 === "connected"
+                  ? // ? KitchenBulbOnIMG
+                    // : KitchenBulbOffIMG
+                    SmookOn
+                  : props.kitchenLight02 === "disconnect"
+                  ? ""
+                  : SmookOn
+              }
+              alt=""
+            />
+          </div>
 
-          <img
-            src={
+          {/* light 03 div .............. */}
+          <div
+            className={
               props.isKitchenBreaker === true &&
               props.kitchenLight03 === "connected"
-                ? KitchenBulbOnIMG
-                : props.kitchenLight03 === "disconnect"
-                ? KitchenBlbOff_d
-                : KitchenBulbOffIMG
-              // ? KitchenBulbOffIMG : props.kitchenLight03 === "disconnect" ? KitchenBlbOff_d
-              // : KitchenBulbOffIMG
+                ? "div-kitchenLight03-On"
+                : "div-kitchenLight03"
             }
-            alt=""
-            // className={
-            //   props.kitchenLight03 === "disconnect" ? "disconnected" : ""
-            // }
-            style={{
-              height:
+          >
+            <>
+              {props.kitchenLight03 === "disconnect" ? (
+                <button
+                  className="btn btn-danger btn-sm active btn-font"
+                  onClick={() => connectHandler(14)}
+                >
+                  {isDutch ? "Aansluiten" : "Connect"}
+                </button>
+              ) : (
+                <button
+                  className="btn btn-success btn-sm active btn-font"
+                  onClick={() => disconnectHandler(14)}
+                >
+                  {isDutch ? "Loskoppelen" : "Disconnect"}
+                </button>
+              )}
+            </>
+
+            <img
+              src={
                 props.isKitchenBreaker === true &&
                 props.kitchenLight03 === "connected"
-                  ? "30vh"
-                  : "30vh",
-            }}
-          />
-        </div>
+                  ? KitchenBulbOnIMG
+                  : props.kitchenLight03 === "disconnect"
+                  ? KitchenBlbOff_d
+                  : KitchenBulbOffIMG
+                // ? KitchenBulbOffIMG : props.kitchenLight03 === "disconnect" ? KitchenBlbOff_d
+                // : KitchenBulbOffIMG
+              }
+              alt=""
+              // className={
+              //   props.kitchenLight03 === "disconnect" ? "disconnected" : ""
+              // }
+              style={{
+                height:
+                  props.isKitchenBreaker === true &&
+                  props.kitchenLight03 === "connected"
+                    ? "30vh"
+                    : "30vh",
+              }}
+            />
+          </div>
 
-        {/* toster div .............. */}
-        <div
-          className={
-            props.isKitchenBreaker === true &&
-            props.kitchenToster === "connected"
-              ? "div-toster-On"
-              : "div-toster"
-          }
-        >
-          <>
-            {props.kitchenToster === "disconnect" ? (
-              <button
-                className="btn btn-danger btn-sm active btn-font"
-                onClick={() => connectHandler(15)}
-              >
-                {isDutch ? "Aansluiten" : "Connect"}
-              </button>
-            ) : (
-              <button
-                className="btn btn-success btn-sm active btn-font"
-                onClick={() => disconnectHandler(15)}
-              >
-                {isDutch ? "Loskoppelen" : "Disconnect"}
-              </button>
-            )}
-          </>
-
-          <img
-            src={
+          {/* toster div .............. */}
+          <div
+            className={
               props.isKitchenBreaker === true &&
               props.kitchenToster === "connected"
-                ? TosterOnIMG
-                : props.kitchenToster === "disconnect"
-                ? TosterOffIMG_D
-                : TosterOffIMG
-
-              // ? TosterOffIMG : props.kitchenToster === "disconnect" ? TosterOffIMG_D
-              // : TosterOffIMG
+                ? "div-toster-On"
+                : "div-toster"
             }
-            alt=""
-            // className={
-            //   props.kitchenToster === "disconnect" ? "disconnected" : ""
-            // }
-            style={{
-              height:
+          >
+            <>
+              {props.kitchenToster === "disconnect" ? (
+                <button
+                  className="btn btn-danger btn-sm active btn-font"
+                  onClick={() => connectHandler(15)}
+                >
+                  {isDutch ? "Aansluiten" : "Connect"}
+                </button>
+              ) : (
+                <button
+                  className="btn btn-success btn-sm active btn-font"
+                  onClick={() => disconnectHandler(15)}
+                >
+                  {isDutch ? "Loskoppelen" : "Disconnect"}
+                </button>
+              )}
+            </>
+
+            <img
+              src={
                 props.isKitchenBreaker === true &&
                 props.kitchenToster === "connected"
-                  ? "28vh"
-                  : "28vh",
-            }}
-          />
+                  ? TosterOnIMG
+                  : props.kitchenToster === "disconnect"
+                  ? TosterOffIMG_D
+                  : TosterOffIMG
+
+                // ? TosterOffIMG : props.kitchenToster === "disconnect" ? TosterOffIMG_D
+                // : TosterOffIMG
+              }
+              alt=""
+              // className={
+              //   props.kitchenToster === "disconnect" ? "disconnected" : ""
+              // }
+              style={{
+                height:
+                  props.isKitchenBreaker === true &&
+                  props.kitchenToster === "connected"
+                    ? "28vh"
+                    : "28vh",
+              }}
+            />
+          </div>
+        </div>
+        <div className="position-heading-bottom">
+          <h1 className="heading-bottom">{isDutch ? "Keuken" : "Kitchen"}</h1>
         </div>
       </div>
-      <div className="position-heading-bottom">
-        <h1 className="heading-bottom">{isDutch ? "Keuken" : "Kitchen"}</h1>
-      </div>
-    </div>
+    </>
   );
 };
 

@@ -37,9 +37,11 @@ import {
   breakerOffDutch,
   breakerOffEnglish,
 } from "../../../../utils/translation";
+import BreakerOffPopup from "../../../../utils/BreakerOffPopup";
 
 const StoreRoom = (props) => {
   const navigate = useNavigate();
+  const [breakerOff, setBreakerOff] = useState(false);
 
   const disconnectedDevices = useSelector(
     (state) => state.CounterRemainingDevicesReducer.count
@@ -116,7 +118,7 @@ const StoreRoom = (props) => {
       props.setgroupFiveBreakerType("black");
       errorSound();
       props.setIsGroupFiveBreaker(false);
-      exerciseNumber === 2 && SwalBreakerOff(popupText, redirectSorry);
+      exerciseNumber === 2 && setBreakerOff(true);
       dispatch(increaseDeviceCounter());
       props.setAtticTrial(props.atticTrial + 1);
       localStorage.setItem("state-attic", JSON.stringify(props.atticTrial + 1));
@@ -145,6 +147,8 @@ const StoreRoom = (props) => {
   return (
     <>
       <>
+        {breakerOff && <BreakerOffPopup close={() => setBreakerOff(false)} />}
+
         {props.gamePhase === "StoreRoom" ? (
           <div
             style={{

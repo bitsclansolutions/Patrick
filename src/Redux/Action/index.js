@@ -263,3 +263,9 @@ export const removeDisconnectDevice = (val) => {
     payload: val,
   };
 };
+
+export const showPopup = () => {
+  return {
+    type: "showPopup",
+  };
+};

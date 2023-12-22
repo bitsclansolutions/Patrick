@@ -8,7 +8,7 @@ import FrontScreenModel from "../Components/FrontScreenModel";
 import { SwalStarter } from "../Components/SwalModules";
 import { useDispatch, useSelector } from "react-redux";
 import ChangeLanguageToggle from "../../utils/ChangeLanguageToggle";
-import { setExercise, setExerciseGate } from "../../Redux/Action";
+import { setExercise, setExerciseGate, showPopup } from "../../Redux/Action";
 import AudioPlayer from "../../utils/AudioPlayer";
 import audio10 from "../../audios/audio10.m4a";
 // import AtticModel from "../../PopUpModels/AtticModel";
@@ -322,6 +322,7 @@ const MaskGroup = () => {
                 // SwalStarter(popupText);
                 localStorage.setItem("state", JSON.stringify(-4));
               }
+              dispatch(showPopup());
             }}
           >
             Open!

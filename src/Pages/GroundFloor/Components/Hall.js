@@ -23,6 +23,7 @@ import {
   correctGroupDeviceError,
   removeDisconnectDevice,
   addDisconnectDevice,
+  showPopup,
 } from "../../../Redux/Action";
 import Swal from "sweetalert2";
 import useSound from "use-sound";
@@ -36,7 +37,8 @@ import audio10 from "../../../audios/audio10.m4a";
 import BreakerOffPopup from "../../../utils/BreakerOffPopup";
 
 const Hall = (props) => {
-  // const counterHall = useSelector((state) => state.CounterDeviceReducer.count);
+  const starterPopup = useSelector((state) => state.StaterPopupReducer.show);
+  console.log(starterPopup);
   // console.log(counterHall + " redux device counter");
   const [initialPopup, setInitialPopup] = useState(false);
   const [breakerOff, setBreakerOff] = useState(false);
@@ -179,7 +181,7 @@ const Hall = (props) => {
     <>
       {breakerOff && <BreakerOffPopup close={() => setBreakerOff(false)} />}
 
-      {initialPopup && (
+      {starterPopup && (
         <Popup opacity={5}>
           <p className="welcome">Opdracht</p>
           <div
@@ -458,7 +460,7 @@ const Hall = (props) => {
             <div className="popup-bottom">
               <div className="vol-icon"></div>
               <div className="popup-button">
-                <button onClick={() => setInitialPopup(false)}>
+                <button onClick={() => dispatch(showPopup())}>
                   Ik snap dit
                 </button>
               </div>

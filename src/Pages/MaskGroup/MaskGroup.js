@@ -315,14 +315,15 @@ const MaskGroup = () => {
                 navigate("/ground-floor");
                 // SwalStarter(popupText);
                 localStorage.setItem("state", JSON.stringify(-4));
+                dispatch(showPopup());
               } else if (exerciseGateNumber === 3) {
                 // setShowAttic(true)
                 dispatch(setExercise(3));
                 navigate("/ground-floor");
                 // SwalStarter(popupText);
                 localStorage.setItem("state", JSON.stringify(-4));
+                dispatch(showPopup());
               }
-              dispatch(showPopup());
             }}
           >
             Open!

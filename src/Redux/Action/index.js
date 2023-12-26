@@ -269,3 +269,8 @@ export const showPopup = () => {
     type: "showPopup",
   };
 };
+export const hidePopup = () => {
+  return {
+    type: "hidePopup",
+  };
+};

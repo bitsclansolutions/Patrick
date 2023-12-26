@@ -6,7 +6,12 @@ const StaterPopupReducer = (state = data, action) => {
   switch (action.type) {
     case "showPopup":
       return {
-        show: !state.show,
+        show: true,
+      };
+
+    case "hidePopup":
+      return {
+        show: false,
       };
     default:
       return state;

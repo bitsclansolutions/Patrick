@@ -24,6 +24,7 @@ import {
   removeDisconnectDevice,
   addDisconnectDevice,
   showPopup,
+  hidePopup,
 } from "../../../Redux/Action";
 import Swal from "sweetalert2";
 import useSound from "use-sound";
@@ -460,7 +461,7 @@ const Hall = (props) => {
             <div className="popup-bottom">
               <div className="vol-icon"></div>
               <div className="popup-button">
-                <button onClick={() => dispatch(showPopup())}>
+                <button onClick={() => dispatch(hidePopup())}>
                   Ik snap dit
                 </button>
               </div>

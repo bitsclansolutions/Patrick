@@ -24,13 +24,24 @@ const AudioPlayer = ({ file }) => {
     setPlayAudio(false);
   };
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+        justifyContent: "center",
+        height: "100%",
+      }}
+    >
       <audio ref={myRef} onEnded={audioEndedHandler} src={file}></audio>
 
       <i
         class={`fa-solid ${playAudio ? "fa-volume-high" : "fa-volume-xmark"}`}
         onClick={startAudio}
       ></i>
+      <p style={{ margin: "0", fontWeight: "600", fontSize: "14px" }}>
+        Luister
+      </p>
     </div>
   );
 };

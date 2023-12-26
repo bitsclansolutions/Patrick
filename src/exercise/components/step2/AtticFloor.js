@@ -46,7 +46,7 @@ const AtticFloor = () => {
                 <div className="vol-icon"></div>
                 <div className="popup-button">
                   <button onClick={() => setEndStep(true)}>
-                    klik op de deze knop om verder te gaan
+                    klik op deze knop om verder te gaan
                   </button>
                 </div>
                 <div className="vol-icon">

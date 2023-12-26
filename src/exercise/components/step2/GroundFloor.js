@@ -54,7 +54,7 @@ const GroundFloor = () => {
                 <div className="vol-icon"></div>
                 <div className="popup-button">
                   <Link to="/exercise-firstFloor">
-                    klik op de deze knop om verder te gaan
+                    klik op deze knop om verder te gaan
                   </Link>
                 </div>
                 <div className="vol-icon">

@@ -600,12 +600,12 @@ const KitchenIndex = () => {
             <>
               <p className="popup-text">
                 Je ziet dat in de keuken verschillende elektrische apparaten
-                staan. <br /> Bij elk apparaat of lamp staat een groene knop
+                staan. <br /> Bij elk apparaat of lamp staat een groene knop{" "}
                 <b>'Loskoppelen'</b>.
               </p>
               <p className="popup-text">
                 Door op deze knop te drukken haal je de stekker uit het
-                stopcontact. <br /> De knop veranderd van kleur zodat je kunt
+                stopcontact. <br /> De knop verandert van kleur zodat je kunt
                 zien dat deze is uitgeschakeld.
               </p>
               <div className="popup-bottom">

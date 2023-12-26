@@ -41,7 +41,7 @@ const Start = () => {
           <p className="welcome">{isDutch ? "Welkom" : "Welcome"}</p>
           {isDutch ? (
             <p className="popup-text">
-              Beste leerling, In deze opdracht ga je leren hoe je een thuis kunt
+              Beste leerling, In deze opdracht ga je leren hoe je thuis kunt
               ontdekken of er een kortsluiting is en hoe je dit kunt oplossen.
               <br />
               <br />

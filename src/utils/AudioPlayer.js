@@ -31,6 +31,7 @@ const AudioPlayer = ({ file }) => {
         flexDirection: "column",
         justifyContent: "center",
         height: "100%",
+        color: "#ffc000",
       }}
     >
       <audio ref={myRef} onEnded={audioEndedHandler} src={file}></audio>
@@ -39,7 +40,14 @@ const AudioPlayer = ({ file }) => {
         class={`fa-solid ${playAudio ? "fa-volume-high" : "fa-volume-xmark"}`}
         onClick={startAudio}
       ></i>
-      <p style={{ margin: "0", fontWeight: "600", fontSize: "14px" }}>
+      <p
+        style={{
+          margin: "0",
+          fontWeight: "700",
+          fontSize: "14px",
+          color: "#075bac",
+        }}
+      >
         Luister
       </p>
     </div>

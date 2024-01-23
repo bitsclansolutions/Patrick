@@ -6,10 +6,8 @@ import Popup from "../../../utils/Popup";
 import { useDispatch, useSelector } from "react-redux";
 import {
   decreaseExerciseCounter,
-  increaseCouter,
   increaseExerciseCounter,
   resetExerciseCounter,
-  setExercise,
   setExerciseCounter,
   setExerciseGate,
 } from "../../../Redux/Action";
@@ -32,6 +30,8 @@ import AudioPlayer from "../../../utils/AudioPlayer";
 import audio7 from "../../../audios/audio7.m4a";
 import audio8 from "../../../audios/audio8.m4a";
 import audio9 from "../../../audios/audio9.m4a";
+import error from "../../../audios/error.mp3";
+import useSound from "use-sound";
 
 const KitchenIndex = () => {
   const isDutchLocal = useSelector(
@@ -53,7 +53,6 @@ const KitchenIndex = () => {
   const [notAFuse, setNotAFuse] = useState(false);
   const [showWrongBreaker, setShowWrongBreaker] = useState(false);
   const [showRightBreaker, setShowRightBreaker] = useState(false);
-  const [breakerBlocked, setBreakerBlocked] = useState(false);
   const [showDeviceError, setShowDeviceError] = useState(false);
   const [showCorruptError, setShowCorruptError] = useState(false);
   const [showFuseError, setShowFuseError] = useState(false);
@@ -73,6 +72,8 @@ const KitchenIndex = () => {
   const [bulb2, setBulb2] = useState(true);
   const [breakerOn, setBreakerOn] = useState(false);
 
+  const [errorSound] = useSound(error);
+
   const exerciseDisconnected = useSelector(
     (state) => state.ExerciseReducer.deviceCount
   );
@@ -86,11 +87,7 @@ const KitchenIndex = () => {
   console.log(exerciseDisconnected);
 
   // breakers on and off and corrupt breaker logic
-
   const breakerHnadler = (val) => {
-    // if (breakerBlocked) {
-    //   return;
-    // }
     if (val === 1) {
       setBreaker1(!breaker1);
     } else if (val === 2 && exerciseDisconnected === 6) {
@@ -108,7 +105,6 @@ const KitchenIndex = () => {
     if (val === 2 && exerciseDisconnected === 6 && !breakerOn) {
       setShowRightBreaker(true);
       setTurnFuseOn(false);
-      // setBreakerBlocked(true);
     } else if (val === 2 && exerciseDisconnected !== 6 && !breakerOn) {
       setShowDeviceError(true);
     } else if (val !== 2) {
@@ -165,13 +161,11 @@ const KitchenIndex = () => {
   // corrupt device logic
   const bulb2On = () => {
     if (breakerOn && !warning) {
-      console.log("hello");
       setShowCorruptError(true);
       setBreaker2(false);
-      // setBreakerBlocked(false);
       setWarning(true);
+      errorSound();
     } else if (warning) {
-      console.log("hello");
       setShowStepBack(true);
     } else if (!breakerOn) {
       setBulb2(!bulb2);
@@ -202,22 +196,10 @@ const KitchenIndex = () => {
   }, [bulb1, bulb2, oven, smoke, toaster, mixer]);
 
   const wrongBreakerHandler = () => {
-    // setBreaker1(true);
-    // setBreaker3(true);
-    // setBreaker4(true);
-    // setBreaker5(true);
-    // setBreaker6(true);
     setShowWrongBreaker(false);
   };
   const deviceErrorHandler = () => {
-    // setBulb1(true);
-    // setBulb2(true);
-    // setOven(true);
-    // setToaster(true);
-    // setMixer(true);
-    // setSmoke(true);
     setShowDeviceError(false);
-    // dispatch(resetExerciseCounter());
   };
   const rightBreakerHandler = () => {
     setShowRightBreaker(false);
@@ -959,6 +941,9 @@ const KitchenIndex = () => {
               <p className="popup-text">
                 Schakel nu de {exerciseDisconnected - 1} goede apparaten weer in
                 en laat het defecte apparaat uitgeschakeld.
+              </p>
+              <p className="popup-text">
+                Schakel daarna de zekering van groep 2 in.
               </p>
               <p></p>
               <div className="popup-button">

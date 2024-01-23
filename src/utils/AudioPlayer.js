@@ -3,11 +3,11 @@ import React, { useEffect, useRef, useState } from "react";
 const AudioPlayer = ({ file }) => {
   const myRef = useRef();
 
-  const [playAudio, setPlayAudio] = useState(true);
-  useEffect(() => {
-    myRef.current.play();
-    setPlayAudio(true);
-  }, []);
+  const [playAudio, setPlayAudio] = useState(false);
+  // useEffect(() => {
+  //   myRef.current.play();
+  //   setPlayAudio(true);
+  // }, []);
 
   const startAudio = () => {
     if (!playAudio) {

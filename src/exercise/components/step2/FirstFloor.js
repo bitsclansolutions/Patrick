@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import ExerciseName from "../../utils/ExerciseName";
 import AudioPlayer from "../../../utils/AudioPlayer";
 import audio3 from "../../../audios/audio3.m4a";
+import firstEng from "../../patrick-exercise-new/ground-floor-eng.png";
+import firstDutch from "../../patrick-exercise-new/first-floor-dutch.png";
 
 const FirstFloor = () => {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
@@ -30,6 +32,7 @@ const FirstFloor = () => {
           : "firstFloor-main-div-exercise-eng"
       }
     >
+      <img className="bg-image" src={isDutch ? firstDutch : firstEng} alt="" />
       <ExerciseName />
       <Popup opacity="20" top={0} right={0} position={true} width={47}>
         {isDutch ? (

@@ -7,6 +7,8 @@ import Highlight from "../../utils/Highlight";
 import ExerciseName from "../../utils/ExerciseName";
 import AudioPlayer from "../../../utils/AudioPlayer";
 import audio6 from "../../../audios/audio6.m4a";
+import KitchenEng from "../../patrick-exercise-new/kitchen-eng.png";
+import KitchenDutch from "../../patrick-exercise-new/kitchen-dutch.png";
 
 const Devices = () => {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
@@ -30,6 +32,11 @@ const Devices = () => {
           : "kitchen-main-div-exercise-eng"
       }
     >
+      <img
+        className="bg-image"
+        src={isDutch ? KitchenDutch : KitchenEng}
+        alt=""
+      />
       <ExerciseName />
       <div className="translator-exercise">
         <ChangeLanguageToggle />

@@ -7,6 +7,8 @@ import ChangeLanguageToggle from "../../../utils/ChangeLanguageToggle";
 import Video from "../../exercise-videos/stroom-uitgevalle.mp4";
 import ExerciseName from "../../utils/ExerciseName";
 import { setExerciseGate } from "../../../Redux/Action";
+import KitchenEng from "../../patrick-exercise-new/kitchen-eng.png";
+import KitchenDutch from "../../patrick-exercise-new/kitchen-dutch.png";
 
 const Step3 = () => {
   const dispatch = useDispatch();
@@ -32,6 +34,11 @@ const Step3 = () => {
           : "kitchen-main-div-exercise-eng"
       }
     >
+      <img
+        className="bg-image"
+        src={isDutch ? KitchenDutch : KitchenEng}
+        alt=""
+      />
       <ExerciseName />
       <div className="translator-exercise">
         <ChangeLanguageToggle />

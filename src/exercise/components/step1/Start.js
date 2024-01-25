@@ -8,7 +8,8 @@ import ExerciseName from "../../utils/ExerciseName";
 import Video from "../../exercise-videos/wat-is-kortsluiting.mp4";
 import audio1 from "../../../audios/audio1.m4a";
 import AudioPlayer from "../../../utils/AudioPlayer";
-// import ExerciseHall from "/exercise-images/Screenshot 2023-10-20 220310.png";
+import groundEng from "../../patrick-exercise-new/ground-floor-eng.png";
+import groundDutch from "../../patrick-exercise-new/ground-floor-dutch.png";
 
 const Start = () => {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
@@ -33,6 +34,11 @@ const Start = () => {
             : "hall-main-div-exercise-eng"
         }
       >
+        <img
+          className="bg-image"
+          src={isDutch ? groundDutch : groundEng}
+          alt=""
+        />
         <ExerciseName />
         <div className="translator-exercise">
           <ChangeLanguageToggle />

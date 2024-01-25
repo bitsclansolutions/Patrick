@@ -6,6 +6,8 @@ import "./GroundFloor.css";
 import ExerciseName from "../../utils/ExerciseName";
 import AudioPlayer from "../../../utils/AudioPlayer";
 import audio2 from "../../../audios/audio2.m4a";
+import groundEng from "../../patrick-exercise-new/ground-floor-eng.png";
+import groundDutch from "../../patrick-exercise-new/ground-floor-dutch.png";
 
 const GroundFloor = () => {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
@@ -14,13 +16,13 @@ const GroundFloor = () => {
     <>
       <div
         style={{
-          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%) url(${
-            process.env.PUBLIC_URL
-          }${
-            !isDutch
-              ? "/exercise-images/Screenshot 2023-10-20 220310.png"
-              : "/exercise-images/hall.png"
-          })`,
+          // backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%) url(${
+          //   process.env.PUBLIC_URL
+          // }${
+          //   !isDutch
+          //     ? "/exercise-images/Screenshot 2023-10-20 220310.png"
+          //     : "/exercise-images/hall.png"
+          // })`,
           height: "100vh",
           width: "100vw",
           border: "2px dotted white",
@@ -31,6 +33,11 @@ const GroundFloor = () => {
             : "hall-main-div-exercise-eng"
         }
       >
+        <img
+          className="bg-image"
+          src={isDutch ? groundDutch : groundEng}
+          alt=""
+        />
         <ExerciseName />
         <Popup opacity="20" top={0} right={0} position={true} width={45}>
           {isDutch ? (

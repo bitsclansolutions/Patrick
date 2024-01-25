@@ -8,6 +8,8 @@ import ChangeLanguageToggle from "../../../utils/ChangeLanguageToggle";
 import ExerciseName from "../../utils/ExerciseName";
 import AudioPlayer from "../../../utils/AudioPlayer";
 import audio5 from "../../../audios/audio5.m4a";
+import KitchenEng from "../../patrick-exercise-new/kitchen-eng.png";
+import KitchenDutch from "../../patrick-exercise-new/kitchen-dutch.png";
 
 const Board = () => {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
@@ -31,12 +33,17 @@ const Board = () => {
           : "kitchen-main-div-exercise-eng"
       }
     >
+      <img
+        className="bg-image"
+        src={isDutch ? KitchenDutch : KitchenEng}
+        alt=""
+      />
       <ExerciseName />
       <div className="translator-exercise">
         <ChangeLanguageToggle />
       </div>
       <Highlight bottom={8} width={"19%"} left={-1.5} opacity={70} />
-      <Popup bottom={15} left={20}>
+      <Popup bottom={15} left={20} opacity={0}>
         {isDutch ? (
           <>
             <p className="popup-text">

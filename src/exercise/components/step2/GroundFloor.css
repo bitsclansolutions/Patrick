@@ -18,3 +18,9 @@
   border-top-right-radius: 10px;
   margin-bottom: 0px;
 }
+
+.bg-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}

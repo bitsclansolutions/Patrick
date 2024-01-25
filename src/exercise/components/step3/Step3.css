@@ -5,6 +5,7 @@
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
   background-image: url("../../patrick-exercise-new/kitchen-eng.png");
+  background: #f9bb81;
 }
 .kitchen-main-div-exercise-dutch {
   background-repeat: no-repeat;
@@ -13,4 +14,5 @@
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
   background-image: url("../../patrick-exercise-new/kitchen-dutch.png");
+  background: #f9bb81;
 }

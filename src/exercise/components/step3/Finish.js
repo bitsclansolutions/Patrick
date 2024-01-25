@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import ChangeLanguageToggle from "../../../utils/ChangeLanguageToggle";
 import ExerciseName from "../../utils/ExerciseName";
 
+import KitchenEng from "../../patrick-exercise-new/kitchen-eng.png";
+import KitchenDutch from "../../patrick-exercise-new/kitchen-dutch.png";
+
 const Finish = () => {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
 
@@ -27,6 +30,11 @@ const Finish = () => {
           : "kitchen-main-div-exercise-eng"
       }
     >
+      <img
+        className="bg-image"
+        src={isDutch ? KitchenDutch : KitchenEng}
+        alt=""
+      />
       <ExerciseName />
       <div className="translator-exercise">
         <ChangeLanguageToggle />

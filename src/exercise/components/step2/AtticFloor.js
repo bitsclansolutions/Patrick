@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import ExerciseName from "../../utils/ExerciseName";
 import AudioPlayer from "../../../utils/AudioPlayer";
 import audio4 from "../../../audios/audio4.m4a";
+import atticEng from "../../patrick-exercise-new/attic-floor-eng.png";
+import atticDutch from "../../patrick-exercise-new/attic-floor-dutch.png";
 
 const AtticFloor = () => {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
@@ -30,6 +32,7 @@ const AtticFloor = () => {
           : "atticFloor-main-div-exercise-eng"
       }
     >
+      <img className="bg-image" src={isDutch ? atticDutch : atticEng} alt="" />
       <ExerciseName />
       {!endStep && (
         <Popup right={0} top={0} opacity={10}>

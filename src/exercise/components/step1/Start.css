@@ -12,6 +12,7 @@
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
   background-image: url("../../patrick-exercise-new/ground-floor-eng.png");
+  background: #f9bb81;
 }
 .hall-main-div-exercise-dutch {
   background-repeat: no-repeat;
@@ -20,6 +21,7 @@
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
   background-image: url("../../patrick-exercise-new/ground-floor-dutch.png");
+  background: #f9bb81;
 }
 .img-div {
   position: relative;

@@ -975,8 +975,8 @@ const KitchenIndex = () => {
             <>
               <p className="welcome">Verkeerd apparaat</p>
               <p className="popup-text">
-                Dit is niet juist, deze lamp is defect. Kies opnieuw, wil je een
-                stap terug, klik dan op stap terug.
+                Dit is niet juist, deze lamp is defect. <br /> Kies opnieuw, wil
+                je een stap terug, klik dan op stap terug.
               </p>
               <p></p>
               <div className="popup-button">

@@ -47,6 +47,9 @@ const Congratulation = () => {
   const disconnectedDevicesLocal = localStorage.getItem("disconnectedDevices");
   const finishGame = JSON.parse(localStorage.getItem("finishGame"));
   const totalErrors = JSON.parse(localStorage.getItem("totalErrors"));
+  const disconnectedBreaker = JSON.parse(
+    localStorage.getItem("disconnectedBreakers")
+  );
 
   const dispatch = useDispatch();
 
@@ -141,6 +144,16 @@ const Congratulation = () => {
 
   console.log(finishGame);
 
+  console.log(
+    counterLocal == 0 &&
+      counterDeviceLocal == 0 &&
+      disconnectedDevicesLocal == 1 &&
+      disconnectedBreaker == 0 &&
+      totalErrors == 0
+  );
+
+  console.log(disconnectedBreaker);
+
   let result;
 
   if (!finishGame) {
@@ -200,18 +213,22 @@ const Congratulation = () => {
           {(counterLocal == 0 &&
             counterDeviceLocal == 1 &&
             disconnectedDevicesLocal == 1 &&
+            disconnectedBreaker == 0 &&
             totalErrors == 0) ||
           (counterLocal == 0 &&
             counterDeviceLocal == 1 &&
             disconnectedDevicesLocal == 1 &&
+            disconnectedBreaker == 0 &&
             totalErrors == 0) ||
           (counterLocal == 0 &&
             counterDeviceLocal == 0 &&
             disconnectedDevicesLocal == 1 &&
+            disconnectedBreaker == 0 &&
             totalErrors == 0) ||
           (counterLocal == 0 &&
             counterDeviceLocal == 0 &&
             disconnectedDevicesLocal == 1 &&
+            disconnectedBreaker == 0 &&
             totalErrors == 0) ? (
             <>
               <CircularProgressbar value={100} text={"100%"} />

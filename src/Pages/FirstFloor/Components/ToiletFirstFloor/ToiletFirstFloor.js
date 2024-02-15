@@ -399,7 +399,9 @@ const ToiletFirstFloor = (props) => {
             </div>
           </div>
           <div className="position-heading-bottom">
-            <h1 className="heading-bottom">{isDutch ? "Toilet" : "Toilet"}</h1>
+            <h1 className="heading-bottom">
+              {isDutch ? "Badkamer" : "Toilet"}
+            </h1>
           </div>
         </div>
       ) : (

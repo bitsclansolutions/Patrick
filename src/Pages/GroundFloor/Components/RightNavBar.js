@@ -13,7 +13,11 @@ import "antd/dist/antd.css";
 import ResultModel from "../../Components/ResultModel";
 import Avator from "../../Components/Avator";
 import { useDispatch, useSelector } from "react-redux";
-import { SwalResult, SwalTest } from "../../Components/SwalModules";
+import {
+  SwalBreakerError,
+  SwalResult,
+  SwalTest,
+} from "../../Components/SwalModules";
 import {
   addDisconnectDevice,
   changeLanguage,
@@ -230,9 +234,9 @@ const RightNavBar = (props) => {
   const sureText = isDutchLocal
     ? exerciseNumber === 2
       ? !showFinishBtn || corruptGroupDevices - 1 + correctGroupDevices
-        ? "Je kunt het spel nog niet afronden!"
-        : "Weet je zeker dat je het spel wilt Afronden?"
-      : "Weet je zeker dat je het spel wilt Afronden?"
+        ? "Je kunt de opdracht nog niet afronden!"
+        : "Weet je zeker dat je de opdracht wilt afronden?"
+      : "Weet je zeker dat je de opdracht wilt afronden?"
     : exerciseNumber === 2
     ? "Are you sure you want to finish the game?"
     : "Are you sure you want to finish the game?";
@@ -263,13 +267,9 @@ const RightNavBar = (props) => {
 
   const [showAttic, setShowAttic] = useState(false);
   const [showFirstFloor, setshowFirstFloor] = useState(false);
-  const [showGroundFloor, setshowGroundFloor] = useState(false);
-  const [finishPopup, setFinishPopup] = useState(false);
 
   const [btnHover, setBtnHover] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const [workAll, setWorkAll] = useState();
   // // TOTAL OF COUNTERS
   // const [breakerTotal, setBreakerTotal] = useState(10);
   // const [deviceTotal, setDeviceTotal] = useState(10);
@@ -1998,6 +1998,19 @@ const RightNavBar = (props) => {
     : "Are you sure you want to finish the game?";
 
   const finishBreakerHandler = () => {
+    const connectedBreakers = [
+      props.isFirstGroupBreaker,
+      props.isKitchenBreaker,
+      props.isGroupThreeBreaker,
+      props.isGroupFourBreaker,
+      props.isGroupFiveBreaker,
+      props.isLaundaryBreaker,
+    ];
+    const disconnectedBreakerCount = connectedBreakers.filter(
+      (item) => item === false
+    ).length;
+    console.log(disconnectedBreakerCount);
+    console.log(connectedBreakers);
     // FinishSwal();
     // setTimeout(() => {
     //   swalResult()
@@ -2005,6 +2018,22 @@ const RightNavBar = (props) => {
 
     // console.log("sakldfj");
     // navigate("/result");
+
+    if (
+      (!props.isFirstGroupBreaker ||
+        !props.isKitchenBreaker ||
+        !props.isGroupThreeBreaker ||
+        !props.isGroupFourBreaker ||
+        !props.isGroupFiveBreaker ||
+        !props.isLaundaryBreaker) &&
+      showFinishBtn &&
+      exerciseNumber === 2
+    ) {
+      console.log("akjsfdh");
+      SwalBreakerError();
+      return;
+    }
+
     SwalResult(
       redirect,
       modalTexts,
@@ -2021,13 +2050,21 @@ const RightNavBar = (props) => {
     const wrongPerOfRemainingDevices = (disconnectedDevices / 48) * 100;
     const wrongDeviceAttempted =
       ((corruptAttemptedDevices + correctAttemptedDevices) / 10) * 100;
+    const disconnectedBreakers = ((disconnectedBreakerCount + 1) / 6) * 100;
+
+    console.log(disconnectedBreakerCount);
+    console.log(disconnectedBreakers);
+
     //this is the average of wrong attempts
     const avgOfWrongProgress =
       (wrongPerOfBreakerHit +
         wrongPerOfDeviceHit +
         wrongPerOfRemainingDevices +
-        wrongDeviceAttempted) /
-      4;
+        wrongDeviceAttempted +
+        disconnectedBreakers) /
+      5;
+
+    console.log(avgOfWrongProgress);
     //now find the over all plus point of average in percentage
     const totalAvgProgress = 100 - avgOfWrongProgress;
 
@@ -2044,6 +2081,7 @@ const RightNavBar = (props) => {
       "totalErrors",
       correctAttemptedDevices + corruptAttemptedDevices
     );
+    localStorage.setItem("disconnectedBreakers", disconnectedBreakerCount);
 
     // exerciseNumber === 3 && navigate("/result");
 

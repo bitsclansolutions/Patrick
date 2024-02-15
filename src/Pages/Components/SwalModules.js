@@ -156,6 +156,15 @@ export const SwalResult = (redirect, text, test3, test) => {
   });
 };
 
+export const SwalBreakerError = () => {
+  Swal.fire({
+    title: "Je kunt de opdracht nog niet afronden!",
+    text: "Je bent vergeten de zekering(en) in te schakelen",
+    confirmButtonText: "Ga verder",
+    confirmButtonColor: "#085CA8",
+  });
+};
+
 export const SwalTest = (redirect, text) => {
   Swal.fire({
     title: text.head,

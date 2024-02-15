@@ -628,8 +628,8 @@ const KitchenIndex = () => {
             <>
               <p className="welcome">Alles Loskoppelen</p>
               <p className="popup-text">
-                Klik op alle elektrische apparaten in de keuken om deze uit te
-                schakelen.
+                Klik op de knop ‘Loskoppelen’ bij een elektrisch apparaat of
+                lamp om deze uit te schakelen.
               </p>
               <div className="popup-button">
                 <button onClick={disconnectAll}>
@@ -940,7 +940,7 @@ const KitchenIndex = () => {
               <p className="welcome">Aansluiten / Loskoppelen</p>
               <p className="popup-text">
                 Schakel nu de {exerciseDisconnected - 1} goede apparaten weer in
-                en laat het defecte apparaat uitgeschakeld.
+                en laat het defecte apparaat losgekoppeld.
               </p>
               <p className="popup-text">
                 Schakel daarna de zekering van groep 2 in.
@@ -975,8 +975,8 @@ const KitchenIndex = () => {
             <>
               <p className="welcome">Verkeerd apparaat</p>
               <p className="popup-text">
-                Dit is niet juist. Kies opnieuw Wil je een stap terug, klik dan
-                op stap terug
+                Dit is niet juist, deze lamp is defect. Kies opnieuw, wil je een
+                stap terug, klik dan op stap terug.
               </p>
               <p></p>
               <div className="popup-button">
@@ -1011,7 +1011,7 @@ const KitchenIndex = () => {
             <>
               <p className="welcome">Sluit alles correct aan</p>
               <p className="popup-text">
-                Je hebt niet alle goede apparaten ingeschakeld. <br /> Schakel
+                Je hebt niet alle goede apparaten aangesloten. <br /> Schakel
                 alle goede apparaten allemaal in.
               </p>
 

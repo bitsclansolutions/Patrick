@@ -54,7 +54,7 @@ const Devices = () => {
             </p>
             <p className="popup-text-base">
               Als er andere kamers op dezelfde stroomgroep zitten, moet je de
-              apparaten van die kamers ook uitschakelen.
+              apparaten van die kamers ook uitschakelen, oftewel loskoppelen.
             </p>
             <p className="popup-text-base">
               Wanneer je een kamer wilt verlaten klik je op de knop ‘Ga Terug'

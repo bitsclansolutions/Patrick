@@ -208,7 +208,7 @@ const Kitchen = (props) => {
         }}
         className="kitchen-main-div"
       >
-        <div className=" d-flex img-div">
+        <div className=" d-flex img-div h-100 w-100">
           {/* lamp div .............. */}
           <div
             className={

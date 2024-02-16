@@ -123,8 +123,8 @@ function App() {
 
   useEffect(() => {
     // iron in laundary
-    // setRndAll(49);
-    randomDevice();
+    setRndAll(49);
+    // randomDevice();
   }, []);
 
   useEffect(() => {

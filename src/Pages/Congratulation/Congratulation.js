@@ -209,7 +209,7 @@ const Congratulation = () => {
             your supervisor in and show him your score
           </p>
         )}
-        <div style={{ height: "200px", width: "200px", margin: "auto" }}>
+        <div style={{ height: "180px", width: "180px", margin: "auto" }}>
           {(counterLocal == 0 &&
             counterDeviceLocal == 1 &&
             disconnectedDevicesLocal == 1 &&
@@ -244,6 +244,14 @@ const Congratulation = () => {
           {/* <p className="mb-0 set-font-16">
                   Maximum of 10 Breaker attempts:
                 </p> */}
+          <p className="set-font-20">
+            {isDutch
+              ? "Je bent vergeten aan te zetten"
+              : "You forgot to turn on"}{" "}
+            <strong style={{ borderBottom: "1px solid #fff" }}>
+              {disconnectedBreaker} {isDutch ? "Zekeringen" : "Breakers."}{" "}
+            </strong>
+          </p>
           <p className="set-font-20">
             {isDutch
               ? "Je hebt geëxperimenteerd met"

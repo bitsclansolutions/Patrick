@@ -1,134 +1,140 @@
-.kitchen-main-div{
-    background-repeat: no-repeat;
- position: relative;
+.kitchen-main-div {
+  background-repeat: no-repeat;
+  position: relative;
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; 
+  background-size: cover;
 }
-.img-div{
-    position: relative;
+.img-div {
+  position: relative;
 }
 /* mixture ................... */
 .div-mixture {
-    position: absolute;
-    top: 49vh;
-    left: 3%;
+  position: absolute;
+  top: 49vh;
+  left: 3%;
 }
 .div-mixture-On {
-    position: absolute;
-    top: 49vh;
-    left: 3%;
+  position: absolute;
+  top: 49vh;
+  left: 3%;
 }
 /* first light ............ */
 .div-oven {
-    position: absolute;
-    left: 16.4%;
-    top: 73.5vh;
+  position: absolute;
+  left: 16.4%;
+  top: 73.5vh;
 }
 .div-oven-On {
-    position: absolute;
-    left: 16.4%;
-    top: 73.5vh; 
+  position: absolute;
+  left: 16.4%;
+  top: 73.5vh;
 }
 /* second light ................. */
 .div-kitchenLight01 {
-    position: absolute;
-    top: 0px;
-    left: 61.5vh;
+  position: absolute;
+  top: 0px;
+  left: 61.5vh;
 }
-.div-kitchenLight01-On{
-    position: absolute;
-    top: 0px;
-    left: 61.5vh;
+.div-kitchenLight01-On {
+  position: absolute;
+  top: 0px;
+  left: 61.5vh;
 }
 /* kitchenLight02 ................... */
-.div-kitchenLight02{
-    position: absolute;
-    top: 0px;
-    right: 61.5vh;
+.div-kitchenLight02 {
+  position: absolute;
+  top: 0px;
+  right: 61.5vh;
 }
-.div-kitchenLight02-On{
-    position: absolute;
-    top: 0px;
-    right: 61.5vh;
+.div-kitchenLight02-On {
+  position: absolute;
+  top: 0px;
+  right: 61.5vh;
 }
-
 
 /* kitchenLight02 ................... */
 .div-kitchenLight02 {
-    position: relative;
-    top: 35.2vh;
-    left: 11.3vw;
+  position: absolute;
+  top: 35.2% !important;
+  left: 12.8% !important;
+  width: 16.5%;
+  padding-top: 0.4%;
+}
+.div-kitchenLight02 img {
+  width: 100%;
 }
 .div-kitchenLight02 .set-top-btn-ab {
-    position: absolute;
-    top: -35px;
-    left:55px;
+  position: absolute;
+  top: -35px;
+  left: 55px;
 }
-.div-kitchenLight02-On{
-    position: relative;
-    top: 35.2vh;
-    left: 23.3vh;
+.div-kitchenLight02-On {
+  position: absolute;
+  top: 35.2%;
+  left: 12.8%;
+  width: 16.5%;
+  padding-top: 0.4%;
+}
+
+.div-kitchenLight02-On img {
+  width: 100%;
 }
 .div-kitchenLight02-On .set-top-btn-ab {
-    position: absolute;
-    top: -35px;
-    left:55px;
+  position: absolute;
+  top: -35px;
+  left: 55px;
 }
 
 .set-btns-kitchen-ground {
-    position: absolute !important;
-    top: 38vh;
-    right: 14vh;
+  position: absolute !important;
+  top: 38vh;
+  right: 14vh;
 }
 /* padestal ................... */
-.div-kitchenLight03{
-    position: absolute;
-    top: 0px;
-    right: 32vh;
-    
+.div-kitchenLight03 {
+  position: absolute;
+  top: 0px;
+  right: 32vh;
 }
-.div-kitchenLight03-On{
-    position: absolute;
-    top: 0px;
-    right: 32vh;
-    
+.div-kitchenLight03-On {
+  position: absolute;
+  top: 0px;
+  right: 32vh;
 }
 .div-toster {
-    position: absolute;
-    top: 36vh;
-    right: 47%;
+  position: absolute;
+  top: 36vh;
+  right: 47%;
 }
 .div-toster-On {
-    position: absolute;
-    top: 36vh;
-    right: 47%;
+  position: absolute;
+  top: 36vh;
+  right: 47%;
 }
-.disconnected{
-    -webkit-filter: blur(4px);
+.disconnected {
+  -webkit-filter: blur(4px);
 }
 .disconnected-my {
-    filter: invert(1);
+  filter: invert(1);
 }
-@media (max-width: 1200px){
-    .div-kitchenLight01 {
-        left: 44.3vh;
-    }
-    .div-kitchenLight01-On{
-        position: absolute;
-        top: 0px;
-        left: 41.5vh;
-    }
-    .div-oven {
-        left: 17%;
-        top: 73vh;
-    }
-
+@media (max-width: 1200px) {
+  .div-kitchenLight01 {
+    left: 44.3vh;
+  }
+  .div-kitchenLight01-On {
+    position: absolute;
+    top: 0px;
+    left: 41.5vh;
+  }
+  .div-oven {
+    left: 17%;
+    top: 73vh;
+  }
 }
-@media (max-width: 1100px){
-    .div-oven {
-        left: 14.5%;
-        top: 71vh;
-    }
-
+@media (max-width: 1100px) {
+  .div-oven {
+    left: 14.5%;
+    top: 71vh;
+  }
 }

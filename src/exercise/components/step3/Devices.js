@@ -41,7 +41,7 @@ const Devices = () => {
       <div className="translator-exercise">
         <ChangeLanguageToggle />
       </div>
-      <Highlight width={220} height={300} left={0} top={8} radius="30px" />
+      <Highlight width="17%" height="45%" left={0} top={8} radius="30px" />
       <Popup bottom={0} right={0} width={47} opacity={0}>
         {isDutch ? (
           <>

@@ -1,6 +1,6 @@
 .navbar-background {
-  background: #CC664A;
-  background: linear-gradient(360deg, #CC664A 0%, #cf7359 35%, #FCC184 100%);
+  background: #cc664a;
+  background: linear-gradient(360deg, #cc664a 0%, #cf7359 35%, #fcc184 100%);
   height: 100vh;
   overflow-y: scroll !important;
 }
@@ -8,24 +8,24 @@
   width: 0px;
 }
 
-.group-one{
-    height: 49vh;
+.group-one {
+  height: 49vh;
 }
-.group-two{
+.group-two {
   height: 50vh;
 }
-.position-heading-bottom{
+.position-heading-bottom {
   position: absolute;
   bottom: 0%;
   left: 50%;
   transform: translateX(-50%);
 }
-.heading-bottom{
+.heading-bottom {
   color: #000;
   font-weight: 900;
   font-family: 'Nunito', sans-serif;
   font-size: 38px;
-  background-color: rgba(255,255,255,0.6);
+  background-color: rgba(255, 255, 255, 0.6);
   padding: 2px 12px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -56,12 +56,12 @@
   font-size: 10px !important;
 } */
 
-@media (max-width: 1024px){
-    .main-groundFloor-div{
-      display: none;
-    }
+@media (max-width: 1024px) {
+  .main-groundFloor-div {
+    display: none;
+  }
 }
-@media (min-width:1024px) and ( max-width:1366px) {
+@media (min-width: 1024px) and (max-width: 1366px) {
   .set-btn-toilet-ground {
     left: 6.7vw;
   }
@@ -73,22 +73,22 @@
     left: 29.5vw !important;
   }
   .div-oven {
-    left: 16.4% !important;
-    top: 74.6vh !important;
+    left: 16% !important;
+    top: 72vh !important;
   }
   .div-kitchenLight02 {
     top: 34.2vh !important;
     left: 26.5vh !important;
   }
   .div-kitchenLight02 img {
-      height: 20vh !important;
-      opacity: 0.2;
+    height: 20vh !important;
+    opacity: 0.2;
   }
-  .div-kitchenLight02-On{
-      top: 35vh !important;
+  .div-kitchenLight02-On {
+    top: 35vh !important;
   }
   .div-kitchenLight02-On img {
-      height: 20vh !important;
+    height: 20vh !important;
   }
   /* FIRST FLOOR */
   .set-btn-hall-first-living2 {
@@ -137,22 +137,22 @@
     top: 64.5vh !important;
   }
   .div-lamp-guest-on {
-      top: 64.5vh !important;
+    top: 64.5vh !important;
   }
   .div-radio-guest {
     top: 25vh !important;
   }
-  .div-lamp-study{
+  .div-lamp-study {
     top: 75vh !important;
   }
-  .div-lamp-study-on{
-      top: 75vh !important;
-  } 
+  .div-lamp-study-on {
+    top: 75vh !important;
+  }
 }
-@media (min-width:1367px) and ( max-width:1440px) {
+@media (min-width: 1367px) and (max-width: 1440px) {
   .set-btn-toilet-ground {
     left: 5.3vw !important;
-  } 
+  }
   .set-btn-living-ground {
     left: 16.6vw !important;
   }
@@ -179,7 +179,7 @@
     height: 18vh !important;
     opacity: 0.2;
   }
-  .div-kitchenLight02-On{
+  .div-kitchenLight02-On {
     top: 35.9vh !important;
     left: 24.8vh !important;
   }
@@ -330,7 +330,7 @@
     left: 3.5vw !important;
   }
 }
-@media (min-width:1441px) and ( max-width:1536px) {
+@media (min-width: 1441px) and (max-width: 1536px) {
   .set-btn-kitchen-ground {
     right: 16.5vw !important;
   }
@@ -415,7 +415,7 @@
     right: 24vw !important;
   }
 }
-@media (min-width:1537px) and ( max-width:1920px) {
+@media (min-width: 1537px) and (max-width: 1920px) {
   .set-btn-kitchen-ground {
     top: 71vh !important;
     right: 16.5vw !important;
@@ -485,6 +485,5 @@
     right: 24.5vw !important;
   }
 }
-@media (min-width:1921px) {
-  
+@media (min-width: 1921px) {
 }

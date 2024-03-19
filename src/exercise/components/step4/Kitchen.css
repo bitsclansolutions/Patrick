@@ -4,7 +4,7 @@
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
-  background-image: url("../../../../public/exercise-images/kitchen-ground-dutch-4.png");
+  background-image: url('../../../../public/exercise-images/kitchen-ground-dutch-4.png');
 }
 .kitchen-func-exercise-eng {
   background-repeat: no-repeat;
@@ -12,7 +12,7 @@
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
-  background-image: url("../../../../public/exercise-images/kitchen-ground-4.png");
+  background-image: url('../../../../public/exercise-images/kitchen-ground-4.png');
 }
 
 .smoke {
@@ -65,8 +65,15 @@
 
 .oven {
   position: absolute;
-  bottom: 12%;
-  left: 16.5%;
+  bottom: 13%;
+  left: 16%;
+}
+
+@media screen and (max-width: 1400px) {
+  .oven {
+    bottom: 12.5%;
+    left: 16.5%;
+  }
 }
 
 .oven img {

@@ -1,0 +1,51 @@
+.login-main-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(
+    180deg,
+    rgba(169, 210, 240, 0.5) 0%,
+    rgba(255, 255, 255, 0.5) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4.8rem 0rem;
+}
+
+.login-form-wrapper {
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 0px 14px 25.7px 0px #0000001a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form-heading {
+  font-family: "Nunito", serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #387ff5;
+  margin-top: 2rem;
+}
+
+.login-form-inner {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem;
+}
+.login-custom-input {
+  border: none; /* Remove default border */
+  border-bottom: 1.12px solid #2a2727; /* Only bottom border */
+  outline: none; /* Remove focus outline */
+  padding: 8px 10px; /* Adjust padding */
+}
+
+.login-custom-input:focus {
+  border-bottom-color: #000; /* Keep the bottom border color the same on focus */
+  outline: none; /* No outline or additional border on focus */
+}

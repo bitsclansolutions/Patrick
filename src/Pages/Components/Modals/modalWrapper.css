@@ -1,0 +1,27 @@
+.custom-modal-wrapper .ant-modal-header {
+  background: inherit;
+}
+.custom-modal-wrapper .ant-modal-footer {
+  background: inherit;
+}
+
+.custom-modal-wrapper .ant-btn-primary {
+  background-color: #387ff5 !important;
+  border-radius: 5px;
+}
+
+.custom-modal-wrapper .ant-btn-default {
+  color: black;
+  border-radius: 5px;
+}
+
+.custom-modal-wrapper .ant-modal-close-x {
+    color: black !important;
+}
+
+.custom-modal-footer{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}

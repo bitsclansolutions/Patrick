@@ -14,6 +14,8 @@ import ChangeLanguageReducer from "./ChangeLanguage";
 import ExerciseReducer from "./ExerciseReducer";
 import allDisconnectedDevices from "./AllDisconnectedDevices";
 import StaterPopupReducer from "./StarterPopupReducer";
+import AuthReducer from "./AuthReducer";
+import GetAllUsersReducer from "./GetAllUsers";
 
 export const rootReducer = combineReducers({
   UserReducer: UserReducer,
@@ -31,4 +33,6 @@ export const rootReducer = combineReducers({
   ExerciseReducer,
   allDisconnectedDevices,
   StaterPopupReducer,
+  AuthReducer,
+  GetAllUsersReducer
 });

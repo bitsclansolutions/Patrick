@@ -1,0 +1,142 @@
+.payment-main-wrapper{
+  width: 100%;
+}
+
+.payment-section-wrapper {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 3.5rem 4.5rem 3.5rem 4.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.payment-heading {
+  font-family: "Nunito", serif;
+  font-size: 40px;
+  font-family: 700;
+}
+
+.payment-des {
+  font-family: "Nunito", serif;
+  font-size: 16px;
+  font-family: 400;
+  text-align: center;
+  width: 80%;
+}
+
+.payment-card-wrapper {
+  width: 85%;
+  height: 380px;
+  background-color: #387ff5;
+  border-radius: 24px;
+  display: flex;
+  margin-top: 2rem;
+}
+
+.payment-card-left-wrapper {
+  flex: 1;
+  padding: 3.5rem;
+}
+
+.payment-toggle-wrapper {
+  display: flex;
+  gap: 1rem;
+}
+.payment-toggle-wrapper p {
+  color: #fff;
+}
+.payment-toggle-wrapper input[type="checkbox"] {
+  position: relative;
+  width: 60px; /* Keeping the width */
+  height: 25px; /* Keeping the reduced height */
+  -webkit-appearance: none;
+  appearance: none;
+  background: white;
+  outline: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.payment-toggle-wrapper input[type="checkbox"]::before {
+  content: "";
+  width: 16px; /* Reduced inner circle by 3 more pixels (total 4px reduction) */
+  height: 16px; /* Reduced height by 3 more pixels */
+  border-radius: 50%;
+  background: #387ff5;
+  position: absolute;
+  top: 4.5px; /* Adjusted to center within reduced height */
+  left: 4.5px; /* Adjusted to match the reduced size */
+  transition: 0.5s;
+}
+
+.payment-toggle-wrapper input[type="checkbox"]:checked::before {
+  transform: translateX(34px); /* Adjusted for the smaller inner circle */
+  background: #fff;
+}
+
+.payment-toggle-wrapper input[type="checkbox"]:checked {
+  background: #387ff5;
+}
+
+.payment-card-heading {
+  font-family: "Nunito", serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: white;
+}
+
+.payment-card-des {
+  font-family: "Nunito", serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: white;
+}
+
+.payment-card-right-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding-top: 2rem;
+}
+.payment-plan-heading {
+  font-family: "Nunito", serif;
+  font-size: 50px;
+  font-weight: 700;
+  color: white;
+}
+.payment-plan-heading span {
+  font-size: 20px;
+  font-weight: 500;
+}
+.payment-objective-heading {
+  font-family: "Nunito", serif;
+  font-size: 18px;
+  font-weight: 700;
+}
+.payment-objective-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.payment-objective {
+  display: flex;
+  gap: 1rem;
+}
+
+.payment-objective p {
+  font-family: "Nunito", serif;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.coffee-artifact {
+  position: absolute;
+  bottom: 0rem;
+  left: 0rem;
+  width: 150px;
+  height: 150px;
+}

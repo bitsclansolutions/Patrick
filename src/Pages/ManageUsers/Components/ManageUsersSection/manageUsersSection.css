@@ -1,0 +1,17 @@
+.manage-users-section-main {
+  width: 100%;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+.manage-users-heading {
+  font-family: "Nunito", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.manage-users-actions-wrapper{
+    display: flex;
+    gap: 1rem;
+}

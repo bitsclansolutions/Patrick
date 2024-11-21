@@ -11,9 +11,10 @@ const SelectOption = () => {
 
   const [errUserName, setErrUserName] = useState("");
   const [smallBtn, setSmallBtn] = useState("next");
-  const [largeBtn, setLargeBtn] = useState("IQ test");
+  const [largeBtn, setLargeBtn] = useState("exercise");
 
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
+  const userInfo = useSelector((state) => state.AuthReducer.user);
 
   return (
     <div>
@@ -59,17 +60,19 @@ const SelectOption = () => {
               >
                 {isDutch ? "Oefening" : "Do you want to move for an exercise?"}
               </button>
-              <button
-                className={
-                  largeBtn === "IQ test"
-                    ? "btn-blue set-opacity-btn mx-3"
-                    : "btn-white mx-3"
-                }
-                style={{ padding: "14px 30px", minWidth: "200px" }}
-                onClick={() => setLargeBtn("IQ test")}
-              >
-                {isDutch ? "Toets" : "Do you want to perform a IQ test?"}
-              </button>
+              {userInfo && (
+                <button
+                  className={
+                    largeBtn === "IQ test"
+                      ? "btn-blue set-opacity-btn mx-3"
+                      : "btn-white mx-3"
+                  }
+                  style={{ padding: "14px 30px", minWidth: "200px" }}
+                  onClick={() => setLargeBtn("IQ test")}
+                >
+                  {isDutch ? "Toets" : "Do you want to perform a IQ test?"}
+                </button>
+              )}
               <button
                 className="btn-blue set-opacity-btn"
                 style={{ paddingRight: "10px", padding: "4px 12px 1px 12px" }}

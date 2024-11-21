@@ -1,0 +1,94 @@
+.header-container {
+  width: 100%;
+  height: 80px;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 52.5px 0px #0000001a;
+  position: fixed;
+  z-index: 9999;
+}
+
+.header-inner-container {
+  width: 100%;
+  height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0rem 4.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.header-icon-wrapper {
+  width: 230px;
+  cursor: pointer;
+}
+.header-right-wrapper {
+  width: calc(100% - 230px);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 2rem;
+}
+
+.header-nav-list-wrapper {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.header-nav-list-wrapper p {
+  font-family: "Nunito", serif;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 0rem;
+}
+
+.header-buttons-wrapper {
+  display: flex;
+  gap: 1rem;
+}
+
+.langauge-select-wrapper {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.langauge-select-wrapper p {
+  font-family: "Nunito", serif;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 0rem;
+}
+
+.langauge-select-wrapper input[type="checkbox"] {
+  position: relative;
+  width: 60px; /* Keeping the width */
+  height: 25px; /* Keeping the reduced height */
+  -webkit-appearance: none;
+  appearance: none;
+  background: white;
+  outline: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.langauge-select-wrapper input[type="checkbox"]::before {
+  content: "";
+  width: 16px; /* Reduced inner circle by 3 more pixels (total 4px reduction) */
+  height: 16px; /* Reduced height by 3 more pixels */
+  border-radius: 50%;
+  background: #387ff5;
+  position: absolute;
+  top: 4.5px; /* Adjusted to center within reduced height */
+  left: 4.5px; /* Adjusted to match the reduced size */
+  transition: 0.5s;
+}
+
+.langauge-select-wrapper input[type="checkbox"]:checked::before {
+  transform: translateX(34px); /* Adjusted for the smaller inner circle */
+  background: #fff;
+}
+
+.langauge-select-wrapper input[type="checkbox"]:checked {
+  background: #387ff5;
+}

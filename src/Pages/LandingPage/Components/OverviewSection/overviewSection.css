@@ -1,0 +1,71 @@
+.overview-main-wrapper{
+  width: 100%;
+  background: #387ff5;
+
+}
+
+.overview-section-wrapper {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 11.5rem 4.5rem 13.5rem 4.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.overview-section-right-wrapper {
+  width: 50%;
+  padding: 3rem;
+}
+
+.overview-heading {
+  font-family: "Nunito", serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.overview-des {
+  font-family: "Nunito", serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.overview-heading span {
+  color: #387ff5;
+}
+
+.overview-section-left-wrapper {
+  width: 50%;
+}
+
+.right-side-image {
+  width: 100%;
+}
+
+.white-clouds-bar-overview {
+  width: 100%;
+  height: 136px;
+  position: absolute;
+  left: 0;
+  bottom: -35px;
+}
+
+.stars-artifact-wrapper {
+  position: absolute;
+  top: 3rem;
+  left: 0rem;
+  z-index: 0;
+}
+
+.oven-artifact {
+  position: absolute;
+  height: 154px;
+  width: 154px;
+  bottom: 5rem;
+  left: 45%;
+  transform: translateX(-45%);
+  z-index: 2;
+}

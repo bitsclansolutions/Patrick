@@ -1,0 +1,73 @@
+.features-main-wrapper{
+width: 100%;
+}
+
+.features-section-wrapper {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 5.5rem 4.5rem 4.5rem 4.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.features-section-right-wrapper {
+  width: 50%;
+  padding-left: 2rem;
+  padding-right: 3rem;
+}
+
+.features-heading {
+  font-family: "Nunito", serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #000;
+}
+
+.features-des {
+  font-family: "Nunito", serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.feature-objective {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+  margin-bottom: 1.2rem;
+}
+
+.feature-objective-heading {
+  font-family: "Nunito", serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 0rem;
+}
+
+.feature-objective-des {
+  font-family: "Nunito", serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #4b5162;
+  margin-bottom: 0rem;
+}
+
+.features-section-left-wrapper {
+  width: 50%;
+}
+
+.features-left-image {
+  width: 100%;
+}
+
+.circuit-artifact {
+  position: absolute;
+  right: 0rem;
+  top: 6rem;
+  z-index: 0;
+  width: 150px;
+  height: 150px;
+}

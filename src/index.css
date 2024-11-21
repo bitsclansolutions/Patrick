@@ -11,6 +11,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: beige;
   font-family: "Nunito", sans-serif !important;
+  overflow: hidden;
 }
 
 button {

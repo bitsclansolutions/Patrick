@@ -1,14 +1,37 @@
-.avatar-name{
-    font-family: 'Nunito', sans-serif;
-    padding: 7px 7px 5px 9px;
-    font-size: 130%;
-    font-weight: 800;
-    text-align: left;
+.avatar-name {
+  font-family: "Nunito", sans-serif;
+  padding: 7px 7px 5px 9px;
+  font-size: 130%;
+  font-weight: 800;
+  text-align: left;
 }
-@media (max-width:1200px){
-    .avatar-name {
-        font-family: 'Nunito', sans-serif;
-        padding: 2px 7px 5px 5px;
-        font-size: 146%;
-    }
+
+.avatar-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.avatar-dropdown-menu-custom {
+  display: none;
+  top: 100%; /* Position below the main div */
+  left: 0;
+  width: 200px;
+  height: 150px;
+  overflow-y: auto; /* Add scroll if content overflows */
+  z-index: 1;
+  border-radius: 10px;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-container:hover .avatar-dropdown-menu-custom {
+  display: flex; /* Show dropdown on hover */
+}
+@media (max-width: 1200px) {
+  .avatar-name {
+    font-family: "Nunito", sans-serif;
+    padding: 2px 7px 5px 5px;
+    font-size: 146%;
+  }
 }

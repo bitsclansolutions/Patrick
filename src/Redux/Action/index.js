@@ -1,4 +1,18 @@
 import { type } from "@testing-library/user-event/dist/type";
+import {
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  LOGOUT,
+  GET_ALL_USER_REQUEST,
+  GET_ALL_USER_SUCCESS,
+  GET_ALL_USER_FAILURE,
+  EDIT_USER_REQUEST,
+  EDIT_USER_SUCCESS,
+  EDIT_USER_FAILURE,
+} from "./actionTypes";
+import api from "../../utils/axiosInstance";
+import { endpoints } from "../../utils/endpoints";
 
 export const userinfo = (val) => {
   return {
@@ -272,5 +286,39 @@ export const showPopup = () => {
 export const hidePopup = () => {
   return {
     type: "hidePopup",
+  };
+};
+
+//Auth actions
+export const loginRequest = () => ({ type: LOGIN_REQUEST });
+export const loginSuccess = (user) => ({ type: LOGIN_SUCCESS, payload: user });
+export const loginFailure = (error) => ({
+  type: LOGIN_FAILURE,
+  payload: error,
+});
+export const logout = () => ({ type: LOGOUT });
+
+//Get All Users actions
+export const getAllUserRequest = () => ({ type: GET_ALL_USER_REQUEST });
+export const getAllUserSuccess = (user) => ({
+  type: GET_ALL_USER_SUCCESS,
+  payload: user,
+});
+export const getAllUserFailure = (error) => ({
+  type: GET_ALL_USER_FAILURE,
+  payload: error,
+});
+
+
+//Fetch All Users API
+export const fetchAllusers = () => {
+  return async (dispatch) => {
+    dispatch(getAllUserRequest());
+    try {
+      const response = await api.get(endpoints.getUsers());
+      dispatch(getAllUserSuccess(response.data));
+    } catch (error) {
+      dispatch(getAllUserFailure(error.message));
+    }
   };
 };

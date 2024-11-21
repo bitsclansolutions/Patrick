@@ -1,0 +1,36 @@
+.add-user-section-main {
+  width: 100%;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.add-user-section-heading {
+  font-family: "Nunito", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.add-user-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-user-inputs-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.add-user-input {
+  border: none; /* Remove default border */
+  border-bottom: 1.12px solid #2a2727; /* Only bottom border */
+  outline: none; /* Remove focus outline */
+  padding: 8px 10px; /* Adjust padding */
+  background-color: transparent;
+}
+
+.add-user-input:focus {
+  border-bottom-color: #000; /* Keep the bottom border color the same on focus */
+  outline: none; /* No outline or additional border on focus */
+}
+

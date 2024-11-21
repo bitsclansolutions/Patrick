@@ -1,0 +1,40 @@
+.edit-modal {
+  width: 100%;
+  height: 124px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-modal p {
+  font-family: "Nunito", sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 0rem;
+  text-align: center;
+}
+
+.edit-modal p span {
+  font-weight: 800;
+}
+
+.edit-modal-inputs-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.edit-modal-input {
+  border: none; /* Remove default border */
+  border-bottom: 1.12px solid #2a2727; /* Only bottom border */
+  outline: none; /* Remove focus outline */
+  padding: 8px 10px; /* Adjust padding */
+  background-color: transparent;
+}
+
+.edit-modal-input:focus {
+  border-bottom-color: #000; /* Keep the bottom border color the same on focus */
+  outline: none; /* No outline or additional border on focus */
+}
+
+.edit-modal-input:disabled {
+  opacity: 0.5;
+}

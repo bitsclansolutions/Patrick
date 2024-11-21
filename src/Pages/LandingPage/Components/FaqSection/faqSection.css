@@ -1,0 +1,78 @@
+.faq-main-wrapper{
+  width: 100%;
+  background-color: #fbfbfb;
+}
+
+.faq-section-wrapper {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 3.5rem 4.5rem 3.5rem 4.5rem;
+  position: relative;
+  display: flex;
+}
+
+.faq-section-left-wrapper {
+  width: 50%;
+  padding-right: 3rem;
+  padding-left: 5rem;
+}
+
+.faq-section-heading {
+  font-family: "Nunito", serif;
+  font-size: 39px;
+  font-weight: 700;
+}
+.faq-section-des {
+  font-family: "Nunito", serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+.faq-section-img {
+  width: 320px;
+  height: 320px;
+}
+
+.faq-section-right-wrapper {
+  width: 50%;
+  padding-right: 6rem;
+}
+
+.breaker-artifact {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  top: 1rem;
+  right: 0rem;
+}
+
+/* Remove border from accordion item */
+.accordion {
+  border: 1px solid transparent;
+}
+.accordion-item {
+  border: none !important; /* Remove border around the entire accordion item */
+}
+
+.accordion-item .accordion-button {
+  border-radius: 0px !important;
+  border-bottom: 1px solid gray;
+  color: black !important;
+  background-color: transparent !important;
+  position: relative;
+}
+
+.accordion-item .accordion-button::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 25%; /* To vertically center the border */
+  width: 4px; /* Thickness of the border */
+  height: 50%; /* Height of the border relative to the parent */
+  background-color: #387ff5; /* Blue color for the border */
+  border-radius: 4px;
+}
+
+.accordion-button:focus {
+  box-shadow: none !important;
+}

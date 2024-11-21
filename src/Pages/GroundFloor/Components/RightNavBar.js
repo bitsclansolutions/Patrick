@@ -1946,6 +1946,8 @@ const RightNavBar = (props) => {
     );
   };
 
+  const userInfo = useSelector((state) => state.AuthReducer.user);
+
   const testModalText = {
     head: isDutchLocal ? "Goed zo!" : "Well done!",
     text: isDutchLocal
@@ -1965,7 +1967,11 @@ const RightNavBar = (props) => {
 
   const redirect = () => {
     if (exerciseNumber === 2) {
-      testModalHandler();
+      if(userInfo){
+        testModalHandler();
+      }else{
+        navigate("/select-name")
+      }
     } else {
       navigate("/result");
     }
@@ -2171,6 +2177,7 @@ const RightNavBar = (props) => {
     setIsDutch(localLanguage);
     dispatch(changeLanguage(localLanguage));
   }, [isDutch]);
+
 
   return (
     <>

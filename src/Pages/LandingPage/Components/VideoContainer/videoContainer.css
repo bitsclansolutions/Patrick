@@ -1,0 +1,74 @@
+.video-wrapper {
+  width: 90%;
+  height: 330px;
+  margin-left: auto;
+  border-radius: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-image: url("../images/hero-section-video-bg.png");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+}
+
+.play-video-wrapper {
+  width: 336px;
+  height: 84px;
+  border-radius: 48px;
+  background-color: white;
+  border: 12px solid #c3d1ff59;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 33px;
+  padding-right: 24px;
+}
+
+.play-btn-text-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.play-btn-text-one {
+  font-family: "Nunito", serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 0rem;
+}
+
+.play-btn-text-last {
+  font-family: "Nunito", serif;
+  font-size: 16px;
+  font-weight: 400px;
+  color: #4b5162;
+  margin-bottom: 0rem;
+}
+
+.play-btn-text-last span {
+  color: #3273f5;
+}
+
+
+.video-player-container {
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.close-btn:hover {
+  background-color: darkred;
+}

@@ -1,0 +1,104 @@
+.seamless-main-wrapper {
+  width: 100%;
+  background: #387ff5;
+}
+
+.seamless-section-wrapper {
+  width: 100%;
+  padding: 5.5rem 4.5rem 5.5rem 4.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.seamless-heading {
+  font-family: "Nunito", serif;
+  font-size: 40px;
+  font-family: 700;
+  color: white;
+}
+
+.seamless-des {
+  font-family: "Nunito", serif;
+  font-size: 16px;
+  font-family: 400;
+  color: white;
+  text-align: center;
+  width: 80%;
+}
+
+.seamless-clouds-img {
+  width: 100%;
+  height: 136px;
+  position: absolute;
+  left: 0;
+  top: -50px;
+  z-index: 1;
+}
+
+.inner-cards-wrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  margin-top: 2rem;
+}
+
+.inner-cards-wrapper:before {
+  position: absolute;
+  content: "";
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    #ffffff 48.5%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  width: 100%;
+  height: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.inner-card {
+  width: 20%;
+  height: 180px;
+  border-right: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 1rem;
+}
+
+.inner-card:nth-child(5),
+.inner-card:nth-child(10) {
+  border-right: none; /* Remove the right border for the 5th and 10th cards */
+}
+
+.inner-card-text {
+  font-family: "Nunito", serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: white;
+  text-align: center;
+}
+
+.lightning-artifact {
+  position: absolute;
+  width: 150px;
+  height: 170px;
+  top: 5rem;
+  left: 0rem;
+}
+
+.ac-artifact {
+  position: absolute;
+  width: 200px;
+  height: 230px;
+  bottom: -7rem;
+  right: 0rem;
+}

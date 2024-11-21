@@ -1,0 +1,123 @@
+import React from "react";
+import "./login.css";
+import CustomButton from "../Components/CustomButton";
+import { Link, useNavigate } from "react-router-dom";
+import { Form } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { loginFailure, loginRequest, loginSuccess } from "../../Redux/Action";
+import api from "../../utils/axiosInstance";
+import { endpoints } from "../../utils/endpoints";
+import { toast } from "react-toastify";
+
+function Login() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { user, loading } = useSelector((state) => state.AuthReducer);
+
+  const fetchData = async (values) => {
+    dispatch(loginRequest());
+    try {
+      const response = await api.post(endpoints.login(), values);
+      localStorage.setItem("token", response.data.data.token);
+      localStorage.setItem("user", JSON.stringify(response.data.data.user));
+      dispatch(loginSuccess(response.data.data.user));
+      toast.success("Logged In Successfully!");
+      navigate("/dashboard");
+    } catch (error) {
+      dispatch(loginFailure(error.message));
+      console.log(error);
+      if (error?.response?.data?.message) {
+        toast.error(error?.response?.data?.message);
+      } else {
+        toast.error("Credentials are wrong!", error.message);
+      }
+    }
+  };
+
+  const onFinish = (values) => {
+    console.log("Success:", values);
+    fetchData(values);
+
+    // alert;
+  };
+
+  console.log(user);
+  console.log(loading);
+
+  return (
+    <div className="login-main-wrapper">
+      <div className="login-form-wrapper">
+        <p className="login-form-heading">Sign-In</p>
+
+        <Form className="login-form-inner" onFinish={onFinish}>
+          <Form.Item
+            name="email"
+            rules={[
+              {
+                required: true,
+                message: "Please input your email!",
+              },
+            ]}
+          >
+            <input
+              style={{ width: "100%" }}
+              type="email"
+              class="login-custom-input"
+              placeholder="Enter your email"
+            />
+          </Form.Item>
+
+          <Form.Item
+            name="password"
+            rules={[
+              // {
+              //   pattern: new RegExp(
+              //     /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/
+              //   ),
+              //   message:
+              //     "must include min 8 character, one digit, one upper case and one special charater",
+              // },
+              {
+                required: true,
+                message: "Please input your password!",
+              },
+            ]}
+          >
+            <input
+              style={{ width: "100%" }}
+              type="password"
+              class="login-custom-input"
+              placeholder="Enter your password"
+            />
+          </Form.Item>
+          <Link
+            to={"/forget-password"}
+            style={{
+              textDecoration: "none",
+              textAlign: "right",
+              marginBottom: "0rem",
+              marginBottom: "1.5rem",
+            }}
+          >
+            <p
+              style={{
+                marginBottom: "0rem",
+              }}
+            >
+              Forget password?
+            </p>
+          </Link>
+          <CustomButton
+            type={"solid"}
+            label={"Sign-In"}
+            loading={loading}
+            disabled={loading}
+            // style={{ marginTop: "0rem" }}
+          />
+        </Form>
+      </div>
+    </div>
+  );
+}
+
+export default Login;

@@ -1,55 +1,63 @@
-import GroundFloor from './Pages/GroundFloor/index';
-import Home from './Pages/HomePage/Home';
-import MaskGroup from './Pages/MaskGroup/MaskGroup';
-import { Routes, Route, Link, Navigate } from 'react-router-dom';
-import FirstFloor from './Pages/FirstFloor';
-import './index.css';
-import Attic from './Pages/Attic';
-import 'antd/dist/antd.css';
-import { useState, useEffect } from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import LivingIndex from './Pages/GroundFloor/Components/LivingIndex';
-import ToiletIndex from './Pages/GroundFloor/Components/ToiletIndex';
-import KitchenIndex from './Pages/GroundFloor/Components/KitchenIndex';
-import LivingRoomTwoIndex from './Pages/FirstFloor/Components/LivingRoomTwoIndex';
-import BedRoomIndex from './Pages/FirstFloor/Components/BedRoomIndex';
-import ToiletIndexFirst from './Pages/FirstFloor/Components/ToiletIndexFirst';
-import StudyRoomIndex from './Pages/Attic/Component/StudyRoomIndex';
-import StorageRoomIndex from './Pages/Attic/Component/StorageRoomIndex';
-import LaundaryIndex from './Pages/Attic/Component/LaundaryIndex';
-import LivingRoomOneIndex from './Pages/FirstFloor/Components/LivingRoomOneIndex';
-import GuestRoomIndexAttic from './Pages/Attic/Component/GuestRoomIndexAttic';
-import Congratulation from './Pages/Congratulation/Congratulation';
+import GroundFloor from "./Pages/GroundFloor/index";
+import Home from "./Pages/HomePage/Home";
+import MaskGroup from "./Pages/MaskGroup/MaskGroup";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
+import FirstFloor from "./Pages/FirstFloor";
+import "./index.css";
+import Attic from "./Pages/Attic";
+import "antd/dist/antd.css";
+import { useState, useEffect } from "react";
+import { BrowserRouter } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import LivingIndex from "./Pages/GroundFloor/Components/LivingIndex";
+import ToiletIndex from "./Pages/GroundFloor/Components/ToiletIndex";
+import KitchenIndex from "./Pages/GroundFloor/Components/KitchenIndex";
+import LivingRoomTwoIndex from "./Pages/FirstFloor/Components/LivingRoomTwoIndex";
+import BedRoomIndex from "./Pages/FirstFloor/Components/BedRoomIndex";
+import ToiletIndexFirst from "./Pages/FirstFloor/Components/ToiletIndexFirst";
+import StudyRoomIndex from "./Pages/Attic/Component/StudyRoomIndex";
+import StorageRoomIndex from "./Pages/Attic/Component/StorageRoomIndex";
+import LaundaryIndex from "./Pages/Attic/Component/LaundaryIndex";
+import LivingRoomOneIndex from "./Pages/FirstFloor/Components/LivingRoomOneIndex";
+import GuestRoomIndexAttic from "./Pages/Attic/Component/GuestRoomIndexAttic";
+import Congratulation from "./Pages/Congratulation/Congratulation";
 import {
   SwalBreakerOff,
   SwalDisconnected,
   SwalDisconnectedCorrupt,
-} from './Pages/Components/SwalModules';
-import Sorry from './Pages/Congratulation/Sorry';
-import SelectOption from './Pages/SelectOption/SelectOption';
+} from "./Pages/Components/SwalModules";
+import Sorry from "./Pages/Congratulation/Sorry";
+import SelectOption from "./Pages/SelectOption/SelectOption";
 import {
   changeLanguage,
   corruptDevice,
   corruptGroup,
   setExercise,
   setExerciseGate,
-} from './Redux/Action';
+} from "./Redux/Action";
 import {
   disconnectedCorruptDutch,
   disconnectedCorruptEnglish,
-} from './utils/translation';
-import StartPage from './exercise/pages/step1/StartPage';
-import GroundFloorPage from './exercise/pages/step2/GroundFloorPage';
-import FirstFloorPage from './exercise/pages/step2/FirstFloorPage';
-import AtticFloorPage from './exercise/pages/step2/AtticFloorPage';
-import Step3Page from './exercise/pages/step3/Step3Page';
-import BoardPage from './exercise/pages/step3/BoardPage';
-import DevicesPage from './exercise/pages/step3/DevicesPage';
-import FinishPage from './exercise/pages/step3/FinishPage';
-import Step4 from './exercise/components/step4/Step4';
-import Step4Page from './exercise/pages/step4/Step4Page';
-import ErrorPage from './Pages/404/ErrorPage';
+} from "./utils/translation";
+import StartPage from "./exercise/pages/step1/StartPage";
+import GroundFloorPage from "./exercise/pages/step2/GroundFloorPage";
+import FirstFloorPage from "./exercise/pages/step2/FirstFloorPage";
+import AtticFloorPage from "./exercise/pages/step2/AtticFloorPage";
+import Step3Page from "./exercise/pages/step3/Step3Page";
+import BoardPage from "./exercise/pages/step3/BoardPage";
+import DevicesPage from "./exercise/pages/step3/DevicesPage";
+import FinishPage from "./exercise/pages/step3/FinishPage";
+import Step4 from "./exercise/components/step4/Step4";
+import Step4Page from "./exercise/pages/step4/Step4Page";
+import ErrorPage from "./Pages/404/ErrorPage";
+import LandingPage from "./Pages/LandingPage";
+import Login from "./Pages/Login";
+import ForgetPassword from "./Pages/ForgetPassword";
+import ResetPassword from "./Pages/ResetPassword";
+import Dashboard from "./Pages/Dashboard";
+import ProtectedRoute from "./utils/protectedRoute";
+import ManageUsers from "./Pages/ManageUsers";
+import Profile from "./Pages/Profile";
 function App() {
   const userName = useSelector((state) => state.UserReducer.userName);
   const isFinished = useSelector((state) => state.ResultReducer.isFinished);
@@ -57,9 +65,9 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setExercise(Number(localStorage.getItem('exerciseNumber'))));
+    dispatch(setExercise(Number(localStorage.getItem("exerciseNumber"))));
     dispatch(
-      setExerciseGate(Number(localStorage.getItem('exerciseGateNumber')))
+      setExerciseGate(Number(localStorage.getItem("exerciseGateNumber")))
     );
   });
 
@@ -80,10 +88,10 @@ function App() {
   const exerciseNumber = useSelector((state) => state.ExerciseReducer.exercise);
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
 
-  const localLanguage = JSON.parse(localStorage.getItem('isDutch'));
+  const localLanguage = JSON.parse(localStorage.getItem("isDutch"));
 
   useEffect(() => {
-    localLanguage === null && localStorage.setItem('isDutch', true);
+    localLanguage === null && localStorage.setItem("isDutch", true);
   }, []);
 
   useEffect(() => {
@@ -93,23 +101,23 @@ function App() {
   // GROUP 1
   // ***********************************
   // toilet section code ...................................................
-  const [toiletFan, setToiletFan] = useState('connected');
-  const [toiletLight, setToiletLight] = useState('connected');
+  const [toiletFan, setToiletFan] = useState("connected");
+  const [toiletLight, setToiletLight] = useState("connected");
   // Hall section code ...................................................
-  const [hallLight01, setHallLight01] = useState('connected');
-  const [hallLight02, setHallLight02] = useState('connected');
-  const [hallLamp, setHallLamp] = useState('connected');
+  const [hallLight01, setHallLight01] = useState("connected");
+  const [hallLight02, setHallLight02] = useState("connected");
+  const [hallLamp, setHallLamp] = useState("connected");
   // LivingRoom section code ...................................................
-  const [livingLight01, setLivingLight01] = useState('connected');
-  const [livingLight03, setLivingLight03] = useState('connected');
-  const [livingAC, setLivingAC] = useState('connected');
-  const [livingRadio, setLivingRadio] = useState('connected');
+  const [livingLight01, setLivingLight01] = useState("connected");
+  const [livingLight03, setLivingLight03] = useState("connected");
+  const [livingAC, setLivingAC] = useState("connected");
+  const [livingRadio, setLivingRadio] = useState("connected");
   // GROUP 1 BREAKER
 
   const [allCorruptDevice, setAllCorruptDevice] = useState(0);
   const [rndAll, setRndAll] = useState(0);
 
-  const [firstGroupBreakerType, setFirstGroupBreakerType] = useState('red');
+  const [firstGroupBreakerType, setFirstGroupBreakerType] = useState("red");
   const [isFirstGroupBreaker, setIsFirstGroupBreaker] = useState(true);
 
   const randomDevice = () => {
@@ -159,15 +167,15 @@ function App() {
     : disconnectedCorruptEnglish;
   useEffect(() => {
     if (
-      toiletFan === 'disconnect' &&
-      toiletLight === 'disconnect' &&
-      hallLight01 === 'disconnect' &&
-      hallLight02 === 'disconnect' &&
-      hallLamp === 'disconnect' &&
-      livingRadio === 'disconnect' &&
-      livingLight01 === 'disconnect' &&
-      livingAC === 'disconnect' &&
-      livingLight03 === 'disconnect'
+      toiletFan === "disconnect" &&
+      toiletLight === "disconnect" &&
+      hallLight01 === "disconnect" &&
+      hallLight02 === "disconnect" &&
+      hallLamp === "disconnect" &&
+      livingRadio === "disconnect" &&
+      livingLight01 === "disconnect" &&
+      livingAC === "disconnect" &&
+      livingLight03 === "disconnect"
     ) {
       if (rndAll >= 1 && rndAll <= 9) {
         exerciseNumber === 2 && SwalDisconnectedCorrupt(popupText);
@@ -190,16 +198,16 @@ function App() {
   // ***********************************
   // GROUP 2
   // ***********************************
-  const [kitchenLight01, setKitchenLight01] = useState('connected');
-  const [kitchenLight02, setKitchenLight02] = useState('connected');
-  const [kitchenLight03, setKitchenLight03] = useState('connected');
-  const [kitchenMixture, setKitchenMixture] = useState('connected');
-  const [kitchenOven, setKitchenOven] = useState('connected');
-  const [kitchenToster, setKitchenToster] = useState('connected');
+  const [kitchenLight01, setKitchenLight01] = useState("connected");
+  const [kitchenLight02, setKitchenLight02] = useState("connected");
+  const [kitchenLight03, setKitchenLight03] = useState("connected");
+  const [kitchenMixture, setKitchenMixture] = useState("connected");
+  const [kitchenOven, setKitchenOven] = useState("connected");
+  const [kitchenToster, setKitchenToster] = useState("connected");
 
   const [kitchenCorruptDevice, setKitchenCorruptDevice] = useState(0);
   const [rndKitchen, setRndKitchen] = useState(0);
-  const [kitchenBreakerType, setKitchenBreakerType] = useState('red');
+  const [kitchenBreakerType, setKitchenBreakerType] = useState("red");
   const [isKitchenBreaker, setIsKitchenBreaker] = useState(true);
 
   // useEffect(() => {
@@ -212,12 +220,12 @@ function App() {
 
   useEffect(() => {
     if (
-      kitchenLight01 === 'disconnect' &&
-      kitchenLight02 === 'disconnect' &&
-      kitchenLight03 === 'disconnect' &&
-      kitchenMixture === 'disconnect' &&
-      kitchenOven === 'disconnect' &&
-      kitchenToster === 'disconnect'
+      kitchenLight01 === "disconnect" &&
+      kitchenLight02 === "disconnect" &&
+      kitchenLight03 === "disconnect" &&
+      kitchenMixture === "disconnect" &&
+      kitchenOven === "disconnect" &&
+      kitchenToster === "disconnect"
     ) {
       if (rndAll >= 10 && rndAll <= 15) {
         exerciseNumber === 2 && SwalDisconnectedCorrupt(popupText);
@@ -238,20 +246,20 @@ function App() {
   // GROUP 3
   // ***********************************
   // livingOne section code .......................................................
-  const [livingOneLignt01, setLivingOneLignt01] = useState('connected');
-  const [livingOneLignt02, setLivingOneLignt02] = useState('connected');
-  const [livingOneLignt03, setLivingOneLignt03] = useState('connected');
-  const [livingOneFan, setLivingOneFan] = useState('connected');
-  const [livingOneTV, setLivingOneTV] = useState('connected');
+  const [livingOneLignt01, setLivingOneLignt01] = useState("connected");
+  const [livingOneLignt02, setLivingOneLignt02] = useState("connected");
+  const [livingOneLignt03, setLivingOneLignt03] = useState("connected");
+  const [livingOneFan, setLivingOneFan] = useState("connected");
+  const [livingOneTV, setLivingOneTV] = useState("connected");
   // livingTwo section code .......................................................
-  const [livingTwoLignt01, setLivingTwoLignt01] = useState('connected');
-  const [livingTwoLignt02, setLivingTwoLignt02] = useState('connected');
-  const [livingTwoSmallLamp, setLivingTwoSmallLamp] = useState('connected');
-  const [livingTwoFan, setLivingTwoFan] = useState('connected');
+  const [livingTwoLignt01, setLivingTwoLignt01] = useState("connected");
+  const [livingTwoLignt02, setLivingTwoLignt02] = useState("connected");
+  const [livingTwoSmallLamp, setLivingTwoSmallLamp] = useState("connected");
+  const [livingTwoFan, setLivingTwoFan] = useState("connected");
   // GROUP 3 BREAKER
   const [groupThreeCorruptDevice, setGroupThreeCorruptDevice] = useState(0);
   const [rndGroupThree, setRndGroupThree] = useState(0);
-  const [groupThreeBreakerType, setGroupThreeBreakerType] = useState('red');
+  const [groupThreeBreakerType, setGroupThreeBreakerType] = useState("red");
   const [isGroupThreeBreaker, setIsGroupThreeBreaker] = useState(true);
 
   // useEffect(() => {
@@ -264,15 +272,15 @@ function App() {
 
   useEffect(() => {
     if (
-      livingOneLignt01 === 'disconnect' &&
-      livingOneLignt02 === 'disconnect' &&
-      livingOneLignt03 === 'disconnect' &&
-      livingOneFan === 'disconnect' &&
-      livingOneTV === 'disconnect' &&
-      livingTwoLignt01 === 'disconnect' &&
-      livingTwoSmallLamp === 'disconnect' &&
-      livingTwoLignt02 === 'disconnect' &&
-      livingTwoFan === 'disconnect'
+      livingOneLignt01 === "disconnect" &&
+      livingOneLignt02 === "disconnect" &&
+      livingOneLignt03 === "disconnect" &&
+      livingOneFan === "disconnect" &&
+      livingOneTV === "disconnect" &&
+      livingTwoLignt01 === "disconnect" &&
+      livingTwoSmallLamp === "disconnect" &&
+      livingTwoLignt02 === "disconnect" &&
+      livingTwoFan === "disconnect"
     ) {
       if (rndAll >= 16 && rndAll <= 24) {
         exerciseNumber === 2 && SwalDisconnectedCorrupt(popupText);
@@ -296,22 +304,22 @@ function App() {
   // GROUP 4
   // ***********************************
   // Hall section code ...................................................
-  const [hallLight01First, setHallLight01First] = useState('connected'); //check
-  const [hallLight02First, setHallLight02First] = useState('connected'); //check
-  const [hallLedTv, setHallLedTv] = useState('connected');
+  const [hallLight01First, setHallLight01First] = useState("connected"); //check
+  const [hallLight02First, setHallLight02First] = useState("connected"); //check
+  const [hallLedTv, setHallLedTv] = useState("connected");
   // BED room section code ...................................................
-  const [bedRoomLight01, setBedRoomLight01] = useState('connected'); //check
-  const [bedRoomLight02, setBedRoomLight02] = useState('connected'); //check
-  const [livingSilingFan, setLivingSilingFan] = useState('connected');
+  const [bedRoomLight01, setBedRoomLight01] = useState("connected"); //check
+  const [bedRoomLight02, setBedRoomLight02] = useState("connected"); //check
+  const [livingSilingFan, setLivingSilingFan] = useState("connected");
   // toilet section code ...................................................
-  const [toiletFanFirst, setToiletFanFirst] = useState('connected'); //check
-  const [toiletLightFirst, setToiletLightFirst] = useState('connected'); //check
-  const [toiletLight02, setToiletLight02] = useState('connected');
-  const [toiletLight03, setToiletLight03] = useState('connected');
+  const [toiletFanFirst, setToiletFanFirst] = useState("connected"); //check
+  const [toiletLightFirst, setToiletLightFirst] = useState("connected"); //check
+  const [toiletLight02, setToiletLight02] = useState("connected");
+  const [toiletLight03, setToiletLight03] = useState("connected");
 
   const [groupFourCorruptDevice, setGroupFourCorruptDevice] = useState(0);
   const [rndGroupFour, setRndGroupFour] = useState(0);
-  const [groupFourBreakerType, setGroupFourBreakerType] = useState('red');
+  const [groupFourBreakerType, setGroupFourBreakerType] = useState("red");
   const [isGroupFourBreaker, setIsGroupFourBreaker] = useState(true);
 
   // useEffect(() => {
@@ -324,16 +332,16 @@ function App() {
 
   useEffect(() => {
     if (
-      hallLedTv === 'disconnect' &&
-      hallLight01First === 'disconnect' &&
-      hallLight02First === 'disconnect' &&
-      bedRoomLight01 === 'disconnect' &&
-      bedRoomLight02 === 'disconnect' &&
-      livingSilingFan === 'disconnect' &&
-      toiletLightFirst === 'disconnect' &&
-      toiletLight02 === 'disconnect' &&
-      toiletFanFirst === 'disconnect' &&
-      toiletLight03 === 'disconnect'
+      hallLedTv === "disconnect" &&
+      hallLight01First === "disconnect" &&
+      hallLight02First === "disconnect" &&
+      bedRoomLight01 === "disconnect" &&
+      bedRoomLight02 === "disconnect" &&
+      livingSilingFan === "disconnect" &&
+      toiletLightFirst === "disconnect" &&
+      toiletLight02 === "disconnect" &&
+      toiletFanFirst === "disconnect" &&
+      toiletLight03 === "disconnect"
     ) {
       if (rndAll >= 25 && rndAll <= 34) {
         exerciseNumber === 2 && SwalDisconnectedCorrupt(popupText);
@@ -360,25 +368,25 @@ function App() {
   // GROUP 5
   // ***********************************
   // Hall section code .......................................................
-  const [hallLight01Five, setHallLight01Five] = useState('connected');
-  const [hallLight02Five, setHallLight02Five] = useState('connected');
-  const [hallLampFive, setHallLampFive] = useState('connected');
+  const [hallLight01Five, setHallLight01Five] = useState("connected");
+  const [hallLight02Five, setHallLight02Five] = useState("connected");
+  const [hallLampFive, setHallLampFive] = useState("connected");
   //   gestroom section code .................................................
-  const [guestLamp, setGuestLamp] = useState('connected');
-  const [guestRadio, setGuestRadio] = useState('connected');
-  const [guestFan, setGuestFan] = useState('connected');
-  const [guestLED, setGuestLED] = useState('connected');
+  const [guestLamp, setGuestLamp] = useState("connected");
+  const [guestRadio, setGuestRadio] = useState("connected");
+  const [guestFan, setGuestFan] = useState("connected");
+  const [guestLED, setGuestLED] = useState("connected");
   // Study section code ......................................................
-  const [studyLamp, setStudyLamp] = useState('connected');
-  const [studyLamp02, setStudyLamp02] = useState('connected');
+  const [studyLamp, setStudyLamp] = useState("connected");
+  const [studyLamp02, setStudyLamp02] = useState("connected");
   // store section code .......................................................
-  const [livingOneLignt01Five, setLivingOneLignt01Five] = useState('connected');
-  const [livingOneLignt02Five, setLivingOneLignt02Five] = useState('connected');
-  const [livingOneLignt03Five, setLivingOneLignt03Five] = useState('connected');
+  const [livingOneLignt01Five, setLivingOneLignt01Five] = useState("connected");
+  const [livingOneLignt02Five, setLivingOneLignt02Five] = useState("connected");
+  const [livingOneLignt03Five, setLivingOneLignt03Five] = useState("connected");
 
   const [groupFiveCorruptDevice, setGroupFiveCorruptDevice] = useState(0);
   const [rndGroupFive, setRndGroupFive] = useState(0);
-  const [groupFiveBreakerType, setgroupFiveBreakerType] = useState('red');
+  const [groupFiveBreakerType, setgroupFiveBreakerType] = useState("red");
   const [isGroupFiveBreaker, setIsGroupFiveBreaker] = useState(true);
 
   // useEffect(() => {
@@ -391,19 +399,19 @@ function App() {
 
   useEffect(() => {
     if (
-      hallLampFive === 'disconnect' &&
-      hallLight01Five === 'disconnect' &&
-      hallLight02Five === 'disconnect' &&
-      guestLamp === 'disconnect' &&
-      guestRadio === 'disconnect' &&
-      guestFan === 'disconnect' &&
-      guestLED === 'disconnect' &&
-      studyLamp === 'disconnect' &&
-      studyLamp02 === 'disconnect' &&
+      hallLampFive === "disconnect" &&
+      hallLight01Five === "disconnect" &&
+      hallLight02Five === "disconnect" &&
+      guestLamp === "disconnect" &&
+      guestRadio === "disconnect" &&
+      guestFan === "disconnect" &&
+      guestLED === "disconnect" &&
+      studyLamp === "disconnect" &&
+      studyLamp02 === "disconnect" &&
       // store
-      livingOneLignt01Five === 'disconnect' &&
-      livingOneLignt03Five === 'disconnect' &&
-      livingOneLignt02Five === 'disconnect'
+      livingOneLignt01Five === "disconnect" &&
+      livingOneLignt03Five === "disconnect" &&
+      livingOneLignt02Five === "disconnect"
     ) {
       if (rndAll >= 35 && rndAll <= 46) {
         exerciseNumber === 2 && SwalDisconnectedCorrupt(popupText);
@@ -432,13 +440,13 @@ function App() {
   // GROUP 6
   // ***********************************
   // laundary section code ...................................................
-  const [laundaryLight01, setLaundaryLight01] = useState('connected');
-  const [laundaryLight02, setLaundaryLight02] = useState('connected');
-  const [laundaryWashing, setLaundaryWashing] = useState('connected');
+  const [laundaryLight01, setLaundaryLight01] = useState("connected");
+  const [laundaryLight02, setLaundaryLight02] = useState("connected");
+  const [laundaryWashing, setLaundaryWashing] = useState("connected");
 
   const [laundaryCorruptDevice, setLaundaryCorruptDevice] = useState(0);
   const [rndLaundary, setRndLaundary] = useState(0);
-  const [laundaryBreakerType, setLaundaryBreakerType] = useState('red');
+  const [laundaryBreakerType, setLaundaryBreakerType] = useState("red");
   const [isLaundaryBreaker, setIsLaundaryBreaker] = useState(true);
 
   // useEffect(() => {
@@ -451,9 +459,9 @@ function App() {
 
   useEffect(() => {
     if (
-      laundaryWashing === 'disconnect' &&
-      laundaryLight01 === 'disconnect' &&
-      laundaryLight02 === 'disconnect'
+      laundaryWashing === "disconnect" &&
+      laundaryLight01 === "disconnect" &&
+      laundaryLight02 === "disconnect"
     ) {
       if (rndAll >= 47 && rndAll <= 49) {
         exerciseNumber === 2 && SwalDisconnectedCorrupt(popupText);
@@ -600,7 +608,58 @@ function App() {
       <div className="main-page">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<LandingPage />} />
+            <Route
+              path="/login"
+              element={
+                <ProtectedRoute protectedRoute={false}>
+                  <Login />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/forget-password"
+              element={
+                <ProtectedRoute protectedRoute={false}>
+                  <ForgetPassword />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/reset-password"
+              element={
+                <ProtectedRoute protectedRoute={false}>
+                  <ResetPassword />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute protectedRoute={true}>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/manage-users"
+              element={
+                <ProtectedRoute protectedRoute={true}>
+                  <ManageUsers />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute protectedRoute={true}>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route path="/select-name" element={<Home />} />
             <Route path="/select-option" element={<SelectOption />} />
             <Route
               path="/ground-floor"

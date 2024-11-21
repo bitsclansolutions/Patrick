@@ -1,0 +1,61 @@
+.action-button {
+  width: max-content;
+  height: 30px;
+  padding: 0rem 1rem;
+  border-radius: 5px;
+  font-family: "Nunito", sans-serif;
+  font-size: 0.9rem;
+  border: 1px solid transparent;
+  background-color: #387ff5;
+  color: white;
+}
+.action-button:hover {
+  background-color: transparent;
+  border: 1px solid #387ff5;
+  color: #387ff5;
+}
+
+.action-button:disabled {
+  background-color: #387ff5;
+  color: white;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.action-button-outline {
+  width: max-content;
+  height: 30px;
+  padding: 0rem 1rem;
+  border-radius: 5px;
+  font-family: "Nunito", sans-serif;
+  font-size: 0.9rem;
+  border: 1px solid #387ff5;
+  background-color: transparent;
+  color: #387ff5;
+}
+
+.action-button-outline:hover {
+  background-color: #387ff5;
+  border: 1px solid transparent;
+  color: white;
+}
+
+.action-button-outline:disabled {
+  background-color: transparent;
+  color: #387ff5;
+  opacity: 0.5;
+  border: 1px solid #387ff5;
+  cursor: not-allowed;
+}
+
+.action-button-blocked {
+  width: max-content;
+  height: 30px;
+  padding: 0rem 1rem;
+  border-radius: 5px;
+  font-family: "Nunito", sans-serif;
+  font-size: 0.9rem;
+  border: 1px solid transparent;
+  background-color: gray;
+  color: white;
+}

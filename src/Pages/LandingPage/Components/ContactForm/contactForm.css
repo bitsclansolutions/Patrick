@@ -1,0 +1,54 @@
+.contact-form-wrapper {
+  width: 100%;
+  padding: 7.5rem 4.5rem 7.5rem 4.5rem;
+  position: relative;
+  display: flex;
+}
+
+.contact-form-left-wrapper {
+  width: 50%;
+  padding-right: 4rem;
+}
+.contact-form-left-wrapper img {
+  width: 100%;
+}
+
+.contact-form-right-wrapper {
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.form-wrapper {
+  width: 100%;
+}
+.form-wrapper form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.input-group-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.custom-input,
+.custom-select {
+  border: none; /* Remove default border */
+  border-bottom: 1.12px solid #2a2727; /* Only bottom border */
+  outline: none; /* Remove focus outline */
+  padding: 8px 0; /* Adjust padding */
+}
+
+.custom-input:focus,
+.custom-select:focus {
+  border-bottom-color: #000; /* Keep the bottom border color the same on focus */
+  outline: none; /* No outline or additional border on focus */
+}
+
+.custom-select {
+  appearance: none; /* Removes default dropdown styling in most browsers */
+  -webkit-appearance: none; /* Removes default styling in Safari */
+  -moz-appearance: none; /* Removes default styling in Firefox */
+  cursor: pointer; /* Shows pointer cursor for select */
+}

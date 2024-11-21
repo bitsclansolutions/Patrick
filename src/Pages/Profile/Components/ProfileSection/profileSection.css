@@ -1,0 +1,40 @@
+.profile-section-main {
+    width: 100%;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .profile-section-heading {
+    font-family: "Nunito", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  .profile-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .profile-inputs-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  .profile-input {
+    border: none; /* Remove default border */
+    border-bottom: 1.12px solid #2a2727; /* Only bottom border */
+    outline: none; /* Remove focus outline */
+    padding: 8px 10px; /* Adjust padding */
+    background-color: transparent;
+  }
+  
+  .profile-input:focus {
+    border-bottom-color: #000; /* Keep the bottom border color the same on focus */
+    outline: none; /* No outline or additional border on focus */
+  }
+  
+  .profile-input:disabled {
+    opacity: 0.5;
+  }
+  

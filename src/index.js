@@ -6,7 +6,8 @@ import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.css";
 import "antd/dist/antd.css";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
+import { thunk } from "redux-thunk";
 import { rootReducer } from "./Redux/Reducers";
 import { composeWithDevTools } from "redux-devtools-extension";
 import persistReducer from "redux-persist/es/persistReducer";
@@ -14,6 +15,8 @@ import persistStore from "redux-persist/es/persistStore";
 import { PersistGate } from "redux-persist/integration/react";
 import storage from "redux-persist/lib/storage";
 import CounterReducer from "./Redux/Reducers/CounterReducer";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import { Admin, Resource, polyglotI18nProvider } from "react-admin";
 // import translateService from "./utils/translationService";
 
@@ -24,7 +27,7 @@ const persistConfig = {
   whitelist: [CounterReducer],
 };
 const persist_r = persistReducer(persistConfig, rootReducer);
-const store = createStore(persist_r, composeWithDevTools());
+const store = createStore(persist_r, composeWithDevTools(), applyMiddleware(thunk));
 const persist_s = persistStore(store);
 
 // const i18nProvider = polyglotI18nProvider(() => translateService);
@@ -38,6 +41,7 @@ root.render(
       <PersistGate loading={null} persistor={persist_s}>
         <App />
       </PersistGate>
+      <ToastContainer/>
     </Provider>
     {/* </Admin> */}
   </React.StrictMode>

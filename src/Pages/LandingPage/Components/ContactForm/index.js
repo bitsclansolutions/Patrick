@@ -7,12 +7,12 @@ import FormWrapper from "./formWrapper";
 function ContactFormSection() {
   return (
     <SectionsLayout>
-      <div className="contact-form-wrapper">
+      <div className="contact-form-wrapper" id="contact">
         <div className="contact-form-left-wrapper">
           <img src={ContactFormImg} />
         </div>
         <div className="contact-form-right-wrapper">
-            <FormWrapper/>
+          <FormWrapper />
         </div>
       </div>
     </SectionsLayout>

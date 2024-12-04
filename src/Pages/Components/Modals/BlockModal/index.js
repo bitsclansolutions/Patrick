@@ -24,7 +24,7 @@ function BlockModal({
           <p>
             Are you sure you want to{" "}
             <span>
-              {editAbleUser?.blocked === true ? `“unblock”?` : `“block”?`}
+              {editAbleUser?.blocked === 1 ? `“unblock”?` : `“block”?`}
             </span>
           </p>
         </div>
@@ -44,7 +44,7 @@ function BlockModal({
           />
           <ActionButton
             onClick={handleModalOk}
-            label={editAbleUser?.blocked === true ? `Unblock?` : `Block?`}
+            label={editAbleUser?.blocked === 1 ? `Unblock?` : `Block?`}
             loading={isLoading}
             disabled={isLoading}
           />

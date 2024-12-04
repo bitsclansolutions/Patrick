@@ -3,12 +3,18 @@ import "./dashboardSidebar.css";
 import CustomButton from "../CustomButton";
 import { useLocation, useNavigate } from "react-router-dom";
 import LogoutModal from "../Modals/LogoutModal/LogoutModal";
+import { useSelector } from "react-redux";
+import { getTranslation } from "../../../utils/getTranslation";
 
 function DashboardSidebar() {
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
+
   const navigate = useNavigate();
   const location = useLocation();
   const pathname = location.pathname;
+
+  const userInfo = useSelector((state) => state.AuthReducer.user);
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
 
   const showLogoutModal = () => {
     setIsLogoutModalOpen(true);
@@ -22,32 +28,54 @@ function DashboardSidebar() {
   const handleLogoutModalCancel = () => {
     setIsLogoutModalOpen(false);
   };
+
+  console.log("UserInfo", userInfo);
+
   return (
     <>
       <div className="dashboard-sidebar-main">
         <div className="dashboard-sidebar-inner-main">
           <div className="dashboard-sidebar-items-wrapper">
-            <div
-              className={
-                pathname === "/dashboard"
-                  ? "dashboard-sidebar-item-active"
-                  : "dashboard-sidebar-item"
-              }
-              onClick={() => navigate("/dashboard")}
-            >
-              Dashboard
-            </div>
-            <div
-              className={
-                pathname === "/manage-users"
-                  ? "dashboard-sidebar-item-active"
-                  : "dashboard-sidebar-item"
-              }
-              onClick={() => navigate("/manage-users")}
-            >
-              Manage Users
-            </div>
-            <div className="dashboard-sidebar-item">Manage Invoices</div>
+            {userInfo?.role === "admin" ? (
+              <>
+                <div
+                  className={
+                    pathname === "/dashboard"
+                      ? "dashboard-sidebar-item-active"
+                      : "dashboard-sidebar-item"
+                  }
+                  onClick={() => navigate("/dashboard")}
+                >
+                  {getTranslation("dashboard", isDutch)}
+                </div>
+                <div
+                  className={
+                    pathname === "/manage-users"
+                      ? "dashboard-sidebar-item-active"
+                      : "dashboard-sidebar-item"
+                  }
+                  onClick={() => navigate("/manage-users")}
+                >
+                  {getTranslation("manageUsers", isDutch)}
+                </div>
+                {/* <div className="dashboard-sidebar-item">
+                  {" "}
+                  {getTranslation("manageInvoices", isDutch)}
+                </div> */}
+              </>
+            ) : (
+              <div
+                className={
+                  pathname === "/user-dashboard"
+                    ? "dashboard-sidebar-item-active"
+                    : "dashboard-sidebar-item"
+                }
+                onClick={() => navigate("/user-dashboard")}
+              >
+                {getTranslation("dashboard", isDutch)}
+              </div>
+            )}
+
             <div
               className={
                 pathname === "/profile"
@@ -56,13 +84,13 @@ function DashboardSidebar() {
               }
               onClick={() => navigate("/profile")}
             >
-              Profile
+             {getTranslation("profile", isDutch)}
             </div>
           </div>
 
           <CustomButton
             style={{ margin: "2rem 0rem" }}
-            label={"Logout"}
+            label={getTranslation("logout", isDutch)}
             type={"solid"}
             onClick={showLogoutModal}
           />

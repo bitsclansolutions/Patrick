@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { ReactComponent as RoundTick } from "../../../Components/icons/round-tick.svg";
+import { useSelector } from "react-redux";
+import { getTranslation } from "../../../../utils/getTranslation";
 
 function PaymentCard() {
   // State to manage the price
   const [isAnnual, setIsAnnual] = useState(false);
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
 
   // Toggle the state when checkbox changes
   const handleToggle = () => {
@@ -14,45 +17,52 @@ function PaymentCard() {
     <div className="payment-card-wrapper">
       <div className="payment-card-left-wrapper">
         <div className="payment-toggle-wrapper">
-          <p>Monthly</p>
+          <p>{getTranslation("monthly", isDutch)}</p>
           <input
             className="toggle-checkbox"
             type="checkbox"
             role="switch"
             onChange={handleToggle}
           />
-          <p>Annually</p>
+          <p>{getTranslation("annually", isDutch)}</p>
         </div>
 
-        <p className="payment-card-heading">Upfront, Transparent Costs</p>
+        <p className="payment-card-heading">
+          {getTranslation("upfrontCost", isDutch)}
+        </p>
         <p className="payment-card-des">
-          Lorem ipsum dolor sit amet consectetur adipiscing elit dolor posuere
-          vel venenatis eu sit massa volutpat. Lorem ipsum dolor sit amet
-          consectetur adipiscing elit dolor posuere vel venenatis eu sit massa
-          volutpat.
+          {getTranslation("upfrontCostCardDes", isDutch)}
         </p>
       </div>
       <div className="payment-card-right-wrapper">
         <p className="payment-plan-heading">
-          ${isAnnual ? "200" : "20"} <span>/ {isAnnual ? "annually" : "monthly"}</span>
+          ${isAnnual ? "200" : "20"}{" "}
+          <span>
+            /{" "}
+            {isAnnual
+              ? getTranslation("annually", isDutch)
+              : getTranslation("monthly", isDutch)}
+          </span>
         </p>
-        <p className="payment-objective-heading">What’s included</p>
+        <p className="payment-objective-heading">
+          {getTranslation("whatsIncluded", isDutch)}
+        </p>
         <div className="payment-objective-wrapper">
           <div className="payment-objective">
             <RoundTick />
-            <p>All analytics features</p>
+            <p>{getTranslation("whatsIncludedListOne", isDutch)}</p>
           </div>
           <div className="payment-objective">
             <RoundTick />
-            <p>Up to 1,000,000 tracked visits</p>
+            <p>{getTranslation("whatsIncludedListTwo", isDutch)}</p>
           </div>
           <div className="payment-objective">
             <RoundTick />
-            <p>Premium support</p>
+            <p>{getTranslation("whatsIncludedListThree", isDutch)}</p>
           </div>
           <div className="payment-objective">
             <RoundTick />
-            <p>Up to 10 team members</p>
+            <p>{getTranslation("whatsIncludedListFour", isDutch)}</p>
           </div>
         </div>
       </div>

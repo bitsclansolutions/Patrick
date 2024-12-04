@@ -4,18 +4,21 @@ import SectionsLayout from "../../../Components/Sectionslayout";
 import TestimonialSlider from "./testimonialSlider";
 import FanArtifact from "../../../Components/artifacts/fan-artifact-two.PNG";
 import FuseBoxArtifact from "../../../Components/artifacts/fuse-box-one-artifact.PNG";
+import { useSelector } from "react-redux";
+import { getTranslation } from "../../../../utils/getTranslation";
 
 function TestimonialSection() {
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
+
   return (
     <div className="testimonial-main-wrapper">
       <div className="testimonial-wrapper">
         <p className="testimonial-heading">
-          Delivering Unmatched Client Satisfaction
+        {getTranslation("clientSatisfaction", isDutch)}
         </p>
         <p className="testimonial-des">
-          At Demeterkast, we prioritize every child’s unique journey, ensuring
-          tailored learning solutions that exceed expectations and foster
-          lasting growth.
+        {getTranslation("clientSatisfactionDes", isDutch)}
+
         </p>
         <TestimonialSlider />
         <img src={FanArtifact} alt="" className="fan-artifact-two" />

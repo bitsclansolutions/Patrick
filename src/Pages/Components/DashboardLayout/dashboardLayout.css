@@ -12,7 +12,8 @@
 .dashboard-layout-content {
   width: calc(100% - 300px);
   background-color: #f4f4f4;
-  min-height: calc(100vh - 80px);
+  height: calc(100vh - 80px);
   margin-top: 80px;
   padding: 2rem;
+  overflow-y: scroll;
 }

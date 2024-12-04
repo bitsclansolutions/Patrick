@@ -58,6 +58,8 @@ import Dashboard from "./Pages/Dashboard";
 import ProtectedRoute from "./utils/protectedRoute";
 import ManageUsers from "./Pages/ManageUsers";
 import Profile from "./Pages/Profile";
+import UserDashboard from "./Pages/UserDashboard";
+import PaymentSuccess from "./Pages/PaymentSuccess";
 function App() {
   const userName = useSelector((state) => state.UserReducer.userName);
   const isFinished = useSelector((state) => state.ResultReducer.isFinished);
@@ -609,6 +611,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<LandingPage />} />
+            <Route path="/success" element={<PaymentSuccess />} />
             <Route
               path="/login"
               element={
@@ -638,6 +641,14 @@ function App() {
               element={
                 <ProtectedRoute protectedRoute={true}>
                   <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/user-dashboard"
+              element={
+                <ProtectedRoute protectedRoute={true}>
+                  <UserDashboard />
                 </ProtectedRoute>
               }
             />

@@ -3,16 +3,18 @@ import "./paymentSection.css";
 import PaymentCard from "./paymentCard";
 import SectionsLayout from "../../../Components/Sectionslayout";
 import CoffeeArtifact from "../../../Components/artifacts/coffee-artifact.PNG";
+import { getTranslation } from "../../../../utils/getTranslation";
+import { useSelector } from "react-redux";
 
 function PaymentSection() {
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
+
   return (
-    <div className="payment-main-wrapper">
+    <div className="payment-main-wrapper" id="pricing" >
       <div className="payment-section-wrapper">
-        <p className="payment-heading">Upfront, Transparent Costs</p>
+        <p className="payment-heading">{getTranslation("upfrontCost", isDutch)}</p>
         <p className="payment-des">
-          With Demeterkast, you get clear, straightforward pricing—no hidden
-          fees, just exceptional value for a fully personalized learning
-          platform.
+        {getTranslation("upfrontCostDes", isDutch)}
         </p>
         <PaymentCard />
         <img src={CoffeeArtifact} alt="" className="coffee-artifact" />

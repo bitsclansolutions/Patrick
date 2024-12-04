@@ -5,9 +5,11 @@ import LogoutModal from "../Modals/LogoutModal/LogoutModal";
 import { useNavigate } from "react-router-dom";
 import "./profileDown.css";
 import { logout } from "../../../Redux/Action";
+import { getTranslation } from "../../../utils/getTranslation";
 
 function ProfileDropdown() {
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
   const disptach = useDispatch();
   const navigate = useNavigate();
   const userInfo = useSelector((state) => state.AuthReducer.user);
@@ -33,33 +35,37 @@ function ProfileDropdown() {
           {userInfo?.name?.charAt(0).toUpperCase()}
         </div>
         <div className="profile-section-dropdown">
-          {userInfo?.role === "admin" ?
-                    <div>
-                    <div
-                      className="profile-dropdown-item"
-                      onClick={() => navigate("/dashboard")}
-                    >
-                      <p>Dashboard</p>
-                    </div>
-                    <div
-                      className="profile-dropdown-item"
-                      onClick={() => navigate("/profile")}
-                    >
-                      <p>Profile</p>
-                    </div>
-                  </div>
-          :
-           
-          <div>
-          <div
-            className="profile-dropdown-item"
-            onClick={() => navigate("/select-name")}
-          >
-            <p>Let's Play</p>
-          </div>
-
-        </div>
-           }
+          {userInfo?.role === "admin" ? (
+            <div>
+              <div
+                className="profile-dropdown-item"
+                onClick={() => navigate("/dashboard")}
+              >
+                <p>{getTranslation("dashboard", isDutch)}</p>
+              </div>
+              <div
+                className="profile-dropdown-item"
+                onClick={() => navigate("/profile")}
+              >
+                <p>{getTranslation("profile", isDutch)}</p>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <div
+                className="profile-dropdown-item"
+                onClick={() => navigate("/user-dashboard")}
+              >
+                <p>{getTranslation("dashboard", isDutch)}</p>
+              </div>
+              <div
+                className="profile-dropdown-item"
+                onClick={() => navigate("/select-name")}
+              >
+                <p>{getTranslation("letsPlay", isDutch)}</p>
+              </div>
+            </div>
+          )}
 
           <div
             style={{
@@ -69,7 +75,7 @@ function ProfileDropdown() {
             }}
           >
             <CustomButton
-              label={"Logout"}
+              label={getTranslation("logout", isDutch)}
               type={"solid"}
               style={{ zIndex: "1000" }}
               onClick={showLogoutModal}

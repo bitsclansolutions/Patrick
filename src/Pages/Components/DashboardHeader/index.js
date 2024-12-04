@@ -2,9 +2,18 @@ import React from "react";
 import { ReactComponent as HeaderIcon } from "../icons/header-icon.svg";
 import "./dashboardHeader.css";
 import ProfileDropdown from "../ProfileDropdown";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import CustomButton from "../CustomButton";
+import ChangeLanguageToggle from "../../../utils/ChangeLanguageToggle";
+import { useSelector } from "react-redux";
+import { getTranslation } from "../../../utils/getTranslation";
 
 export default function DashboardHeader() {
+  const userInfo = useSelector((state) => state.AuthReducer.user);
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
+
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="dashboard-header-container">
@@ -15,11 +24,13 @@ export default function DashboardHeader() {
             </Link>
           </div>
           <div className="dashboard-header-right-wrapper">
-            <div className="langauge-select-wrapper">
-              <p>English</p>
-              <input class="" type="checkbox" role="switch" />
-              <p>Netherlands</p>
-            </div>
+            <ChangeLanguageToggle color="black" />
+            {userInfo?.role === "user" && (
+              <CustomButton
+                label={getTranslation("letsPlay", isDutch)}
+                onClick={() => navigate("/select-name")}
+              />
+            )}
             <ProfileDropdown />
           </div>
         </div>

@@ -5,10 +5,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { Form } from "antd";
 import { ResetPasswordService } from "../../Redux/Services/resetPasswordService";
 import { toast } from "react-toastify";
+import { getTranslation } from "../../utils/getTranslation";
+import { useSelector } from "react-redux";
 
 function ResetPassword() {
   const [isLoading, setIsLoading] = useState(false);
   const [token, setToken] = useState("");
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
 
   const navigate = useNavigate();
 
@@ -59,7 +62,9 @@ function ResetPassword() {
   return (
     <div className="reset-main-wrapper">
       <div className="reset-form-wrapper">
-        <p className="reset-form-heading">Reset Password</p>
+        <p className="reset-form-heading">
+          {getTranslation("resetPassword", isDutch)}
+        </p>
 
         <Form className="reset-form-inner" onFinish={onFinish}>
           <Form.Item
@@ -69,12 +74,11 @@ function ResetPassword() {
                 pattern: new RegExp(
                   /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/
                 ),
-                message:
-                  "Password must include at least 8 characters, one digit, one uppercase letter, and one special character.",
+                message: getTranslation("passwordValidations", isDutch),
               },
               {
                 required: true,
-                message: "Please input your password!",
+                message: getTranslation("pleaseInputYourPassword", isDutch),
               },
             ]}
           >
@@ -82,7 +86,7 @@ function ResetPassword() {
               style={{ width: "100%" }}
               type="password"
               className="reset-custom-input"
-              placeholder="Enter new password"
+              placeholder={getTranslation("enterNewPassword", isDutch)}
             />
           </Form.Item>
 
@@ -92,14 +96,16 @@ function ResetPassword() {
             rules={[
               {
                 required: true,
-                message: "Please confirm your password!",
+                message: getTranslation("pleaseConfirmYourPassword", isDutch),
               },
               ({ getFieldValue }) => ({
                 validator(_, value) {
                   if (!value || getFieldValue("password") === value) {
                     return Promise.resolve();
                   }
-                  return Promise.reject(new Error("Passwords do not match!"));
+                  return Promise.reject(
+                    new Error(getTranslation("passwordsDonotMatch", isDutch))
+                  );
                 },
               }),
             ]}
@@ -108,7 +114,7 @@ function ResetPassword() {
               style={{ width: "100%" }}
               type="password"
               className="reset-custom-input"
-              placeholder="Rewrite password"
+              placeholder={getTranslation("rewritePassword", isDutch)}
             />
           </Form.Item>
 
@@ -120,14 +126,14 @@ function ResetPassword() {
               marginBottom: "0rem",
             }}
           >
-            <p>Resend Code?</p>
+            <p>{getTranslation("resendCode", isDutch)}</p>
           </Link>
 
           <CustomButton
             loading={isLoading}
             disabled={isLoading}
             type={"solid"}
-            label={"Sign-In"}
+            label={getTranslation("submit", isDutch)}
           />
         </Form>
       </div>

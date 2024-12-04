@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import { formatErrors } from "../../../../utils/ErrorHandler";
 import { blockuserService } from "../../../../Redux/Services/blockUserService";
 import { deleteUserService } from "../../../../Redux/Services/deleteUserService";
+import { getTranslation } from "../../../../utils/getTranslation";
 
 function ManageUsersSectionTable() {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -19,6 +20,8 @@ function ManageUsersSectionTable() {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [editAbleUser, setEditAbleUser] = useState();
   const [isLoading, setIsLoading] = useState(false);
+
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
 
   const dispatch = useDispatch();
 
@@ -73,7 +76,7 @@ function ManageUsersSectionTable() {
     try {
       setIsLoading(true);
       const id = editAbleUser?.id;
-      const blockStatus = editAbleUser?.blocked === true ? "unblock" : "block";
+      const blockStatus = editAbleUser?.blocked === 1 ? "unblock" : "block";
       const response = await blockuserService(id, blockStatus);
       if (response?.status === 200) {
         dispatch(fetchAllusers());
@@ -81,7 +84,7 @@ function ManageUsersSectionTable() {
         setIsBlockModalOpen(false);
         toast.success(
           `${
-            editAbleUser?.blocked === true ? "unblock" : "Block"
+            editAbleUser?.blocked === 1 ? "unblock" : "Block"
           } User Succesfully`
         );
       }
@@ -142,24 +145,40 @@ function ManageUsersSectionTable() {
 
   const columns = [
     {
-      title: "Name",
+      title: getTranslation("name", isDutch),
       dataIndex: "name",
       key: "name",
       render: (text) => <a>{text}</a>,
     },
     {
-      title: "Email",
+      title: getTranslation("email", isDutch),
       dataIndex: "email",
       key: "email",
     },
     {
-      title: "Blocked",
+      title: getTranslation("paymentStatus", isDutch),
+      dataIndex: "paymentStatus",
+      key: "paymentStatus",
+      render: (_, record) =>
+        record?.user_subscription ? record?.user_subscription?.status : "N/A",
+    },
+    {
+      title: getTranslation("paymentPackage", isDutch),
+      dataIndex: "paymentPackage",
+      key: "paymentPackage",
+      render: (_, record) =>
+        record?.user_subscription
+          ? record?.user_subscription?.subscription_frequency
+          : "N/A",
+    },
+    {
+      title: getTranslation("blocked", isDutch),
       dataIndex: "blocked",
       key: "blocked",
       render: (blocked) => (blocked ? "Yes" : "No"),
     },
     {
-      title: "Actions",
+      title: getTranslation("actions", isDutch),
       dataIndex: "actions",
       key: "actions",
       width: 200,
@@ -167,7 +186,7 @@ function ManageUsersSectionTable() {
         <>
           <div className="manage-users-actions-wrapper">
             <ActionButton
-              label={"Edit"}
+              label={getTranslation("edit", isDutch)}
               onClick={() => {
                 showEditModal();
                 console.log("edit values", record);
@@ -176,7 +195,7 @@ function ManageUsersSectionTable() {
             />
             <ActionButton
               isBlocked={record?.blocked}
-              label={"Block"}
+              label={getTranslation("block", isDutch)}
               onClick={() => {
                 showBlockModal();
                 console.log("edit values", record);
@@ -184,7 +203,7 @@ function ManageUsersSectionTable() {
               }}
             />
             <ActionButton
-              label={"Delete"}
+              label={getTranslation("delete", isDutch)}
               onClick={() => {
                 showDeleteModal();
                 console.log("edit values", record);

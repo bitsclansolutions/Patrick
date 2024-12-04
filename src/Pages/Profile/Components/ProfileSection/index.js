@@ -10,12 +10,14 @@ import { fetchAllusers, loginSuccess } from "../../../../Redux/Action";
 import { formatErrors } from "../../../../utils/ErrorHandler";
 import { updateUserService } from "../../../../Redux/Services/updateUserService";
 import { getSpecificUser } from "../../../../Redux/Services/getSpecificUser";
+import { getTranslation } from "../../../../utils/getTranslation";
 
 function ProfileSection() {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
 
   const userInfo = useSelector((state) => state.AuthReducer.user);
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
 
   console.log("Profile section info", userInfo);
 
@@ -36,28 +38,33 @@ function ProfileSection() {
     try {
       setIsLoading(true);
       const data = {
-        id: userInfo?.id,
         name: values?.name,
       };
-      const response = await updateUserService(data);
+      const response = await api.post(endpoints.updateUserProfile(), data);
       console.log("response", response);
       if (response.status === 200) {
-        const res = await getSpecificUser(userInfo?.id);
+        const res = await api.get(endpoints.getUserProfile());
         console.log("spefic user response", res);
         localStorage.setItem("user", JSON.stringify(res?.data?.data));
-        dispatch(loginSuccess(res?.data?.data))
+        dispatch(loginSuccess(res?.data?.data));
         toast.success("Updated Successfully");
         setIsLoading(false);
       }
     } catch (error) {
-      const formatedErrors = formatErrors(error?.response?.data?.errors);
-      console.log("error =>", formatedErrors);
+      console.log(error);
+      let formatedErrors;
+      if (error?.response?.data?.errors) {
+        formatedErrors = formatErrors(error?.response?.data?.errors);
+        console.log("error =>", formatedErrors);
+      }
       setIsLoading(false);
 
       toast.error(
         <div
           dangerouslySetInnerHTML={{
-            __html: `Unable to process your request.<br>${formatedErrors}`,
+            __html: `Unable to process your request.<br>${
+              formatedErrors ? formatErrors : ""
+            }`,
           }}
         />
       );
@@ -69,7 +76,9 @@ function ProfileSection() {
   };
   return (
     <div className="profile-section-main">
-      <p className="profile-section-heading">Edit Profile</p>
+      <p className="profile-section-heading">
+        {getTranslation("editProfile", isDutch)}
+      </p>
 
       <Form form={form} onFinish={onFinish} className="profile-form">
         <div className="profile-inputs-wrapper">
@@ -87,7 +96,6 @@ function ProfileSection() {
               style={{ width: "100%" }}
               type="text"
               class="profile-input"
-              placeholder="Enter your name"
             />
           </Form.Item>
 
@@ -112,7 +120,7 @@ function ProfileSection() {
           </Form.Item>
         </div>
         <CustomButton
-          label={"Update"}
+          label={getTranslation("update", isDutch)}
           type={"solid"}
           loading={isLoading}
           disabled={isLoading}

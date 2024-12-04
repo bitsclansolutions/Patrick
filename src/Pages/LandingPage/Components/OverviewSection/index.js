@@ -5,28 +5,26 @@ import OverviewSectionImage from "../images/overview-section.PNG";
 import WhiteCloudsBarOverview from "../images/white-clouds-bar-overview.PNG";
 import { ReactComponent as StarsArtifact } from "../../../Components/artifacts/stars-artifact.svg";
 import OvenArtifact from "../../../Components/artifacts/oven-artifact.PNG";
+import { getTranslation } from "../../../../utils/getTranslation";
+import { useSelector } from "react-redux";
 
 function OverviewSection() {
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
+
   return (
-    <div className="overview-main-wrapper">
+    <div className="overview-main-wrapper" id="about-us">
       <div className="overview-section-wrapper">
         <div className="overview-section-left-wrapper">
-          <p className="overview-heading">About Us</p>
+          <p className="overview-heading">{getTranslation("aboutUsHeading", isDutch)}</p>
           <p className="overview-des">
-            At <strong>Demeterkast</strong>, we believe that every child
-            deserves access to high-quality, tailored education.
+            {isDutch ? "Bij" : "At"} <strong>Demeterkast</strong>,{" "}
+            {getTranslation("aboutUsDesOne", isDutch)}
           </p>
           <p className="overview-des">
-            Our mission is to empower children with cognitive challenges by
-            providing a safe and adaptive learning space that evolves with their
-            needs.
+          {getTranslation("aboutUsDesTwo", isDutch)}
           </p>
           <p className="overview-des">
-            Using advanced AI and ML technologies, we have crafted an intuitive
-            platform that supports both teachers and parents, offering insights
-            into a child’s learning progress. We are committed to creating a
-            future where no child is left behind, regardless of their cognitive
-            abilities.
+          {getTranslation("aboutUsDesThree", isDutch)}
           </p>
         </div>
         <div className="overview-section-right-wrapper">

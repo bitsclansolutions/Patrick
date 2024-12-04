@@ -8,10 +8,12 @@ import { loginFailure, loginRequest, loginSuccess } from "../../Redux/Action";
 import api from "../../utils/axiosInstance";
 import { endpoints } from "../../utils/endpoints";
 import { toast } from "react-toastify";
+import { getTranslation } from "../../utils/getTranslation";
 
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
   const { user, loading } = useSelector((state) => state.AuthReducer);
 
   const fetchData = async (values) => {
@@ -19,10 +21,13 @@ function Login() {
     try {
       const response = await api.post(endpoints.login(), values);
       localStorage.setItem("token", response.data.data.token);
-      localStorage.setItem("user", JSON.stringify(response.data.data.user));
-      dispatch(loginSuccess(response.data.data.user));
-      toast.success("Logged In Successfully!");
-      navigate("/dashboard");
+      if (response.status === 200) {
+        const res = await api.get(endpoints.getUserProfile());
+        localStorage.setItem("user", JSON.stringify(res.data.data));
+        dispatch(loginSuccess(res.data.data));
+        toast.success("Logged In Successfully!");
+        navigate("/dashboard");
+      }
     } catch (error) {
       dispatch(loginFailure(error.message));
       console.log(error);
@@ -47,7 +52,9 @@ function Login() {
   return (
     <div className="login-main-wrapper">
       <div className="login-form-wrapper">
-        <p className="login-form-heading">Sign-In</p>
+        <p className="login-form-heading">
+          {getTranslation("signIn", isDutch)}
+        </p>
 
         <Form className="login-form-inner" onFinish={onFinish}>
           <Form.Item
@@ -55,7 +62,7 @@ function Login() {
             rules={[
               {
                 required: true,
-                message: "Please input your email!",
+                message: getTranslation("pleaseInputYourEmail", isDutch),
               },
             ]}
           >
@@ -63,7 +70,7 @@ function Login() {
               style={{ width: "100%" }}
               type="email"
               class="login-custom-input"
-              placeholder="Enter your email"
+              placeholder={getTranslation("enterYourEmail", isDutch)}
             />
           </Form.Item>
 
@@ -79,7 +86,7 @@ function Login() {
               // },
               {
                 required: true,
-                message: "Please input your password!",
+                message: getTranslation("pleaseInputYourPassword", isDutch),
               },
             ]}
           >
@@ -87,7 +94,7 @@ function Login() {
               style={{ width: "100%" }}
               type="password"
               class="login-custom-input"
-              placeholder="Enter your password"
+              placeholder={getTranslation("enterYourPassword", isDutch)}
             />
           </Form.Item>
           <Link
@@ -104,12 +111,12 @@ function Login() {
                 marginBottom: "0rem",
               }}
             >
-              Forget password?
+              {getTranslation("forgetPassword", isDutch)}
             </p>
           </Link>
           <CustomButton
             type={"solid"}
-            label={"Sign-In"}
+            label={getTranslation("signIn", isDutch)}
             loading={loading}
             disabled={loading}
             // style={{ marginTop: "0rem" }}

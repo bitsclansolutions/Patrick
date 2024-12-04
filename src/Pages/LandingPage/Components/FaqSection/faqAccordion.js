@@ -1,6 +1,10 @@
 import React from "react";
+import { getTranslation } from "../../../../utils/getTranslation";
+import { useSelector } from "react-redux";
 
 function FaqAccordion() {
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
+
   return (
     <div className="accordion temp" id="accordionExample">
       <div className="accordion-item">
@@ -13,7 +17,7 @@ function FaqAccordion() {
             aria-expanded="true"
             aria-controls="collapseOne"
           >
-            What makes Demeterkast different from other learning platforms?
+            {getTranslation("questionOne", isDutch)}
           </button>
         </h2>
         <div
@@ -23,10 +27,7 @@ function FaqAccordion() {
           data-bs-parent="#accordionExample"
         >
           <div className="accordion-body">
-            Demeterkast leverages AI and ML to create a truly adaptive learning
-            experience. Our platform adjusts content in real time to fit each
-            child’s learning pace and style, ensuring optimal engagement and
-            development.
+            {getTranslation("questionOneDes", isDutch)}
           </div>
         </div>
       </div>
@@ -40,7 +41,7 @@ function FaqAccordion() {
             aria-expanded="false"
             aria-controls="collapseTwo"
           >
-            How does the platform use AI and ML for learning?
+            {getTranslation("questionTwo", isDutch)}
           </button>
         </h2>
         <div
@@ -50,9 +51,7 @@ function FaqAccordion() {
           data-bs-parent="#accordionExample"
         >
           <div className="accordion-body">
-            We use AI to monitor learning behaviours and ML to analyze this
-            data, refining lesson plans and materials to better suit the child's
-            needs over time.
+            {getTranslation("questiontwoDes", isDutch)}
           </div>
         </div>
       </div>
@@ -66,7 +65,7 @@ function FaqAccordion() {
             aria-expanded="false"
             aria-controls="collapseThree"
           >
-            Is the platform suitable for all cognitive challenges?
+            {getTranslation("questionThree", isDutch)}
           </button>
         </h2>
         <div
@@ -76,8 +75,7 @@ function FaqAccordion() {
           data-bs-parent="#accordionExample"
         >
           <div className="accordion-body">
-            Yes, Demeterkast is designed to support a wide spectrum of cognitive
-            challenges, offering a personalized learning path for each student.
+            {getTranslation("questionThree", isDutch)}
           </div>
         </div>
       </div>
@@ -91,7 +89,7 @@ function FaqAccordion() {
             aria-expanded="false"
             aria-controls="collapseFour"
           >
-            Can I use Demeterkast for homeschooling?
+            {getTranslation("questionFour", isDutch)}
           </button>
         </h2>
         <div
@@ -101,10 +99,7 @@ function FaqAccordion() {
           data-bs-parent="#accordionExample"
         >
           <div className="accordion-body">
-            Yes, Demeterkast is an excellent tool for homeschooling. The
-            platform provides customizable learning paths and detailed progress
-            tracking, allowing parents to take an active role in their child’s
-            education from the comfort of home.
+            {getTranslation("questionFourDes", isDutch)}
           </div>
         </div>
       </div>
@@ -118,7 +113,7 @@ function FaqAccordion() {
             aria-expanded="false"
             aria-controls="collapseFive"
           >
-            What devices are compatible with the platform?
+            {getTranslation("questionFive", isDutch)}
           </button>
         </h2>
         <div
@@ -128,8 +123,7 @@ function FaqAccordion() {
           data-bs-parent="#accordionExample"
         >
           <div className="accordion-body">
-            Demeterkast is accessible on desktops, tablets, and smartphones,
-            ensuring learning can happen anytime, anywhere.
+            {getTranslation("questionFiveDes", isDutch)}
           </div>
         </div>
       </div>

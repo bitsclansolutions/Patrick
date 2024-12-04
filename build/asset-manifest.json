@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.a9b9bd97.css",
-    "main.js": "/static/js/main.39d2ba28.js",
+    "main.css": "/static/css/main.6a842128.css",
+    "main.js": "/static/js/main.a559c2d8.js",
     "static/js/787.1b1e1cd6.chunk.js": "/static/js/787.1b1e1cd6.chunk.js",
     "static/media/stroom-uitgevalle.mp4": "/static/media/stroom-uitgevalle.a7bc1f3943c79f546824.mp4",
     "static/media/wat-is-kortsluiting.mp4": "/static/media/wat-is-kortsluiting.84cdf80021b4b268bf1a.mp4",
@@ -115,14 +115,17 @@
     "static/media/clouds-artifact.svg": "/static/media/clouds-artifact.0904bc27f5f881dfb15b915e167a30a3.svg",
     "static/media/fan.svg": "/static/media/fan.33745838433253ecff807d1f895b444a.svg",
     "index.html": "/index.html",
+    "static/media/payment-basic-icon.svg": "/static/media/payment-basic-icon.05b42a435544583129a5f7513afd78a1.svg",
+    "static/media/package-blue-tick.svg": "/static/media/package-blue-tick.fa5ab1276de0fe60ccef86380eb5e119.svg",
+    "static/media/package-white-tick-icon.svg": "/static/media/package-white-tick-icon.f8c9a76d22db3b5ef0ae94e2dbde0352.svg",
     "static/media/round-tick.svg": "/static/media/round-tick.f8c9a76d22db3b5ef0ae94e2dbde0352.svg",
     "static/media/play-icon.svg": "/static/media/play-icon.a64224777684164fd50d1d702ffbab0c.svg",
-    "main.a9b9bd97.css.map": "/static/css/main.a9b9bd97.css.map",
-    "main.39d2ba28.js.map": "/static/js/main.39d2ba28.js.map",
+    "main.6a842128.css.map": "/static/css/main.6a842128.css.map",
+    "main.a559c2d8.js.map": "/static/js/main.a559c2d8.js.map",
     "787.1b1e1cd6.chunk.js.map": "/static/js/787.1b1e1cd6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a9b9bd97.css",
-    "static/js/main.39d2ba28.js"
+    "static/css/main.6a842128.css",
+    "static/js/main.a559c2d8.js"
   ]
 }

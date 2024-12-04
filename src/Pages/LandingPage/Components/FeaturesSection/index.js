@@ -5,75 +5,68 @@ import FeacturesSectionImage from "../images/features-section.PNG";
 import CircuitArtifact from "../../../Components/artifacts/circuit-artifact.PNG";
 import CustomButton from "../../../Components/CustomButton";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getTranslation } from "../../../../utils/getTranslation";
 function FeaturesSection() {
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
+
   return (
-    <div className="features-main-wrapper">
+    <div className="features-main-wrapper" id="features">
       <div className="features-section-wrapper">
         <div className="features-section-left-wrapper">
           <img src={FeacturesSectionImage} className="features-left-image" />
         </div>
         <div className="features-section-right-wrapper">
-          <p className="features-heading">Features and Benefits</p>
+          <p className="features-heading">
+            {getTranslation("featuresAndBenefits", isDutch)}
+          </p>
 
           <div className="feature-objective">
             <p className="feature-objective-heading">
-              AI-Driven Personalization
+              {getTranslation("aiDrivenPersonalization", isDutch)}
             </p>
             <p className="feature-objective-des">
-              Our platform uses AI to track and analyze each student's progress,
-              creating a personalized learning plan that adapts in real-time.
+              {getTranslation("aiDrivenPersonalizationDes", isDutch)}
             </p>
           </div>
           <div className="feature-objective">
             <p className="feature-objective-heading">
-              Machine Learning-Powered Insights
+              {getTranslation("mlPoweredInsights", isDutch)}
             </p>
             <p className="feature-objective-des">
-              With ML algorithms, we offer detailed reports and insights for
-              educators and parents, helping them understand each child's unique
-              learning journey.
-            </p>
-          </div>
-
-          <div className="feature-objective">
-            <p className="feature-objective-heading">
-              Multi-Device Compatibility
-            </p>
-            <p className="feature-objective-des">
-              Students can access the platform from any device, ensuring
-              seamless learning continuity.
+              {getTranslation("mlPoweredInsightsDes", isDutch)}
             </p>
           </div>
 
           <div className="feature-objective">
             <p className="feature-objective-heading">
-              Multi-Device Compatibility
+              {getTranslation("multiDeviceCompatibility", isDutch)}
             </p>
             <p className="feature-objective-des">
-              Students can access the platform from any device, ensuring
-              seamless learning continuity.
+              {getTranslation("multiDeviceCompatibilityDes", isDutch)}
             </p>
           </div>
 
           <div className="feature-objective">
             <p className="feature-objective-heading">
-              Engaging Learning Experience
+              {getTranslation("engagingLearningExperience", isDutch)}
             </p>
             <p className="feature-objective-des">
-              With interactive content and challenges, children remain engaged
-              and motivated throughout their learning path.
+              {getTranslation("engagingLearningExperienceDes", isDutch)}
             </p>
           </div>
 
           <div className="feature-objective">
-            <p className="feature-objective-heading">Progress Monitoring</p>
+            <p className="feature-objective-heading">
+              {" "}
+              {getTranslation("progressMonitoring", isDutch)}
+            </p>
             <p className="feature-objective-des">
-              Parents and teachers can easily track performance, identifying
-              strengths and areas for improvement.
+              {getTranslation("progressMonitoringDes", isDutch)}
             </p>
           </div>
           <Link to={"/select-name"}>
-            <CustomButton type={"solid"} label={"For Demo"} />
+            <CustomButton type={"solid"} label={"Demo"} />
           </Link>
         </div>
 

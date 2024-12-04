@@ -8,4 +8,9 @@ export const endpoints = {
   getSpecificUser: (id) => `/api/users/${id}`,
   resetPasswordEmail: () => "/api/password/email",
   resetPassword: (resetToken) => `/api/password/reset/${resetToken}`,
+  contactUs: () => `/api/contact-us`,
+  createCheckOutSession: () => `/api/checkout-session`,
+  checkSubscriptionStatus: () => `/api/subscription-status`,
+  getUserProfile: () => `/api/get-profile`,
+  updateUserProfile: () => `/api/update-profile`,
 };

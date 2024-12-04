@@ -5,12 +5,14 @@ import CustomButton from "../../../Components/CustomButton";
 import api from "../../../../utils/axiosInstance";
 import { endpoints } from "../../../../utils/endpoints";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchAllusers } from "../../../../Redux/Action";
 import { formatErrors } from "../../../../utils/ErrorHandler";
+import { getTranslation } from "../../../../utils/getTranslation";
 
 function AddUserSection() {
   const dispatch = useDispatch();
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
   const [isLoading, setIsLoading] = useState(false);
   const [form] = Form.useForm();
 
@@ -51,7 +53,7 @@ function AddUserSection() {
   };
   return (
     <div className="add-user-section-main">
-      <p className="add-user-section-heading">Add User</p>
+      <p className="add-user-section-heading">{getTranslation("addUser", isDutch)}</p>
 
       <Form form={form} onFinish={onFinish} className="add-user-form">
         <div className="add-user-inputs-wrapper">
@@ -69,7 +71,7 @@ function AddUserSection() {
               style={{ width: "100%" }}
               type="text"
               class="add-user-input"
-              placeholder="Enter your name"
+              placeholder={getTranslation("enterYourName", isDutch)}
             />
           </Form.Item>
 
@@ -87,12 +89,12 @@ function AddUserSection() {
               style={{ width: "100%" }}
               type="email"
               class="add-user-input"
-              placeholder="Enter your email"
+              placeholder={getTranslation("enterYourEmail", isDutch)}
             />
           </Form.Item>
         </div>
         <CustomButton
-          label={"Submit"}
+          label={getTranslation("submit", isDutch)}
           type={"solid"}
           loading={isLoading}
           disabled={isLoading}

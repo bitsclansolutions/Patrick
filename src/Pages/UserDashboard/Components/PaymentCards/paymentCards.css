@@ -1,0 +1,157 @@
+.payment-packages-section-main {
+  width: 100%;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.packages-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.single-package-wrapper {
+  width: 300px;
+  height: 500px;
+  border-radius: 1rem;
+  background-color: white;
+  box-shadow: 0px 0px 25.7px 0px #0000001a;
+  padding: 1.5rem 1.5rem;
+  color: black;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.single-package-wrapper:hover {
+  background-color: #387ff5;
+  color: white;
+}
+
+.package-head-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
+
+.package-heading {
+  font-family: "Nunito", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0rem;
+}
+
+.package-des {
+  font-family: "Nunito", sans-serif;
+  font-size: 0.9rem;
+  margin-top: 0.8rem;
+}
+
+.package-price {
+  font-family: "Nunito", sans-serif;
+  font-size: 0.9rem;
+  margin-top: 0.8rem;
+}
+
+.package-price span {
+  font-family: "Nunito", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0rem;
+}
+
+.package-objective-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.package-objective-wrapper p {
+  margin-bottom: 0rem;
+}
+
+.package-objective-heading {
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.objectives-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.single-objective {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+}
+.single-objective-text {
+  font-family: "Nunito", sans-serif;
+  font-size: 0.9rem;
+}
+.package-button {
+  width: 85%;
+  height: 50px;
+  margin-top: 1rem;
+  position: absolute;
+  bottom: 1.5rem;
+  left: 23px;
+  background-color: #387ff5;
+  border-radius: 25px;
+  border: none;
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.popular-button {
+  width: 98px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #ecebff;
+  border: none;
+  position: absolute;
+  top: 1.5rem;
+  right: 23px;
+  color: #387ff5;
+  font-family: "Nunito", sans-serif;
+  font-size: 0.9rem;
+  cursor: default;
+}
+
+.single-package-wrapper:hover .package-button {
+  background-color: white;
+  color: #387ff5;
+}
+
+.single-package-wrapper:hover .popular-button {
+  background-color: #ffffff33;
+  color: white;
+}
+
+.payment-cards-overlay-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it stays above other elements */
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  pointer-events: none; /* Prevent interaction with the cards */
+}

@@ -25,6 +25,13 @@
   height: 1.33px; /* Thickness of the line */
   background-color: #eceef4; /* Color of the line */
 }
+.footer-des {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 2rem;
+  color: #626981;
+}
 
 .footer-options-wrapper {
   display: flex;
@@ -55,7 +62,7 @@
   justify-content: space-between;
   padding: 1.5rem 0rem;
 }
-.footer-bottom-wrapper p:first-child {
+.footer-bottom-rights {
   font-family: "Nunito", serif;
   font-size: 18px;
   font-weight: 400;

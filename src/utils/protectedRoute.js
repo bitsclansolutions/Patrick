@@ -8,7 +8,7 @@ const ProtectedRoute = ({ protectedRoute, children }) => {
   const location = useLocation();
 
   // Define admin-only routes
-  const adminRoutes = ["/manage-users", "/profile", "/dashboard"];
+  const adminRoutes = ["/manage-users", "/dashboard"];
 
   if (protectedRoute && !token) {
     // If the route is protected and there's no token, redirect to login
@@ -20,14 +20,14 @@ const ProtectedRoute = ({ protectedRoute, children }) => {
     if (userInfo?.role === "admin") {
       return <Navigate to="/dashboard" replace />;
     } else if (userInfo?.role === "user") {
-      return <Navigate to="/select-name" replace />;
+      return <Navigate to="/user-dashboard" replace />;
     }
   }
 
   if (protectedRoute && userInfo?.role) {
     // If the user tries to access admin-only routes and is not an admin
     if (adminRoutes.includes(location.pathname) && userInfo.role !== "admin") {
-      return <Navigate to="/select-name" replace />;
+      return <Navigate to="/user-dashboard" replace />;
     }
   }
 

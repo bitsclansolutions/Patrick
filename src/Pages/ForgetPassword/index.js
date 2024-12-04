@@ -5,10 +5,14 @@ import { useNavigate } from "react-router-dom";
 import { Form } from "antd";
 import { ResetPasswordEmailService } from "../../Redux/Services/resetPasswordEmailService";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
+import { getTranslation } from "../../utils/getTranslation";
 
 function ForgetPassword() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
+
   const handleResetPasswordEmail = async (values) => {
     try {
       setIsLoading(true);
@@ -38,7 +42,7 @@ function ForgetPassword() {
   return (
     <div className="forget-password-main-wrapper">
       <div className="forget-password-form-wrapper">
-        <p className="forget-password-form-heading">Forget password</p>
+        <p className="forget-password-form-heading">{getTranslation("forgetPasswordHeading", isDutch)}</p>
 
         <Form className="forget-password-form-inner" onFinish={onFinish}>
           <Form.Item
@@ -46,7 +50,7 @@ function ForgetPassword() {
             rules={[
               {
                 required: true,
-                message: "Please input your email!",
+                message: getTranslation("pleaseInputYourEmail", isDutch),
               },
             ]}
           >
@@ -54,7 +58,7 @@ function ForgetPassword() {
               style={{ width: "100%" }}
               type="email"
               className="forget-password-custom-input"
-              placeholder="Enter your email"
+              placeholder={getTranslation("enterYourEmail", isDutch)}
             />
           </Form.Item>
           <p
@@ -65,14 +69,14 @@ function ForgetPassword() {
               fontSize: "0.8rem",
             }}
           >
-            Provide your email to get reset password link!
+            {getTranslation("provideYourEmail", isDutch)}
           </p>
 
           <CustomButton
             loading={isLoading}
             disabled={isLoading}
             type={"solid"}
-            label={"Next"}
+            label={getTranslation("next", isDutch)}
           />
         </Form>
       </div>

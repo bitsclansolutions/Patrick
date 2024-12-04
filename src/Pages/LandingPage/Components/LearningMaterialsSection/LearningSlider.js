@@ -13,7 +13,11 @@ import "./learningSection.css";
 
 // import required modules
 import { Pagination } from "swiper/modules";
+import { useSelector } from "react-redux";
+import { getTranslation } from "../../../../utils/getTranslation";
 function LearningSlider() {
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
+
   return (
     <div className="learning-slider-wrapper">
       <Swiper
@@ -31,10 +35,12 @@ function LearningSlider() {
             <div className="learning-slide-img">
               <img src={Img1} />
             </div>
-            <p className="learning-slide-heading">Exercise 01</p>
+            <p className="learning-slide-heading">
+              {" "}
+              {getTranslation("exercise01", isDutch)}
+            </p>
             <p className="learning-slide-des">
-              Watch guided videos to understand how to operate the brakes and
-              perform the given actions.
+              {getTranslation("exercise01Des", isDutch)}
             </p>
           </div>
         </SwiperSlide>
@@ -43,10 +49,12 @@ function LearningSlider() {
             <div className="learning-slide-img">
               <img src={Img2} />
             </div>
-            <p className="learning-slide-heading">Exercise 02</p>
+            <p className="learning-slide-heading">
+              {" "}
+              {getTranslation("exercise02", isDutch)}
+            </p>
             <p className="learning-slide-des">
-              Play an interactive game to practice identifying and fixing faulty
-              items using the brake system.
+              {getTranslation("exercise02Des", isDutch)}
             </p>
           </div>
         </SwiperSlide>
@@ -56,10 +64,12 @@ function LearningSlider() {
             <div className="learning-slide-img">
               <img src={Img3} />
             </div>
-            <p className="learning-slide-heading">IQ Test</p>
+            <p className="learning-slide-heading">
+              {" "}
+              {getTranslation("iqTest", isDutch)}
+            </p>
             <p className="learning-slide-des">
-              Engage in a fun and challenging game designed to test your
-              problem-solving and critical-thinking skills.
+              {getTranslation("iqTestDes", isDutch)}
             </p>
           </div>
         </SwiperSlide>
@@ -69,10 +79,12 @@ function LearningSlider() {
             <div className="learning-slide-img">
               <img src={Img1} />
             </div>
-            <p className="learning-slide-heading">Exercise 01</p>
+            <p className="learning-slide-heading">
+              {" "}
+              {getTranslation("exercise01", isDutch)}
+            </p>
             <p className="learning-slide-des">
-              Watch guided videos to understand how to operate the brakes and
-              perform the given actions.
+              {getTranslation("exercise01Des", isDutch)}
             </p>
           </div>
         </SwiperSlide>

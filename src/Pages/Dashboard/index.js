@@ -7,7 +7,7 @@ function Dashboard() {
 
   return (
     <DashboardLayout>
-      <AddUserSection />
+      <AddUserSection /> 
       <UserTable />
     </DashboardLayout>
   );

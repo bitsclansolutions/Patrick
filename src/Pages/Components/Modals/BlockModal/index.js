@@ -2,6 +2,8 @@ import React from "react";
 import "./blockModal.css";
 import { Modal } from "antd";
 import ActionButton from "../../ActionButton";
+import { useSelector } from "react-redux";
+import { getTranslation } from "../../../../utils/getTranslation";
 
 function BlockModal({
   isModalOpen,
@@ -10,6 +12,8 @@ function BlockModal({
   editAbleUser,
   isLoading,
 }) {
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
+
   return (
     <>
       <Modal
@@ -22,9 +26,9 @@ function BlockModal({
       >
         <div className="block-modal">
           <p>
-            Are you sure you want to{" "}
+          {getTranslation("areYouSureYouWantto", isDutch)}{" "}
             <span>
-              {editAbleUser?.blocked === 1 ? `“unblock”?` : `“block”?`}
+              {editAbleUser?.blocked === 1 ? `“${getTranslation("unblock", isDutch)}”?` : `“${getTranslation("block", isDutch)}”?`}
             </span>
           </p>
         </div>
@@ -44,7 +48,7 @@ function BlockModal({
           />
           <ActionButton
             onClick={handleModalOk}
-            label={editAbleUser?.blocked === 1 ? `Unblock?` : `Block?`}
+            label={editAbleUser?.blocked === 1 ? `${getTranslation("unblock", isDutch)}?` : `${getTranslation("block", isDutch)}?`}
             loading={isLoading}
             disabled={isLoading}
           />

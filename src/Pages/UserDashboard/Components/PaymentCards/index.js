@@ -8,10 +8,12 @@ import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
+import { getTranslation } from "../../../../utils/getTranslation";
 
 const PaymentCards = () => {
   const [isLoading, setIsLoading] = useState(false);
   const userInfo = useSelector((state) => state.AuthReducer.user);
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
 
   console.log("User Info from payment cards =>", userInfo);
 
@@ -46,7 +48,7 @@ const PaymentCards = () => {
       {subscription ? (
         subscriptionFrequency === "yearly" ? (
           <div className="subscribed-message">
-            <p>You have subscribed to the <strong>yearly package</strong>.</p>
+            <p>{getTranslation("subscribedYearly", isDutch)}</p>
           </div>
         ) : (
           <div
@@ -58,7 +60,7 @@ const PaymentCards = () => {
             }}
           >
             {isLoading && (
-              <div className="payment-cards-overlay-loading">
+              <div className="overlay-package">
                 <Spin
                   indicator={
                     <LoadingOutlined
@@ -70,33 +72,32 @@ const PaymentCards = () => {
                     />
                   }
                 />
-                <p>Wait... Process is in progress</p>
+                <p>{getTranslation("waitInProgress", isDutch)}</p>
               </div>
             )}
 
             <div className="subscribed-message">
-              <p>
-                You have subscribed to the <strong>monthly package</strong>. Hit "Get Started" to
-                upgrade to the yearly package.
-              </p>
+              <p>{getTranslation("subscribedMonthly", isDutch)}</p>
             </div>
 
             <PackageCard
-              name="Pro"
+              name={getTranslation("pro", isDutch)}
               price="$200"
-              priceDes=" / annually"
-              description="Choose a plan that fits your needs with no hidden fees or surprises."
+              priceDes={` / ${getTranslation("annually", isDutch)}`}
+              description={getTranslation("chooseAPlan", isDutch)}
               features={[
-                "All analytics features",
-                "Up to 250,000 tracked visits",
-                "Normal support",
-                "Up to 3 team members",
+                getTranslation("whatsIncludedListOne", isDutch),
+                getTranslation("whatsIncludedListTwo", isDutch),
+                getTranslation("whatsIncludedListThree", isDutch),
+                getTranslation("whatsIncludedListFour", isDutch),
               ]}
               icon={PaymentBasicIcon}
               isPopular
               onClick={() => handlePayment(yearlyPriceId)}
               isDisabled={isLoading}
               isLoading={isLoading}
+              popularText={getTranslation("popular", isDutch)}
+              buttonLabel={getTranslation("getStarted", isDutch)}
             />
           </div>
         )
@@ -106,7 +107,7 @@ const PaymentCards = () => {
           style={{ pointerEvents: isLoading ? "none" : "all" }}
         >
           {isLoading && (
-            <div className="overlay">
+            <div className="overlay-package">
               <Spin
                 indicator={
                   <LoadingOutlined
@@ -118,43 +119,47 @@ const PaymentCards = () => {
                   />
                 }
               />
-              <p>Wait... Process is in progress</p>
+              <p>{getTranslation("waitInProgress", isDutch)}</p>
             </div>
           )}
 
           <PackageCard
-            name="Basic"
+            name={getTranslation("basic", isDutch)}
             price="$20"
-            priceDes=" / monthly"
-            description="Choose a plan that fits your needs with no hidden fees or surprises."
+            priceDes={` / ${getTranslation("monthly", isDutch)}`}
+            description={getTranslation("chooseAPlan", isDutch)}
             features={[
-              "All analytics features",
-              "Up to 250,000 tracked visits",
-              "Normal support",
-              "Up to 3 team members",
+              getTranslation("whatsIncludedListOne", isDutch),
+              getTranslation("whatsIncludedListTwo", isDutch),
+              getTranslation("whatsIncludedListThree", isDutch),
+              getTranslation("whatsIncludedListFour", isDutch),
             ]}
             icon={PaymentBasicIcon}
             onClick={() => handlePayment(monthlyPriceId)}
             isDisabled={isLoading}
             isLoading={isLoading}
+            buttonLabel={getTranslation("getStarted", isDutch)}
           />
 
           <PackageCard
-            name="Pro"
+            name={getTranslation("pro", isDutch)}
             price="$200"
-            priceDes=" / annually"
-            description="Choose a plan that fits your needs with no hidden fees or surprises."
+            priceDes={` / ${getTranslation("annually", isDutch)}`}
+            description={getTranslation("chooseAPlan", isDutch)}
+            featureHeading={getTranslation("chooseAPlan", isDutch)}
             features={[
-              "All analytics features",
-              "Up to 250,000 tracked visits",
-              "Normal support",
-              "Up to 3 team members",
+              getTranslation("whatsIncludedListOne", isDutch),
+              getTranslation("whatsIncludedListTwo", isDutch),
+              getTranslation("whatsIncludedListThree", isDutch),
+              getTranslation("whatsIncludedListFour", isDutch),
             ]}
             icon={PaymentBasicIcon}
             isPopular
             onClick={() => handlePayment(yearlyPriceId)}
             isDisabled={isLoading}
             isLoading={isLoading}
+            popularText={getTranslation("popular", isDutch)}
+            buttonLabel={getTranslation("getStarted", isDutch)}
           />
         </div>
       )}

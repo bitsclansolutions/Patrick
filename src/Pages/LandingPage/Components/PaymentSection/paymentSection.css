@@ -34,6 +34,10 @@
   border-radius: 24px;
   display: flex;
   margin-top: 2rem;
+  background-image: url("../images/landing-page-payment.png");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
 }
 
 .payment-card-left-wrapper {

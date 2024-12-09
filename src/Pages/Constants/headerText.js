@@ -75,6 +75,12 @@ export const translations = {
     whatsIncludedListTwo: "Up to 1,000,000 tracked visits",
     whatsIncludedListThree: "Premium support",
     whatsIncludedListFour: "Up to 10 team members",
+    chooseAPlan:
+      "Choose a plan that fits your needs with no hidden fees or surprises.",
+    basic: "Basic",
+    pro: "Pro",
+    popular: "Popular",
+    getStarted: "Get Started",
     //Faq Section
     frequentlyAsked: "Frequently asked questions",
     questionOne:
@@ -102,7 +108,7 @@ export const translations = {
     yourName: "Your Name",
     enterEmail: "Enter Email",
     enterPhonenumber: "Enter Phone Number",
-    selectAnOption: "Select an option",
+    howDidYouHear: "How did you hear about us?",
     socialMedia: "Social Media",
     friendsOrFamily: "Friends or Family",
     other: "Other",
@@ -135,13 +141,15 @@ export const translations = {
     edit: "Edit",
     block: "Block",
     delete: "Delete",
+    paymentStatus: "Payment Status",
+    paymentPackage: "Payment Package",
     //Profile
     editProfile: "Edit Profile",
     update: "Update",
     // Sign In Page
     signIn: "Sign-In",
     enterYourPassword: "Enter your password",
-    forgetPassword: "Forget password?",
+    forgetPassword: "Forgot password?",
     pleaseInputYourEmail: "Please input your email!",
     pleaseInputYourPassword: "Please input your password!",
     //Forget Password:
@@ -156,6 +164,15 @@ export const translations = {
     passwordValidations:
       "Password must include at least 8 characters, one digit, one uppercase letter, and one special character.",
     passwordsDonotMatch: "Passwords do not match!",
+    //modal
+    areYouSureYouWantto: "Are you sure you want to",
+    unblock: "Unblock",
+    deleteThisUser: "Delete this user",
+    //User Dashboard
+    waitInProgress: "Wait... Process is in progress",
+    subscribedYearly: "You have subscribed to the yearly package.",
+    subscribedMonthly:
+      "You have subscribed to the monthly package. Hit 'Get Started' to upgrade to the yearly package.",
   },
   nl: {
     features: "Functies",
@@ -235,6 +252,12 @@ export const translations = {
     whatsIncludedListTwo: "Tot 1.000.000 bijgehouden bezoeken",
     whatsIncludedListThree: "Premium-ondersteuning",
     whatsIncludedListFour: "Maximaal 10 teamleden",
+    chooseAPlan:
+      "Kies een abonnement dat bij uw behoeften past, zonder verborgen kosten of verrassingen.",
+    basic: "Basis",
+    pro: "Pro",
+    popular: "Populair",
+    getStarted: "Aan de slag",
     //Faq Section
     frequentlyAsked: "Veelgestelde vragen",
     questionOne: "Wat maakt Demeterkast anders dan andere leerplatformen?",
@@ -261,7 +284,7 @@ export const translations = {
     yourName: "Jouw naam",
     enterEmail: "Voer e-mailadres in",
     enterPhonenumber: "Voer telefoonnummer in",
-    selectAnOption: "Selecteer een optie",
+    howDidYouHear: "Hoe heb je over ons gehoord?",
     socialMedia: "Sociale media",
     friendsOrFamily: "Vrienden of familie",
     other: "Ander",
@@ -294,6 +317,8 @@ export const translations = {
     edit: "Bewerking",
     block: "Blok",
     delete: "Verwijderen",
+    paymentStatus: "Betalingsstatus",
+    paymentPackage: "Betalingspakket",
     //Profile
     editProfile: "Profiel bewerken",
     update: "Update",
@@ -316,5 +341,14 @@ export const translations = {
     passwordValidations:
       "Het wachtwoord moet minimaal 8 tekens, één cijfer, één hoofdletter en één speciaal teken bevatten.",
     passwordsDonotMatch: "Wachtwoorden komen niet overeen!",
+    //modal
+    areYouSureYouWantto: "Weet je zeker dat je dat wilt",
+    unblock: "Deblokkeren",
+    deleteThisUser: "Verwijder deze gebruiker",
+    //User Dashboard
+    waitInProgress: "Wacht... Het proces is bezig",
+    subscribedYearly: "U heeft zich geabonneerd op het jaarpakket.",
+    subscribedMonthly:
+      "U bent geabonneerd op het maandpakket. Klik op 'Aan de slag' om te upgraden naar het jaarpakket.",
   },
 };

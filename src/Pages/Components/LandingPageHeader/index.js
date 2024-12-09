@@ -58,10 +58,10 @@ export default function LandingPageHeader() {
                   type="outlined"
                 />
               </Link>
-              <CustomButton
+              {/* <CustomButton
                 label={getTranslation("buyNow", isDutch)}
                 type="solid"
-              />
+              /> */}
             </div>
           )}
         </div>

@@ -16,6 +16,8 @@ const PackageCard = ({
   onClick,
   isDisabled,
   isLoading,
+  popularText,
+  buttonLabel
 }) => {
   const [hovered, setHovered] = useState(false);
 
@@ -54,8 +56,14 @@ const PackageCard = ({
         </div>
       </div>
 
-      <button onClick={onClick} disabled={isDisabled} className="package-button">Get Started</button>
-      {isPopular && <button className="popular-button">Popular</button>}
+      <button
+        onClick={onClick}
+        disabled={isDisabled}
+        className="package-button"
+      >
+        {buttonLabel}
+      </button>
+      {isPopular && <button className="popular-button">{popularText}</button>}
     </div>
   );
 };

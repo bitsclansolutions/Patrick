@@ -9,8 +9,10 @@ import FuseBoxArtifact from "../../../Components/artifacts/fuse-box-artifact.PNG
 import HeroSectionVideoBg from "../images/hero-section-video-bg.png";
 import { getTranslation } from "../../../../utils/getTranslation";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 function HeroSection() {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
+  const navigate = useNavigate();
   return (
     // <SectionsLayout>
     <div className="hero-section-main">
@@ -24,13 +26,13 @@ function HeroSection() {
           <p className="hero-des">
             <strong>Demeterkast</strong> {getTranslation("mainDesOne", isDutch)}
           </p>
-          <p className="hero-des">
-          {getTranslation("mainDesTwo", isDutch)}
-          </p>
-          <p className="hero-des">
-          {getTranslation("mainDesThree", isDutch)}
-          </p>
-          <CustomButton label={getTranslation("startFreeTrial", isDutch)} type="solid" />
+          <p className="hero-des">{getTranslation("mainDesTwo", isDutch)}</p>
+          <p className="hero-des">{getTranslation("mainDesThree", isDutch)}</p>
+          <CustomButton
+            onClick={() => navigate("/select-name")}
+            label={getTranslation("startFreeTrial", isDutch)}
+            type="solid"
+          />
         </div>
         <div className="hero-section-left-wrapper">
           <VideoContainer />

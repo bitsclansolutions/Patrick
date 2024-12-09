@@ -159,6 +159,7 @@ function ManageUsersSectionTable() {
       title: getTranslation("paymentStatus", isDutch),
       dataIndex: "paymentStatus",
       key: "paymentStatus",
+      
       render: (_, record) =>
         record?.user_subscription ? record?.user_subscription?.status : "N/A",
     },
@@ -166,6 +167,7 @@ function ManageUsersSectionTable() {
       title: getTranslation("paymentPackage", isDutch),
       dataIndex: "paymentPackage",
       key: "paymentPackage",
+      
       render: (_, record) =>
         record?.user_subscription
           ? record?.user_subscription?.subscription_frequency
@@ -223,7 +225,7 @@ function ManageUsersSectionTable() {
         loading={loading}
         columns={columns}
         dataSource={allUsers?.data}
-        scroll={{ x: "1024px" }}
+        scroll={{ x: "1200px" }}
       />
       <EditModal
         handleModalCancel={handleEditModalCancel}

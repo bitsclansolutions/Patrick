@@ -2,11 +2,15 @@ import React from "react";
 import { Modal } from "antd";
 import "../modalWrapper.css";
 import "./logoutModal.css";
+import { useSelector } from "react-redux";
+import { getTranslation } from "../../../../utils/getTranslation";
 const LogoutModal = ({
   isLogoutModalOpen,
   handleLogoutModalOk,
   handleLogoutModalCancel,
 }) => {
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
+
   return (
     <>
       <Modal
@@ -18,7 +22,7 @@ const LogoutModal = ({
       >
         <div className="logout-modal">
           <p>
-            Are you sure you want to <span>“Logout”?</span>
+            {getTranslation("areYouSureYouWantto", isDutch)} <span>“{getTranslation("logout", isDutch)}”?</span>
           </p>
         </div>
       </Modal>

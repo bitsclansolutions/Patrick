@@ -97,7 +97,7 @@ function FormWrapper() {
         >
           <select class="custom-select" style={{ width: "100%" }}>
             <option value="">
-              {getTranslation("selectAnOption", isDutch)}
+              {getTranslation("howDidYouHear", isDutch)}
             </option>
             <option value="Social Media">
               {getTranslation("socialMedia", isDutch)}

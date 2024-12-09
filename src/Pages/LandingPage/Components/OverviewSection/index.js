@@ -12,7 +12,7 @@ function OverviewSection() {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
 
   return (
-    <div className="overview-main-wrapper" id="about-us">
+    <div className="overview-main-wrapper" id="aboutUs">
       <div className="overview-section-wrapper">
         <div className="overview-section-left-wrapper">
           <p className="overview-heading">{getTranslation("aboutUsHeading", isDutch)}</p>

@@ -8,7 +8,12 @@ import { getTranslation } from "../../../../utils/getTranslation";
 
 function ContactUs() {
   const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
-
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <div className="contact-us-wrapper">
       <div className="contact-us-left-wrapper">
@@ -17,7 +22,10 @@ function ContactUs() {
       <div className="contact-us-right-wrapper">
         <p> {getTranslation("readyToKickStart", isDutch)}</p>
         <p>{getTranslation("readyToKickStartDes", isDutch)}</p>
-        <button className="contact-us-btn">
+        <button
+          className="contact-us-btn"
+          onClick={() => scrollToSection("contact")}
+        >
           {" "}
           {getTranslation("contactUs", isDutch)}
         </button>

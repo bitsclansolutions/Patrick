@@ -2,6 +2,8 @@ import React from "react";
 import "./deleteModal.css";
 import { Modal } from "antd";
 import ActionButton from "../../ActionButton";
+import { useSelector } from "react-redux";
+import { getTranslation } from "../../../../utils/getTranslation";
 
 function DeleteModal({
   isModalOpen,
@@ -9,6 +11,8 @@ function DeleteModal({
   handleModalCancel,
   isLoading,
 }) {
+  const isDutch = useSelector((state) => state.ChangeLanguageReducer.isDutch);
+
   return (
     <>
       <Modal
@@ -21,7 +25,7 @@ function DeleteModal({
       >
         <div className="delete-modal">
           <p>
-            Are you sure you want to <span>“Delete”?</span>
+          {getTranslation("areYouSureYouWantto", isDutch)}<span>“{getTranslation("deleteThisUser", isDutch)}”?</span>
           </p>
         </div>
 
@@ -40,7 +44,7 @@ function DeleteModal({
           />
           <ActionButton
             onClick={handleModalOk}
-            label={"Delete"}
+            label={getTranslation("delete", isDutch)}
             loading={isLoading}
             disabled={isLoading}
           />

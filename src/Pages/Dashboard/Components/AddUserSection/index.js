@@ -64,6 +64,18 @@ function AddUserSection() {
                 required: true,
                 message: "Please input your name!",
               },
+              {
+                min: 3,
+                message: "Name must be at least 3 characters!",
+              },
+              {
+                max: 25,
+                message: "Name cannot exceed 50 characters!",
+              },
+              {
+                pattern: /^[a-zA-Z\s]+$/,
+                message: "Name can only include alphabets and spaces!",
+              },
             ]}
             style={{ width: "45%" }}
           >

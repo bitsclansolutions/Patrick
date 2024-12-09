@@ -75,7 +75,7 @@ function FaqAccordion() {
           data-bs-parent="#accordionExample"
         >
           <div className="accordion-body">
-            {getTranslation("questionThree", isDutch)}
+            {getTranslation("questionThreeDes", isDutch)}
           </div>
         </div>
       </div>

@@ -97,7 +97,7 @@ function Login() {
               placeholder={getTranslation("enterYourPassword", isDutch)}
             />
           </Form.Item>
-          <Link
+          <Link 
             to={"/forget-password"}
             style={{
               textDecoration: "none",

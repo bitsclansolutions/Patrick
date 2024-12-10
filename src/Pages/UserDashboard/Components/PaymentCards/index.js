@@ -20,7 +20,8 @@ const PaymentCards = () => {
   const handlePayment = async (id) => {
     try {
       setIsLoading(true);
-      const data = { sub_id: id };
+      const language = isDutch ? "de" : "en";
+      const data = { sub_id: id, language: language };
       const response = await api.post(endpoints.createCheckOutSession(), data);
       const checkoutUrl = response?.data?.data?.url;
       if (checkoutUrl) {

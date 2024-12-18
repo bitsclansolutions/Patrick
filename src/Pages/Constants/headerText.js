@@ -152,7 +152,7 @@ export const translations = {
     forgetPassword: "Forgot password?",
     pleaseInputYourEmail: "Please input your email!",
     pleaseInputYourPassword: "Please input your password!",
-    //Forget Password:
+    //Forget Password: 
     forgetPasswordHeading: "Forgot password",
     provideYourEmail: "Provide your email to get reset password link!",
     //Reset Password
